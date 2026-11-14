@@ -1,0 +1,68 @@
+diff --git a/kge/job/__init__.py b/kge/job/__init__.py
+index 67c3ab2..d70033d 100644
+--- a/kge/job/__init__.py
++++ b/kge/job/__init__.py
+@@ -13,5 +13,11 @@ from kge.job.search import SearchJob
+ from kge.job.search_grid import GridSearchJob
+ from kge.job.search_manual import ManualSearchJob
+ from kge.job.search_auto import AutoSearchJob
+-from kge.job.search_ax import AxSearchJob
+-from kge.job.search_grash import GraSHSearchJob
++try:  # search jobs need ax-platform / ConfigSpace; not used for single training runs
++    from kge.job.search_ax import AxSearchJob
++except ImportError:
++    pass
++try:  # search jobs need ax-platform / ConfigSpace; not used for single training runs
++    from kge.job.search_grash import GraSHSearchJob
++except ImportError:
++    pass
+diff --git a/kge/job/eval_entity_ranking.py b/kge/job/eval_entity_ranking.py
+index a8f2c5c..5001e4a 100644
+--- a/kge/job/eval_entity_ranking.py
++++ b/kge/job/eval_entity_ranking.py
+@@ -47,6 +47,16 @@ class EntityRankingJob(EvaluationJob):
+         if config.get("entity_ranking.metrics_per.argument_frequency"):
+             self.hist_hooks.append(hist_per_frequency_percentile)
+ 
++        #: Optional candidate restriction (paper-4 patch): entities not listed in this
++        #: file score -inf, i.e. ranking runs over the listed entities only.
++        #: Set as user.candidate_entities_file (the user namespace accepts new keys), so
++        #: configs and checkpoints created without the key keep working unchanged.
++        try:
++            self.candidate_entities_file = config.get("user.candidate_entities_file")
++        except KeyError:
++            self.candidate_entities_file = ""
++        self.candidate_mask = None
++
+         if self.__class__ == EntityRankingJob:
+             for f in Job.job_created_hooks:
+                 f(self)
+@@ -57,6 +67,17 @@ class EntityRankingJob(EvaluationJob):
+ 
+         # create data and precompute indexes
+         self.triples = self.dataset.split(self.config.get("eval.split"))
++        if self.candidate_entities_file:
++            with open(self.candidate_entities_file) as f:
++                idx = [int(line.split()[0]) for line in f if line.strip()]
++            self.candidate_mask = torch.zeros(
++                self.dataset.num_entities(), dtype=torch.bool, device=self.device
++            )
++            self.candidate_mask[torch.tensor(idx, dtype=torch.long, device=self.device)] = True
++            self.config.log(
++                f"Ranking restricted to {int(self.candidate_mask.sum())} candidate entities "
++                f"from {self.candidate_entities_file}"
++            )
+         for split in self.filter_splits:
+             self.dataset.index(f"{split}_sp_to_o")
+             self.dataset.index(f"{split}_po_to_s")
+@@ -229,6 +250,10 @@ class EntityRankingJob(EvaluationJob):
+                 )
+                 scores_sp = scores[:, : chunk_end - chunk_start]
+                 scores_po = scores[:, chunk_end - chunk_start :]
++                if self.candidate_mask is not None:
++                    not_cand = ~self.candidate_mask[chunk_start:chunk_end]
++                    scores_sp[:, not_cand] = float("-inf")
++                    scores_po[:, not_cand] = float("-inf")
+ 
+                 # replace the precomputed true_scores with the ones occurring in the
+                 # scores matrix to avoid floating point issues

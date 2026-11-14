@@ -1,0 +1,22 @@
+{
+ "card": null,
+ "command": null,
+ "inputs": [],
+ "name": "Yelp2018",
+ "pilot": {
+  "W_pilot": "not computed",
+  "decidability": "decidable, unverified",
+  "domain": "recommendation",
+  "evaluation_protocol": "full ranking over all items not in the user's training set; Recall@20, NDCG@20",
+  "negative_source": "implicit: all items the user has not interacted with in train",
+  "notes": "",
+  "rule_found_in_code_or_release": "the release is a 10-core internally (min user degree 18, min item degree 10); 0 test interactions on items or users absent from train",
+  "rule_stated_in_paper": "2018 Yelp challenge, same 10-core setting; the revised version also removes cold-start items from the test set",
+  "sources_checked": "NGCF Sec. 4.1.1 and footnote 2; LightGCN Sec. 4; kuandeng/LightGCN Data/yelp2018",
+  "verification": "release-internal checks only; the 2018 challenge file is not public and the current Yelp Open Dataset requires accepting its terms (not done)"
+ },
+ "pilot_row": "Yelp2018 (NGCF / LightGCN 10-core)",
+ "slug": "yelp2018",
+ "task": "recommendation",
+ "why_no_card": "The raw Yelp data can only be downloaded after accepting Yelp's dataset terms, so no universe has been built. The pilot checked the release internally."
+}

@@ -1,0 +1,46 @@
+{
+ "card": "wn18rr.json",
+ "command": [
+  "benchscope-audit",
+  "kg-wordnet",
+  "--release",
+  "WN18RR/",
+  "--wordnet",
+  "WordNet-3.0/dict",
+  "--name",
+  "WN18RR",
+  "--out",
+  "card.json"
+ ],
+ "inputs": [
+  {
+   "display": "WN18RR/",
+   "id": "release",
+   "local": "kg/conve/WN18RR",
+   "source": "https://github.com/TimDettmers/ConvE/raw/master/WN18RR.tar.gz"
+  },
+  {
+   "display": "WordNet-3.0/dict",
+   "id": "wordnet",
+   "local": "kg/wordnet30/WordNet-3.0/dict",
+   "source": "https://wordnetcode.princeton.edu/3.0/WordNet-3.0.tar.gz"
+  }
+ ],
+ "name": "WN18RR",
+ "pilot": {
+  "W_pilot": "entity share excluded 0.6344 (synsets with >= 1 triple of the 11 relations) / 0.6512 (all WordNet 3.0 offsets); 125326 of 218367 rebuilt triples touch an excluded synset",
+  "decidability": "partial",
+  "domain": "knowledge-graph link prediction",
+  "evaluation_protocol": "filtered ranking of head and tail against all 40943 entities; MRR, Hits@k; 210 of 3134 test triples have an entity absent from train",
+  "negative_source": "implicit: every corrupted triple over the entity set, filtered of known triples",
+  "notes": "excluded region fully observable and finite: candidate for the measured c (PLAN.md Sect. 4); check whether the offset collision is documented",
+  "rule_found_in_code_or_release": "WN18 is the induced subgraph of WordNet 3.0's 18-relation graph on its entity set (151437 of 151442 triples rebuilt; 58 induced triples absent), so the entity set is the rule; but 34393 of the 40943 synsets have < 15 triples in that graph and 38117 in the release itself; no degree threshold reproduces the set (best single-pass Jaccard 0.597, 15-core empty); entity ids are bare offsets, which WordNet reuses across POS: 161 WN18 entities merge triples of two different synsets",
+  "rule_stated_in_paper": "'we filtered out the synsets appearing in less that 15 triplets' over the 18 relation types, giving 40,943 synsets (Mach Learn 2014); WN18RR keeps WN18's entities and drops inverse relations (11 relations)",
+  "sources_checked": "Bordes et al. 2014 Mach Learn 94:233 (Sec. 5.1, Table 2); Bordes et al. 2012 AISTATS; TransE 2013 (Sec. 4.1); Dettmers et al. 2018 AAAI (ConvE); wordnet-mlj12 release (README: 'extracted from WordNet 3.0'); ConvE repo WN18RR.tar.gz; Princeton WordNet-3.0.tar.gz",
+  "verification": "the rule cannot be reimplemented, but the release fixes the entity set exactly and WordNet 3.0 holds every excluded synset and triple (92998 of 93003 WN18RR triples rebuilt)"
+ },
+ "pilot_row": "WN18RR (Dettmers et al. 2018, from WN18)",
+ "slug": "wn18rr",
+ "task": "kg_link_prediction",
+ "why_no_card": null
+}

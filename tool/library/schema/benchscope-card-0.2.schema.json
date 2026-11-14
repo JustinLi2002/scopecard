@@ -1,0 +1,327 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "benchscope-card-0.2.schema.json",
+ "title": "BenchScope scope card, schema benchscope-card/0.2",
+ "description": "One card per (benchmark release, declared universe), written by benchscope-audit. benchscope_audit.card.validate_card checks the same requirements and, in addition, that the numbers are internally consistent (included + excluded = units, W = excluded / units, each rule verdict matches its Jaccard). Changes from 0.1: the support block (how candidates are chosen; only structural candidates make W an excluded share), the universe fingerprint, W_pairs may be null when undefined, and the comparison states its metric and gives both break-even thresholds.",
+ "type": "object",
+ "required": [
+  "schema",
+  "tool_version",
+  "task",
+  "benchmark",
+  "universe",
+  "mapping",
+  "exclusion",
+  "depth_profile",
+  "rule_diagnosis",
+  "rule_check",
+  "derived_scope",
+  "comparison",
+  "hygiene",
+  "support",
+  "scope_statement",
+  "notes"
+ ],
+ "properties": {
+  "schema": {
+   "const": "benchscope-card/0.2"
+  },
+  "tool_version": {
+   "type": "string",
+   "description": "benchscope-audit version that wrote the card"
+  },
+  "task": {
+   "enum": [
+    "kg_link_prediction",
+    "recommendation",
+    "pair_classification",
+    "query_level"
+   ]
+  },
+  "benchmark": {
+   "type": "object",
+   "required": [
+    "name",
+    "files_sha256"
+   ],
+   "properties": {
+    "name": {
+     "type": "string",
+     "minLength": 1
+    },
+    "files_sha256": {
+     "type": "object",
+     "minProperties": 1,
+     "additionalProperties": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+     },
+     "description": "release file name -> SHA-256 of the file audited"
+    }
+   }
+  },
+  "universe": {
+   "type": "object",
+   "required": [
+    "name",
+    "units"
+   ],
+   "properties": {
+    "name": {
+     "type": "string"
+    },
+    "version": {
+     "type": "string"
+    },
+    "units": {
+     "type": "integer",
+     "minimum": 1
+    },
+    "fingerprint": {
+     "type": "string",
+     "pattern": "^sha256:[0-9a-f]{64}$",
+     "description": "SHA-256 of the universe's unit ids and typed relations, independent of unit order and of the input files"
+    }
+   }
+  },
+  "mapping": {
+   "type": "object",
+   "required": [
+    "route",
+    "release_ids",
+    "mapped_ids",
+    "unmapped_ids"
+   ],
+   "properties": {
+    "route": {
+     "enum": [
+      "direct",
+      "triples"
+     ]
+    },
+    "release_ids": {
+     "type": "integer"
+    },
+    "mapped_ids": {
+     "type": "integer"
+    },
+    "unmapped_ids": {
+     "type": "integer"
+    },
+    "merged_ids": {
+     "type": "integer",
+     "description": "release ids that stand for more than one universe unit"
+    }
+   }
+  },
+  "exclusion": {
+   "type": "object",
+   "description": "W = excluded share of universe units; W_pairs = excluded share of unobserved (part 0, part 1) pairs for bipartite universes; within_query = the per-query layer of query-level benchmarks with judgments",
+   "anyOf": [
+    {
+     "required": [
+      "W"
+     ]
+    },
+    {
+     "required": [
+      "W_pairs"
+     ]
+    }
+   ],
+   "properties": {
+    "W": {
+     "type": "number",
+     "minimum": 0,
+     "maximum": 1
+    },
+    "W_pairs": {
+     "type": [
+      "number",
+      "null"
+     ],
+     "minimum": 0,
+     "maximum": 1,
+     "description": "null when the universe has no unobserved pair, or when the pilot convention leaves [0, 1]"
+    },
+    "units": {
+     "type": "integer"
+    },
+    "included": {
+     "type": "integer"
+    },
+    "excluded": {
+     "type": "integer"
+    }
+   }
+  },
+  "depth_profile": {
+   "type": [
+    "object",
+    "null"
+   ]
+  },
+  "rule_diagnosis": {
+   "type": [
+    "object",
+    "null"
+   ],
+   "properties": {
+    "best": {
+     "$ref": "#/$defs/rule"
+    },
+    "families": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "$ref": "#/$defs/rule"
+     }
+    },
+    "stated": {
+     "$ref": "#/$defs/rule"
+    },
+    "thresholds_searched": {
+     "type": "array",
+     "items": {
+      "type": "integer"
+     },
+     "minItems": 2,
+     "maxItems": 2
+    },
+    "unmapped_release_units": {
+     "type": "integer"
+    }
+   }
+  },
+  "rule_check": {
+   "type": [
+    "object",
+    "null"
+   ],
+   "description": "a stated rule checked on released units only (query level)"
+  },
+  "derived_scope": {
+   "type": [
+    "object",
+    "null"
+   ],
+   "properties": {
+    "d_min": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    },
+    "curve": {
+     "type": "array"
+    }
+   }
+  },
+  "comparison": {
+   "type": [
+    "object",
+    "null"
+   ],
+   "description": "A stated benchmark difference. Break-even values exist only for AUC-type metrics (linear in the candidate mix) and only when the excluded share is established.",
+   "properties": {
+    "metric": {
+     "enum": [
+      "auc",
+      "mrr",
+      "hits"
+     ]
+    },
+    "delta_O": {
+     "type": "number"
+    },
+    "applicable": {
+     "type": "boolean"
+    },
+    "c_star": {
+     "type": [
+      "number",
+      "null"
+     ],
+     "minimum": 0,
+     "description": "threshold on c = delta_O - delta_U, the between-region change"
+    },
+    "delta_U_break_even": {
+     "type": [
+      "number",
+      "null"
+     ],
+     "minimum": 0,
+     "description": "threshold on the excluded part's opposite-direction difference, (1 - W)|delta_O| / W"
+    }
+   }
+  },
+  "hygiene": {
+   "type": [
+    "object",
+    "null"
+   ]
+  },
+  "scope_statement": {
+   "type": "string",
+   "minLength": 1
+  },
+  "notes": {
+   "type": "string"
+  },
+  "support": {
+   "type": "object",
+   "required": [
+    "candidates",
+    "structural"
+   ],
+   "description": "How the benchmark chooses its evaluation candidates. structural = true: candidates are enumerated over the release's units, so a unit absent from the release is never evaluated and W is an excluded share. structural = false: W is coverage only.",
+   "properties": {
+    "candidates": {
+     "type": "string"
+    },
+    "structural": {
+     "type": "boolean"
+    },
+    "basis": {
+     "type": "string"
+    }
+   }
+  }
+ },
+ "$defs": {
+  "rule": {
+   "type": "object",
+   "required": [
+    "family",
+    "T",
+    "jaccard",
+    "verdict"
+   ],
+   "properties": {
+    "family": {
+     "enum": [
+      "threshold",
+      "both_ends",
+      "seeds_neighbours",
+      "kcore"
+     ]
+    },
+    "T": {
+     "type": "integer"
+    },
+    "jaccard": {
+     "type": "number",
+     "minimum": 0,
+     "maximum": 1
+    },
+    "verdict": {
+     "enum": [
+      "reproduced",
+      "approximately reproduced",
+      "not reproduced"
+     ]
+    }
+   }
+  }
+ }
+}

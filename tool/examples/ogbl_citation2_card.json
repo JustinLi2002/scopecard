@@ -1,0 +1,433 @@
+{
+ "benchmark": {
+  "edges": {
+   "test": 86596,
+   "train": 30387995,
+   "valid": 86596
+  },
+  "files_sha256": {
+   "raw/node_year.csv.gz": "014e4231d2e31bb0892d1e06281970c3165bfcbdb3479a40aec662f904526ad0",
+   "split/time/test.pt": "7b9cafd4fe3d7952b44577010a929d03fbc55ea87f0aa7592cfc480564a7a105",
+   "split/time/train.pt": "0e6d6872cd52f41442f37e5b995cf8db962bfdaf33e5c92afb721966104acdef",
+   "split/time/valid.pt": "b09d00e30476bcd7494937d3b74e46861deab900c8686025f37c79dafd7b3edb"
+  },
+  "name": "ogbl-citation2",
+  "nodes": 2927963,
+  "queries": 86596
+ },
+ "comparison": null,
+ "counted": "the 108,591 ogbl-citation2 papers published in 2019",
+ "depth_profile": {
+  "by_depth": [
+   {
+    "depth_from": 0,
+    "depth_to": 0,
+    "excluded_share": 1.0,
+    "units": 299
+   },
+   {
+    "depth_from": 1,
+    "depth_to": 1,
+    "excluded_share": 1.0,
+    "units": 4837
+   },
+   {
+    "depth_from": 2,
+    "depth_to": 2,
+    "excluded_share": 1.0,
+    "units": 4374
+   },
+   {
+    "depth_from": 3,
+    "depth_to": 4,
+    "excluded_share": 1.0,
+    "units": 8386
+   },
+   {
+    "depth_from": 5,
+    "depth_to": 9,
+    "excluded_share": 0.20876,
+    "units": 19635
+   },
+   {
+    "depth_from": 10,
+    "depth_to": 19,
+    "excluded_share": 0.0,
+    "units": 33023
+   },
+   {
+    "depth_from": 20,
+    "depth_to": 49,
+    "excluded_share": 0.0,
+    "units": 31205
+   },
+   {
+    "depth_from": 50,
+    "depth_to": 99,
+    "excluded_share": 0.0,
+    "units": 5872
+   },
+   {
+    "depth_from": 100,
+    "depth_to": null,
+    "excluded_share": 0.0,
+    "units": 960
+   }
+  ],
+  "excluded_depth_quantiles": {
+   "10": 1.0,
+   "25": 2.0,
+   "50": 3.0,
+   "75": 4.0,
+   "90": 5.0
+  },
+  "included_depth_quantiles": {
+   "10": 8.0,
+   "25": 11.0,
+   "50": 18.0,
+   "75": 28.0,
+   "90": 45.0
+  }
+ },
+ "derived_scope": {
+  "curve": [
+   {
+    "W": 0.200347,
+    "d": 1,
+    "included": 86596,
+    "units": 108292
+   },
+   {
+    "W": 0.16296,
+    "d": 2,
+    "included": 86596,
+    "units": 103455
+   },
+   {
+    "W": 0.126008,
+    "d": 3,
+    "included": 86596,
+    "units": 99081
+   },
+   {
+    "W": 0.086771,
+    "d": 4,
+    "included": 86596,
+    "units": 94824
+   },
+   {
+    "W": 0.045195,
+    "d": 5,
+    "included": 86596,
+    "units": 90695
+   },
+   {
+    "W": 0.0,
+    "d": 6,
+    "included": 86596,
+    "units": 86596
+   },
+   {
+    "W": 0.0,
+    "d": 7,
+    "included": 82695,
+    "units": 82695
+   },
+   {
+    "W": 0.0,
+    "d": 8,
+    "included": 78835,
+    "units": 78835
+   },
+   {
+    "W": 0.0,
+    "d": 9,
+    "included": 74908,
+    "units": 74908
+   },
+   {
+    "W": 0.0,
+    "d": 10,
+    "included": 71060,
+    "units": 71060
+   },
+   {
+    "W": 0.0,
+    "d": 11,
+    "included": 67290,
+    "units": 67290
+   },
+   {
+    "W": 0.0,
+    "d": 12,
+    "included": 63683,
+    "units": 63683
+   },
+   {
+    "W": 0.0,
+    "d": 13,
+    "included": 59960,
+    "units": 59960
+   },
+   {
+    "W": 0.0,
+    "d": 14,
+    "included": 56454,
+    "units": 56454
+   },
+   {
+    "W": 0.0,
+    "d": 15,
+    "included": 53006,
+    "units": 53006
+   },
+   {
+    "W": 0.0,
+    "d": 16,
+    "included": 49726,
+    "units": 49726
+   },
+   {
+    "W": 0.0,
+    "d": 17,
+    "included": 46595,
+    "units": 46595
+   },
+   {
+    "W": 0.0,
+    "d": 18,
+    "included": 43511,
+    "units": 43511
+   },
+   {
+    "W": 0.0,
+    "d": 19,
+    "included": 40786,
+    "units": 40786
+   },
+   {
+    "W": 0.0,
+    "d": 20,
+    "included": 38037,
+    "units": 38037
+   },
+   {
+    "W": 0.0,
+    "d": 21,
+    "included": 35481,
+    "units": 35481
+   },
+   {
+    "W": 0.0,
+    "d": 22,
+    "included": 33085,
+    "units": 33085
+   },
+   {
+    "W": 0.0,
+    "d": 23,
+    "included": 30886,
+    "units": 30886
+   },
+   {
+    "W": 0.0,
+    "d": 24,
+    "included": 28825,
+    "units": 28825
+   },
+   {
+    "W": 0.0,
+    "d": 25,
+    "included": 26963,
+    "units": 26963
+   },
+   {
+    "W": 0.0,
+    "d": 26,
+    "included": 25173,
+    "units": 25173
+   },
+   {
+    "W": 0.0,
+    "d": 27,
+    "included": 23561,
+    "units": 23561
+   },
+   {
+    "W": 0.0,
+    "d": 28,
+    "included": 22081,
+    "units": 22081
+   },
+   {
+    "W": 0.0,
+    "d": 29,
+    "included": 20730,
+    "units": 20730
+   },
+   {
+    "W": 0.0,
+    "d": 30,
+    "included": 19479,
+    "units": 19479
+   },
+   {
+    "W": 0.0,
+    "d": 31,
+    "included": 18404,
+    "units": 18404
+   },
+   {
+    "W": 0.0,
+    "d": 32,
+    "included": 17353,
+    "units": 17353
+   },
+   {
+    "W": 0.0,
+    "d": 33,
+    "included": 16396,
+    "units": 16396
+   },
+   {
+    "W": 0.0,
+    "d": 34,
+    "included": 15472,
+    "units": 15472
+   },
+   {
+    "W": 0.0,
+    "d": 35,
+    "included": 14633,
+    "units": 14633
+   },
+   {
+    "W": 0.0,
+    "d": 36,
+    "included": 13836,
+    "units": 13836
+   },
+   {
+    "W": 0.0,
+    "d": 37,
+    "included": 13081,
+    "units": 13081
+   },
+   {
+    "W": 0.0,
+    "d": 38,
+    "included": 12398,
+    "units": 12398
+   },
+   {
+    "W": 0.0,
+    "d": 39,
+    "included": 11785,
+    "units": 11785
+   },
+   {
+    "W": 0.0,
+    "d": 40,
+    "included": 11153,
+    "units": 11153
+   }
+  ],
+  "d_min": 1,
+  "level": "units"
+ },
+ "exclusion": {
+  "W": 0.202549,
+  "excluded": 21995,
+  "included": 86596,
+  "units": 108591
+ },
+ "hygiene": {
+  "negative_sampling": {
+   "test": {
+    "cited_by_source": 0,
+    "later_than_source": 0,
+    "negatives": 86596000,
+    "negatives_per_source": 1000,
+    "same_year_as_source": 3212415,
+    "share_in_lower_degree_half": 0.499972,
+    "sources": 86596,
+    "with_no_training_edge": 39850
+   },
+   "valid": {
+    "cited_by_source": 0,
+    "later_than_source": 0,
+    "negatives": 86596000,
+    "negatives_per_source": 1000,
+    "same_year_as_source": 3211832,
+    "share_in_lower_degree_half": 0.50007,
+    "sources": 86596,
+    "with_no_training_edge": 39579
+   }
+  },
+  "source_years": [
+   2019
+  ],
+  "sources_identical_in_valid_and_test": true
+ },
+ "inputs": {},
+ "mapping": {
+  "ambiguous_ids": 0,
+  "ambiguous_triples": 0,
+  "mapped_ids": 86596,
+  "matched_triples": 0,
+  "merged_examples": {},
+  "merged_ids": 0,
+  "release_ids": 86596,
+  "release_triples": 0,
+  "route": "direct",
+  "unmapped_examples": [],
+  "unmapped_ids": 0,
+  "unmatched_examples": [],
+  "unmatched_triples": 0
+ },
+ "notes": "Universe = papers of 2019, the source year; release = valid/test source papers. Depth = references inside the subset (train + valid + test edges). The rule search is the threshold family on that depth.",
+ "rule_check": null,
+ "rule_diagnosis": {
+  "best": {
+   "T": 6,
+   "family": "threshold",
+   "jaccard": 1.0,
+   "overlap": 86596,
+   "release": 86596,
+   "selected": 86596,
+   "verdict": "reproduced"
+  },
+  "families": [
+   {
+    "T": 6,
+    "family": "threshold",
+    "jaccard": 1.0,
+    "overlap": 86596,
+    "release": 86596,
+    "selected": 86596,
+    "verdict": "reproduced"
+   }
+  ],
+  "thresholds_searched": [
+   1,
+   40
+  ],
+  "unmapped_release_units": 0
+ },
+ "schema": "benchscope-card/0.3",
+ "scope_statement": "Comparisons on ogbl-citation2 license claims about the queries it can evaluate, which leave out 20.3% of the 108,591 ogbl-citation2 papers published in 2019. The closest simple rule (threshold, T = 6) is reproduced (Jaccard 1.000).",
+ "support": {
+  "basis": "Only source papers are queried, so a paper of the source year that is not a source is never evaluated as a query.",
+  "candidates": "the valid/test source papers, each ranked against its sampled negatives",
+  "structural": true
+ },
+ "task": "query_level",
+ "tool_version": "0.0.1",
+ "universe": {
+  "fingerprint": "sha256:3238cf865abe65c01fc46c32a4009261c2d662275373be93f5d0b177395d0134",
+  "name": "ogbl-citation2 papers published in 2019",
+  "units": 108591,
+  "version": "node_year.csv.gz, split time"
+ },
+ "warnings": []
+}

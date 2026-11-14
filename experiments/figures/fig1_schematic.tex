@@ -1,0 +1,45 @@
+% Figure 1 of the paper (2026-10-28): the setup of Section 2.1 and the regimes of Section 2.3.
+% Drawn with LaTeX's own picture environment, so its text is set in the paper's Type 1 fonts (TinyTeX has no
+% TikZ). Colours as in scripts/make_figures.py: blue = benchmark side (O), orange = excluded side (U).
+% The manuscript reads this file with the primitive \input, so the number checker skips the coordinates.
+\definecolor{bsblue}{HTML}{2A78D6}%
+\definecolor{bsorange}{HTML}{EB6834}%
+\setlength{\unitlength}{1pt}%
+\begin{picture}(234,200)
+% ---- (a) one test query on the target
+\put(0,194){\makebox(0,0)[l]{\footnotesize\textbf{(a)}\ One test query $q$ on the declared target}}
+\put(0,180){\makebox(0,0)[l]{\scriptsize candidates $C_q$: the universe's units minus the known answers of $q$}}
+\put(0,160){\textcolor{bsblue}{\rule{64pt}{12pt}}}
+\put(64,160){\textcolor{bsorange}{\rule{112pt}{12pt}}}
+\put(32,166){\makebox(0,0){\scriptsize\textcolor{white}{$O_q$}}}
+\put(120,166){\makebox(0,0){\scriptsize\textcolor{white}{$U_q$}}}
+\put(180,166){\makebox(0,0)[l]{\scriptsize $W_q=|U_q|/|C_q|$}}
+\put(0,151){\makebox(0,0)[l]{\scriptsize\textcolor{bsblue}{$O_q$ kept: the benchmark ranks the positive against these}}}
+\put(0,142){\makebox(0,0)[l]{\scriptsize\textcolor{bsorange}{$U_q$ excluded by the construction rule: never ranked}}}
+\put(0,130){\makebox(0,0)[l]{\scriptsize AUC: $\Delta_{C,q}=(1-W_q)\,\Delta_{O,q}+W_q\,\Delta_{U,q}$;\enspace MRR, Hits@$k$: no such mix}}
+% ---- (b) what a release identifies
+\put(0,114){\makebox(0,0)[l]{\footnotesize\textbf{(b)}\ What a release identifies (Section~\ref{sec:fw-regimes})}}
+% first question: universe and mapping
+\put(0,84){\framebox(96,20){\parbox{92pt}{\centering\scriptsize Universe available, and the release's ids map onto it?}}}
+\put(96,94){\vector(1,0){22}}
+\put(107,97){\makebox(0,0)[b]{\tiny no}}
+\put(120,85){\textcolor{black!8}{\rule{114pt}{18pt}}}
+\put(120,85){\framebox(114,18){\parbox{110pt}{\centering\scriptsize (iii) not identifiable: the card says what is missing}}}
+\put(48,84){\vector(0,-1){8}}
+\put(51,79){\makebox(0,0)[l]{\tiny yes}}
+% second question: enumeration
+\put(0,18){\framebox(96,58){\parbox{92pt}{\centering\scriptsize Does the evaluation protocol enumerate candidates or queries over the release's units?}}}
+\put(96,66){\vector(1,0){22}}
+\put(107,69){\makebox(0,0)[b]{\tiny yes}}
+\put(120,57){\textcolor{bsblue!18}{\rule{114pt}{18pt}}}
+\put(120,57){\framebox(114,18){\parbox{110pt}{\centering\scriptsize (i) structural exclusion: $W_q$ and $\bar W$ are identified}}}
+\put(96,46){\vector(1,0){22}}
+\put(107,49){\makebox(0,0)[b]{\tiny declared}}
+\put(120,37){\textcolor{bsblue!8}{\rule{114pt}{18pt}}}
+\put(120,37){\framebox(114,18){\parbox{110pt}{\centering\scriptsize (i$'$) by declaration: identified if the files list every implied pair}}}
+\put(96,26){\vector(1,0){22}}
+\put(107,29){\makebox(0,0)[b]{\tiny no}}
+\put(120,17){\textcolor{black!8}{\rule{114pt}{18pt}}}
+\put(120,17){\framebox(114,18){\parbox{110pt}{\centering\scriptsize (ii) units drawn by an unknown rule: coverage only, no $c^*$}}}
+\put(0,5){\makebox(0,0)[l]{\scriptsize\textcolor{bsorange}{In every regime, $c$ needs labels on $U$; Section~\ref{sec:wn18rr} measures it on WN18RR.}}}
+\end{picture}%

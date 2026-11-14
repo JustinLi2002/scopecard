@@ -1,0 +1,48 @@
+{
+ "card": "gowalla.json",
+ "command": [
+  "benchscope-audit",
+  "recsys-checkins",
+  "--release",
+  "gowalla/",
+  "--checkins",
+  "loc-gowalla_totalCheckins.txt.gz",
+  "--name",
+  "Gowalla",
+  "--positives",
+  "release",
+  "--out",
+  "card.json"
+ ],
+ "inputs": [
+  {
+   "display": "gowalla/",
+   "id": "release",
+   "local": "recsys/lightgcn/gowalla",
+   "source": "https://github.com/kuandeng/LightGCN/tree/b067ec05f16a24e0e1efe63cd82385f0c469af20/Data/gowalla"
+  },
+  {
+   "display": "loc-gowalla_totalCheckins.txt.gz",
+   "id": "raw",
+   "local": "recsys/raw_gowalla/loc-gowalla_totalCheckins.txt.gz",
+   "source": "https://snap.stanford.edu/data/loc-gowalla_totalCheckins.txt.gz"
+  }
+ ],
+ "name": "Gowalla",
+ "pilot": {
+  "W_pilot": "0.991088 (unobserved user-item pairs)",
+  "decidability": "partial",
+  "domain": "recommendation",
+  "evaluation_protocol": "full ranking over all items not in the user's training set; Recall@20, NDCG@20",
+  "negative_source": "implicit: all items the user has not interacted with in train",
+  "notes": "[P2] reported Amazon 2023 five-cores only; this is a different source and threshold",
+  "rule_found_in_code_or_release": "iterated 10-core on distinct (user, location) check-in pairs reproduces the users exactly (29858) and items to within 7 (40988 vs 40981; pairs 1027464 vs 1027370); one released user has 9 interactions",
+  "rule_stated_in_paper": "'we use the 10-core setting, i.e., retaining users and items with at least ten interactions'",
+  "sources_checked": "Wang et al. 2019 SIGIR (NGCF, Sec. 4.1.1); He et al. 2020 SIGIR (LightGCN, Sec. 4); kuandeng/LightGCN Data/gowalla (train, test, user_list, item_list); SNAP loc-gowalla_totalCheckins",
+  "verification": "Jaccard users 1.0000, items 0.9998, pairs 0.9999 against the raw 10-core; every release interaction is a raw pair; not exact: 7 core items absent and one released user below the threshold, cause not established (agrees with the independent audit in RECOMMENDATION_AUDIT.md)"
+ },
+ "pilot_row": "Gowalla (NGCF / LightGCN 10-core)",
+ "slug": "gowalla",
+ "task": "recommendation",
+ "why_no_card": null
+}

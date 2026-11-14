@@ -1,0 +1,103 @@
+{
+ "benchmark": {
+  "evaluated_queries": 54,
+  "files_sha256": {
+   "2020qrels-pass.txt": "60d4c34561f9687f8f73e0a752ba80ab80159b3e9c1bedd0a351f747ed6f5684",
+   "msmarco-test2020-queries.tsv.gz": "0c749b29fd8ca0ccbf129a1bdd283e4081d6c49e96d6bf6290ba554d5d71f7f1"
+  },
+  "name": "TREC DL 2020 passage"
+ },
+ "comparison": null,
+ "counted": "the 200 TREC DL 2020 passage test topics",
+ "depth_profile": null,
+ "derived_scope": null,
+ "exclusion": {
+  "W": 0.73,
+  "excluded": 146,
+  "included": 54,
+  "units": 200,
+  "within_query": {
+   "by_grade": {
+    "0": 7780,
+    "1": 1940,
+    "2": 1020,
+    "3": 646
+   },
+   "corpus_size": 8841823,
+   "evaluated_queries": 54,
+   "judged_per_query": {
+    "max": 368.0,
+    "median": 199.5,
+    "min": 152.0
+   },
+   "judgments": 11386,
+   "relevant_grade": 2,
+   "relevant_per_query": {
+    "max": 121.0,
+    "median": 17.5,
+    "min": 3.0
+   },
+   "unjudged_share": {
+    "max": 0.999983,
+    "median": 0.999977,
+    "min": 0.999958
+   }
+  }
+ },
+ "hygiene": null,
+ "inputs": {
+  "2020qrels-pass.txt": {
+   "expected": "4 whitespace-separated fields: topic, iteration, document, integer grade",
+   "lines": 11386,
+   "skipped": 0
+  }
+ },
+ "mapping": {
+  "ambiguous_ids": 0,
+  "ambiguous_triples": 0,
+  "mapped_ids": 54,
+  "matched_triples": 0,
+  "merged_examples": {},
+  "merged_ids": 0,
+  "release_ids": 54,
+  "release_triples": 0,
+  "route": "direct",
+  "unmapped_examples": [],
+  "unmapped_ids": 0,
+  "unmatched_examples": [],
+  "unmatched_triples": 0
+ },
+ "notes": "Universe = the released test topics; release = topics with judgments. Within an evaluated topic, unjudged documents are scored as non-relevant by trec_eval (implicit negatives).",
+ "rule_check": {
+  "at_or_above_max_ratio": 0,
+  "below_min_relevant": 0,
+  "max_ratio": 0.6,
+  "min_relevant": 3,
+  "observed_max_ratio": 0.350148,
+  "observed_min_relevant": 3,
+  "released_units_checked": 54,
+  "relevant_grade": 2,
+  "rule": ">= 3 relevant (grade >= 2) and relevant/judged < 0.6",
+  "source": "Craswell et al. 2021, SIGIR, doi:10.1145/3404835.3463249, Sec. 3.2: the 2019 judgment process was reused in 2020; thresholds from the 2019 overview (arXiv 2003.07820)",
+  "verdict": "consistent with every released unit; excluded units cannot be checked (no published judgments)",
+  "violating_examples": [],
+  "violations": 0
+ },
+ "rule_diagnosis": null,
+ "schema": "benchscope-card/0.3",
+ "scope_statement": "Comparisons on TREC DL 2020 passage license claims about the queries it can evaluate, which leave out 73.0% of the 200 TREC DL 2020 passage test topics. Within each evaluated query, 99.9958% to 99.9983% of the 8,841,823 documents are unjudged and count as non-relevant. The stated rule (>= 3 relevant (grade >= 2) and relevant/judged < 0.6) is consistent with every released unit; excluded units cannot be checked (no published judgments).",
+ "support": {
+  "basis": "Only topics with judgments are scored, so a released test topic without judgments is never evaluated; inside a topic, unjudged documents count as non-relevant.",
+  "candidates": "the judged topics; within a topic, every corpus document",
+  "structural": true
+ },
+ "task": "query_level",
+ "tool_version": "0.0.1",
+ "universe": {
+  "fingerprint": "sha256:4155228db1d4f6bc8c8f19178baed213089b7e0de12f662123d07ae0d414532f",
+  "name": "TREC DL 2020 passage test topics",
+  "units": 200,
+  "version": "msmarco-test2020-queries.tsv.gz"
+ },
+ "warnings": []
+}

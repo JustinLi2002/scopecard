@@ -1,0 +1,7 @@
+primary synsets 112199 | S3 entities (bare offsets) 111975 | offsets shared by >1 synset 223 | of which touch O 197
+primary triples 218367 | S3 triples 218367 | collapsed 0
+merged triples with different primary roles (kept role first): none
+roles primary {'bench_test': 3133, 'bench_train': 86831, 'bench_valid': 3034, 'extra': 119201, 'u_test': 3134, 'u_valid': 3034}
+roles S3      {'bench_test': 3133, 'bench_train': 86831, 'bench_valid': 3034, 'extra': 119201, 'u_test': 3134, 'u_valid': 3034}
+O 40943 | U 71032 | W_rule (entity share of U) = 0.634356
+E2 training triples 206032 | entities with no training triple: 176 (O: 176 , U: 0 )

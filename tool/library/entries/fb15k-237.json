@@ -1,0 +1,22 @@
+{
+ "card": null,
+ "command": null,
+ "inputs": [],
+ "name": "FB15k-237",
+ "pilot": {
+  "W_pilot": "not computed (entity universe unbounded without a declared convention)",
+  "decidability": "partial",
+  "domain": "knowledge-graph link prediction",
+  "evaluation_protocol": "filtered ranking of head and tail against all 14541 entities; MRR, Hits@k",
+  "negative_source": "implicit: every corrupted triple over the entity set, filtered of known triples",
+  "notes": "the ConvE copy is triple-for-triple identical to the Microsoft release; the undocumented entity removal (one entity with 2867 triples) is the same class of silent change as [P3]'s MolTrans input blanking",
+  "rule_found_in_code_or_release": "relation rule consistent: 401st relation on FB15k train has 100 triples (3 tied), every one of the 164 dropped relations has a kept partner with >= 97% overlap, but 28 kept pairs also overlap >= 97% of the smaller set (3 of the larger); pair rule exact: 0 valid/test triples linked in train, the rule removes 0.372 / 0.375 of FB15k valid/test triples on the 237 relations; NOT stated: 71 entities that still carry triples on the 237 relations were removed with all 4555 of their training triples",
+  "rule_stated_in_paper": "FB15k: Freebase entities present in Wikilinks with >= 100 Freebase mentions (entities and relations); FB15k-237: the 401 most frequent FB15k relations, near-duplicate/inverse relations (>= 97% pair overlap) reduced to one each (237), and valid/test triples dropped if their entity pair is directly linked in training",
+  "sources_checked": "Bordes et al. 2013 NeurIPS (TransE, Sec. 4.1); Toutanova & Chen 2015 CVSC (Sec. 4.3); FB15k release (everest.hds.utc.fr fb15k.tgz via Wayback, README); FB15K-237.2.zip (Microsoft download, README); ConvE repo FB15k-237.tar.gz",
+  "verification": "relation and test-pair rules checked against FB15k and the release (all 310116 FB15k-237 triples are FB15k triples); entity seed rule not checkable without a 2013 Freebase snapshot and Wikilinks"
+ },
+ "pilot_row": "FB15k-237 (Toutanova & Chen 2015)",
+ "slug": "fb15k-237",
+ "task": "kg_link_prediction",
+ "why_no_card": "Its universe, the 2013 Freebase dump, is no longer distributed. The pilot checked the relation rule and the pair rule against FB15k; those checks have no tool pipeline yet."
+}

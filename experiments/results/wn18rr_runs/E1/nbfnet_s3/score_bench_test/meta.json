@@ -1,0 +1,14 @@
+{
+ "model": "nbfnet",
+ "mode": "E1",
+ "queries": "bench_test",
+ "checkpoint": "/home/anon/benchscope4/runs/nbf_E1/s3/NBFNet/WN18RR/2026-10-19-14-37-49/model_epoch_20.pth",
+ "checkpoint_sha256": "9158618f5cbd038457805a49cb7cd6c56da30de334ab6d9e3d1305e64025a2c3",
+ "graph_edges": 173670,
+ "n_queries": 6266,
+ "n_entities": 40943,
+ "atol": 1e-05,
+ "rtol": 0.0001,
+ "mrr_all_candidates": 0.5459818023540595,
+ "hits10_all_candidates": 0.6551228854133418
+}

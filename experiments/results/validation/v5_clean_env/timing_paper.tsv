@@ -1,0 +1,11 @@
+step	seconds	status	note
+paper: check inputs	0.1	ok	27 files, 41 MB, all hashes match
+paper: build declared target	3.0	ok	4 files equal the recorded SHA-256
+paper: target acceptance checks	4.3	ok	ALL PASS
+paper: target composition	0.6	ok	1 file byte-identical
+paper: build S3 target	1.7	ok	3 files equal the recorded SHA-256
+paper: S3 acceptance checks	3.4	ok	ALL PASS
+paper: prespecified analysis	299.4	ok	11159 records, byte-identical
+paper: summary of records	0.2	ok	1 file byte-identical
+paper: figures, tables, Box 1	3.8	ok	5 files byte-identical (tables, Box 1); 4 figure files drawn
+paper: numbers in the manuscript	3.7	ok	0 untagged numbers (tag them or confirm they need none):

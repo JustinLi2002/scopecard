@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FB15k-237: BenchScope card</title>
+<meta name="description" content="Scope card for FB15k-237.">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main>
+<nav class="top"><a href="../index.html">Card library</a><a href="../how-to-read.html">How to read a card</a><a href="../app/index.html">Audit your own benchmark</a><a href="../schema/benchscope-card-0.3.schema.json">Card schema</a></nav>
+<h1>FB15k-237</h1>
+<p class="note"><strong>No card yet.</strong> Its universe, the 2013 Freebase dump, is no longer distributed. The pilot checked the relation rule and the pair rule against FB15k; those checks have no tool pipeline yet.</p>
+<h2>From the 2026-10 pilot</h2><div class="panel"><dl class="facts"><dt>Task</dt><dd>KG link prediction</dd><dt>Domain</dt><dd>knowledge-graph link prediction</dd><dt>Rule stated in the paper</dt><dd>FB15k: Freebase entities present in Wikilinks with &gt;= 100 Freebase mentions (entities and relations); FB15k-237: the 401 most frequent FB15k relations, near-duplicate/inverse relations (&gt;= 97% pair overlap) reduced to one each (237), and valid/test triples dropped if their entity pair is directly linked in training</dd><dt>What the release shows</dt><dd>relation rule consistent: 401st relation on FB15k train has 100 triples (3 tied), every one of the 164 dropped relations has a kept partner with &gt;= 97% overlap, but 28 kept pairs also overlap &gt;= 97% of the smaller set (3 of the larger); pair rule exact: 0 valid/test triples linked in train, the rule removes 0.372 / 0.375 of FB15k valid/test triples on the 237 relations; NOT stated: 71 entities that still carry triples on the 237 relations were removed with all 4555 of their training triples</dd><dt>Rule decidable from the paper</dt><dd>partial. relation and test-pair rules checked against FB15k and the release (all 310116 FB15k-237 triples are FB15k triples); entity seed rule not checkable without a 2013 Freebase snapshot and Wikilinks</dd><dt>Negatives</dt><dd>implicit: every corrupted triple over the entity set, filtered of known triples</dd><dt>Evaluation</dt><dd>filtered ranking of head and tail against all 14541 entities; MRR, Hits@k</dd><dt>Sources checked</dt><dd>Bordes et al. 2013 NeurIPS (TransE, Sec. 4.1); Toutanova &amp; Chen 2015 CVSC (Sec. 4.3); FB15k release (everest.hds.utc.fr fb15k.tgz via Wayback, README); FB15K-237.2.zip (Microsoft download, README); ConvE repo FB15k-237.tar.gz</dd><dt>Notes</dt><dd>the ConvE copy is triple-for-triple identical to the Microsoft release; the undocumented entity removal (one entity with 2867 triples) is the same class of silent change as [P3]&#x27;s MolTrans input blanking</dd></dl></div>
+<footer>
+<p>Cards written by benchscope-audit 0.0.1 (schema benchscope-card/0.3). Every number on these pages is read from a card or from the 2026-10 pilot table.</p>
+<p>Biology benchmarks are added once the papers that audit them are published.</p>
+</footer>
+</main>
+</body>
+</html>

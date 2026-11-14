@@ -1,0 +1,36 @@
+{
+ "card": "ogbl-citation2.json",
+ "command": [
+  "benchscope-audit",
+  "ogbl-citation2",
+  "--dataset",
+  "citation-v2/",
+  "--out",
+  "card.json"
+ ],
+ "inputs": [
+  {
+   "display": "citation-v2/",
+   "id": "dataset",
+   "local": "graph/citation2/citation-v2",
+   "source": "http://snap.stanford.edu/ogb/data/linkproppred/citation-v2.zip"
+  }
+ ],
+ "name": "ogbl-citation2",
+ "pilot": {
+  "W_pilot": "query-level excluded share 0.2025 (21995 of 108591 2019 papers); candidate side not computed",
+  "decidability": "partial",
+  "domain": "graph link prediction",
+  "evaluation_protocol": "MRR of the held-out reference against 1,000 sampled negatives",
+  "negative_source": "sampled: 1,000 earlier papers per source not cited by it (MRR)",
+  "notes": "the older ogbl-citation was deprecated for a bug in its validation/test negatives",
+  "rule_found_in_code_or_release": "a 2019 paper is a source exactly when it has >= 6 in-subset references: all 86596 papers with >= 6 are sources and 0 of the 21995 non-sources have 6 or more; negatives are never later than the source (same year allowed), uniform over nodes (lower-degree half share 0.500)",
+  "rule_stated_in_paper": "'a subset of papers extracted from MAG'; source papers are 2019 papers, two references of each dropped for validation and test; negatives 'randomly-sampled from all the previous papers that are not referenced by the source paper'",
+  "sources_checked": "Hu et al. 2020 NeurIPS (OGB, Sec. 5.4 and footnote 17); ogb.stanford.edu linkprop page; citation-v2.zip v1 (raw, split/time; CRC-checked)",
+  "verification": "source rule verified exactly on the release; the paper subset rule needs MAG / OpenAlex"
+ },
+ "pilot_row": "ogbl-citation2 (OGB, Hu et al. 2020)",
+ "slug": "ogbl-citation2",
+ "task": "query_level",
+ "why_no_card": null
+}

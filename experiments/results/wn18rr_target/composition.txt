@@ -1,0 +1,28 @@
+O: 41105 synsets, POS shares {'n': 0.7822, 'v': 0.1889, 'a': 0.0287, 'r': 0.0003}
+   E2 training degree: median 4, 90th pct 12, share with degree 1: 0.0778
+U: 71094 synsets, POS shares {'n': 0.7028, 'v': 0.0832, 'a': 0.2127, 'r': 0.0014}
+   E2 training degree: median 2, 90th pct 4, share with degree 1: 0.4950
+mean per-query U share of candidates, all POS:  0.6336
+mean per-query U share, restricted to POS seen in the relation slot in E2 training (before filtering): {'head': 0.6077, 'tail': 0.6072}
+   _also_see head: POS seen {'a': 2504, 'v': 492}
+   _also_see tail: POS seen {'a': 2504, 'v': 492}
+   _derivationally_related_form head: POS seen {'a': 11368, 'n': 29618, 'r': 1, 'v': 18401}
+   _derivationally_related_form tail: POS seen {'n': 29651, 'v': 18425, 'r': 1, 'a': 11311}
+   _has_part head: POS seen {'n': 8519}
+   _has_part tail: POS seen {'n': 8519}
+   _hypernym head: POS seen {'n': 72657, 'v': 12528}
+   _hypernym tail: POS seen {'n': 72657, 'v': 12528}
+   _instance_hypernym head: POS seen {'n': 8157}
+   _instance_hypernym tail: POS seen {'n': 8157}
+   _member_meronym head: POS seen {'n': 11489}
+   _member_meronym tail: POS seen {'n': 11489}
+   _member_of_domain_region head: POS seen {'n': 1274}
+   _member_of_domain_region tail: POS seen {'n': 1204, 'a': 67, 'v': 2, 'r': 1}
+   _member_of_domain_usage head: POS seen {'n': 1200}
+   _member_of_domain_usage tail: POS seen {'a': 196, 'n': 916, 'r': 71, 'v': 17}
+   _similar_to head: POS seen {'a': 19971}
+   _similar_to tail: POS seen {'a': 19971}
+   _synset_domain_topic_of head: POS seen {'a': 1041, 'n': 3977, 'r': 37, 'v': 1164}
+   _synset_domain_topic_of tail: POS seen {'n': 6219}
+   _verb_group head: POS seen {'v': 1634}
+   _verb_group tail: POS seen {'v': 1634}

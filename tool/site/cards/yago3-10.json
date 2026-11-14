@@ -1,0 +1,636 @@
+{
+ "benchmark": {
+  "files_sha256": {
+   "test.txt": "003887ca8a34c90fcaf9b0250b1c30a4b5f617f80f8cf0aeab9723333061598a",
+   "train.txt": "afb9b51c68d1c997e85655477045b4c5146cd2a6b50b6eea5373383f35dcb12a",
+   "valid.txt": "c9018b77ec77e99f8d48bc3258d404f10b2049a6c7b4ac6eb663697e799dc6f5"
+  },
+  "name": "YAGO3-10",
+  "relations": 37,
+  "splits": {
+   "test": 5000,
+   "train": 1079040,
+   "valid": 5000
+  }
+ },
+ "comparison": null,
+ "counted": "the 2,635,315 YAGO 3.0.2 entities that occur in at least one triple of its 37 relation types",
+ "depth_profile": {
+  "by_depth": [
+   {
+    "depth_from": 1,
+    "depth_to": 1,
+    "excluded_share": 1.0,
+    "units": 1449776
+   },
+   {
+    "depth_from": 2,
+    "depth_to": 2,
+    "excluded_share": 0.999998,
+    "units": 404634
+   },
+   {
+    "depth_from": 3,
+    "depth_to": 4,
+    "excluded_share": 1.0,
+    "units": 447691
+   },
+   {
+    "depth_from": 5,
+    "depth_to": 9,
+    "excluded_share": 0.999995,
+    "units": 207781
+   },
+   {
+    "depth_from": 10,
+    "depth_to": 19,
+    "excluded_share": 0.034995,
+    "units": 80698
+   },
+   {
+    "depth_from": 20,
+    "depth_to": 49,
+    "excluded_share": 0.032275,
+    "units": 32006
+   },
+   {
+    "depth_from": 50,
+    "depth_to": 99,
+    "excluded_share": 0.043695,
+    "units": 6225
+   },
+   {
+    "depth_from": 100,
+    "depth_to": null,
+    "excluded_share": 0.02583,
+    "units": 6504
+   }
+  ],
+  "excluded_depth_quantiles": {
+   "10": 1.0,
+   "25": 1.0,
+   "50": 1.0,
+   "75": 3.0,
+   "90": 4.0
+  },
+  "included_depth_quantiles": {
+   "10": 10.0,
+   "25": 12.0,
+   "50": 16.0,
+   "75": 24.0,
+   "90": 50.0
+  }
+ },
+ "derived_scope": {
+  "curve": [
+   {
+    "W": 0.954033,
+    "d": 1,
+    "included": 121138,
+    "units": 2635315
+   },
+   {
+    "W": 0.89782,
+    "d": 2,
+    "included": 121138,
+    "units": 1185539
+   },
+   {
+    "W": 0.844876,
+    "d": 3,
+    "included": 121137,
+    "units": 780905
+   },
+   {
+    "W": 0.754549,
+    "d": 4,
+    "included": 121137,
+    "units": 493528
+   },
+   {
+    "W": 0.636459,
+    "d": 5,
+    "included": 121137,
+    "units": 333214
+   },
+   {
+    "W": 0.523617,
+    "d": 6,
+    "included": 121137,
+    "units": 254285
+   },
+   {
+    "W": 0.410104,
+    "d": 7,
+    "included": 121137,
+    "units": 205353
+   },
+   {
+    "W": 0.2917,
+    "d": 8,
+    "included": 121137,
+    "units": 171025
+   },
+   {
+    "W": 0.16624,
+    "d": 9,
+    "included": 121137,
+    "units": 145290
+   },
+   {
+    "W": 0.034257,
+    "d": 10,
+    "included": 121136,
+    "units": 125433
+   },
+   {
+    "W": 0.033436,
+    "d": 11,
+    "included": 105862,
+    "units": 109524
+   },
+   {
+    "W": 0.033031,
+    "d": 12,
+    "included": 93766,
+    "units": 96969
+   },
+   {
+    "W": 0.032564,
+    "d": 13,
+    "included": 83720,
+    "units": 86538
+   },
+   {
+    "W": 0.031981,
+    "d": 14,
+    "included": 75580,
+    "units": 78077
+   },
+   {
+    "W": 0.031327,
+    "d": 15,
+    "included": 68305,
+    "units": 70514
+   },
+   {
+    "W": 0.030886,
+    "d": 16,
+    "included": 62126,
+    "units": 64106
+   },
+   {
+    "W": 0.031142,
+    "d": 17,
+    "included": 56404,
+    "units": 58217
+   },
+   {
+    "W": 0.031551,
+    "d": 18,
+    "included": 51597,
+    "units": 53278
+   },
+   {
+    "W": 0.032124,
+    "d": 19,
+    "included": 47062,
+    "units": 48624
+   },
+   {
+    "W": 0.032927,
+    "d": 20,
+    "included": 43262,
+    "units": 44735
+   },
+   {
+    "W": 0.033376,
+    "d": 21,
+    "included": 39562,
+    "units": 40928
+   },
+   {
+    "W": 0.033188,
+    "d": 22,
+    "included": 36618,
+    "units": 37875
+   },
+   {
+    "W": 0.033702,
+    "d": 23,
+    "included": 33804,
+    "units": 34983
+   },
+   {
+    "W": 0.034179,
+    "d": 24,
+    "included": 31564,
+    "units": 32681
+   },
+   {
+    "W": 0.035197,
+    "d": 25,
+    "included": 29358,
+    "units": 30429
+   },
+   {
+    "W": 0.035707,
+    "d": 26,
+    "included": 27546,
+    "units": 28566
+   },
+   {
+    "W": 0.036106,
+    "d": 27,
+    "included": 25922,
+    "units": 26893
+   },
+   {
+    "W": 0.036264,
+    "d": 28,
+    "included": 24503,
+    "units": 25425
+   },
+   {
+    "W": 0.036343,
+    "d": 29,
+    "included": 23228,
+    "units": 24104
+   },
+   {
+    "W": 0.036399,
+    "d": 30,
+    "included": 22158,
+    "units": 22995
+   },
+   {
+    "W": 0.036062,
+    "d": 31,
+    "included": 21117,
+    "units": 21907
+   },
+   {
+    "W": 0.03633,
+    "d": 32,
+    "included": 20186,
+    "units": 20947
+   },
+   {
+    "W": 0.036015,
+    "d": 33,
+    "included": 19379,
+    "units": 20103
+   },
+   {
+    "W": 0.036015,
+    "d": 34,
+    "included": 18683,
+    "units": 19381
+   },
+   {
+    "W": 0.036076,
+    "d": 35,
+    "included": 18009,
+    "units": 18683
+   },
+   {
+    "W": 0.036096,
+    "d": 36,
+    "included": 17411,
+    "units": 18063
+   },
+   {
+    "W": 0.036229,
+    "d": 37,
+    "included": 16839,
+    "units": 17472
+   },
+   {
+    "W": 0.036123,
+    "d": 38,
+    "included": 16357,
+    "units": 16970
+   },
+   {
+    "W": 0.036014,
+    "d": 39,
+    "included": 15873,
+    "units": 16466
+   },
+   {
+    "W": 0.035426,
+    "d": 40,
+    "included": 15411,
+    "units": 15977
+   }
+  ],
+  "d_min": 7,
+  "level": "units"
+ },
+ "exclusion": {
+  "W": 0.954033,
+  "excluded": 2514177,
+  "included": 121138,
+  "per_query": {
+   "W_bar": 0.954365,
+   "W_q": {
+    "max": 0.964706,
+    "median": 0.954037,
+    "min": 0.952851
+   },
+   "protocol": "filtered ranking over the universe: a query's candidates are the universe's units minus its known answers (the universe's triples of its relation and the release's)",
+   "queries": 9654,
+   "queries_without_candidates": 0,
+   "queries_without_excluded": 0,
+   "queries_without_kept": 0,
+   "test_triples": 5000,
+   "test_triples_used": 4827
+  },
+  "units": 2635315
+ },
+ "hygiene": {
+  "reverse_leakage": {
+   "by_relation": {
+    "actedIn": {
+     "leaking": 0,
+     "test": 173
+    },
+    "created": {
+     "leaking": 0,
+     "test": 49
+    },
+    "dealsWith": {
+     "leaking": 1,
+     "test": 7
+    },
+    "diedIn": {
+     "leaking": 0,
+     "test": 49
+    },
+    "directed": {
+     "leaking": 0,
+     "test": 30
+    },
+    "edited": {
+     "leaking": 0,
+     "test": 22
+    },
+    "exports": {
+     "leaking": 0,
+     "test": 3
+    },
+    "graduatedFrom": {
+     "leaking": 0,
+     "test": 42
+    },
+    "happenedIn": {
+     "leaking": 0,
+     "test": 21
+    },
+    "hasAcademicAdvisor": {
+     "leaking": 0,
+     "test": 5
+    },
+    "hasCapital": {
+     "leaking": 0,
+     "test": 13
+    },
+    "hasChild": {
+     "leaking": 2,
+     "test": 24
+    },
+    "hasGender": {
+     "leaking": 0,
+     "test": 297
+    },
+    "hasMusicalRole": {
+     "leaking": 0,
+     "test": 36
+    },
+    "hasNeighbor": {
+     "leaking": 2,
+     "test": 2
+    },
+    "hasOfficialLanguage": {
+     "leaking": 0,
+     "test": 2
+    },
+    "hasWebsite": {
+     "leaking": 0,
+     "test": 1
+    },
+    "hasWonPrize": {
+     "leaking": 0,
+     "test": 111
+    },
+    "influences": {
+     "leaking": 0,
+     "test": 47
+    },
+    "isAffiliatedTo": {
+     "leaking": 0,
+     "test": 1673
+    },
+    "isCitizenOf": {
+     "leaking": 0,
+     "test": 15
+    },
+    "isConnectedTo": {
+     "leaking": 99,
+     "test": 150
+    },
+    "isInterestedIn": {
+     "leaking": 0,
+     "test": 2
+    },
+    "isLeaderOf": {
+     "leaking": 0,
+     "test": 4
+    },
+    "isLocatedIn": {
+     "leaking": 27,
+     "test": 411
+    },
+    "isMarriedTo": {
+     "leaking": 17,
+     "test": 17
+    },
+    "isPoliticianOf": {
+     "leaking": 0,
+     "test": 10
+    },
+    "livesIn": {
+     "leaking": 0,
+     "test": 11
+    },
+    "owns": {
+     "leaking": 0,
+     "test": 5
+    },
+    "participatedIn": {
+     "leaking": 0,
+     "test": 19
+    },
+    "playsFor": {
+     "leaking": 0,
+     "test": 1492
+    },
+    "wasBornIn": {
+     "leaking": 0,
+     "test": 210
+    },
+    "worksAt": {
+     "leaking": 0,
+     "test": 15
+    },
+    "wroteMusicFor": {
+     "leaking": 0,
+     "test": 32
+    }
+   },
+   "leaking": 148,
+   "share": 0.0296,
+   "test_triples": 5000
+  },
+  "unseen_test_units": {
+   "test_triples": 5000,
+   "test_triples_affected": 18,
+   "unseen_units": 18
+  }
+ },
+ "inputs": {},
+ "mapping": {
+  "ambiguous_ids": 0,
+  "ambiguous_triples": 0,
+  "mapped_ids": 121138,
+  "matched_triples": 1054372,
+  "matched_triples_by_split": {
+   "test": 4827,
+   "train": 1044687,
+   "valid": 4858
+  },
+  "merged_examples": {},
+  "merged_ids": 0,
+  "release_ids": 123182,
+  "release_triples": 1089040,
+  "route": "direct",
+  "unmapped_examples": [
+   "$_(film)",
+   "'Amran_Governorate",
+   "'Asir_Region",
+   "'Til_There_Was_You",
+   "'Til_We_Meet_Again"
+  ],
+  "unmapped_ids": 2044,
+  "unmatched_examples": [
+   [
+    "Emil_Sitka",
+    "actedIn",
+    "Fuelin'_Around"
+   ],
+   [
+    "Ajaccio_Napoleon_Bonaparte_Airport",
+    "isConnectedTo",
+    "Toulouse–Blagnac_Airport"
+   ],
+   [
+    "Lord's_Resistance_Army_insurgency",
+    "happenedIn",
+    "Uganda"
+   ],
+   [
+    "Walter_Bahr",
+    "isAffiliatedTo",
+    "United_States_men's_national_soccer_team"
+   ],
+   [
+    "Pat_Jennings,_Jr.",
+    "playsFor",
+    "St_Patrick's_Athletic_F.C."
+   ]
+  ],
+  "unmatched_triples": 34668
+ },
+ "notes": "Universe = entities carrying >= 1 universe triple of the release relation types. Depth = number of universe triples on the entity. Release entities absent from the universe count against every rule in the Jaccard.",
+ "rule_check": null,
+ "rule_diagnosis": {
+  "best": {
+   "T": 10,
+   "family": "both_ends",
+   "jaccard": 0.96727,
+   "overlap": 121136,
+   "release": 123182,
+   "selected": 123189,
+   "verdict": "approximately reproduced"
+  },
+  "families": [
+   {
+    "T": 10,
+    "family": "both_ends",
+    "jaccard": 0.96727,
+    "overlap": 121136,
+    "release": 123182,
+    "selected": 123189,
+    "verdict": "approximately reproduced"
+   },
+   {
+    "T": 10,
+    "family": "threshold",
+    "jaccard": 0.950243,
+    "overlap": 121136,
+    "release": 123182,
+    "selected": 125433,
+    "verdict": "approximately reproduced"
+   },
+   {
+    "T": 7,
+    "family": "kcore",
+    "jaccard": 0.533786,
+    "overlap": 81855,
+    "release": 123182,
+    "selected": 112021,
+    "verdict": "not reproduced"
+   },
+   {
+    "T": 24,
+    "family": "seeds_neighbours",
+    "jaccard": 0.053179,
+    "overlap": 119181,
+    "release": 123182,
+    "selected": 2237122,
+    "verdict": "not reproduced"
+   }
+  ],
+  "stated": {
+   "T": 10,
+   "family": "both_ends",
+   "jaccard": 0.96727,
+   "overlap": 121136,
+   "selected": 123189,
+   "verdict": "approximately reproduced"
+  },
+  "thresholds_searched": [
+   1,
+   40
+  ],
+  "unmapped_release_units": 2044
+ },
+ "schema": "benchscope-card/0.3",
+ "scope_statement": "Comparisons on YAGO3-10 license claims about the entities it can evaluate, which leave out 95.4% of the 2,635,315 YAGO 3.0.2 entities that occur in at least one triple of its 37 relation types. The closest simple rule (both_ends, T = 10) is approximately reproduced (Jaccard 0.967).",
+ "support": {
+  "basis": "Link prediction ranks each test query against the release entity set, so a universe entity absent from the release is never a candidate.",
+  "candidates": "every entity of the release, in filtered head and tail ranking",
+  "structural": true
+ },
+ "task": "kg_link_prediction",
+ "tool_version": "0.0.1",
+ "universe": {
+  "fingerprint": "sha256:8708a2b249492f1eef68d5d165768804efc3861b8c0178b5da78afcd9a648c2c",
+  "name": "YAGO 3.0.2",
+  "relations": 37,
+  "triples": 5628166,
+  "units": 2635315,
+  "version": "yagoFacts.ttl"
+ },
+ "warnings": []
+}

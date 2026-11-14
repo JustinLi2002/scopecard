@@ -1,0 +1,52 @@
+{
+ "card": "yago3-10.json",
+ "command": [
+  "benchscope-audit",
+  "kg-triples",
+  "--release",
+  "YAGO3-10/",
+  "--universe",
+  "yagoFacts.ttl",
+  "--format",
+  "yago-ttl",
+  "--name",
+  "YAGO3-10",
+  "--stated-family",
+  "both_ends",
+  "--stated-T",
+  "10",
+  "--out",
+  "card.json"
+ ],
+ "inputs": [
+  {
+   "display": "YAGO3-10/",
+   "id": "release",
+   "local": "kg/conve/YAGO3-10",
+   "source": "https://github.com/TimDettmers/ConvE/raw/master/YAGO3-10.tar.gz"
+  },
+  {
+   "display": "yagoFacts.ttl",
+   "id": "facts",
+   "local": "kg/yago3/yagoFacts.ttl",
+   "source": "https://yago-knowledge.org/data/yago3/tmp/yagoFacts.ttl"
+  }
+ ],
+ "name": "YAGO3-10",
+ "pilot": {
+  "W_pilot": "entity share excluded 0.9540 (YAGO 3.0.2 entities with >= 1 fact on the 37 relations); 4573794 of 5628166 facts touch an excluded entity",
+  "decidability": "partial",
+  "domain": "knowledge-graph link prediction",
+  "evaluation_protocol": "filtered ranking of head and tail against all 123182 entities; MRR, Hits@k",
+  "negative_source": "implicit: every corrupted triple over the entity set, filtered of known triples",
+  "notes": "inside the release 52437 entities have < 10 triples: the threshold applies in the source KG, not in the benchmark graph",
+  "rule_found_in_code_or_release": "entities with >= 10 yagoFacts facts, keeping only facts whose BOTH ends qualify (one pass): 123189 entities (Jaccard 0.967 with the release), 1089132 triples; the release equals the 3.0.2 facts induced on its entity set (0 induced facts missing); the 'distinct relations' reading gives 546 seeds (Jaccard 0.004) and the 'neighbours' reading 2338580 entities (Jaccard 0.052)",
+  "rule_stated_in_paper": "'a subset of YAGO3 which consists of entities which have a minimum of 10 relations each' (YAGO3 version not stated); Rossi et al. read it as >= 10 different relations plus all facts of their neighbours",
+  "sources_checked": "Dettmers et al. 2018 AAAI (ConvE, datasets section); Rossi et al. 2021 TKDD (Sec. 4.1); ConvE repo YAGO3-10.tar.gz; YAGO 3.0.2 yagoFacts.ttl (yago-knowledge.org/data/yago3/tmp)",
+  "verification": "rule reimplemented on YAGO 3.0.2 (Jaccard 0.967); not exact: 1054372 of 1089040 release triples are 3.0.2 facts and 2046 release entities have < 10 facts in 3.0.2, plausibly a version difference that the unstated version prevents checking"
+ },
+ "pilot_row": "YAGO3-10 (Dettmers et al. 2018)",
+ "slug": "yago3-10",
+ "task": "kg_link_prediction",
+ "why_no_card": null
+}

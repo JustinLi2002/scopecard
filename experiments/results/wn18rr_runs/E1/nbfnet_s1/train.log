@@ -1,0 +1,2424 @@
+14:31:33   Random seed: 1
+14:31:33   Config file: /home/anon/benchscope4/runs/nbf_E1/s1/config.yaml
+14:31:33   {'dataset': {'class': 'WN18RR',
+             'root': '/home/anon/benchscope4/nbf_data/WN18RR'},
+ 'model': {'aggregate_func': 'pna',
+           'class': 'NBFNet',
+           'dependent': False,
+           'hidden_dims': [32, 32, 32, 32, 32, 32],
+           'input_dim': 32,
+           'layer_norm': True,
+           'message_func': 'distmult',
+           'short_cut': True},
+ 'optimizer': {'class': 'Adam', 'lr': 0.005},
+ 'output_dir': '/home/anon/benchscope4/runs/nbf_E1/s1/',
+ 'task': {'adversarial_temperature': 1,
+          'metric': ['mr', 'mrr', 'hits@1', 'hits@3', 'hits@10'],
+          'num_negative': 32,
+          'strict_negative': True},
+ 'train': {'batch_size': 16, 'gpus': [0], 'log_interval': 100, 'num_epoch': 20}}
+/home/anon/benchscope4/env_nbf/lib/python3.11/site-packages/torch_geometric/data/dataset.py:189: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  if osp.exists(f) and torch.load(f) != _repr(self.pre_transform):
+/home/anon/benchscope4/env_nbf/lib/python3.11/site-packages/torch_geometric/data/dataset.py:197: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  if osp.exists(f) and torch.load(f) != _repr(self.pre_filter):
+/home/anon/benchscope4/env_nbf/lib/python3.11/site-packages/torch_geometric/datasets/word_net.py:143: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  self.data, self.slices = torch.load(self.processed_paths[0])
+14:31:33   WN18RR dataset
+14:31:33   #train: 86835, #valid: 3034, #test: 3134
+14:31:35   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:31:35   Epoch 0 begin
+/home/anon/benchscope/env/lib/python3.11/site-packages/torch/utils/cpp_extension.py:1965: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Load rspmm extension. This may take a while...
+14:32:47   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:32:47   binary cross entropy: 0.714366
+14:33:15   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:33:15   binary cross entropy: 0.478901
+14:33:44   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:33:44   binary cross entropy: 0.340044
+14:34:12   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:34:12   binary cross entropy: 0.401848
+14:34:41   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:34:41   binary cross entropy: 0.433148
+14:35:09   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:35:09   binary cross entropy: 0.514296
+14:35:38   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:35:38   binary cross entropy: 0.132681
+14:36:06   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:36:07   binary cross entropy: 0.269997
+14:36:35   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:36:35   binary cross entropy: 0.285578
+14:37:04   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:37:04   binary cross entropy: 0.265632
+14:37:32   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:37:32   binary cross entropy: 0.26197
+14:38:01   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:38:01   binary cross entropy: 0.327703
+14:38:29   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:38:30   binary cross entropy: 0.332908
+14:38:58   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:38:58   binary cross entropy: 0.326344
+14:39:26   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:39:27   binary cross entropy: 0.151287
+14:39:55   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:39:55   binary cross entropy: 0.293102
+14:40:24   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:40:24   binary cross entropy: 0.320448
+14:40:52   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:40:52   binary cross entropy: 0.342416
+14:41:21   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:41:21   binary cross entropy: 0.398591
+14:41:49   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:41:50   binary cross entropy: 0.378203
+14:42:18   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:42:18   binary cross entropy: 0.208097
+14:42:47   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:42:47   binary cross entropy: 0.219968
+14:43:15   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:43:15   binary cross entropy: 0.45854
+14:43:44   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:43:44   binary cross entropy: 0.245721
+14:44:12   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:44:13   binary cross entropy: 0.389916
+14:44:41   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:44:41   binary cross entropy: 0.328864
+14:45:10   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:45:10   binary cross entropy: 0.388631
+14:45:38   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:45:38   binary cross entropy: 0.399625
+14:46:07   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:46:07   binary cross entropy: 0.286921
+14:46:35   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:46:35   binary cross entropy: 0.184209
+14:47:04   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:47:04   binary cross entropy: 0.266393
+14:47:32   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:47:33   binary cross entropy: 0.241145
+14:48:01   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:48:01   binary cross entropy: 0.328411
+14:48:30   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:48:30   binary cross entropy: 0.288811
+14:48:58   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:48:58   binary cross entropy: 0.223856
+14:49:27   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:49:27   binary cross entropy: 0.340798
+14:49:55   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:49:56   binary cross entropy: 0.479984
+14:50:24   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:50:24   binary cross entropy: 0.342914
+14:50:53   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:50:53   binary cross entropy: 0.301018
+14:51:21   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:51:21   binary cross entropy: 0.229139
+14:51:50   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:51:50   binary cross entropy: 0.275904
+14:52:18   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:52:19   binary cross entropy: 0.370336
+14:52:47   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:52:47   binary cross entropy: 0.373553
+14:53:16   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:53:16   binary cross entropy: 0.243872
+14:53:44   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:53:44   binary cross entropy: 0.306087
+14:54:13   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:54:13   binary cross entropy: 0.431537
+14:54:41   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:54:41   binary cross entropy: 0.273578
+14:55:10   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:55:10   binary cross entropy: 0.179647
+14:55:38   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:55:39   binary cross entropy: 0.160487
+14:56:07   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:56:07   binary cross entropy: 0.306669
+14:56:36   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:56:36   binary cross entropy: 0.383309
+14:57:04   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:57:04   binary cross entropy: 0.185025
+14:57:33   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:57:33   binary cross entropy: 0.379563
+14:58:01   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:58:02   binary cross entropy: 0.27548
+14:58:30   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:58:30   binary cross entropy: 0.407114
+14:58:38   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:58:38   Epoch 0 end
+14:58:38   ------------------------------
+14:58:38   average binary cross entropy: 0.299043
+14:58:38   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:58:38   Epoch 1 begin
+14:58:58   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:58:59   binary cross entropy: 0.435309
+14:59:27   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:59:27   binary cross entropy: 0.27468
+14:59:56   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+14:59:56   binary cross entropy: 0.337955
+15:00:24   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:00:24   binary cross entropy: 0.323047
+15:00:53   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:00:53   binary cross entropy: 0.130078
+15:01:22   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:01:22   binary cross entropy: 0.144215
+15:01:50   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:01:50   binary cross entropy: 0.222741
+15:02:19   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:02:19   binary cross entropy: 0.195063
+15:02:48   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:02:48   binary cross entropy: 0.26338
+15:03:16   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:03:16   binary cross entropy: 0.465575
+15:03:45   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:03:45   binary cross entropy: 0.391679
+15:04:13   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:04:14   binary cross entropy: 0.376825
+15:04:42   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:04:42   binary cross entropy: 0.258368
+15:05:11   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:05:11   binary cross entropy: 0.18424
+15:05:39   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:05:40   binary cross entropy: 0.553308
+15:06:08   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:06:08   binary cross entropy: 0.183901
+15:06:37   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:06:37   binary cross entropy: 0.219449
+15:07:05   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:07:05   binary cross entropy: 0.226122
+15:07:34   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:07:34   binary cross entropy: 0.103409
+15:08:03   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:08:03   binary cross entropy: 0.238753
+15:08:31   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:08:31   binary cross entropy: 0.216343
+15:09:00   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:09:00   binary cross entropy: 0.238594
+15:09:29   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:09:29   binary cross entropy: 0.376318
+15:09:57   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:09:57   binary cross entropy: 0.302286
+15:10:26   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:10:26   binary cross entropy: 0.482427
+15:10:54   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:10:55   binary cross entropy: 0.23541
+15:11:23   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:11:23   binary cross entropy: 0.29937
+15:11:52   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:11:52   binary cross entropy: 0.158202
+15:12:20   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:12:21   binary cross entropy: 0.401906
+15:12:49   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:12:49   binary cross entropy: 0.293744
+15:13:18   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:13:18   binary cross entropy: 0.241632
+15:13:46   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:13:46   binary cross entropy: 0.223759
+15:14:15   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:14:15   binary cross entropy: 0.250223
+15:14:44   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:14:44   binary cross entropy: 0.279065
+15:15:12   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:15:12   binary cross entropy: 0.251737
+15:15:41   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:15:41   binary cross entropy: 0.358305
+15:16:09   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:16:10   binary cross entropy: 0.277458
+15:16:38   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:16:38   binary cross entropy: 0.392658
+15:17:07   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:17:07   binary cross entropy: 0.133545
+15:17:35   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:17:36   binary cross entropy: 0.416916
+15:18:04   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:18:04   binary cross entropy: 0.217821
+15:18:33   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:18:33   binary cross entropy: 0.287785
+15:19:01   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:19:02   binary cross entropy: 0.169891
+15:19:30   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:19:30   binary cross entropy: 0.196977
+15:19:59   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:19:59   binary cross entropy: 0.174428
+15:20:27   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:20:27   binary cross entropy: 0.159423
+15:20:56   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:20:56   binary cross entropy: 0.269952
+15:21:25   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:21:25   binary cross entropy: 0.283253
+15:21:53   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:21:53   binary cross entropy: 0.246766
+15:22:22   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:22:22   binary cross entropy: 0.155792
+15:22:50   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:22:51   binary cross entropy: 0.402209
+15:23:19   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:23:19   binary cross entropy: 0.325063
+15:23:48   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:23:48   binary cross entropy: 0.334005
+15:24:16   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:24:17   binary cross entropy: 0.220606
+15:24:32   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:24:32   Epoch 1 end
+15:24:32   ------------------------------
+15:24:32   average binary cross entropy: 0.280756
+15:24:32   Save checkpoint to model_epoch_2.pth
+15:24:32   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:24:32   Evaluate on valid
+/home/anon/benchscope/env/lib/python3.11/site-packages/torch/functional.py:513: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3609.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/anon/benchscope4/env_nbf/lib/python3.11/site-packages/torch_geometric/data/storage.py:280: UserWarning: Unable to accurately infer 'num_nodes' from the attribute set '{'edge_type', 'edge_index'}'. Please explicitly set 'num_nodes' as an attribute of 'data' to suppress this warning
+  warnings.warn(
+15:25:09   mr: 786.964
+15:25:09   mrr: 0.517024
+15:25:09   hits@1: 0.464403
+15:25:09   hits@3: 0.536585
+15:25:09   hits@10: 0.624918
+15:25:09   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:25:09   Epoch 2 begin
+15:25:22   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:25:22   binary cross entropy: 0.264944
+15:25:50   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:25:50   binary cross entropy: 0.247442
+15:26:19   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:26:19   binary cross entropy: 0.266255
+15:26:48   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:26:48   binary cross entropy: 0.547884
+15:27:16   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:27:16   binary cross entropy: 0.252179
+15:27:45   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:27:45   binary cross entropy: 0.183919
+15:28:13   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:28:14   binary cross entropy: 0.251691
+15:28:42   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:28:42   binary cross entropy: 0.223635
+15:29:11   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:29:11   binary cross entropy: 0.314082
+15:29:39   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:29:40   binary cross entropy: 0.183137
+15:30:08   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:30:08   binary cross entropy: 0.423348
+15:30:37   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:30:37   binary cross entropy: 0.2436
+15:31:05   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:31:05   binary cross entropy: 0.202031
+15:31:34   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:31:34   binary cross entropy: 0.214738
+15:32:03   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:32:03   binary cross entropy: 0.271484
+15:32:31   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:32:31   binary cross entropy: 0.44428
+15:33:00   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:33:00   binary cross entropy: 0.214334
+15:33:28   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:33:29   binary cross entropy: 0.198878
+15:33:57   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:33:57   binary cross entropy: 0.194129
+15:34:26   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:34:26   binary cross entropy: 0.267069
+15:34:54   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:34:55   binary cross entropy: 0.356736
+15:35:23   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:35:23   binary cross entropy: 0.38506
+15:35:52   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:35:52   binary cross entropy: 0.146598
+15:36:20   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:36:20   binary cross entropy: 0.415792
+15:36:49   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:36:49   binary cross entropy: 0.256253
+15:37:18   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:37:18   binary cross entropy: 0.19883
+15:37:46   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:37:46   binary cross entropy: 0.323652
+15:38:15   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:38:15   binary cross entropy: 0.241673
+15:38:44   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:38:44   binary cross entropy: 0.25135
+15:39:12   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:39:12   binary cross entropy: 0.34976
+15:39:41   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:39:41   binary cross entropy: 0.14545
+15:40:09   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:40:10   binary cross entropy: 0.272635
+15:40:38   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:40:38   binary cross entropy: 0.217734
+15:41:07   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:41:07   binary cross entropy: 0.270057
+15:41:35   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:41:36   binary cross entropy: 0.10571
+15:42:04   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:42:04   binary cross entropy: 0.355941
+15:42:33   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:42:33   binary cross entropy: 0.194278
+15:43:01   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:43:01   binary cross entropy: 0.264368
+15:43:30   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:43:30   binary cross entropy: 0.309455
+15:43:59   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:43:59   binary cross entropy: 0.407375
+15:44:27   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:44:27   binary cross entropy: 0.375547
+15:44:56   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:44:56   binary cross entropy: 0.375498
+15:45:25   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:45:25   binary cross entropy: 0.268244
+15:45:53   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:45:53   binary cross entropy: 0.472962
+15:46:22   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:46:22   binary cross entropy: 0.388844
+15:46:50   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:46:51   binary cross entropy: 0.153966
+15:47:19   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:47:19   binary cross entropy: 0.274712
+15:47:48   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:47:48   binary cross entropy: 0.371217
+15:48:16   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:48:17   binary cross entropy: 0.251311
+15:48:45   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:48:45   binary cross entropy: 0.245914
+15:49:14   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:49:14   binary cross entropy: 0.331846
+15:49:42   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:49:43   binary cross entropy: 0.3621
+15:50:11   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:50:11   binary cross entropy: 0.360799
+15:50:40   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:50:40   binary cross entropy: 0.271649
+15:51:03   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:51:03   Epoch 2 end
+15:51:03   ------------------------------
+15:51:03   average binary cross entropy: 0.274653
+15:51:03   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:51:03   Epoch 3 begin
+15:51:08   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:51:08   binary cross entropy: 0.156215
+15:51:37   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:51:37   binary cross entropy: 0.249795
+15:52:05   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:52:06   binary cross entropy: 0.201031
+15:52:34   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:52:34   binary cross entropy: 0.275104
+15:53:03   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:53:03   binary cross entropy: 0.404706
+15:53:31   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:53:31   binary cross entropy: 0.142887
+15:54:00   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:54:00   binary cross entropy: 0.359689
+15:54:29   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:54:29   binary cross entropy: 0.364033
+15:54:57   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:54:57   binary cross entropy: 0.207741
+15:55:26   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:55:26   binary cross entropy: 0.251316
+15:55:54   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:55:55   binary cross entropy: 0.218111
+15:56:23   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:56:23   binary cross entropy: 0.0964789
+15:56:52   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:56:52   binary cross entropy: 0.172443
+15:57:20   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:57:21   binary cross entropy: 0.309956
+15:57:49   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:57:49   binary cross entropy: 0.0906341
+15:58:18   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:58:18   binary cross entropy: 0.143919
+15:58:46   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:58:47   binary cross entropy: 0.260863
+15:59:15   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:59:15   binary cross entropy: 0.275452
+15:59:44   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+15:59:44   binary cross entropy: 0.239196
+16:00:12   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:00:13   binary cross entropy: 0.315318
+16:00:41   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:00:41   binary cross entropy: 0.302886
+16:01:10   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:01:10   binary cross entropy: 0.34588
+16:01:38   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:01:38   binary cross entropy: 0.347322
+16:02:07   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:02:07   binary cross entropy: 0.261726
+16:02:36   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:02:36   binary cross entropy: 0.398076
+16:03:04   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:03:04   binary cross entropy: 0.274043
+16:03:33   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:03:33   binary cross entropy: 0.248809
+16:04:01   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:04:02   binary cross entropy: 0.271575
+16:04:30   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:04:30   binary cross entropy: 0.235358
+16:04:59   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:04:59   binary cross entropy: 0.32564
+16:05:27   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:05:28   binary cross entropy: 0.256046
+16:05:56   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:05:56   binary cross entropy: 0.241215
+16:06:25   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:06:25   binary cross entropy: 0.175133
+16:06:53   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:06:53   binary cross entropy: 0.291176
+16:07:22   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:07:22   binary cross entropy: 0.225878
+16:07:51   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:07:51   binary cross entropy: 0.22784
+16:08:19   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:08:19   binary cross entropy: 0.386995
+16:08:48   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:08:48   binary cross entropy: 0.40885
+16:09:17   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:09:17   binary cross entropy: 0.277901
+16:09:45   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:09:45   binary cross entropy: 0.36444
+16:10:14   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:10:14   binary cross entropy: 0.257735
+16:10:42   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:10:43   binary cross entropy: 0.362127
+16:11:11   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:11:11   binary cross entropy: 0.264645
+16:11:40   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:11:40   binary cross entropy: 0.149423
+16:12:08   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:12:09   binary cross entropy: 0.237736
+16:12:37   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:12:37   binary cross entropy: 0.457361
+16:13:06   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:13:06   binary cross entropy: 0.0946255
+16:13:34   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:13:34   binary cross entropy: 0.156741
+16:14:03   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:14:03   binary cross entropy: 0.202276
+16:14:32   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:14:32   binary cross entropy: 0.403871
+16:15:00   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:15:00   binary cross entropy: 0.395348
+16:15:29   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:15:29   binary cross entropy: 0.14452
+16:15:57   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:15:58   binary cross entropy: 0.226004
+16:16:26   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:16:26   binary cross entropy: 0.244828
+16:16:55   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:16:55   binary cross entropy: 0.107632
+16:16:58   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:16:58   Epoch 3 end
+16:16:58   ------------------------------
+16:16:58   average binary cross entropy: 0.271316
+16:16:58   Save checkpoint to model_epoch_4.pth
+16:16:58   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:16:58   Evaluate on valid
+16:17:35   mr: 748.307
+16:17:35   mrr: 0.523934
+16:17:35   hits@1: 0.470995
+16:17:35   hits@3: 0.545484
+16:17:35   hits@10: 0.63085
+16:17:35   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:17:35   Epoch 4 begin
+16:18:00   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:18:00   binary cross entropy: 0.297483
+16:18:28   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:18:29   binary cross entropy: 0.220889
+16:18:57   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:18:57   binary cross entropy: 0.281305
+16:19:26   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:19:26   binary cross entropy: 0.468052
+16:19:54   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:19:55   binary cross entropy: 0.169564
+16:20:23   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:20:23   binary cross entropy: 0.2814
+16:20:52   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:20:52   binary cross entropy: 0.368416
+16:21:20   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:21:21   binary cross entropy: 0.195842
+16:21:49   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:21:49   binary cross entropy: 0.226685
+16:22:18   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:22:18   binary cross entropy: 0.271195
+16:22:46   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:22:47   binary cross entropy: 0.531271
+16:23:15   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:23:15   binary cross entropy: 0.194339
+16:23:44   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:23:44   binary cross entropy: 0.355013
+16:24:12   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:24:13   binary cross entropy: 0.332919
+16:24:41   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:24:41   binary cross entropy: 0.221843
+16:25:10   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:25:10   binary cross entropy: 0.327969
+16:25:38   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:25:38   binary cross entropy: 0.14296
+16:26:07   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:26:07   binary cross entropy: 0.402863
+16:26:36   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:26:36   binary cross entropy: 0.374141
+16:27:04   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:27:04   binary cross entropy: 0.334715
+16:27:33   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:27:33   binary cross entropy: 0.162828
+16:28:02   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:28:02   binary cross entropy: 0.528588
+16:28:30   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:28:30   binary cross entropy: 0.405572
+16:28:59   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:28:59   binary cross entropy: 0.13608
+16:29:28   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:29:28   binary cross entropy: 0.11662
+16:29:56   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:29:56   binary cross entropy: 0.127397
+16:30:25   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:30:25   binary cross entropy: 0.346821
+16:30:54   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:30:54   binary cross entropy: 0.298973
+16:31:22   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:31:22   binary cross entropy: 0.267525
+16:31:51   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:31:51   binary cross entropy: 0.138421
+16:32:20   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:32:20   binary cross entropy: 0.186357
+16:32:48   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:32:48   binary cross entropy: 0.146134
+16:33:17   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:33:17   binary cross entropy: 0.23091
+16:33:45   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:33:46   binary cross entropy: 0.332601
+16:34:14   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:34:14   binary cross entropy: 0.159268
+16:34:43   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:34:43   binary cross entropy: 0.304747
+16:35:11   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:35:12   binary cross entropy: 0.280803
+16:35:40   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:35:40   binary cross entropy: 0.685019
+16:36:09   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:36:09   binary cross entropy: 0.322827
+16:36:37   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:36:38   binary cross entropy: 0.548645
+16:37:06   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:37:06   binary cross entropy: 0.252646
+16:37:35   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:37:35   binary cross entropy: 0.300426
+16:38:03   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:38:04   binary cross entropy: 0.296953
+16:38:32   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:38:32   binary cross entropy: 0.174748
+16:39:01   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:39:01   binary cross entropy: 0.269551
+16:39:29   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:39:30   binary cross entropy: 0.0808293
+16:39:58   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:39:58   binary cross entropy: 0.196395
+16:40:27   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:40:27   binary cross entropy: 0.220082
+16:40:55   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:40:56   binary cross entropy: 0.297568
+16:41:24   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:41:24   binary cross entropy: 0.276129
+16:41:53   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:41:53   binary cross entropy: 0.247995
+16:42:21   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:42:22   binary cross entropy: 0.30906
+16:42:50   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:42:50   binary cross entropy: 0.230552
+16:43:19   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:43:19   binary cross entropy: 0.203536
+16:43:30   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:43:30   Epoch 4 end
+16:43:30   ------------------------------
+16:43:30   average binary cross entropy: 0.268329
+16:43:30   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:43:30   Epoch 5 begin
+16:43:47   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:43:47   binary cross entropy: 0.482405
+16:44:16   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:44:16   binary cross entropy: 0.139293
+16:44:44   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:44:45   binary cross entropy: 0.264133
+16:45:13   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:45:13   binary cross entropy: 0.328744
+16:45:42   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:45:42   binary cross entropy: 0.407312
+16:46:10   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:46:11   binary cross entropy: 0.230748
+16:46:39   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:46:39   binary cross entropy: 0.323429
+16:47:08   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:47:08   binary cross entropy: 0.307897
+16:47:36   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:47:37   binary cross entropy: 0.127609
+16:48:05   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:48:05   binary cross entropy: 0.278765
+16:48:34   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:48:34   binary cross entropy: 0.491325
+16:49:02   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:49:03   binary cross entropy: 0.256638
+16:49:31   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:49:31   binary cross entropy: 0.379145
+16:50:00   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:50:00   binary cross entropy: 0.222897
+16:50:28   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:50:28   binary cross entropy: 0.306204
+16:50:57   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:50:57   binary cross entropy: 0.298381
+16:51:26   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:51:26   binary cross entropy: 0.246673
+16:51:54   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:51:54   binary cross entropy: 0.141422
+16:52:23   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:52:23   binary cross entropy: 0.307316
+16:52:52   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:52:52   binary cross entropy: 0.248937
+16:53:20   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:53:20   binary cross entropy: 0.186663
+16:53:49   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:53:49   binary cross entropy: 0.319577
+16:54:18   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:54:18   binary cross entropy: 0.196399
+16:54:46   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:54:46   binary cross entropy: 0.255403
+16:55:15   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:55:15   binary cross entropy: 0.13201
+16:55:43   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:55:44   binary cross entropy: 0.246931
+16:56:12   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:56:12   binary cross entropy: 0.232804
+16:56:41   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:56:41   binary cross entropy: 0.263491
+16:57:09   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:57:10   binary cross entropy: 0.304937
+16:57:38   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:57:38   binary cross entropy: 0.315039
+16:58:07   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:58:07   binary cross entropy: 0.345004
+16:58:35   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:58:36   binary cross entropy: 0.389612
+16:59:04   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:59:04   binary cross entropy: 0.357571
+16:59:33   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+16:59:33   binary cross entropy: 0.182068
+17:00:01   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:00:01   binary cross entropy: 0.315187
+17:00:30   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:00:30   binary cross entropy: 0.199467
+17:00:59   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:00:59   binary cross entropy: 0.388658
+17:01:27   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:01:27   binary cross entropy: 0.342934
+17:01:56   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:01:56   binary cross entropy: 0.218347
+17:02:25   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:02:25   binary cross entropy: 0.288359
+17:02:53   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:02:53   binary cross entropy: 0.161711
+17:03:22   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:03:22   binary cross entropy: 0.347338
+17:03:50   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:03:51   binary cross entropy: 0.291482
+17:04:19   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:04:19   binary cross entropy: 0.246436
+17:04:48   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:04:48   binary cross entropy: 0.184267
+17:05:16   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:05:17   binary cross entropy: 0.0741653
+17:05:45   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:05:45   binary cross entropy: 0.188029
+17:06:14   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:06:14   binary cross entropy: 0.230307
+17:06:42   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:06:43   binary cross entropy: 0.222865
+17:07:11   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:07:11   binary cross entropy: 0.30275
+17:07:40   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:07:40   binary cross entropy: 0.185655
+17:08:08   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:08:09   binary cross entropy: 0.19449
+17:08:37   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:08:37   binary cross entropy: 0.203014
+17:09:06   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:09:06   binary cross entropy: 0.160613
+17:09:25   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:09:25   Epoch 5 end
+17:09:25   ------------------------------
+17:09:25   average binary cross entropy: 0.26644
+17:09:25   Save checkpoint to model_epoch_6.pth
+17:09:25   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:09:25   Evaluate on valid
+17:10:02   mr: 700.942
+17:10:02   mrr: 0.526883
+17:10:02   hits@1: 0.472149
+17:10:02   hits@3: 0.547627
+17:10:02   hits@10: 0.640574
+17:10:02   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:10:02   Epoch 6 begin
+17:10:11   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:10:11   binary cross entropy: 0.15591
+17:10:40   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:10:40   binary cross entropy: 0.15521
+17:11:08   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:11:08   binary cross entropy: 0.217611
+17:11:37   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:11:37   binary cross entropy: 0.410505
+17:12:05   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:12:06   binary cross entropy: 0.199116
+17:12:34   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:12:34   binary cross entropy: 0.255445
+17:13:03   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:13:03   binary cross entropy: 0.18679
+17:13:31   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:13:32   binary cross entropy: 0.258192
+17:14:00   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:14:00   binary cross entropy: 0.227772
+17:14:29   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:14:29   binary cross entropy: 0.465615
+17:14:57   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:14:58   binary cross entropy: 0.546596
+17:15:26   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:15:26   binary cross entropy: 0.219588
+17:15:55   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:15:55   binary cross entropy: 0.275658
+17:16:23   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:16:23   binary cross entropy: 0.335611
+17:16:52   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:16:52   binary cross entropy: 0.208369
+17:17:21   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:17:21   binary cross entropy: 0.324499
+17:17:49   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:17:49   binary cross entropy: 0.174931
+17:18:18   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:18:18   binary cross entropy: 0.208553
+17:18:47   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:18:47   binary cross entropy: 0.334795
+17:19:15   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:19:15   binary cross entropy: 0.284258
+17:19:44   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:19:44   binary cross entropy: 0.202306
+17:20:12   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:20:13   binary cross entropy: 0.206041
+17:20:41   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:20:41   binary cross entropy: 0.193229
+17:21:10   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:21:10   binary cross entropy: 0.245457
+17:21:38   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:21:39   binary cross entropy: 0.15365
+17:22:07   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:22:07   binary cross entropy: 0.260114
+17:22:36   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:22:36   binary cross entropy: 0.200632
+17:23:04   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:23:04   binary cross entropy: 0.296795
+17:23:33   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:23:33   binary cross entropy: 0.34158
+17:24:02   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:24:02   binary cross entropy: 0.309598
+17:24:30   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:24:30   binary cross entropy: 0.296423
+17:24:59   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:24:59   binary cross entropy: 0.255358
+17:25:28   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:25:28   binary cross entropy: 0.256733
+17:25:56   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:25:56   binary cross entropy: 0.219714
+17:26:25   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:26:25   binary cross entropy: 0.195885
+17:26:53   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:26:54   binary cross entropy: 0.236599
+17:27:22   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:27:22   binary cross entropy: 0.18252
+17:27:51   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:27:51   binary cross entropy: 0.272164
+17:28:19   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:28:20   binary cross entropy: 0.121223
+17:28:48   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:28:48   binary cross entropy: 0.259909
+17:29:17   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:29:17   binary cross entropy: 0.183951
+17:29:45   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:29:45   binary cross entropy: 0.249827
+17:30:14   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:30:14   binary cross entropy: 0.333716
+17:30:43   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:30:43   binary cross entropy: 0.611136
+17:31:11   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:31:11   binary cross entropy: 0.221796
+17:31:40   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:31:40   binary cross entropy: 0.348837
+17:32:08   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:32:09   binary cross entropy: 0.116595
+17:32:37   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:32:37   binary cross entropy: 0.373179
+17:33:06   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:33:06   binary cross entropy: 0.206819
+17:33:34   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:33:35   binary cross entropy: 0.46807
+17:34:03   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:34:03   binary cross entropy: 0.337972
+17:34:32   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:34:32   binary cross entropy: 0.247197
+17:35:00   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:35:00   binary cross entropy: 0.163718
+17:35:29   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:35:29   binary cross entropy: 0.258073
+17:35:56   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:35:56   Epoch 6 end
+17:35:56   ------------------------------
+17:35:56   average binary cross entropy: 0.265057
+17:35:56   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:35:56   Epoch 7 begin
+17:35:57   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:35:58   binary cross entropy: 0.414549
+17:36:26   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:36:26   binary cross entropy: 0.228684
+17:36:55   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:36:55   binary cross entropy: 0.274089
+17:37:23   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:37:23   binary cross entropy: 0.109733
+17:37:52   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:37:52   binary cross entropy: 0.362217
+17:38:20   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:38:21   binary cross entropy: 0.162594
+17:38:49   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:38:49   binary cross entropy: 0.237162
+17:39:18   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:39:18   binary cross entropy: 0.218197
+17:39:46   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:39:47   binary cross entropy: 0.256097
+17:40:15   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:40:15   binary cross entropy: 0.317376
+17:40:44   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:40:44   binary cross entropy: 0.184379
+17:41:12   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:41:12   binary cross entropy: 0.330425
+17:41:41   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:41:41   binary cross entropy: 0.159678
+17:42:10   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:42:10   binary cross entropy: 0.254272
+17:42:38   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:42:38   binary cross entropy: 0.229411
+17:43:07   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:43:07   binary cross entropy: 0.11251
+17:43:35   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:43:36   binary cross entropy: 0.266354
+17:44:04   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:44:04   binary cross entropy: 0.238257
+17:44:33   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:44:33   binary cross entropy: 0.391817
+17:45:01   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:45:02   binary cross entropy: 0.257093
+17:45:30   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:45:30   binary cross entropy: 0.259068
+17:45:59   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:45:59   binary cross entropy: 0.55507
+17:46:27   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:46:27   binary cross entropy: 0.29974
+17:46:56   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:46:56   binary cross entropy: 0.22881
+17:47:24   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:47:25   binary cross entropy: 0.40901
+17:47:53   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:47:53   binary cross entropy: 0.169701
+17:48:22   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:48:22   binary cross entropy: 0.232856
+17:48:50   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:48:51   binary cross entropy: 0.291613
+17:49:19   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:49:19   binary cross entropy: 0.215565
+17:49:48   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:49:48   binary cross entropy: 0.285638
+17:50:16   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:50:16   binary cross entropy: 0.221816
+17:50:45   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:50:45   binary cross entropy: 0.156368
+17:51:14   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:51:14   binary cross entropy: 0.240544
+17:51:42   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:51:42   binary cross entropy: 0.230805
+17:52:11   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:52:11   binary cross entropy: 0.296564
+17:52:39   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:52:40   binary cross entropy: 0.204077
+17:53:08   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:53:08   binary cross entropy: 0.372646
+17:53:37   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:53:37   binary cross entropy: 0.203026
+17:54:05   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:54:05   binary cross entropy: 0.346344
+17:54:34   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:54:34   binary cross entropy: 0.392597
+17:55:03   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:55:03   binary cross entropy: 0.214185
+17:55:31   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:55:31   binary cross entropy: 0.276405
+17:56:00   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:56:00   binary cross entropy: 0.229469
+17:56:28   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:56:29   binary cross entropy: 0.113068
+17:56:57   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:56:57   binary cross entropy: 0.255666
+17:57:26   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:57:26   binary cross entropy: 0.261886
+17:57:54   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:57:55   binary cross entropy: 0.544573
+17:58:23   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:58:23   binary cross entropy: 0.319292
+17:58:52   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:58:52   binary cross entropy: 0.448705
+17:59:20   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:59:20   binary cross entropy: 0.194056
+17:59:49   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+17:59:49   binary cross entropy: 0.330835
+18:00:18   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:00:18   binary cross entropy: 0.233392
+18:00:46   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:00:46   binary cross entropy: 0.226928
+18:01:15   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:01:15   binary cross entropy: 0.172767
+18:01:43   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:01:44   binary cross entropy: 0.3335
+18:01:50   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:01:50   Epoch 7 end
+18:01:50   ------------------------------
+18:01:50   average binary cross entropy: 0.264287
+18:01:50   Save checkpoint to model_epoch_8.pth
+18:01:50   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:01:50   Evaluate on valid
+18:02:27   mr: 686.737
+18:02:27   mrr: 0.534653
+18:02:27   hits@1: 0.479565
+18:02:27   hits@3: 0.558504
+18:02:27   hits@10: 0.645682
+18:02:27   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:02:27   Epoch 8 begin
+18:02:49   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:02:49   binary cross entropy: 0.261712
+18:03:17   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:03:17   binary cross entropy: 0.0988682
+18:03:46   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:03:46   binary cross entropy: 0.331879
+18:04:14   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:04:15   binary cross entropy: 0.106896
+18:04:43   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:04:43   binary cross entropy: 0.20023
+18:05:12   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:05:12   binary cross entropy: 0.280483
+18:05:40   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:05:41   binary cross entropy: 0.354894
+18:06:09   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:06:09   binary cross entropy: 0.305939
+18:06:38   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:06:38   binary cross entropy: 0.244457
+18:07:06   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:07:07   binary cross entropy: 0.336906
+18:07:35   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:07:35   binary cross entropy: 0.247932
+18:08:04   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:08:04   binary cross entropy: 0.255758
+18:08:32   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:08:32   binary cross entropy: 0.319733
+18:09:01   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:09:01   binary cross entropy: 0.411768
+18:09:30   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:09:30   binary cross entropy: 0.344641
+18:09:58   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:09:58   binary cross entropy: 0.231403
+18:10:27   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:10:27   binary cross entropy: 0.100105
+18:10:56   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:10:56   binary cross entropy: 0.227773
+18:11:24   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:11:24   binary cross entropy: 0.201166
+18:11:53   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:11:53   binary cross entropy: 0.300256
+18:12:21   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:12:22   binary cross entropy: 0.18901
+18:12:50   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:12:50   binary cross entropy: 0.33036
+18:13:19   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:13:19   binary cross entropy: 0.238793
+18:13:47   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:13:48   binary cross entropy: 0.12458
+18:14:16   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:14:16   binary cross entropy: 0.230856
+18:14:45   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:14:45   binary cross entropy: 0.147465
+18:15:13   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:15:14   binary cross entropy: 0.134577
+18:15:42   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:15:42   binary cross entropy: 0.177529
+18:16:11   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:16:11   binary cross entropy: 0.208906
+18:16:39   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:16:39   binary cross entropy: 0.352776
+18:17:08   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:17:08   binary cross entropy: 0.241215
+18:17:37   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:17:37   binary cross entropy: 0.324216
+18:18:05   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:18:05   binary cross entropy: 0.377529
+18:18:34   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:18:34   binary cross entropy: 0.267732
+18:19:02   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:19:03   binary cross entropy: 0.242763
+18:19:31   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:19:31   binary cross entropy: 0.196856
+18:20:00   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:20:00   binary cross entropy: 0.40483
+18:20:28   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:20:29   binary cross entropy: 0.285686
+18:20:57   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:20:57   binary cross entropy: 0.416242
+18:21:26   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:21:26   binary cross entropy: 0.12432
+18:21:54   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:21:54   binary cross entropy: 0.191685
+18:22:23   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:22:23   binary cross entropy: 0.186415
+18:22:52   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:22:52   binary cross entropy: 0.114764
+18:23:20   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:23:20   binary cross entropy: 0.19414
+18:23:49   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:23:49   binary cross entropy: 0.108454
+18:24:17   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:24:18   binary cross entropy: 0.149084
+18:24:46   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:24:46   binary cross entropy: 0.284345
+18:25:15   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:25:15   binary cross entropy: 0.312379
+18:25:43   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:25:44   binary cross entropy: 0.155117
+18:26:12   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:26:12   binary cross entropy: 0.0885085
+18:26:41   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:26:41   binary cross entropy: 0.247947
+18:27:09   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:27:10   binary cross entropy: 0.309823
+18:27:38   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:27:38   binary cross entropy: 0.374672
+18:28:07   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:28:07   binary cross entropy: 0.22715
+18:28:21   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:28:21   Epoch 8 end
+18:28:21   ------------------------------
+18:28:21   average binary cross entropy: 0.262802
+18:28:21   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:28:21   Epoch 9 begin
+18:28:35   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:28:35   binary cross entropy: 0.254005
+18:29:04   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:29:04   binary cross entropy: 0.162344
+18:29:32   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:29:33   binary cross entropy: 0.207378
+18:30:01   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:30:01   binary cross entropy: 0.112215
+18:30:30   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:30:30   binary cross entropy: 0.221232
+18:30:58   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:30:58   binary cross entropy: 0.145834
+18:31:27   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:31:27   binary cross entropy: 0.247268
+18:31:56   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:31:56   binary cross entropy: 0.458036
+18:32:24   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:32:24   binary cross entropy: 0.323443
+18:32:53   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:32:53   binary cross entropy: 0.236614
+18:33:21   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:33:22   binary cross entropy: 0.214644
+18:33:50   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:33:50   binary cross entropy: 0.228059
+18:34:19   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:34:19   binary cross entropy: 0.297931
+18:34:47   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:34:48   binary cross entropy: 0.160309
+18:35:16   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:35:16   binary cross entropy: 0.332812
+18:35:45   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:35:45   binary cross entropy: 0.133322
+18:36:13   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:36:14   binary cross entropy: 0.364073
+18:36:42   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:36:42   binary cross entropy: 0.26386
+18:37:11   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:37:11   binary cross entropy: 0.267597
+18:37:39   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:37:39   binary cross entropy: 0.1363
+18:38:08   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:38:08   binary cross entropy: 0.192557
+18:38:36   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:38:37   binary cross entropy: 0.189516
+18:39:05   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:39:05   binary cross entropy: 0.359339
+18:39:34   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:39:34   binary cross entropy: 0.250548
+18:40:02   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:40:03   binary cross entropy: 0.146816
+18:40:31   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:40:31   binary cross entropy: 0.440392
+18:41:00   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:41:00   binary cross entropy: 0.138433
+18:41:28   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:41:29   binary cross entropy: 0.363534
+18:41:57   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:41:57   binary cross entropy: 0.19269
+18:42:26   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:42:26   binary cross entropy: 0.440622
+18:42:54   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:42:55   binary cross entropy: 0.114974
+18:43:23   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:43:23   binary cross entropy: 0.43261
+18:43:52   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:43:52   binary cross entropy: 0.254442
+18:44:21   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:44:21   binary cross entropy: 0.278348
+18:44:49   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:44:49   binary cross entropy: 0.329194
+18:45:18   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:45:18   binary cross entropy: 0.220769
+18:45:47   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:45:47   binary cross entropy: 0.247225
+18:46:15   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:46:16   binary cross entropy: 0.187858
+18:46:44   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:46:44   binary cross entropy: 0.296424
+18:47:13   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:47:13   binary cross entropy: 0.257329
+18:47:41   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:47:42   binary cross entropy: 0.334898
+18:48:10   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:48:10   binary cross entropy: 0.235862
+18:48:39   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:48:39   binary cross entropy: 0.189761
+18:49:08   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:49:08   binary cross entropy: 0.201142
+18:49:36   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:49:36   binary cross entropy: 0.137482
+18:50:05   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:50:05   binary cross entropy: 0.113784
+18:50:34   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:50:34   binary cross entropy: 0.0945218
+18:51:02   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:51:03   binary cross entropy: 0.416819
+18:51:31   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:51:31   binary cross entropy: 0.358381
+18:52:00   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:52:00   binary cross entropy: 0.36452
+18:52:28   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:52:29   binary cross entropy: 0.237767
+18:52:57   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:52:57   binary cross entropy: 0.169361
+18:53:26   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:53:26   binary cross entropy: 0.389076
+18:53:55   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:53:55   binary cross entropy: 0.463255
+18:54:17   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:54:17   Epoch 9 end
+18:54:17   ------------------------------
+18:54:17   average binary cross entropy: 0.261281
+18:54:17   Save checkpoint to model_epoch_10.pth
+18:54:17   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:54:17   Evaluate on valid
+18:54:54   mr: 694.399
+18:54:54   mrr: 0.532984
+18:54:54   hits@1: 0.476104
+18:54:54   hits@3: 0.556032
+18:54:54   hits@10: 0.650297
+18:54:54   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:54:54   Epoch 10 begin
+18:55:00   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:55:00   binary cross entropy: 0.187934
+18:55:29   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:55:29   binary cross entropy: 0.241908
+18:55:57   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:55:57   binary cross entropy: 0.241312
+18:56:26   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:56:26   binary cross entropy: 0.460333
+18:56:55   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:56:55   binary cross entropy: 0.240175
+18:57:23   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:57:24   binary cross entropy: 0.241601
+18:57:52   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:57:52   binary cross entropy: 0.404083
+18:58:21   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:58:21   binary cross entropy: 0.267086
+18:58:49   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:58:50   binary cross entropy: 0.269143
+18:59:18   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:59:18   binary cross entropy: 0.277065
+18:59:47   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18:59:47   binary cross entropy: 0.176575
+19:00:16   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:00:16   binary cross entropy: 0.215901
+19:00:44   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:00:44   binary cross entropy: 0.328506
+19:01:13   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:01:13   binary cross entropy: 0.190092
+19:01:42   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:01:42   binary cross entropy: 0.349743
+19:02:10   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:02:11   binary cross entropy: 0.196408
+19:02:39   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:02:39   binary cross entropy: 0.189696
+19:03:08   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:03:08   binary cross entropy: 0.189628
+19:03:37   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:03:37   binary cross entropy: 0.16623
+19:04:05   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:04:05   binary cross entropy: 0.482998
+19:04:34   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:04:34   binary cross entropy: 0.278436
+19:05:03   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:05:03   binary cross entropy: 0.139996
+19:05:31   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:05:31   binary cross entropy: 0.144228
+19:06:00   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:06:00   binary cross entropy: 0.0719651
+19:06:29   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:06:29   binary cross entropy: 0.246197
+19:06:57   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:06:57   binary cross entropy: 0.373298
+19:07:26   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:07:26   binary cross entropy: 0.267692
+19:07:55   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:07:55   binary cross entropy: 0.177853
+19:08:23   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:08:23   binary cross entropy: 0.269229
+19:08:52   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:08:52   binary cross entropy: 0.22295
+19:09:21   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:09:21   binary cross entropy: 0.267157
+19:09:49   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:09:49   binary cross entropy: 0.344546
+19:10:18   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:10:18   binary cross entropy: 0.406014
+19:10:47   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:10:47   binary cross entropy: 0.195082
+19:11:15   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:11:15   binary cross entropy: 0.322268
+19:11:44   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:11:44   binary cross entropy: 0.18809
+19:12:13   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:12:13   binary cross entropy: 0.204157
+19:12:41   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:12:42   binary cross entropy: 0.306616
+19:13:10   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:13:10   binary cross entropy: 0.194731
+19:13:39   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:13:39   binary cross entropy: 0.327641
+19:14:07   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:14:07   binary cross entropy: 0.294636
+19:14:36   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:14:36   binary cross entropy: 0.221798
+19:15:05   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:15:05   binary cross entropy: 0.325989
+19:15:33   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:15:33   binary cross entropy: 0.23723
+19:16:02   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:16:02   binary cross entropy: 0.27243
+19:16:30   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:16:31   binary cross entropy: 0.249514
+19:16:59   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:16:59   binary cross entropy: 0.364471
+19:17:28   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:17:28   binary cross entropy: 0.135197
+19:17:56   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:17:57   binary cross entropy: 0.395166
+19:18:25   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:18:25   binary cross entropy: 0.51983
+19:18:54   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:18:54   binary cross entropy: 0.19348
+19:19:22   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:19:22   binary cross entropy: 0.231459
+19:19:51   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:19:51   binary cross entropy: 0.365054
+19:20:20   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:20:20   binary cross entropy: 0.26153
+19:20:48   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:20:48   binary cross entropy: 0.262618
+19:20:50   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:20:50   Epoch 10 end
+19:20:50   ------------------------------
+19:20:50   average binary cross entropy: 0.260816
+19:20:50   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:20:50   Epoch 11 begin
+19:21:17   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:21:17   binary cross entropy: 0.19814
+19:21:45   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:21:45   binary cross entropy: 0.114289
+19:22:14   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:22:14   binary cross entropy: 0.31634
+19:22:43   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:22:43   binary cross entropy: 0.185463
+19:23:11   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:23:11   binary cross entropy: 0.254802
+19:23:40   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:23:40   binary cross entropy: 0.168841
+19:24:08   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:24:09   binary cross entropy: 0.398643
+19:24:37   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:24:37   binary cross entropy: 0.271682
+19:25:06   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:25:06   binary cross entropy: 0.205294
+19:25:34   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:25:35   binary cross entropy: 0.186361
+19:26:03   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:26:03   binary cross entropy: 0.188871
+19:26:32   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:26:32   binary cross entropy: 0.14951
+19:27:00   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:27:00   binary cross entropy: 0.153084
+19:27:29   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:27:29   binary cross entropy: 0.237532
+19:27:57   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:27:58   binary cross entropy: 0.12481
+19:28:26   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:28:26   binary cross entropy: 0.312771
+19:28:55   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:28:55   binary cross entropy: 0.2153
+19:29:23   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:29:24   binary cross entropy: 0.16809
+19:29:52   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:29:52   binary cross entropy: 0.160242
+19:30:21   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:30:21   binary cross entropy: 0.214445
+19:30:49   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:30:50   binary cross entropy: 0.298217
+19:31:18   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:31:18   binary cross entropy: 0.308052
+19:31:47   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:31:47   binary cross entropy: 0.152612
+19:32:15   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:32:15   binary cross entropy: 0.493766
+19:32:44   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:32:44   binary cross entropy: 0.31066
+19:33:12   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:33:13   binary cross entropy: 0.299001
+19:33:41   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:33:41   binary cross entropy: 0.16129
+19:34:10   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:34:10   binary cross entropy: 0.195774
+19:34:38   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:34:39   binary cross entropy: 0.356954
+19:35:07   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:35:07   binary cross entropy: 0.251028
+19:35:36   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:35:36   binary cross entropy: 0.406793
+19:36:04   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:36:04   binary cross entropy: 0.205409
+19:36:33   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:36:33   binary cross entropy: 0.4053
+19:37:02   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:37:02   binary cross entropy: 0.353872
+19:37:30   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:37:30   binary cross entropy: 0.254418
+19:37:59   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:37:59   binary cross entropy: 0.299891
+19:38:28   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:38:28   binary cross entropy: 0.180355
+19:38:56   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:38:56   binary cross entropy: 0.512285
+19:39:25   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:39:25   binary cross entropy: 0.439694
+19:39:53   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:39:54   binary cross entropy: 0.308337
+19:40:22   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:40:22   binary cross entropy: 0.197482
+19:40:51   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:40:51   binary cross entropy: 0.337742
+19:41:19   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:41:20   binary cross entropy: 0.164988
+19:41:48   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:41:48   binary cross entropy: 0.301989
+19:42:17   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:42:17   binary cross entropy: 0.188508
+19:42:45   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:42:46   binary cross entropy: 0.204708
+19:43:14   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:43:14   binary cross entropy: 0.299066
+19:43:43   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:43:43   binary cross entropy: 0.307895
+19:44:11   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:44:12   binary cross entropy: 0.318401
+19:44:40   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:44:40   binary cross entropy: 0.147857
+19:45:09   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:45:09   binary cross entropy: 0.167714
+19:45:37   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:45:38   binary cross entropy: 0.212487
+19:46:06   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:46:06   binary cross entropy: 0.268121
+19:46:35   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:46:35   binary cross entropy: 0.159604
+19:46:45   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:46:45   Epoch 11 end
+19:46:45   ------------------------------
+19:46:45   average binary cross entropy: 0.262311
+19:46:45   Save checkpoint to model_epoch_12.pth
+19:46:45   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:46:45   Evaluate on valid
+19:47:21   mr: 678.816
+19:47:21   mrr: 0.53576
+19:47:21   hits@1: 0.479895
+19:47:21   hits@3: 0.560646
+19:47:21   hits@10: 0.650132
+19:47:21   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:47:21   Epoch 12 begin
+19:47:40   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:47:40   binary cross entropy: 0.180463
+19:48:09   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:48:09   binary cross entropy: 0.156495
+19:48:37   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:48:37   binary cross entropy: 0.121769
+19:49:06   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:49:06   binary cross entropy: 0.275382
+19:49:35   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:49:35   binary cross entropy: 0.280445
+19:50:03   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:50:03   binary cross entropy: 0.312171
+19:50:32   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:50:32   binary cross entropy: 0.290817
+19:51:01   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:51:01   binary cross entropy: 0.273025
+19:51:29   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:51:29   binary cross entropy: 0.331461
+19:51:58   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:51:58   binary cross entropy: 0.275294
+19:52:26   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:52:27   binary cross entropy: 0.216354
+19:52:55   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:52:55   binary cross entropy: 0.36857
+19:53:24   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:53:24   binary cross entropy: 0.195634
+19:53:52   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:53:53   binary cross entropy: 0.175225
+19:54:21   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:54:21   binary cross entropy: 0.261206
+19:54:50   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:54:50   binary cross entropy: 0.344487
+19:55:18   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:55:19   binary cross entropy: 0.358128
+19:55:47   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:55:47   binary cross entropy: 0.178325
+19:56:16   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:56:16   binary cross entropy: 0.115049
+19:56:44   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:56:45   binary cross entropy: 0.259073
+19:57:13   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:57:13   binary cross entropy: 0.232813
+19:57:42   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:57:42   binary cross entropy: 0.115402
+19:58:10   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:58:11   binary cross entropy: 0.230908
+19:58:39   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:58:39   binary cross entropy: 0.447556
+19:59:08   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:59:08   binary cross entropy: 0.287499
+19:59:36   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+19:59:36   binary cross entropy: 0.222275
+20:00:05   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:00:05   binary cross entropy: 0.173327
+20:00:34   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:00:34   binary cross entropy: 0.217532
+20:01:02   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:01:02   binary cross entropy: 0.339729
+20:01:31   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:01:31   binary cross entropy: 0.233186
+20:02:00   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:02:00   binary cross entropy: 0.270871
+20:02:28   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:02:28   binary cross entropy: 0.126591
+20:02:57   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:02:57   binary cross entropy: 0.43777
+20:03:25   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:03:26   binary cross entropy: 0.207296
+20:03:54   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:03:54   binary cross entropy: 0.240182
+20:04:23   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:04:23   binary cross entropy: 0.308325
+20:04:51   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:04:52   binary cross entropy: 0.132998
+20:05:20   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:05:20   binary cross entropy: 0.169372
+20:05:49   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:05:49   binary cross entropy: 0.148291
+20:06:17   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:06:18   binary cross entropy: 0.299098
+20:06:46   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:06:46   binary cross entropy: 0.249274
+20:07:15   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:07:15   binary cross entropy: 0.136333
+20:07:43   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:07:44   binary cross entropy: 0.284176
+20:08:12   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:08:12   binary cross entropy: 0.223923
+20:08:41   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:08:41   binary cross entropy: 0.464957
+20:09:09   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:09:09   binary cross entropy: 0.274325
+20:09:38   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:09:38   binary cross entropy: 0.285768
+20:10:07   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:10:07   binary cross entropy: 0.170286
+20:10:35   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:10:35   binary cross entropy: 0.110354
+20:11:04   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:11:04   binary cross entropy: 0.226599
+20:11:33   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:11:33   binary cross entropy: 0.107245
+20:12:01   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:12:01   binary cross entropy: 0.359142
+20:12:30   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:12:30   binary cross entropy: 0.31741
+20:12:59   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:12:59   binary cross entropy: 0.209506
+20:13:17   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:13:17   Epoch 12 end
+20:13:17   ------------------------------
+20:13:17   average binary cross entropy: 0.260456
+20:13:17   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:13:17   Epoch 13 begin
+20:13:27   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:13:27   binary cross entropy: 0.175317
+20:13:56   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:13:56   binary cross entropy: 0.194201
+20:14:24   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:14:24   binary cross entropy: 0.286468
+20:14:53   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:14:53   binary cross entropy: 0.26673
+20:15:21   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:15:22   binary cross entropy: 0.300037
+20:15:50   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:15:50   binary cross entropy: 0.269459
+20:16:19   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:16:19   binary cross entropy: 0.340037
+20:16:47   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:16:47   binary cross entropy: 0.37728
+20:17:16   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:17:16   binary cross entropy: 0.488208
+20:17:44   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:17:45   binary cross entropy: 0.234827
+20:18:13   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:18:13   binary cross entropy: 0.185744
+20:18:42   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:18:42   binary cross entropy: 0.286968
+20:19:10   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:19:11   binary cross entropy: 0.272583
+20:19:39   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:19:39   binary cross entropy: 0.190907
+20:20:08   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:20:08   binary cross entropy: 0.360104
+20:20:36   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:20:36   binary cross entropy: 0.224584
+20:21:05   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:21:05   binary cross entropy: 0.155883
+20:21:33   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:21:34   binary cross entropy: 0.245387
+20:22:02   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:22:02   binary cross entropy: 0.256255
+20:22:31   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:22:31   binary cross entropy: 0.254843
+20:22:59   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:22:59   binary cross entropy: 0.243355
+20:23:28   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:23:28   binary cross entropy: 0.221352
+20:23:56   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:23:57   binary cross entropy: 0.211471
+20:24:25   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:24:25   binary cross entropy: 0.267064
+20:24:54   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:24:54   binary cross entropy: 0.281078
+20:25:22   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:25:23   binary cross entropy: 0.385865
+20:25:51   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:25:51   binary cross entropy: 0.284698
+20:26:20   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:26:20   binary cross entropy: 0.171473
+20:26:48   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:26:48   binary cross entropy: 0.266148
+20:27:17   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:27:17   binary cross entropy: 0.238535
+20:27:45   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:27:46   binary cross entropy: 0.187193
+20:28:14   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:28:14   binary cross entropy: 0.180398
+20:28:43   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:28:43   binary cross entropy: 0.144083
+20:29:11   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:29:12   binary cross entropy: 0.234414
+20:29:40   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:29:40   binary cross entropy: 0.274137
+20:30:09   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:30:09   binary cross entropy: 0.17386
+20:30:37   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:30:37   binary cross entropy: 0.208042
+20:31:06   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:31:06   binary cross entropy: 0.245871
+20:31:34   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:31:35   binary cross entropy: 0.254123
+20:32:03   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:32:03   binary cross entropy: 0.343022
+20:32:32   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:32:32   binary cross entropy: 0.385572
+20:33:00   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:33:00   binary cross entropy: 0.229468
+20:33:29   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:33:29   binary cross entropy: 0.464464
+20:33:58   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:33:58   binary cross entropy: 0.26686
+20:34:26   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:34:26   binary cross entropy: 0.324472
+20:34:55   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:34:55   binary cross entropy: 0.29133
+20:35:23   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:35:24   binary cross entropy: 0.476866
+20:35:52   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:35:52   binary cross entropy: 0.269344
+20:36:21   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:36:21   binary cross entropy: 0.167029
+20:36:49   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:36:49   binary cross entropy: 0.260999
+20:37:18   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:37:18   binary cross entropy: 0.262189
+20:37:47   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:37:47   binary cross entropy: 0.205084
+20:38:15   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:38:15   binary cross entropy: 0.278366
+20:38:44   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:38:44   binary cross entropy: 0.250662
+20:39:10   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:39:10   Epoch 13 end
+20:39:10   ------------------------------
+20:39:10   average binary cross entropy: 0.260186
+20:39:10   Save checkpoint to model_epoch_14.pth
+20:39:10   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:39:10   Evaluate on valid
+20:39:47   mr: 686.794
+20:39:47   mrr: 0.535985
+20:39:47   hits@1: 0.481048
+20:39:47   hits@3: 0.556856
+20:39:47   hits@10: 0.648484
+20:39:47   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:39:47   Epoch 14 begin
+20:39:49   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:39:49   binary cross entropy: 0.219433
+20:40:18   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:40:18   binary cross entropy: 0.165988
+20:40:46   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:40:47   binary cross entropy: 0.176518
+20:41:15   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:41:15   binary cross entropy: 0.18716
+20:41:44   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:41:44   binary cross entropy: 0.172644
+20:42:12   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:42:13   binary cross entropy: 0.146384
+20:42:41   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:42:41   binary cross entropy: 0.258827
+20:43:10   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:43:10   binary cross entropy: 0.272874
+20:43:38   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:43:39   binary cross entropy: 0.249573
+20:44:07   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:44:07   binary cross entropy: 0.123846
+20:44:36   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:44:36   binary cross entropy: 0.270542
+20:45:04   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:45:05   binary cross entropy: 0.131547
+20:45:33   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:45:33   binary cross entropy: 0.296382
+20:46:02   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:46:02   binary cross entropy: 0.432942
+20:46:30   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:46:31   binary cross entropy: 0.268526
+20:46:59   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:46:59   binary cross entropy: 0.531823
+20:47:28   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:47:28   binary cross entropy: 0.144717
+20:47:56   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:47:57   binary cross entropy: 0.405301
+20:48:25   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:48:25   binary cross entropy: 0.222447
+20:48:54   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:48:54   binary cross entropy: 0.290824
+20:49:23   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:49:23   binary cross entropy: 0.275661
+20:49:51   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:49:51   binary cross entropy: 0.209428
+20:50:20   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:50:20   binary cross entropy: 0.207257
+20:50:49   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:50:49   binary cross entropy: 0.0989375
+20:51:17   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:51:17   binary cross entropy: 0.332352
+20:51:46   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:51:46   binary cross entropy: 0.135871
+20:52:15   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:52:15   binary cross entropy: 0.298877
+20:52:43   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:52:43   binary cross entropy: 0.126198
+20:53:12   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:53:12   binary cross entropy: 0.292639
+20:53:41   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:53:41   binary cross entropy: 0.272611
+20:54:09   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:54:10   binary cross entropy: 0.178006
+20:54:38   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:54:38   binary cross entropy: 0.396173
+20:55:07   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:55:07   binary cross entropy: 0.513399
+20:55:35   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:55:36   binary cross entropy: 0.198483
+20:56:04   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:56:04   binary cross entropy: 0.113516
+20:56:33   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:56:33   binary cross entropy: 0.249765
+20:57:01   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:57:02   binary cross entropy: 0.310025
+20:57:30   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:57:30   binary cross entropy: 0.333742
+20:57:59   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:57:59   binary cross entropy: 0.24699
+20:58:27   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:58:28   binary cross entropy: 0.182118
+20:58:56   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:58:56   binary cross entropy: 0.306071
+20:59:25   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:59:25   binary cross entropy: 0.410976
+20:59:53   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+20:59:54   binary cross entropy: 0.182774
+21:00:22   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:00:22   binary cross entropy: 0.212641
+21:00:51   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:00:51   binary cross entropy: 0.275099
+21:01:19   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:01:20   binary cross entropy: 0.38238
+21:01:48   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:01:48   binary cross entropy: 0.11258
+21:02:17   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:02:17   binary cross entropy: 0.175629
+21:02:46   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:02:46   binary cross entropy: 0.193279
+21:03:14   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:03:14   binary cross entropy: 0.139583
+21:03:43   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:03:43   binary cross entropy: 0.303374
+21:04:12   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:04:12   binary cross entropy: 0.132579
+21:04:40   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:04:40   binary cross entropy: 0.287435
+21:05:09   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:05:09   binary cross entropy: 0.315545
+21:05:38   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:05:38   binary cross entropy: 0.30279
+21:05:43   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:05:43   Epoch 14 end
+21:05:43   ------------------------------
+21:05:43   average binary cross entropy: 0.259778
+21:05:43   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:05:43   Epoch 15 begin
+21:06:06   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:06:06   binary cross entropy: 0.127756
+21:06:35   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:06:35   binary cross entropy: 0.291341
+21:07:03   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:07:04   binary cross entropy: 0.169305
+21:07:32   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:07:32   binary cross entropy: 0.270516
+21:08:01   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:08:01   binary cross entropy: 0.179102
+21:08:29   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:08:30   binary cross entropy: 0.235562
+21:08:58   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:08:58   binary cross entropy: 0.139402
+21:09:27   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:09:27   binary cross entropy: 0.262918
+21:09:55   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:09:56   binary cross entropy: 0.104775
+21:10:24   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:10:24   binary cross entropy: 0.140552
+21:10:53   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:10:53   binary cross entropy: 0.282527
+21:11:21   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:11:22   binary cross entropy: 0.329221
+21:11:50   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:11:50   binary cross entropy: 0.310692
+21:12:19   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:12:19   binary cross entropy: 0.183437
+21:12:47   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:12:48   binary cross entropy: 0.284599
+21:13:16   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:13:16   binary cross entropy: 0.339815
+21:13:45   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:13:45   binary cross entropy: 0.171991
+21:14:13   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:14:14   binary cross entropy: 0.206365
+21:14:42   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:14:42   binary cross entropy: 0.238439
+21:15:11   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:15:11   binary cross entropy: 0.469328
+21:15:39   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:15:40   binary cross entropy: 0.27155
+21:16:08   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:16:08   binary cross entropy: 0.396085
+21:16:37   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:16:37   binary cross entropy: 0.357249
+21:17:05   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:17:06   binary cross entropy: 0.294779
+21:17:34   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:17:34   binary cross entropy: 0.348194
+21:18:03   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:18:03   binary cross entropy: 0.448238
+21:18:31   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:18:32   binary cross entropy: 0.29596
+21:19:00   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:19:00   binary cross entropy: 0.247452
+21:19:29   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:19:29   binary cross entropy: 0.147602
+21:19:57   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:19:58   binary cross entropy: 0.253417
+21:20:26   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:20:26   binary cross entropy: 0.401569
+21:20:55   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:20:55   binary cross entropy: 0.271898
+21:21:23   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:21:24   binary cross entropy: 0.202213
+21:21:52   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:21:52   binary cross entropy: 0.206032
+21:22:21   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:22:21   binary cross entropy: 0.0943776
+21:22:49   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:22:50   binary cross entropy: 0.257421
+21:23:18   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:23:18   binary cross entropy: 0.249389
+21:23:47   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:23:47   binary cross entropy: 0.2271
+21:24:15   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:24:16   binary cross entropy: 0.109387
+21:24:44   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:24:44   binary cross entropy: 0.389175
+21:25:13   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:25:13   binary cross entropy: 0.344708
+21:25:41   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:25:42   binary cross entropy: 0.134893
+21:26:10   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:26:10   binary cross entropy: 0.453622
+21:26:39   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:26:39   binary cross entropy: 0.379148
+21:27:07   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:27:08   binary cross entropy: 0.267538
+21:27:36   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:27:36   binary cross entropy: 0.349158
+21:28:05   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:28:05   binary cross entropy: 0.177124
+21:28:33   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:28:34   binary cross entropy: 0.137085
+21:29:02   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:29:02   binary cross entropy: 0.155075
+21:29:31   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:29:31   binary cross entropy: 0.102852
+21:29:59   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:30:00   binary cross entropy: 0.254118
+21:30:28   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:30:28   binary cross entropy: 0.259514
+21:30:57   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:30:57   binary cross entropy: 0.204794
+21:31:25   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:31:26   binary cross entropy: 0.429342
+21:31:39   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:31:39   Epoch 15 end
+21:31:39   ------------------------------
+21:31:39   average binary cross entropy: 0.259631
+21:31:39   Save checkpoint to model_epoch_16.pth
+21:31:39   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:31:39   Evaluate on valid
+21:32:16   mr: 679.366
+21:32:16   mrr: 0.536128
+21:32:16   hits@1: 0.480059
+21:32:16   hits@3: 0.560976
+21:32:16   hits@10: 0.644199
+21:32:16   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:32:16   Epoch 16 begin
+21:32:31   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:32:31   binary cross entropy: 0.220456
+21:32:59   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:33:00   binary cross entropy: 0.337677
+21:33:28   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:33:28   binary cross entropy: 0.221505
+21:33:57   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:33:57   binary cross entropy: 0.200396
+21:34:25   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:34:26   binary cross entropy: 0.231792
+21:34:54   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:34:54   binary cross entropy: 0.213631
+21:35:23   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:35:23   binary cross entropy: 0.291652
+21:35:51   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:35:52   binary cross entropy: 0.302919
+21:36:20   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:36:20   binary cross entropy: 0.144525
+21:36:49   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:36:49   binary cross entropy: 0.15142
+21:37:17   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:37:18   binary cross entropy: 0.119458
+21:37:46   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:37:46   binary cross entropy: 0.258306
+21:38:15   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:38:15   binary cross entropy: 0.150338
+21:38:43   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:38:44   binary cross entropy: 0.109543
+21:39:12   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:39:12   binary cross entropy: 0.235592
+21:39:41   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:39:41   binary cross entropy: 0.14922
+21:40:09   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:40:10   binary cross entropy: 0.295408
+21:40:38   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:40:38   binary cross entropy: 0.244849
+21:41:07   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:41:07   binary cross entropy: 0.16175
+21:41:35   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:41:36   binary cross entropy: 0.362124
+21:42:04   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:42:04   binary cross entropy: 0.264428
+21:42:33   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:42:33   binary cross entropy: 0.189614
+21:43:01   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:43:02   binary cross entropy: 0.255188
+21:43:30   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:43:30   binary cross entropy: 0.147831
+21:43:59   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:43:59   binary cross entropy: 0.301355
+21:44:27   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:44:28   binary cross entropy: 0.260934
+21:44:56   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:44:56   binary cross entropy: 0.259754
+21:45:25   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:45:25   binary cross entropy: 0.158832
+21:45:53   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:45:54   binary cross entropy: 0.124713
+21:46:22   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:46:22   binary cross entropy: 0.104468
+21:46:51   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:46:51   binary cross entropy: 0.199769
+21:47:19   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:47:20   binary cross entropy: 0.331038
+21:47:48   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:47:48   binary cross entropy: 0.145234
+21:48:17   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:48:17   binary cross entropy: 0.365749
+21:48:45   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:48:46   binary cross entropy: 0.415666
+21:49:14   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:49:14   binary cross entropy: 0.187337
+21:49:43   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:49:43   binary cross entropy: 0.50159
+21:50:11   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:50:12   binary cross entropy: 0.176111
+21:50:40   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:50:40   binary cross entropy: 0.339017
+21:51:09   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:51:09   binary cross entropy: 0.254855
+21:51:37   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:51:38   binary cross entropy: 0.37034
+21:52:06   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:52:06   binary cross entropy: 0.206135
+21:52:35   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:52:35   binary cross entropy: 0.314816
+21:53:03   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:53:03   binary cross entropy: 0.179402
+21:53:32   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:53:32   binary cross entropy: 0.363092
+21:54:00   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:54:01   binary cross entropy: 0.209606
+21:54:29   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:54:29   binary cross entropy: 0.084964
+21:54:57   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:54:58   binary cross entropy: 0.277002
+21:55:26   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:55:26   binary cross entropy: 0.184792
+21:55:55   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:55:55   binary cross entropy: 0.389029
+21:56:23   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:56:23   binary cross entropy: 0.33287
+21:56:52   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:56:52   binary cross entropy: 0.0713107
+21:57:20   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:57:20   binary cross entropy: 0.216619
+21:57:49   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:57:49   binary cross entropy: 0.0920211
+21:58:10   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:58:10   Epoch 16 end
+21:58:10   ------------------------------
+21:58:10   average binary cross entropy: 0.258747
+21:58:10   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:58:10   Epoch 17 begin
+21:58:17   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:58:17   binary cross entropy: 0.122454
+21:58:46   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:58:46   binary cross entropy: 0.267268
+21:59:14   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:59:14   binary cross entropy: 0.305721
+21:59:43   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+21:59:43   binary cross entropy: 0.335907
+22:00:11   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:00:11   binary cross entropy: 0.159238
+22:00:40   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:00:40   binary cross entropy: 0.169233
+22:01:08   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:01:09   binary cross entropy: 0.196149
+22:01:37   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:01:37   binary cross entropy: 0.364497
+22:02:05   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:02:06   binary cross entropy: 0.185886
+22:02:34   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:02:34   binary cross entropy: 0.154781
+22:03:03   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:03:03   binary cross entropy: 0.186223
+22:03:31   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:03:31   binary cross entropy: 0.167078
+22:04:00   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:04:00   binary cross entropy: 0.142025
+22:04:28   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:04:28   binary cross entropy: 0.171996
+22:04:57   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:04:57   binary cross entropy: 0.277336
+22:05:25   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:05:25   binary cross entropy: 0.25502
+22:05:54   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:05:54   binary cross entropy: 0.153707
+22:06:22   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:06:23   binary cross entropy: 0.184878
+22:06:51   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:06:51   binary cross entropy: 0.248191
+22:07:19   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:07:20   binary cross entropy: 0.363328
+22:07:48   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:07:48   binary cross entropy: 0.159111
+22:08:17   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:08:17   binary cross entropy: 0.222981
+22:08:45   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:08:45   binary cross entropy: 0.143072
+22:09:14   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:09:14   binary cross entropy: 0.179835
+22:09:42   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:09:42   binary cross entropy: 0.380379
+22:10:11   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:10:11   binary cross entropy: 0.0989949
+22:10:39   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:10:39   binary cross entropy: 0.259101
+22:11:08   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:11:08   binary cross entropy: 0.196384
+22:11:36   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:11:37   binary cross entropy: 0.276114
+22:12:05   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:12:05   binary cross entropy: 0.415068
+22:12:33   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:12:34   binary cross entropy: 0.248375
+22:13:02   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:13:02   binary cross entropy: 0.257376
+22:13:31   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:13:31   binary cross entropy: 0.222446
+22:13:59   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:13:59   binary cross entropy: 0.189027
+22:14:28   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:14:28   binary cross entropy: 0.424684
+22:14:56   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:14:56   binary cross entropy: 0.304985
+22:15:25   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:15:25   binary cross entropy: 0.274051
+22:15:53   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:15:53   binary cross entropy: 0.175183
+22:16:22   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:16:22   binary cross entropy: 0.126102
+22:16:50   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:16:50   binary cross entropy: 0.199368
+22:17:19   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:17:19   binary cross entropy: 0.168255
+22:17:47   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:17:48   binary cross entropy: 0.292286
+22:18:16   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:18:16   binary cross entropy: 0.215659
+22:18:44   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:18:45   binary cross entropy: 0.17033
+22:19:13   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:19:13   binary cross entropy: 0.215041
+22:19:42   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:19:42   binary cross entropy: 0.150346
+22:20:10   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:20:10   binary cross entropy: 0.17933
+22:20:39   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:20:39   binary cross entropy: 0.155356
+22:21:07   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:21:07   binary cross entropy: 0.272485
+22:21:36   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:21:36   binary cross entropy: 0.286487
+22:22:04   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:22:04   binary cross entropy: 0.19759
+22:22:33   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:22:33   binary cross entropy: 0.342193
+22:23:01   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:23:02   binary cross entropy: 0.173204
+22:23:30   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:23:30   binary cross entropy: 0.132653
+22:23:58   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:23:59   binary cross entropy: 0.33398
+22:23:59   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:23:59   Epoch 17 end
+22:23:59   ------------------------------
+22:23:59   average binary cross entropy: 0.259634
+22:23:59   Save checkpoint to model_epoch_18.pth
+22:23:59   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:23:59   Evaluate on valid
+22:24:36   mr: 674.712
+22:24:36   mrr: 0.535817
+22:24:36   hits@1: 0.480554
+22:24:36   hits@3: 0.557515
+22:24:36   hits@10: 0.650626
+22:24:36   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:24:36   Epoch 18 begin
+22:25:03   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:25:03   binary cross entropy: 0.154594
+22:25:32   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:25:32   binary cross entropy: 0.183485
+22:26:00   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:26:00   binary cross entropy: 0.259634
+22:26:29   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:26:29   binary cross entropy: 0.35395
+22:26:57   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:26:58   binary cross entropy: 0.241142
+22:27:26   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:27:26   binary cross entropy: 0.0672428
+22:27:54   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:27:55   binary cross entropy: 0.272636
+22:28:23   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:28:23   binary cross entropy: 0.307155
+22:28:51   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:28:52   binary cross entropy: 0.474872
+22:29:20   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:29:20   binary cross entropy: 0.106499
+22:29:48   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:29:49   binary cross entropy: 0.151152
+22:30:17   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:30:17   binary cross entropy: 0.290132
+22:30:46   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:30:46   binary cross entropy: 0.2553
+22:31:14   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:31:14   binary cross entropy: 0.31253
+22:31:43   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:31:43   binary cross entropy: 0.290479
+22:32:11   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:32:11   binary cross entropy: 0.148501
+22:32:40   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:32:40   binary cross entropy: 0.180302
+22:33:08   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:33:08   binary cross entropy: 0.349941
+22:33:37   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:33:37   binary cross entropy: 0.248218
+22:34:05   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:34:05   binary cross entropy: 0.219077
+22:34:34   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:34:34   binary cross entropy: 0.313987
+22:35:02   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:35:02   binary cross entropy: 0.182999
+22:35:31   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:35:31   binary cross entropy: 0.489076
+22:35:59   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:35:59   binary cross entropy: 0.264489
+22:36:28   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:36:28   binary cross entropy: 0.13035
+22:36:56   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:36:57   binary cross entropy: 0.139004
+22:37:25   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:37:25   binary cross entropy: 0.175124
+22:37:53   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:37:54   binary cross entropy: 0.304669
+22:38:22   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:38:22   binary cross entropy: 0.29509
+22:38:50   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:38:51   binary cross entropy: 0.267139
+22:39:19   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:39:19   binary cross entropy: 0.16117
+22:39:47   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:39:48   binary cross entropy: 0.255828
+22:40:16   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:40:16   binary cross entropy: 0.184831
+22:40:44   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:40:45   binary cross entropy: 0.232929
+22:41:13   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:41:13   binary cross entropy: 0.298164
+22:41:42   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:41:42   binary cross entropy: 0.111135
+22:42:10   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:42:10   binary cross entropy: 0.230168
+22:42:39   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:42:39   binary cross entropy: 0.198937
+22:43:07   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:43:07   binary cross entropy: 0.359271
+22:43:36   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:43:36   binary cross entropy: 0.303566
+22:44:04   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:44:04   binary cross entropy: 0.200067
+22:44:33   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:44:33   binary cross entropy: 0.140734
+22:45:01   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:45:01   binary cross entropy: 0.284732
+22:45:30   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:45:30   binary cross entropy: 0.477899
+22:45:58   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:45:58   binary cross entropy: 0.220795
+22:46:27   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:46:27   binary cross entropy: 0.382408
+22:46:55   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:46:56   binary cross entropy: 0.33732
+22:47:24   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:47:24   binary cross entropy: 0.175087
+22:47:52   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:47:53   binary cross entropy: 0.382886
+22:48:21   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:48:21   binary cross entropy: 0.265866
+22:48:49   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:48:50   binary cross entropy: 0.401419
+22:49:18   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:49:18   binary cross entropy: 0.171047
+22:49:46   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:49:47   binary cross entropy: 0.136628
+22:50:15   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:50:15   binary cross entropy: 0.191147
+22:50:24   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:50:24   Epoch 18 end
+22:50:24   ------------------------------
+22:50:24   average binary cross entropy: 0.258058
+22:50:24   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:50:24   Epoch 19 begin
+22:50:43   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:50:43   binary cross entropy: 0.250549
+22:51:12   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:51:12   binary cross entropy: 0.272123
+22:51:40   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:51:41   binary cross entropy: 0.263027
+22:52:09   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:52:09   binary cross entropy: 0.239374
+22:52:37   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:52:38   binary cross entropy: 0.336458
+22:53:06   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:53:06   binary cross entropy: 0.157723
+22:53:34   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:53:35   binary cross entropy: 0.205625
+22:54:03   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:54:03   binary cross entropy: 0.171678
+22:54:32   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:54:32   binary cross entropy: 0.19157
+22:55:00   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:55:00   binary cross entropy: 0.199383
+22:55:29   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:55:29   binary cross entropy: 0.209351
+22:55:57   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:55:57   binary cross entropy: 0.196866
+22:56:26   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:56:26   binary cross entropy: 0.24998
+22:56:54   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:56:54   binary cross entropy: 0.377795
+22:57:23   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:57:23   binary cross entropy: 0.202781
+22:57:51   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:57:51   binary cross entropy: 0.276469
+22:58:20   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:58:20   binary cross entropy: 0.230796
+22:58:48   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:58:48   binary cross entropy: 0.285809
+22:59:17   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:59:17   binary cross entropy: 0.421899
+22:59:45   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+22:59:45   binary cross entropy: 0.263465
+23:00:14   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:00:14   binary cross entropy: 0.272071
+23:00:42   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:00:43   binary cross entropy: 0.266289
+23:01:11   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:01:11   binary cross entropy: 0.139805
+23:01:39   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:01:40   binary cross entropy: 0.25249
+23:02:08   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:02:08   binary cross entropy: 0.395282
+23:02:36   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:02:37   binary cross entropy: 0.443854
+23:03:05   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:03:05   binary cross entropy: 0.189025
+23:03:34   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:03:34   binary cross entropy: 0.2456
+23:04:02   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:04:02   binary cross entropy: 0.146681
+23:04:31   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:04:31   binary cross entropy: 0.353258
+23:04:59   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:04:59   binary cross entropy: 0.169365
+23:05:28   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:05:28   binary cross entropy: 0.28372
+23:05:56   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:05:56   binary cross entropy: 0.354682
+23:06:25   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:06:25   binary cross entropy: 0.273975
+23:06:53   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:06:53   binary cross entropy: 0.201544
+23:07:22   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:07:22   binary cross entropy: 0.435541
+23:07:50   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:07:50   binary cross entropy: 0.250252
+23:08:19   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:08:19   binary cross entropy: 0.23868
+23:08:47   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:08:48   binary cross entropy: 0.145938
+23:09:16   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:09:16   binary cross entropy: 0.387802
+23:09:44   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:09:45   binary cross entropy: 0.210433
+23:10:13   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:10:13   binary cross entropy: 0.171416
+23:10:41   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:10:42   binary cross entropy: 0.206974
+23:11:10   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:11:10   binary cross entropy: 0.181436
+23:11:38   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:11:39   binary cross entropy: 0.313916
+23:12:07   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:12:07   binary cross entropy: 0.259993
+23:12:36   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:12:36   binary cross entropy: 0.388586
+23:13:04   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:13:04   binary cross entropy: 0.200981
+23:13:33   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:13:33   binary cross entropy: 0.234757
+23:14:01   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:14:01   binary cross entropy: 0.407391
+23:14:30   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:14:30   binary cross entropy: 0.18615
+23:14:58   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:14:58   binary cross entropy: 0.34433
+23:15:27   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:15:27   binary cross entropy: 0.164543
+23:15:55   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:15:55   binary cross entropy: 0.307909
+23:16:12   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:16:12   Epoch 19 end
+23:16:12   ------------------------------
+23:16:12   average binary cross entropy: 0.258698
+23:16:12   Save checkpoint to model_epoch_20.pth
+23:16:12   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:16:12   Evaluate on valid
+23:16:48   mr: 670.657
+23:16:48   mrr: 0.54156
+23:16:48   hits@1: 0.485992
+23:16:48   hits@3: 0.56592
+23:16:48   hits@10: 0.652769
+23:16:48   Load checkpoint from model_epoch_20.pth
+/home/anon/benchscope4/NBFNet-PyG/script/run.py:107: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load("model_epoch_%d.pth" % best_epoch, map_location=device)
+23:16:48   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:16:48   Evaluate on valid
+23:17:25   mr: 670.657
+23:17:25   mrr: 0.54156
+23:17:25   hits@1: 0.485992
+23:17:25   hits@3: 0.56592
+23:17:25   hits@10: 0.652769
+23:17:25   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+23:17:25   Evaluate on test
+23:18:02   mr: 652.513
+23:18:02   mrr: 0.544609
+23:18:02   hits@1: 0.488513
+23:18:02   hits@3: 0.568922
+23:18:02   hits@10: 0.659062

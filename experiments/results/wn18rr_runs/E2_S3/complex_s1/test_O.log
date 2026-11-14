@@ -1,0 +1,460 @@
+/home/anon/benchscope/env/lib/python3.11/site-packages/torch/storage.py:414: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  return torch.load(io.BytesIO(b))
+/home/anon/benchscope4/kge/kge/util/io.py:41: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(checkpoint_file, map_location="cpu")
+fatal: not a git repository (or any parent up to mount point /home)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+fatal: not a git repository (or any parent up to mount point /home)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+/home/anon/benchscope/env/lib/python3.11/site-packages/torch/storage.py:414: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  return torch.load(io.BytesIO(b))
+/home/anon/benchscope/env/lib/python3.11/site-packages/torch/storage.py:414: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  return torch.load(io.BytesIO(b))
+/home/anon/benchscope4/kge/kge/job/util.py:53: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:78.)
+  labels = torch.cuda.sparse.FloatTensor(
+/home/anon/benchscope4/kge/kge/job/util.py:53: UserWarning: torch.sparse.SparseTensor(indices, values, shape, *, device=) is deprecated.  Please use torch.sparse_coo_tensor(indices, values, shape, dtype=, device=). (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:641.)
+  labels = torch.cuda.sparse.FloatTensor(
+Resuming from configuration /home/anon/benchscope4/runs/E2_S3/complex_s1/config.yaml...
+Using folder: /home/anon/benchscope4/runs/E2_S3/complex_s1
+Loading configuration of dataset wnrr_target_s3 from /home/anon/benchscope4/kge/data/wnrr_target_s3 ...
+Loaded 111975 keys from map entity_ids
+Loaded 11 keys from map relation_ids
+Loaded 206032 train triples
+Loaded 3034 valid triples
+Loaded 3133 test triples
+[5ef086e1] Loaded checkpoint from /home/anon/benchscope4/runs/E2_S3/complex_s1/checkpoint_best.pt...
+Configuration:
+  1vsAll:
+    class_name: TrainingJob1vsAll
+  KvsAll:
+    class_name: TrainingJobKvsAll
+    label_smoothing: 0.0
+    query_types:
+      _po: true
+      s_o: false
+      sp_: true
+  ax_search:
+    class_name: AxSearchJob
+    num_sobol_trials: -1
+    num_trials: 10
+    parameter_constraints: []
+    parameters: []
+    sobol_seed: 0
+  complex:
+    class_name: ComplEx
+    entity_embedder:
+      +++: +++
+      dropout: 0.3592749142853321
+      regularize_weight: 4.5230047706178325e-06
+      space: complex
+      type: lookup_embedder
+    relation_embedder:
+      +++: +++
+      dropout: 0.3112283826796357
+      regularize_weight: 4.192985917075565e-10
+      space: complex
+      type: lookup_embedder
+  console:
+    format: {}
+    quiet: false
+  conve:
+    2D_aspect_ratio: 2
+    class_name: ConvE
+    convolution_bias: true
+    entity_embedder:
+      +++: +++
+      dropout: 0.2
+      type: lookup_embedder
+    feature_map_dropout: 0.2
+    filter_size: 3
+    padding: 0
+    projection_dropout: 0.3
+    relation_embedder:
+      +++: +++
+      dropout: 0.2
+      type: lookup_embedder
+    round_dim: false
+    stride: 1
+  dataset:
+    +++: +++
+    files:
+      +++: +++
+      entity_ids:
+        filename: entity_ids.del
+        type: map
+      entity_strings:
+        filename: entity_ids.del
+        type: map
+      relation_ids:
+        filename: relation_ids.del
+        type: map
+      relation_strings:
+        filename: relation_ids.del
+        type: map
+      test:
+        filename: test.del
+        size: 3133
+        split_type: test
+        type: triples
+      test_without_unseen:
+        filename: test_without_unseen.del
+        size: 3035
+        split_type: test
+        type: triples
+      train:
+        filename: train.del
+        size: 206032
+        split_type: train
+        type: triples
+      train_sample:
+        filename: train_sample.del
+        size: 3034
+        split_type: train
+        type: triples
+      valid:
+        filename: valid.del
+        size: 3034
+        split_type: valid
+        type: triples
+      valid_without_unseen:
+        filename: valid_without_unseen.del
+        size: 2937
+        split_type: valid
+        type: triples
+    name: wnrr_target_s3
+    num_entities: 111975
+    num_relations: 11
+    pickle: true
+  entity_ranking:
+    chunk_size: -1
+    class_name: EntityRankingJob
+    filter_splits:
+    - train
+    - valid
+    - test
+    filter_with_test: true
+    hits_at_k_s:
+    - 1
+    - 3
+    - 10
+    - 50
+    - 100
+    - 200
+    - 300
+    - 400
+    - 500
+    - 1000
+    metrics_per:
+      argument_frequency: false
+      head_and_tail: false
+      relation_type: true
+    tie_handling:
+      atol: 1e-05
+      rtol: 1e-04
+      type: rounded_mean_rank
+      warn_only: true
+  eval:
+    batch_size: 256
+    num_workers: 0
+    pin_memory: false
+    split: test
+    trace_level: example
+    type: entity_ranking
+  grash_search:
+    class_name: GraSHSearchJob
+    cost_metric: triples
+    eta: 4
+    keep_initialization: false
+    keep_pretrained: false
+    min_negatives_percentage: 0.01
+    num_trials: 64
+    parameters: []
+    search_budget: 3
+    seed: -1
+    valid_frac: 0.2
+    valid_max: 5000
+    variant: combined
+  grid_search:
+    class_name: GridSearchJob
+    parameters:
+      +++: +++
+    run: true
+  job:
+    auto_correct: true
+    device: cuda
+    type: eval
+  lookup_embedder:
+    class_name: LookupEmbedder
+    dim: 128
+    dropout: 0.0
+    initialize: uniform_
+    initialize_args:
+      +++: +++
+      normal_:
+        mean: 0.0
+        std: 0.0005472140383629246
+      uniform_:
+        a: -0.28148249060722197
+      xavier_normal_:
+        gain: 1.0
+      xavier_uniform_:
+        gain: 1.0
+    normalize:
+      p: -1.0
+    pretrain:
+      ensure_all: false
+      model_filename: ''
+    regularize: lp
+    regularize_args:
+      +++: +++
+      p: 2
+      weighted: false
+    regularize_weight: 0.0
+    round_dim_to: []
+    space: euclidean
+    sparse: false
+  manual_search:
+    class_name: ManualSearchJob
+    configurations: []
+    run: true
+  model: complex
+  negative_sampling:
+    class_name: TrainingJobNegativeSampling
+    filtering:
+      implementation: fast_if_available
+      o: false
+      p: false
+      s: false
+      split: ''
+    frequency:
+      smoothing: 1
+    implementation: batch
+    num_samples:
+      o: -1
+      p: -1
+      s: 3
+    sampling_type: uniform
+    shared: false
+    shared_type: default
+    with_replacement: true
+  random_seed:
+    default: 1
+    numba: -1
+    numpy: -1
+    python: -1
+    torch: -1
+  reciprocal_relations_model:
+    base_model:
+      +++: +++
+      type: complex
+    class_name: ReciprocalRelationsModel
+  search:
+    device_pool: []
+    num_workers: 1
+    on_error: abort
+    type: ax_search
+  train:
+    abort_on_nan: true
+    batch_size: 512
+    checkpoint:
+      every: 5
+      keep: 3
+      keep_init: true
+    loss: kl
+    loss_arg: 1.0
+    lr_scheduler: ReduceLROnPlateau
+    lr_scheduler_args:
+      +++: +++
+      factor: 0.95
+      mode: max
+      patience: 5
+      threshold: 0.0001
+    lr_warmup: 0
+    max_epochs: 400
+    num_workers: 0
+    optimizer:
+      +++: +++
+      default:
+        args:
+          +++: +++
+          lr: 0.5255808623927111
+        type: Adagrad
+    pin_memory: false
+    split: train
+    subbatch_auto_tune: false
+    subbatch_size: -1
+    trace_level: epoch
+    type: 1vsAll
+    visualize_graph: false
+  training_loss:
+    class_name: TrainingLossEvaluationJob
+  user:
+    +++: +++
+    candidate_entities_file: /home/anon/benchscope4/kge/data/wnrr_target_s3/o_entities.del
+  valid:
+    early_stopping:
+      patience: 10
+      threshold:
+        epochs: 50
+        metric_value: 0.05
+    every: 5
+    last: true
+    metric: mean_reciprocal_rank_filtered_with_test
+    metric_expr: float("nan")
+    metric_max: true
+    split: valid
+    trace_level: epoch
+  git commit: No working git repository found.
+[5ef086e1] Ranking restricted to 40943 candidate entities from /home/anon/benchscope4/kge/data/wnrr_target_s3/o_entities.del
+  156376 distinct sp pairs in train
+  92454 distinct po pairs in train
+  2916 distinct sp pairs in valid
+  2646 distinct po pairs in valid
+  3021 distinct sp pairs in test
+  2693 distinct po pairs in test
+[5ef086e1] Evaluating on test data (epoch 320)...
+Loaded relation index
+  3 relations of type M-N
+  1 relations of type 1-1
+  3 relations of type M-1
+  4 relations of type 1-N
+[5ef086e1]   batch:  0/12, mrr (filt.): 0.354 (0.592), hits@1: 0.191 (0.561), hits@1000: 0.807 (0.807)[K[5ef086e1]   batch:  1/12, mrr (filt.): 0.378 (0.649), hits@1: 0.219 (0.627), hits@1000: 0.822 (0.824)[K[5ef086e1]   batch:  2/12, mrr (filt.): 0.368 (0.617), hits@1: 0.213 (0.588), hits@1000: 0.832 (0.832)[K[5ef086e1]   batch:  3/12, mrr (filt.): 0.358 (0.587), hits@1: 0.225 (0.539), hits@1000: 0.912 (0.912)[K[5ef086e1]   batch:  4/12, mrr (filt.): 0.344 (0.574), hits@1: 0.207 (0.529), hits@1000: 0.887 (0.887)[K[5ef086e1]   batch:  5/12, mrr (filt.): 0.300 (0.456), hits@1: 0.184 (0.414), hits@1000: 0.744 (0.744)[K[5ef086e1]   batch:  6/12, mrr (filt.): 0.215 (0.326), hits@1: 0.123 (0.295), hits@1000: 0.570 (0.570)[K[5ef086e1]   batch:  7/12, mrr (filt.): 0.268 (0.419), hits@1: 0.164 (0.379), hits@1000: 0.684 (0.686)[K[5ef086e1]   batch:  8/12, mrr (filt.): 0.224 (0.366), hits@1: 0.123 (0.320), hits@1000: 0.688 (0.695)[K[5ef086e1]   batch:  9/12, mrr (filt.): 0.269 (0.437), hits@1: 0.146 (0.385), hits@1000: 0.773 (0.781)[K[5ef086e1]   batch: 10/12, mrr (filt.): 0.275 (0.443), hits@1: 0.182 (0.385), hits@1000: 0.777 (0.777)[K[5ef086e1]   batch: 11/12, mrr (filt.): 0.267 (0.404), hits@1: 0.189 (0.355), hits@1000: 0.748 (0.750)[K[5ef086e1]   batch: 12/12, mrr (filt.): 0.247 (0.335), hits@1: 0.180 (0.303), hits@1000: 0.656 (0.656)[K[2K[5ef086e1]   batches: 13
+[5ef086e1]   entry_id: 37468ec1-5968-4182-94ff-89c0b09efb8d
+[5ef086e1]   epoch: 320
+[5ef086e1]   epoch_time: 20.051475286483765
+[5ef086e1]   event: eval_completed
+[5ef086e1]   filter_splits:
+[5ef086e1]   - train
+[5ef086e1]   - valid
+[5ef086e1]   - test
+[5ef086e1]   hits_at_1: 0.18049792531120332
+[5ef086e1]   hits_at_10: 0.5205872965209065
+[5ef086e1]   hits_at_100: 0.6495371848068944
+[5ef086e1]   hits_at_1000: 0.7681136291094798
+[5ef086e1]   hits_at_1000_1-1: 1.0
+[5ef086e1]   hits_at_1000_1-N: 0.8242105263157895
+[5ef086e1]   hits_at_1000_M-1: 0.5800268997982515
+[5ef086e1]   hits_at_1000_M-N: 0.9836572438162544
+[5ef086e1]   hits_at_1000_filtered: 0.7698691350143633
+[5ef086e1]   hits_at_1000_filtered_1-1: 1.0
+[5ef086e1]   hits_at_1000_filtered_1-N: 0.8252631578947368
+[5ef086e1]   hits_at_1000_filtered_M-1: 0.5833893745796906
+[5ef086e1]   hits_at_1000_filtered_M-N: 0.9836572438162544
+[5ef086e1]   hits_at_100_1-1: 1.0
+[5ef086e1]   hits_at_100_1-N: 0.6357894736842105
+[5ef086e1]   hits_at_100_M-1: 0.39979825151311366
+[5ef086e1]   hits_at_100_M-N: 0.9712897526501767
+[5ef086e1]   hits_at_100_filtered: 0.6755505904883499
+[5ef086e1]   hits_at_100_filtered_1-1: 1.0
+[5ef086e1]   hits_at_100_filtered_1-N: 0.6536842105263158
+[5ef086e1]   hits_at_100_filtered_M-1: 0.44889038332212505
+[5ef086e1]   hits_at_100_filtered_M-N: 0.9712897526501767
+[5ef086e1]   hits_at_10_1-1: 1.0
+[5ef086e1]   hits_at_10_1-N: 0.3452631578947368
+[5ef086e1]   hits_at_10_M-1: 0.23638197713517148
+[5ef086e1]   hits_at_10_M-N: 0.9509717314487632
+[5ef086e1]   hits_at_10_filtered: 0.5699010533035429
+[5ef086e1]   hits_at_10_filtered_1-1: 1.0
+[5ef086e1]   hits_at_10_filtered_1-N: 0.4221052631578947
+[5ef086e1]   hits_at_10_filtered_M-1: 0.3117014122394082
+[5ef086e1]   hits_at_10_filtered_M-N: 0.9562720848056537
+[5ef086e1]   hits_at_1_1-1: 0.717948717948718
+[5ef086e1]   hits_at_1_1-N: 0.11157894736842106
+[5ef086e1]   hits_at_1_M-1: 0.09818426361802286
+[5ef086e1]   hits_at_1_M-N: 0.29902826855123676
+[5ef086e1]   hits_at_1_filtered: 0.4452601340568146
+[5ef086e1]   hits_at_1_filtered_1-1: 0.9743589743589743
+[5ef086e1]   hits_at_1_filtered_1-N: 0.1694736842105263
+[5ef086e1]   hits_at_1_filtered_M-1: 0.14593140551445863
+[5ef086e1]   hits_at_1_filtered_M-N: 0.9359540636042403
+[5ef086e1]   hits_at_200: 0.6860836259176508
+[5ef086e1]   hits_at_200_1-1: 1.0
+[5ef086e1]   hits_at_200_1-N: 0.708421052631579
+[5ef086e1]   hits_at_200_M-1: 0.4515803631472764
+[5ef086e1]   hits_at_200_M-N: 0.973939929328622
+[5ef086e1]   hits_at_200_filtered: 0.7058729652090648
+[5ef086e1]   hits_at_200_filtered_1-1: 1.0
+[5ef086e1]   hits_at_200_filtered_1-N: 0.7263157894736842
+[5ef086e1]   hits_at_200_filtered_M-1: 0.48755884330867516
+[5ef086e1]   hits_at_200_filtered_M-N: 0.973939929328622
+[5ef086e1]   hits_at_3: 0.3803064155761251
+[5ef086e1]   hits_at_300: 0.7124162144909033
+[5ef086e1]   hits_at_300_1-1: 1.0
+[5ef086e1]   hits_at_300_1-N: 0.7378947368421053
+[5ef086e1]   hits_at_300_M-1: 0.49630127774041694
+[5ef086e1]   hits_at_300_M-N: 0.9757067137809187
+[5ef086e1]   hits_at_300_filtered: 0.7199170124481328
+[5ef086e1]   hits_at_300_filtered_1-1: 1.0
+[5ef086e1]   hits_at_300_filtered_1-N: 0.7431578947368421
+[5ef086e1]   hits_at_300_filtered_M-1: 0.5104236718224613
+[5ef086e1]   hits_at_300_filtered_M-N: 0.9757067137809187
+[5ef086e1]   hits_at_3_1-1: 0.9743589743589743
+[5ef086e1]   hits_at_3_1-N: 0.20736842105263156
+[5ef086e1]   hits_at_3_M-1: 0.15366509751176866
+[5ef086e1]   hits_at_3_M-N: 0.7301236749116607
+[5ef086e1]   hits_at_3_filtered: 0.5014363230130865
+[5ef086e1]   hits_at_3_filtered_1-1: 0.9871794871794871
+[5ef086e1]   hits_at_3_filtered_1-N: 0.2863157894736842
+[5ef086e1]   hits_at_3_filtered_M-1: 0.21856086079354403
+[5ef086e1]   hits_at_3_filtered_M-N: 0.9465547703180212
+[5ef086e1]   hits_at_400: 0.7261410788381742
+[5ef086e1]   hits_at_400_1-1: 1.0
+[5ef086e1]   hits_at_400_1-N: 0.7610526315789473
+[5ef086e1]   hits_at_400_M-1: 0.5171486213853396
+[5ef086e1]   hits_at_400_M-N: 0.9765901060070671
+[5ef086e1]   hits_at_400_filtered: 0.7318863708905203
+[5ef086e1]   hits_at_400_filtered_1-1: 1.0
+[5ef086e1]   hits_at_400_filtered_1-N: 0.7663157894736842
+[5ef086e1]   hits_at_400_filtered_M-1: 0.527572293207801
+[5ef086e1]   hits_at_400_filtered_M-N: 0.9765901060070671
+[5ef086e1]   hits_at_50: 0.6157037982764124
+[5ef086e1]   hits_at_500: 0.7363549313756783
+[5ef086e1]   hits_at_500_1-1: 1.0
+[5ef086e1]   hits_at_500_1-N: 0.78
+[5ef086e1]   hits_at_500_M-1: 0.5319435104236718
+[5ef086e1]   hits_at_500_M-N: 0.9774734982332155
+[5ef086e1]   hits_at_500_filtered: 0.7406639004149378
+[5ef086e1]   hits_at_500_filtered_1-1: 1.0
+[5ef086e1]   hits_at_500_filtered_1-N: 0.7852631578947368
+[5ef086e1]   hits_at_500_filtered_M-1: 0.539340954942838
+[5ef086e1]   hits_at_500_filtered_M-N: 0.9774734982332155
+[5ef086e1]   hits_at_50_1-1: 1.0
+[5ef086e1]   hits_at_50_1-N: 0.5631578947368421
+[5ef086e1]   hits_at_50_M-1: 0.35440484196368527
+[5ef086e1]   hits_at_50_M-N: 0.967756183745583
+[5ef086e1]   hits_at_50_filtered: 0.6461857644430259
+[5ef086e1]   hits_at_50_filtered_1-1: 1.0
+[5ef086e1]   hits_at_50_filtered_1-N: 0.5936842105263158
+[5ef086e1]   hits_at_50_filtered_M-1: 0.4088769334229993
+[5ef086e1]   hits_at_50_filtered_M-N: 0.967756183745583
+[5ef086e1]   job: eval
+[5ef086e1]   job_id: 5ef086e1-da9b-4278-934d-bc280dd11e38
+[5ef086e1]   mean_rank: 3327.1279923396105
+[5ef086e1]   mean_rank_1-1: 1.3846153846153846
+[5ef086e1]   mean_rank_1-N: 1937.0178947368422
+[5ef086e1]   mean_rank_M-1: 6217.276395427034
+[5ef086e1]   mean_rank_M-N: 228.50220848056537
+[5ef086e1]   mean_rank_filtered: 3312.7098627513565
+[5ef086e1]   mean_rank_filtered_1-1: 1.0769230769230769
+[5ef086e1]   mean_rank_filtered_1-N: 1921.102105263158
+[5ef086e1]   mean_rank_filtered_M-1: 6193.200403496974
+[5ef086e1]   mean_rank_filtered_M-N: 226.91342756183747
+[5ef086e1]   mean_reciprocal_rank: 0.3005185241406998
+[5ef086e1]   mean_reciprocal_rank_1-1: 0.8490537985777243
+[5ef086e1]   mean_reciprocal_rank_1-N: 0.1882351202713816
+[5ef086e1]   mean_reciprocal_rank_M-1: 0.14320062612958137
+[5ef086e1]   mean_reciprocal_rank_M-N: 0.5353890139306813
+[5ef086e1]   mean_reciprocal_rank_filtered: 0.486062944487113
+[5ef086e1]   mean_reciprocal_rank_filtered_1-1: 0.9829059503017328
+[5ef086e1]   mean_reciprocal_rank_filtered_1-N: 0.25246978759765626
+[5ef086e1]   mean_reciprocal_rank_filtered_M-1: 0.19957767530183465
+[5ef086e1]   mean_reciprocal_rank_filtered_M-N: 0.9432919775218087
+[5ef086e1]   mean_reciprocal_rank_filtered_with_test: .nan
+[5ef086e1]   num_parameters: 14334208
+[5ef086e1]   resumed_from_job_id: d74fd929-f9bb-4565-9cdf-7cc75ba7735c
+[5ef086e1]   scope: epoch
+[5ef086e1]   size: 3133
+[5ef086e1]   split: test
+[5ef086e1]   timestamp: 1792516295.668304
+[5ef086e1]   type: entity_ranking
+[5ef086e1] Finished evaluating on test split.

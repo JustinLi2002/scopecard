@@ -1,0 +1,22 @@
+{
+ "card": null,
+ "command": null,
+ "inputs": [],
+ "name": "ogbl-collab",
+ "pilot": {
+  "W_pilot": "not computed",
+  "decidability": "undecidable",
+  "domain": "graph link prediction",
+  "evaluation_protocol": "Hits@50 against 100,000 sampled negative pairs",
+  "negative_source": "sampled: 100,000 random node pairs per split (Hits@50)",
+  "notes": "",
+  "rule_found_in_code_or_release": "every one of the 235868 authors has a training (<= 2017) collaboration, and 0 valid/test positives touch an author without one; negatives are uniform over node pairs (lower-degree half share 0.502); 0.366 of test positives repeat a training pair",
+  "rule_stated_in_paper": "'a subset of the collaboration network between authors indexed by MAG'; train <= 2017, valid 2018, test 2019",
+  "sources_checked": "Hu et al. 2020 NeurIPS (OGB, Sec. 5.2); ogb.stanford.edu linkprop page; collab.zip v1 (raw, split/time, mapping)",
+  "verification": "release only: the T = 1 restriction is a property of the release; whether it is the subset rule or a consequence of it cannot be told"
+ },
+ "pilot_row": "ogbl-collab (OGB, Hu et al. 2020)",
+ "slug": "ogbl-collab",
+ "task": "graph_link_prediction",
+ "why_no_card": "The universe needs an external author graph (for example OpenAlex), which the tool does not supply yet. The pilot's release-only checks have no tool pipeline yet."
+}

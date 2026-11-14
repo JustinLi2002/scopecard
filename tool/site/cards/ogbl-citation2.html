@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ogbl-citation2: BenchScope card</title>
+<meta name="description" content="Scope card for ogbl-citation2.">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main>
+<nav class="top"><a href="../index.html">Card library</a><a href="../how-to-read.html">How to read a card</a><a href="../app/index.html">Audit your own benchmark</a><a href="../schema/benchscope-card-0.3.schema.json">Card schema</a></nav>
+<h1>ogbl-citation2</h1>
+<p class="statement">Comparisons on ogbl-citation2 license claims about the queries it can evaluate, which leave out 20.3% of the 108,591 ogbl-citation2 papers published in 2019. The closest simple rule (threshold, T = 6) is reproduced (Jaccard 1.000).</p>
+<h2>From the 2026-10 pilot</h2><div class="panel"><dl class="facts"><dt>Task</dt><dd>query level</dd><dt>Domain</dt><dd>graph link prediction</dd><dt>Rule stated in the paper</dt><dd>&#x27;a subset of papers extracted from MAG&#x27;; source papers are 2019 papers, two references of each dropped for validation and test; negatives &#x27;randomly-sampled from all the previous papers that are not referenced by the source paper&#x27;</dd><dt>What the release shows</dt><dd>a 2019 paper is a source exactly when it has &gt;= 6 in-subset references: all 86596 papers with &gt;= 6 are sources and 0 of the 21995 non-sources have 6 or more; negatives are never later than the source (same year allowed), uniform over nodes (lower-degree half share 0.500)</dd><dt>Rule decidable from the paper</dt><dd>partial. source rule verified exactly on the release; the paper subset rule needs MAG / OpenAlex</dd><dt>Negatives</dt><dd>sampled: 1,000 earlier papers per source not cited by it (MRR)</dd><dt>Evaluation</dt><dd>MRR of the held-out reference against 1,000 sampled negatives</dd><dt>Sources checked</dt><dd>Hu et al. 2020 NeurIPS (OGB, Sec. 5.4 and footnote 17); ogb.stanford.edu linkprop page; citation-v2.zip v1 (raw, split/time; CRC-checked)</dd><dt>Notes</dt><dd>the older ogbl-citation was deprecated for a bug in its validation/test negatives</dd></dl></div>
+<h2>Scope card</h2><div class="panel card"><h1>Scope card: ogbl-citation2</h1>
+<blockquote>Comparisons on ogbl-citation2 license claims about the queries it can evaluate, which leave out 20.3% of the 108,591 ogbl-citation2 papers published in 2019. The closest simple rule (threshold, T = 6) is reproduced (Jaccard 1.000).</blockquote>
+<ul><li><strong>Task:</strong> query_level</li><li><strong>Universe:</strong> ogbl-citation2 papers published in 2019 node_year.csv.gz, split time</li><li><strong>W is a share of:</strong> the 108,591 ogbl-citation2 papers published in 2019</li><li><strong>Definitions:</strong> Universe = papers of 2019, the source year; release = valid/test source papers. Depth = references inside the subset (train + valid + test edges). The rule search is the threshold family on that depth.</li><li><strong>Tool:</strong> benchscope-audit 0.0.1 (schema benchscope-card/0.3)</li><li><strong>Universe fingerprint:</strong> <code>sha256:3238cf865abe65c01fc46c32a4009261c2d662275373be93f5d0b177395d0134</code></li><li><strong>Candidates:</strong> the valid/test source papers, each ranked against its sampled negatives (excluded units cannot be evaluated). Only source papers are queried, so a paper of the source year that is not a source is never evaluated as a query.</li></ul>
+<h2>Mapping</h2>
+<p>86596 of 86596 release ids mapped; 0 unmapped; 0 ids stand for more than one universe unit.</p>
+<h2>Exclusion</h2>
+<p>Units: 21995 of 108591 excluded, <strong>W = 0.2025</strong>.</p>
+<h2>Rule diagnosis</h2>
+<div class="tablewrap"><table><thead><tr><th>family</th><th>best T</th><th>Jaccard</th><th>verdict</th></tr></thead><tbody><tr><td>threshold</td><td>6</td><td>1.000</td><td>reproduced</td></tr></tbody></table></div>
+<h2>Derived scope</h2>
+<p>d_min = 1 (smallest depth threshold with W &lt;= 0.5, units level). This is a coverage threshold: it says where the benchmark covers at least half of the restricted universe, not that rankings hold there.</p>
+<h2>Sampled negatives</h2>
+<ul><li><strong>valid:</strong> 1000 per source for 86596 sources. Later than the source: 0; same year: 3211832; cited by the source: 0. Share in the lower-degree half of all nodes: 0.500 (uniform sampling gives 0.5).</li><li><strong>test:</strong> 1000 per source for 86596 sources. Later than the source: 0; same year: 3212415; cited by the source: 0. Share in the lower-degree half of all nodes: 0.500 (uniform sampling gives 0.5).</li></ul></div>
+<h2>Reproduce this card</h2><div class="panel">
+<div class="tablewrap"><table><thead><tr><th>Input</th><th>Public source</th></tr></thead><tbody><tr><td><code>citation-v2/</code></td><td><a href="http://snap.stanford.edu/ogb/data/linkproppred/citation-v2.zip">http://snap.stanford.edu/ogb/data/linkproppred/citation-v2.zip</a></td></tr></tbody></table></div>
+<p>With the benchscope-audit package installed:</p>
+<pre>benchscope-audit ogbl-citation2 --dataset citation-v2/ --out card.json</pre>
+<p>The card records the SHA-256 of every release file it read, so a reader can check that the same files were audited. <a href="ogbl-citation2.json">Download this card (JSON)</a>.</p></div>
+<footer>
+<p>Cards written by benchscope-audit 0.0.1 (schema benchscope-card/0.3). Every number on these pages is read from a card or from the 2026-10 pilot table.</p>
+<p>Biology benchmarks are added once the papers that audit them are published.</p>
+</footer>
+</main>
+</body>
+</html>

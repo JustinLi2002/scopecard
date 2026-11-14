@@ -1,0 +1,13 @@
+rep	rule	T	exit	units	W_card	W_true	W_equal	best_family	best_T	best_jaccard	recovered
+0	kcore	3	0	4539	0.410002	0.410002	True	kcore	3	1	True
+0	kcore	5	0	4598	0.746194	0.746194	True	kcore	5	1	True
+0	both_ends	3	0	4539	0.387971	0.387971	True	both_ends	3	1	True
+0	both_ends	5	0	4608	0.622396	0.622396	True	threshold	5	1	True
+1	kcore	3	0	4550	0.425934	0.425934	True	kcore	3	1	True
+1	kcore	5	0	4580	0.75524	0.75524	True	kcore	5	1	True
+1	both_ends	3	0	4591	0.373775	0.373775	True	threshold	3	1	True
+1	both_ends	5	0	4591	0.656066	0.656066	True	threshold	5	1	True
+2	kcore	3	0	4617	0.410006	0.410006	True	kcore	3	1	True
+2	kcore	5	0	4440	0.821396	0.821396	True	kcore	5	1	True
+2	both_ends	3	0	4612	0.370555	0.370555	True	threshold	3	1	True
+2	both_ends	5	0	4543	0.624477	0.624477	True	threshold	5	1	True

@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "benchscope-audit"
+version = "0.0.1"
+description = "BenchScope: which part of a declared target population can a benchmark evaluate, and what do its comparisons license?"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{name = "Justin Li"}]
+keywords = ["benchmark", "evaluation", "target population", "link prediction", "recommendation", "information retrieval"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = ["numpy>=1.22"]
+
+[project.urls]
+Homepage = "https://justinli2002.github.io/benchscope/"
+Source = "https://github.com/JustinLi2002/benchscope"
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+repro = ["matplotlib>=3.5"]
+
+[project.scripts]
+benchscope-audit = "benchscope_audit.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

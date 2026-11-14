@@ -1,0 +1,116 @@
+{
+ "about": "Registry of the card library. Each entry names its row in experiments/pilot_decidability.tsv and, when the tool can audit it, the command that makes its card. In args, {id} stands for an input: 'display' is the path shown to readers, 'local' the path under the pilot data folder that make_entries.py uses, 'source' where the public file comes from. Biology benchmarks are left out until Papers 2 and 3 are published.",
+ "benchmarks": [
+  {
+   "slug": "fb15k-237",
+   "name": "FB15k-237",
+   "pilot_row": "FB15k-237 (Toutanova & Chen 2015)",
+   "task": "kg_link_prediction",
+   "args": null,
+   "inputs": [],
+   "why_no_card": "Its universe, the 2013 Freebase dump, is no longer distributed. The pilot checked the relation rule and the pair rule against FB15k; those checks have no tool pipeline yet."
+  },
+  {
+   "slug": "wn18rr",
+   "name": "WN18RR",
+   "pilot_row": "WN18RR (Dettmers et al. 2018, from WN18)",
+   "task": "kg_link_prediction",
+   "args": ["kg-wordnet", "--release", "{release}", "--wordnet", "{wordnet}", "--name", "WN18RR"],
+   "inputs": [
+    {"id": "release", "display": "WN18RR/", "local": "kg/conve/WN18RR", "source": "https://github.com/TimDettmers/ConvE/raw/master/WN18RR.tar.gz"},
+    {"id": "wordnet", "display": "WordNet-3.0/dict", "local": "kg/wordnet30/WordNet-3.0/dict", "source": "https://wordnetcode.princeton.edu/3.0/WordNet-3.0.tar.gz"}
+   ],
+   "why_no_card": null
+  },
+  {
+   "slug": "yago3-10",
+   "name": "YAGO3-10",
+   "pilot_row": "YAGO3-10 (Dettmers et al. 2018)",
+   "task": "kg_link_prediction",
+   "args": ["kg-triples", "--release", "{release}", "--universe", "{facts}", "--format", "yago-ttl", "--name", "YAGO3-10", "--stated-family", "both_ends", "--stated-T", "10"],
+   "inputs": [
+    {"id": "release", "display": "YAGO3-10/", "local": "kg/conve/YAGO3-10", "source": "https://github.com/TimDettmers/ConvE/raw/master/YAGO3-10.tar.gz"},
+    {"id": "facts", "display": "yagoFacts.ttl", "local": "kg/yago3/yagoFacts.ttl", "source": "https://yago-knowledge.org/data/yago3/tmp/yagoFacts.ttl"}
+   ],
+   "why_no_card": null
+  },
+  {
+   "slug": "ogbl-collab",
+   "name": "ogbl-collab",
+   "pilot_row": "ogbl-collab (OGB, Hu et al. 2020)",
+   "task": "graph_link_prediction",
+   "args": null,
+   "inputs": [],
+   "why_no_card": "The universe needs an external author graph (for example OpenAlex), which the tool does not supply yet. The pilot's release-only checks have no tool pipeline yet."
+  },
+  {
+   "slug": "ogbl-citation2",
+   "name": "ogbl-citation2",
+   "pilot_row": "ogbl-citation2 (OGB, Hu et al. 2020)",
+   "task": "query_level",
+   "args": ["ogbl-citation2", "--dataset", "{dataset}"],
+   "inputs": [
+    {"id": "dataset", "display": "citation-v2/", "local": "graph/citation2/citation-v2", "source": "http://snap.stanford.edu/ogb/data/linkproppred/citation-v2.zip"}
+   ],
+   "why_no_card": null
+  },
+  {
+   "slug": "gowalla",
+   "name": "Gowalla",
+   "pilot_row": "Gowalla (NGCF / LightGCN 10-core)",
+   "task": "recommendation",
+   "args": ["recsys-checkins", "--release", "{release}", "--checkins", "{raw}", "--name", "Gowalla", "--positives", "release"],
+   "inputs": [
+    {"id": "release", "display": "gowalla/", "local": "recsys/lightgcn/gowalla", "source": "https://github.com/kuandeng/LightGCN/tree/b067ec05f16a24e0e1efe63cd82385f0c469af20/Data/gowalla"},
+    {"id": "raw", "display": "loc-gowalla_totalCheckins.txt.gz", "local": "recsys/raw_gowalla/loc-gowalla_totalCheckins.txt.gz", "source": "https://snap.stanford.edu/data/loc-gowalla_totalCheckins.txt.gz"}
+   ],
+   "why_no_card": null
+  },
+  {
+   "slug": "yelp2018",
+   "name": "Yelp2018",
+   "pilot_row": "Yelp2018 (NGCF / LightGCN 10-core)",
+   "task": "recommendation",
+   "args": null,
+   "inputs": [],
+   "why_no_card": "The raw Yelp data can only be downloaded after accepting Yelp's dataset terms, so no universe has been built. The pilot checked the release internally."
+  },
+  {
+   "slug": "amazon-book",
+   "name": "Amazon-Book",
+   "pilot_row": "Amazon-Book (NGCF / LightGCN 10-core)",
+   "task": "recommendation",
+   "args": ["recsys-ratings", "--release", "{release}", "--ratings", "{raw}", "--name", "Amazon-Book", "--universe-name", "Amazon 2014 Books ratings", "--positives", "release"],
+   "inputs": [
+    {"id": "release", "display": "amazon-book/", "local": "recsys/lightgcn/amazon-book", "source": "https://github.com/kuandeng/LightGCN/tree/b067ec05f16a24e0e1efe63cd82385f0c469af20/Data/amazon-book"},
+    {"id": "raw", "display": "ratings_Books.csv", "local": "recsys/raw_amazon2014/ratings_Books.csv", "source": "https://mcauleylab.ucsd.edu/public_datasets/data/amazon/categoryFiles/ratings_Books.csv"}
+   ],
+   "why_no_card": null
+  },
+  {
+   "slug": "trec-dl-2019-passage",
+   "name": "TREC DL 2019 passage",
+   "pilot_row": "TREC DL 2019 passage (Craswell et al. 2020)",
+   "task": "query_level",
+   "args": ["query-qrels", "--topics", "{topics}", "--qrels", "{qrels}", "--corpus-size", "8841823", "--relevant-grade", "2", "--min-relevant", "3", "--max-ratio", "0.6", "--rule-source", "Craswell et al. 2020, Overview of the TREC 2019 deep learning track (arXiv 2003.07820)", "--name", "TREC DL 2019 passage"],
+   "inputs": [
+    {"id": "topics", "display": "msmarco-test2019-queries.tsv.gz", "local": "ir/msmarco-test2019-queries.tsv.gz", "source": "https://msmarco.z22.web.core.windows.net/msmarcoranking/msmarco-test2019-queries.tsv.gz"},
+    {"id": "qrels", "display": "2019qrels-pass.txt", "local": "ir/2019qrels-pass.txt", "source": "https://trec.nist.gov/data/deep/2019qrels-pass.txt"}
+   ],
+   "why_no_card": null
+  },
+  {
+   "slug": "trec-dl-2020-passage",
+   "name": "TREC DL 2020 passage",
+   "pilot_row": "TREC DL 2020 passage (Craswell et al. 2021)",
+   "task": "query_level",
+   "args": ["query-qrels", "--topics", "{topics}", "--qrels", "{qrels}", "--corpus-size", "8841823", "--relevant-grade", "2", "--min-relevant", "3", "--max-ratio", "0.6", "--rule-source", "Craswell et al. 2021, SIGIR, doi:10.1145/3404835.3463249, Sec. 3.2: the 2019 judgment process was reused in 2020; thresholds from the 2019 overview (arXiv 2003.07820)", "--name", "TREC DL 2020 passage"],
+   "note": "The 2020 overview does not state the topic rule; the companion SIGIR paper (Craswell et al. 2021, Sec. 3.2) says the 2019 judgment process was reused, so the card checks the 2019 thresholds.",
+   "inputs": [
+    {"id": "topics", "display": "msmarco-test2020-queries.tsv.gz", "local": "ir/msmarco-test2020-queries.tsv.gz", "source": "https://msmarco.z22.web.core.windows.net/msmarcoranking/msmarco-test2020-queries.tsv.gz"},
+    {"id": "qrels", "display": "2020qrels-pass.txt", "local": "ir/2020qrels-pass.txt", "source": "https://trec.nist.gov/data/deep/2020qrels-pass.txt"}
+   ],
+   "why_no_card": null
+  }
+ ]
+}

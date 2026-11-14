@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TREC DL 2019 passage: BenchScope card</title>
+<meta name="description" content="Scope card for TREC DL 2019 passage.">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main>
+<nav class="top"><a href="../index.html">Card library</a><a href="../how-to-read.html">How to read a card</a><a href="../app/index.html">Audit your own benchmark</a><a href="../schema/benchscope-card-0.3.schema.json">Card schema</a></nav>
+<h1>TREC DL 2019 passage</h1>
+<p class="statement">Comparisons on TREC DL 2019 passage license claims about the queries it can evaluate, which leave out 78.5% of the 200 TREC DL 2019 passage test topics. Within each evaluated query, 99.9934% to 99.9985% of the 8,841,823 documents are unjudged and count as non-relevant. The stated rule (&gt;= 3 relevant (grade &gt;= 2) and relevant/judged &lt; 0.6) is consistent with every released unit; excluded units cannot be checked (no published judgments).</p>
+<h2>From the 2026-10 pilot</h2><div class="panel"><dl class="facts"><dt>Task</dt><dd>query level</dd><dt>Domain</dt><dd>information retrieval</dd><dt>Rule stated in the paper</dt><dd>52 of 200 topics judged: median MRR of submitted document runs under sparse MARCO labels in (0, 0.5]; evaluation set keeps topics with &gt;= 3 relevant and relevant/judged &lt; 0.6; judged pool = top-10 of all runs + MARCO-judged passages + HiCAL selections</dd><dt>What the release shows</dt><dd>43 topics in qrels; 0 with &lt; 3 relevant (min exactly 3) and 0 with ratio &gt;= 0.6 (max 0.534)</dd><dt>Rule decidable from the paper</dt><dd>verified. evaluation-set rule checked on the qrels; the median-MRR pre-selection needs the submitted runs (not checked)</dd><dt>Negatives</dt><dd>measured (judged grade 0-1) plus implicit (unjudged passages scored non-relevant by trec_eval)</dd><dt>Evaluation</dt><dd>NDCG@10 (main), AP, RR over 8.8M passages; unjudged = non-relevant</dd><dt>Sources checked</dt><dd>Craswell et al. 2020 overview (arXiv 2003.07820, judging section and Table 5); 2019qrels-pass.txt (trec.nist.gov); msmarco-test2019-queries.tsv.gz</dd><dt>Notes</dt><dd>the topic rule has [P2]&#x27;s form exactly: entities (topics) with fewer than T = 3 positives are excluded</dd></dl></div>
+<h2>Scope card</h2><div class="panel card"><h1>Scope card: TREC DL 2019 passage</h1>
+<blockquote>Comparisons on TREC DL 2019 passage license claims about the queries it can evaluate, which leave out 78.5% of the 200 TREC DL 2019 passage test topics. Within each evaluated query, 99.9934% to 99.9985% of the 8,841,823 documents are unjudged and count as non-relevant. The stated rule (&gt;= 3 relevant (grade &gt;= 2) and relevant/judged &lt; 0.6) is consistent with every released unit; excluded units cannot be checked (no published judgments).</blockquote>
+<ul><li><strong>Task:</strong> query_level</li><li><strong>Universe:</strong> TREC DL 2019 passage test topics msmarco-test2019-queries.tsv.gz</li><li><strong>W is a share of:</strong> the 200 TREC DL 2019 passage test topics</li><li><strong>Definitions:</strong> Universe = the released test topics; release = topics with judgments. Within an evaluated topic, unjudged documents are scored as non-relevant by trec_eval (implicit negatives).</li><li><strong>Tool:</strong> benchscope-audit 0.0.1 (schema benchscope-card/0.3)</li><li><strong>Universe fingerprint:</strong> <code>sha256:2be40e59dab214f971e1ce8e911e7af197a8dd75c0c74098048591f21ca28e6c</code></li><li><strong>Candidates:</strong> the judged topics; within a topic, every corpus document (excluded units cannot be evaluated). Only topics with judgments are scored, so a released test topic without judgments is never evaluated; inside a topic, unjudged documents count as non-relevant.</li></ul>
+<h2>Mapping</h2>
+<p>43 of 43 release ids mapped; 0 unmapped; 0 ids stand for more than one universe unit.</p>
+<h2>Exclusion</h2>
+<p>Units: 157 of 200 excluded, <strong>W = 0.7850</strong>. Within the 43 evaluated queries: 132 to 582 judged documents each (median 161); unjudged share of the 8,841,823 documents 0.999934 to 0.999985. Judgments by grade: 0: 5158, 1: 1601, 2: 1804, 3: 697.</p>
+<h2>Stated rule check</h2>
+<p>Rule: &gt;= 3 relevant (grade &gt;= 2) and relevant/judged &lt; 0.6 (stated in Craswell et al. 2020, Overview of the TREC 2019 deep learning track (arXiv 2003.07820)). Checked on 43 released units: 0 violations (observed minimum relevant 3, maximum relevant/judged 0.534). Verdict: consistent with every released unit; excluded units cannot be checked (no published judgments).</p>
+<h2>Input files</h2>
+<ul><li><strong>2019qrels-pass.txt:</strong> 9,260 lines read.</li></ul></div>
+<h2>Reproduce this card</h2><div class="panel">
+<div class="tablewrap"><table><thead><tr><th>Input</th><th>Public source</th></tr></thead><tbody><tr><td><code>msmarco-test2019-queries.tsv.gz</code></td><td><a href="https://msmarco.z22.web.core.windows.net/msmarcoranking/msmarco-test2019-queries.tsv.gz">https://msmarco.z22.web.core.windows.net/msmarcoranking/msmarco-test2019-queries.tsv.gz</a></td></tr><tr><td><code>2019qrels-pass.txt</code></td><td><a href="https://trec.nist.gov/data/deep/2019qrels-pass.txt">https://trec.nist.gov/data/deep/2019qrels-pass.txt</a></td></tr></tbody></table></div>
+<p>With the benchscope-audit package installed:</p>
+<pre>benchscope-audit query-qrels --topics msmarco-test2019-queries.tsv.gz --qrels 2019qrels-pass.txt --corpus-size 8841823 --relevant-grade 2 --min-relevant 3 --max-ratio 0.6 --rule-source &quot;Craswell et al. 2020, Overview of the TREC 2019 deep learning track (arXiv 2003.07820)&quot; --name &quot;TREC DL 2019 passage&quot; --out card.json</pre>
+<p>The card records the SHA-256 of every release file it read, so a reader can check that the same files were audited. <a href="trec-dl-2019-passage.json">Download this card (JSON)</a>.</p></div>
+<footer>
+<p>Cards written by benchscope-audit 0.0.1 (schema benchscope-card/0.3). Every number on these pages is read from a card or from the 2026-10 pilot table.</p>
+<p>Biology benchmarks are added once the papers that audit them are published.</p>
+</footer>
+</main>
+</body>
+</html>

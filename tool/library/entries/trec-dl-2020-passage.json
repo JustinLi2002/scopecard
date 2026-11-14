@@ -1,0 +1,57 @@
+{
+ "card": "trec-dl-2020-passage.json",
+ "command": [
+  "benchscope-audit",
+  "query-qrels",
+  "--topics",
+  "msmarco-test2020-queries.tsv.gz",
+  "--qrels",
+  "2020qrels-pass.txt",
+  "--corpus-size",
+  "8841823",
+  "--relevant-grade",
+  "2",
+  "--min-relevant",
+  "3",
+  "--max-ratio",
+  "0.6",
+  "--rule-source",
+  "Craswell et al. 2021, SIGIR, doi:10.1145/3404835.3463249, Sec. 3.2: the 2019 judgment process was reused in 2020; thresholds from the 2019 overview (arXiv 2003.07820)",
+  "--name",
+  "TREC DL 2020 passage",
+  "--out",
+  "card.json"
+ ],
+ "inputs": [
+  {
+   "display": "msmarco-test2020-queries.tsv.gz",
+   "id": "topics",
+   "local": "ir/msmarco-test2020-queries.tsv.gz",
+   "source": "https://msmarco.z22.web.core.windows.net/msmarcoranking/msmarco-test2020-queries.tsv.gz"
+  },
+  {
+   "display": "2020qrels-pass.txt",
+   "id": "qrels",
+   "local": "ir/2020qrels-pass.txt",
+   "source": "https://trec.nist.gov/data/deep/2020qrels-pass.txt"
+  }
+ ],
+ "name": "TREC DL 2020 passage",
+ "note": "The 2020 overview does not state the topic rule; the companion SIGIR paper (Craswell et al. 2021, Sec. 3.2) says the 2019 judgment process was reused, so the card checks the 2019 thresholds.",
+ "pilot": {
+  "W_pilot": "topic-level excluded share 0.730 (146 of 200)",
+  "decidability": "verified",
+  "domain": "information retrieval",
+  "evaluation_protocol": "NDCG@10 (main), AP, RR over 8.8M passages; unjudged = non-relevant",
+  "negative_source": "measured (judged grade 0-1) plus implicit (unjudged passages scored non-relevant by trec_eval)",
+  "notes": "recoded 2026-10-19 (prior-work check): first coded text_sufficient = no and decidability partial because the 2020 overview does not state the rule; the companion SIGIR paper states that the 2019 process was reused",
+  "rule_found_in_code_or_release": "54 topics in qrels; consistent with the stated rule: 0 with < 3 relevant (min exactly 3), 0 with ratio >= 0.6 (max 0.350)",
+  "rule_stated_in_paper": "the 2020 overview says only that NIST chose a subset of the queries for judging (54 passage topics); the companion SIGIR paper (Sec. 3.2) states 'The same judgment process was used in 2020' as in 2019: candidates chosen by the median MRR of document runs (excluded if > 0.5 or 0.0), and candidates dropped when their number of relevant documents fell outside the range; the thresholds are the 2019 overview's (>= 3 relevant, relevant/judged < 0.6); Voorhees et al. 2022 describe the density cut as 'more than one half'",
+  "sources_checked": "Craswell et al. 2021 overview (arXiv 2102.07662, Sec. 2); Craswell, Mitra, Yilmaz, Campos, Voorhees & Soboroff 2021, SIGIR 2369-2375, doi:10.1145/3404835.3463249 (arXiv 2104.09399, Sec. 3.2 'Test Sets'); Craswell et al. 2020 overview for the 2019 thresholds; Voorhees, Craswell & Lin 2022, SIGIR, doi:10.1145/3477495.3531728; 2020qrels-pass.txt (trec.nist.gov); msmarco-test2020-queries.tsv.gz",
+  "verification": "evaluation-set rule checked on the qrels (max relevant/judged 0.350, so the 'more than one half' density wording also holds); the median-MRR pre-selection needs the submitted runs (not checked)"
+ },
+ "pilot_row": "TREC DL 2020 passage (Craswell et al. 2021)",
+ "slug": "trec-dl-2020-passage",
+ "task": "query_level",
+ "why_no_card": null
+}

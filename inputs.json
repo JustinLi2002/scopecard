@@ -1,0 +1,341 @@
+{
+ "schema": "benchscope-inputs/1",
+ "about": "Public input files read by reproduce.py, relative to experiments/pilot_data. Each file is checked against its SHA-256 before use; the hashes are those of the copies that produced the stored results.",
+ "total_bytes": 3848110968,
+ "inputs": [
+  {
+   "id": "wordnet30",
+   "tiers": [
+    "paper",
+    "cards"
+   ],
+   "path": "kg/wordnet30/WordNet-3.0/dict",
+   "fetch": {
+    "kind": "tar.gz",
+    "url": "https://wordnetcode.princeton.edu/3.0/WordNet-3.0.tar.gz",
+    "archive": "kg/wordnet30/WordNet-3.0.tar.gz",
+    "into": "kg/wordnet30",
+    "sha256": "640db279c949a88f61f851dd54ebbb22d003f8b90b85267042ef85a3781d3a52",
+    "bytes": 11537239,
+    "members": {
+     "WordNet-3.0/dict/Makefile": "kg/wordnet30/WordNet-3.0/dict/Makefile",
+     "WordNet-3.0/dict/Makefile.am": "kg/wordnet30/WordNet-3.0/dict/Makefile.am",
+     "WordNet-3.0/dict/Makefile.in": "kg/wordnet30/WordNet-3.0/dict/Makefile.in",
+     "WordNet-3.0/dict/adj.exc": "kg/wordnet30/WordNet-3.0/dict/adj.exc",
+     "WordNet-3.0/dict/adv.exc": "kg/wordnet30/WordNet-3.0/dict/adv.exc",
+     "WordNet-3.0/dict/cntlist": "kg/wordnet30/WordNet-3.0/dict/cntlist",
+     "WordNet-3.0/dict/cntlist.rev": "kg/wordnet30/WordNet-3.0/dict/cntlist.rev",
+     "WordNet-3.0/dict/data.adj": "kg/wordnet30/WordNet-3.0/dict/data.adj",
+     "WordNet-3.0/dict/data.adv": "kg/wordnet30/WordNet-3.0/dict/data.adv",
+     "WordNet-3.0/dict/data.noun": "kg/wordnet30/WordNet-3.0/dict/data.noun",
+     "WordNet-3.0/dict/data.verb": "kg/wordnet30/WordNet-3.0/dict/data.verb",
+     "WordNet-3.0/dict/frames.vrb": "kg/wordnet30/WordNet-3.0/dict/frames.vrb",
+     "WordNet-3.0/dict/index.adj": "kg/wordnet30/WordNet-3.0/dict/index.adj",
+     "WordNet-3.0/dict/index.adv": "kg/wordnet30/WordNet-3.0/dict/index.adv",
+     "WordNet-3.0/dict/index.noun": "kg/wordnet30/WordNet-3.0/dict/index.noun",
+     "WordNet-3.0/dict/index.sense": "kg/wordnet30/WordNet-3.0/dict/index.sense",
+     "WordNet-3.0/dict/index.verb": "kg/wordnet30/WordNet-3.0/dict/index.verb",
+     "WordNet-3.0/dict/lexnames": "kg/wordnet30/WordNet-3.0/dict/lexnames",
+     "WordNet-3.0/dict/log.grind.3.0": "kg/wordnet30/WordNet-3.0/dict/log.grind.3.0",
+     "WordNet-3.0/dict/noun.exc": "kg/wordnet30/WordNet-3.0/dict/noun.exc",
+     "WordNet-3.0/dict/sentidx.vrb": "kg/wordnet30/WordNet-3.0/dict/sentidx.vrb",
+     "WordNet-3.0/dict/sents.vrb": "kg/wordnet30/WordNet-3.0/dict/sents.vrb",
+     "WordNet-3.0/dict/verb.Framestext": "kg/wordnet30/WordNet-3.0/dict/verb.Framestext",
+     "WordNet-3.0/dict/verb.exc": "kg/wordnet30/WordNet-3.0/dict/verb.exc"
+    }
+   },
+   "files": {
+    "kg/wordnet30/WordNet-3.0/dict/Makefile": "cde8c0781342a45ef9930abfe50d889334daeb45728e4df6b71cbda4032a9dec",
+    "kg/wordnet30/WordNet-3.0/dict/Makefile.am": "feba59e08ec442e2ee87312baa36c8ca32d2b54cba36f71b6c4b6fefade7edda",
+    "kg/wordnet30/WordNet-3.0/dict/Makefile.in": "646d7603262b302348ed4dc57b7030ff1b731a3b50d8cf0676b29c9b43b351c0",
+    "kg/wordnet30/WordNet-3.0/dict/adj.exc": "8824cc24bbedd797b9702316b27f07cd4c2b76b629539f0a1276f03926758016",
+    "kg/wordnet30/WordNet-3.0/dict/adv.exc": "e7291461b629abfe63301bbe1998cee09fd575ed7107abd7ea9763adb05bf0a8",
+    "kg/wordnet30/WordNet-3.0/dict/cntlist": "2694cf6c60234cb5b997c5d02ce50663a73b3ad204afc59644d32451dd24fbf2",
+    "kg/wordnet30/WordNet-3.0/dict/cntlist.rev": "a198580b8f705fa02797bba8b13e5cbe4a9f9f40cb1697e774c7fc6a5865b035",
+    "kg/wordnet30/WordNet-3.0/dict/data.adj": "f24b635368be441501c9b8001e9271fd3b30b203f00d91e332979e6f8fe35646",
+    "kg/wordnet30/WordNet-3.0/dict/data.adv": "e66dbbda0e0359e41b7f225bff71dd0c263dc7c66c1b61abc9ba334973d92979",
+    "kg/wordnet30/WordNet-3.0/dict/data.noun": "489f145e0f68877c0be5bd0eb4117adaaac52f38f6204eb8d85dbe2158b614cc",
+    "kg/wordnet30/WordNet-3.0/dict/data.verb": "7fff397e93b4fb152fdaee116747cf1c40d7badedccb4b63f5503e8e962d9102",
+    "kg/wordnet30/WordNet-3.0/dict/frames.vrb": "e7edc9055e1fafb77622e1df54cb22da82bf5853527687c2b1409acd9c0dc49b",
+    "kg/wordnet30/WordNet-3.0/dict/index.adj": "42f58dda2c7cff66eb8fa55ba62e0a873a9b3f43c878e8201108f5dab6dcff28",
+    "kg/wordnet30/WordNet-3.0/dict/index.adv": "6f5465ed5758fe9c8a2f7ec17b1300f3aa875756c70ff7cba162f7e71bcf88ea",
+    "kg/wordnet30/WordNet-3.0/dict/index.noun": "a490d99d93d017bf4822fe2f0ffa51fd73911ce271dc7535fade21f8814b5a04",
+    "kg/wordnet30/WordNet-3.0/dict/index.sense": "68b3a468cddfd8e92134b9b0624339a02a1b837159243c297c5f138a3d618392",
+    "kg/wordnet30/WordNet-3.0/dict/index.verb": "c7c79b558d787f1e31c6f8b3eeadb8fcbb26a64545ecc1241e21d9b61f95ee8e",
+    "kg/wordnet30/WordNet-3.0/dict/lexnames": "4767e2a1c6e68c1a93aa6b7c4ef7ebe9a815b50d7d5aac2788696f2cf3633bf1",
+    "kg/wordnet30/WordNet-3.0/dict/log.grind.3.0": "ed6a273c25e5e615d57889b0e5af28d2ffc60168d51151768b6682da20e918b0",
+    "kg/wordnet30/WordNet-3.0/dict/noun.exc": "2b5d675c380b39ecf595af9fa9d4e7feb1d58c643b0bff08c40ed5bfe41fab7a",
+    "kg/wordnet30/WordNet-3.0/dict/sentidx.vrb": "129e267389fe88ea413b90addda3fcfb2a42b009339298b60711676b2b5d9bf0",
+    "kg/wordnet30/WordNet-3.0/dict/sents.vrb": "6fb59507c96c4aeb267e016ce4a654a1791a438815de98c52e7975df20db15c9",
+    "kg/wordnet30/WordNet-3.0/dict/verb.Framestext": "e7edc9055e1fafb77622e1df54cb22da82bf5853527687c2b1409acd9c0dc49b",
+    "kg/wordnet30/WordNet-3.0/dict/verb.exc": "dbbcf9a601b2d77e934e413b91d90e88ec7f933a8b77cfc00602a923b891b42c"
+   },
+   "bytes": 37361268
+  },
+  {
+   "id": "wn18rr",
+   "tiers": [
+    "paper",
+    "cards"
+   ],
+   "path": "kg/conve/WN18RR",
+   "fetch": {
+    "kind": "tar.gz",
+    "url": "https://github.com/TimDettmers/ConvE/raw/master/WN18RR.tar.gz",
+    "archive": "kg/conve/WN18RR.tar.gz",
+    "into": "kg/conve/WN18RR",
+    "sha256": "1eb9152f804c140d163462c0d49f65e5a0b30ab5fbb375c5e3353c11a6249060",
+    "bytes": 892861,
+    "members": {
+     "test.txt": "kg/conve/WN18RR/test.txt",
+     "train.txt": "kg/conve/WN18RR/train.txt",
+     "valid.txt": "kg/conve/WN18RR/valid.txt"
+    }
+   },
+   "files": {
+    "kg/conve/WN18RR/test.txt": "0383bceaaa1096cf3c03ec021ed0048068e2355dbfc0239b292cefdac821cec5",
+    "kg/conve/WN18RR/train.txt": "038612e783c215ee5f3ca9fbfca27b8d0739be1028fe4ee7c174aecf0b83d5df",
+    "kg/conve/WN18RR/valid.txt": "453ce7202afa58094a04d2b1560ee2b02660f1c260b32ce6651c8ccedd1028ab"
+   },
+   "bytes": 3358972
+  },
+  {
+   "id": "wn18",
+   "tiers": [
+    "cards"
+   ],
+   "optional": true,
+   "path": "kg/wn18_orig/wordnet-mlj12",
+   "note": "WN18 as released by Bordes et al. (2013), wordnet-mlj12.tar.gz; only one golden test reads it and is skipped without it",
+   "fetch": {
+    "kind": "manual",
+    "archive": "kg/wn18_orig/wordnet-mlj12.tar.gz",
+    "into": "kg/wn18_orig",
+    "sha256": "75e5abfa21db74f188ec6f2436b89a870ecd7b6af0c5e29195dc94c1dacc47f3",
+    "bytes": 3293663,
+    "members": {
+     "wordnet-mlj12/README": "kg/wn18_orig/wordnet-mlj12/README",
+     "wordnet-mlj12/Wordnet3.0-LICENSE": "kg/wn18_orig/wordnet-mlj12/Wordnet3.0-LICENSE",
+     "wordnet-mlj12/wordnet-mlj12-definitions.txt": "kg/wn18_orig/wordnet-mlj12/wordnet-mlj12-definitions.txt",
+     "wordnet-mlj12/wordnet-mlj12-test.txt": "kg/wn18_orig/wordnet-mlj12/wordnet-mlj12-test.txt",
+     "wordnet-mlj12/wordnet-mlj12-train.txt": "kg/wn18_orig/wordnet-mlj12/wordnet-mlj12-train.txt",
+     "wordnet-mlj12/wordnet-mlj12-valid.txt": "kg/wn18_orig/wordnet-mlj12/wordnet-mlj12-valid.txt"
+    }
+   },
+   "files": {
+    "kg/wn18_orig/wordnet-mlj12/README": "ca51b0f5645fcce721cdabdcda24b2ddcf278679e6c631eb08a6fa6aa51159c5",
+    "kg/wn18_orig/wordnet-mlj12/Wordnet3.0-LICENSE": "6c3c1815039b91dc01bdf39efa5d959fbb951d62a434e763310464d24d751c1c",
+    "kg/wn18_orig/wordnet-mlj12/wordnet-mlj12-definitions.txt": "70d85bc995d4f82c6c1038d6a3869a149e50622fbdf846af3ab45c519521f627",
+    "kg/wn18_orig/wordnet-mlj12/wordnet-mlj12-test.txt": "d22c19d176d4ba6a6f0d0c6bfce39ab3c16e3b20e1df6f9efe0d9ed86542fa10",
+    "kg/wn18_orig/wordnet-mlj12/wordnet-mlj12-train.txt": "24c9b02dc57d3ae8ca8467ce355995edee7be8eddc3bd070ee34d3c6fc3c95eb",
+    "kg/wn18_orig/wordnet-mlj12/wordnet-mlj12-valid.txt": "13347bfb5e17d1cae003e0bfe29b4716d3ab748e8cfb6af997138d37da3a51dc"
+   },
+   "bytes": 9515266
+  },
+  {
+   "id": "yago3-10",
+   "tiers": [
+    "cards"
+   ],
+   "path": "kg/conve/YAGO3-10",
+   "fetch": {
+    "kind": "tar.gz",
+    "url": "https://github.com/TimDettmers/ConvE/raw/master/YAGO3-10.tar.gz",
+    "archive": "kg/conve/YAGO3-10.tar.gz",
+    "into": "kg/conve/YAGO3-10",
+    "sha256": "9a3bdd5fd08c064bd4b9ffdbe972f37ba0b8799f4e9f868ff70f5d2f5331fb92",
+    "bytes": 19314116,
+    "members": {
+     "test.txt": "kg/conve/YAGO3-10/test.txt",
+     "train.txt": "kg/conve/YAGO3-10/train.txt",
+     "valid.txt": "kg/conve/YAGO3-10/valid.txt"
+    }
+   },
+   "files": {
+    "kg/conve/YAGO3-10/test.txt": "003887ca8a34c90fcaf9b0250b1c30a4b5f617f80f8cf0aeab9723333061598a",
+    "kg/conve/YAGO3-10/train.txt": "afb9b51c68d1c997e85655477045b4c5146cd2a6b50b6eea5373383f35dcb12a",
+    "kg/conve/YAGO3-10/valid.txt": "c9018b77ec77e99f8d48bc3258d404f10b2049a6c7b4ac6eb663697e799dc6f5"
+   },
+   "bytes": 51674862
+  },
+  {
+   "id": "yago3-facts",
+   "tiers": [
+    "cards"
+   ],
+   "path": "kg/yago3/yagoFacts.ttl",
+   "fetch": {
+    "kind": "file",
+    "url": "https://yago-knowledge.org/data/yago3/tmp/yagoFacts.ttl"
+   },
+   "files": {
+    "kg/yago3/yagoFacts.ttl": "aa62c7bf05b155c62ba26edcf898936b1ff1daa50856c38402cdb4b7c49258d6"
+   },
+   "bytes": 440685158
+  },
+  {
+   "id": "ogbl-citation2",
+   "tiers": [
+    "cards"
+   ],
+   "path": "graph/citation2/citation-v2",
+   "fetch": {
+    "kind": "zip",
+    "url": "http://snap.stanford.edu/ogb/data/linkproppred/citation-v2.zip",
+    "archive": "graph/citation2/citation-v2.zip",
+    "into": "graph/citation2",
+    "sha256": "f8502b935ea8f0a7bea5eb130991ca337cd26cad7f231cc9f5546fe076f4be53",
+    "bytes": 2293454318,
+    "members": {
+     "citation-v2/RELEASE_v1.txt": "graph/citation2/citation-v2/RELEASE_v1.txt",
+     "citation-v2/mapping/README.md": "graph/citation2/citation-v2/mapping/README.md",
+     "citation-v2/raw/edge.csv.gz": "graph/citation2/citation-v2/raw/edge.csv.gz",
+     "citation-v2/raw/node_year.csv.gz": "graph/citation2/citation-v2/raw/node_year.csv.gz",
+     "citation-v2/raw/num-edge-list.csv.gz": "graph/citation2/citation-v2/raw/num-edge-list.csv.gz",
+     "citation-v2/raw/num-node-list.csv.gz": "graph/citation2/citation-v2/raw/num-node-list.csv.gz",
+     "citation-v2/split/time/test.pt": "graph/citation2/citation-v2/split/time/test.pt",
+     "citation-v2/split/time/train.pt": "graph/citation2/citation-v2/split/time/train.pt",
+     "citation-v2/split/time/valid.pt": "graph/citation2/citation-v2/split/time/valid.pt"
+    }
+   },
+   "files": {
+    "graph/citation2/citation-v2/RELEASE_v1.txt": "904fa444d81bbb3f641f78fcc22cf67e33bd11091e4d44ce82718164b27d4e20",
+    "graph/citation2/citation-v2/mapping/README.md": "5fe8a933d4f3fa39e4c456c96871bccd0f9e323795558a9ac7e5473390219e1e",
+    "graph/citation2/citation-v2/raw/edge.csv.gz": "41332797b3400640381bf582e9e0facfc6dfe65fa1bbb43c6333409d92e8ac05",
+    "graph/citation2/citation-v2/raw/node_year.csv.gz": "014e4231d2e31bb0892d1e06281970c3165bfcbdb3479a40aec662f904526ad0",
+    "graph/citation2/citation-v2/raw/num-edge-list.csv.gz": "df84c3d5e9c7060a0f3bf2b740257e193ccb46c7291cdb17ffa36032c82ad002",
+    "graph/citation2/citation-v2/raw/num-node-list.csv.gz": "7b70bd20bc447510539ec26691b737c712ee679832e21c8ed07207fa357edac3",
+    "graph/citation2/citation-v2/split/time/test.pt": "7b9cafd4fe3d7952b44577010a929d03fbc55ea87f0aa7592cfc480564a7a105",
+    "graph/citation2/citation-v2/split/time/train.pt": "0e6d6872cd52f41442f37e5b995cf8db962bfdaf33e5c92afb721966104acdef",
+    "graph/citation2/citation-v2/split/time/valid.pt": "b09d00e30476bcd7494937d3b74e46861deab900c8686025f37c79dafd7b3edb"
+   },
+   "bytes": 2255906707
+  },
+  {
+   "id": "gowalla-release",
+   "tiers": [
+    "cards"
+   ],
+   "path": "recsys/lightgcn/gowalla",
+   "fetch": {
+    "kind": "files",
+    "url": "https://raw.githubusercontent.com/kuandeng/LightGCN/b067ec05f16a24e0e1efe63cd82385f0c469af20/Data/gowalla/"
+   },
+   "files": {
+    "recsys/lightgcn/gowalla/item_list.txt": "6b186f92890cc3f0c15a6dae5d6285f125a302bb8c5ea0cd9a16cf9c16347139",
+    "recsys/lightgcn/gowalla/test.txt": "099a2a73924e4b754dc6efd730d764f492321b53c38eb93298850c83acf57be3",
+    "recsys/lightgcn/gowalla/train.txt": "7244696fdeb23911319cf7b689f2e15a3c4c92549c873a5677b44e3f13cc3e62",
+    "recsys/lightgcn/gowalla/user_list.txt": "5344c4d0deef610e1f148f23ad216a0db03b36f88834cd39a06786a672c5f5a1"
+   },
+   "bytes": 6864102
+  },
+  {
+   "id": "gowalla-checkins",
+   "tiers": [
+    "cards"
+   ],
+   "path": "recsys/raw_gowalla/loc-gowalla_totalCheckins.txt.gz",
+   "fetch": {
+    "kind": "file",
+    "url": "https://snap.stanford.edu/data/loc-gowalla_totalCheckins.txt.gz"
+   },
+   "files": {
+    "recsys/raw_gowalla/loc-gowalla_totalCheckins.txt.gz": "c1c3e19effba649b6c89aeab3c1f9459fad88cfdc2b460fc70fd54e295d83ea0"
+   },
+   "bytes": 105470044
+  },
+  {
+   "id": "amazon-book-release",
+   "tiers": [
+    "cards"
+   ],
+   "path": "recsys/lightgcn/amazon-book",
+   "fetch": {
+    "kind": "files",
+    "url": "https://raw.githubusercontent.com/kuandeng/LightGCN/b067ec05f16a24e0e1efe63cd82385f0c469af20/Data/amazon-book/"
+   },
+   "files": {
+    "recsys/lightgcn/amazon-book/item_list.txt": "8eee6caf6e666d95fc24ca8e0ec089ee90b1b2d1dc17933726359a6b3ecd62cb",
+    "recsys/lightgcn/amazon-book/test.txt": "6250754994dd953b91b48dccdd77a73f318e0634b4757c2abfcc9d33a54ab0f5",
+    "recsys/lightgcn/amazon-book/train.txt": "529066026085919381acd4ce19f69e9eafa4af3fef1a10119ea5551cc2ef8530",
+    "recsys/lightgcn/amazon-book/user_list.txt": "b59cc7e4a1826e1eb313c4f0557bdafbb70661346d9c93911b97fe0e9fbd7078"
+   },
+   "bytes": 20601125
+  },
+  {
+   "id": "amazon-2014-books-ratings",
+   "tiers": [
+    "cards"
+   ],
+   "path": "recsys/raw_amazon2014/ratings_Books.csv",
+   "fetch": {
+    "kind": "file",
+    "url": "https://mcauleylab.ucsd.edu/public_datasets/data/amazon/categoryFiles/ratings_Books.csv"
+   },
+   "files": {
+    "recsys/raw_amazon2014/ratings_Books.csv": "87d923ddac2aacf40c1d0e0e056dbf4bf69c9c7d41852c6b434e781e759c0707"
+   },
+   "bytes": 916259348
+  },
+  {
+   "id": "trec-dl-2019-topics",
+   "tiers": [
+    "cards"
+   ],
+   "path": "ir/msmarco-test2019-queries.tsv.gz",
+   "fetch": {
+    "kind": "file",
+    "url": "https://msmarco.z22.web.core.windows.net/msmarcoranking/msmarco-test2019-queries.tsv.gz"
+   },
+   "files": {
+    "ir/msmarco-test2019-queries.tsv.gz": "d66f01dfa8a3e60fe375ba645efc004f97ff4dd2a424536b8d5810c16182a3b5"
+   },
+   "bytes": 4276
+  },
+  {
+   "id": "trec-dl-2019-qrels",
+   "tiers": [
+    "cards"
+   ],
+   "path": "ir/2019qrels-pass.txt",
+   "fetch": {
+    "kind": "file",
+    "url": "https://trec.nist.gov/data/deep/2019qrels-pass.txt"
+   },
+   "files": {
+    "ir/2019qrels-pass.txt": "8a1f10d550732e4cd91d7fc49846a3784de4040972f583e69285a88f3c5fee92"
+   },
+   "bytes": 187092
+  },
+  {
+   "id": "trec-dl-2020-topics",
+   "tiers": [
+    "cards"
+   ],
+   "path": "ir/msmarco-test2020-queries.tsv.gz",
+   "fetch": {
+    "kind": "file",
+    "url": "https://msmarco.z22.web.core.windows.net/msmarcoranking/msmarco-test2020-queries.tsv.gz"
+   },
+   "files": {
+    "ir/msmarco-test2020-queries.tsv.gz": "0c749b29fd8ca0ccbf129a1bdd283e4081d6c49e96d6bf6290ba554d5d71f7f1"
+   },
+   "bytes": 4131
+  },
+  {
+   "id": "trec-dl-2020-qrels",
+   "tiers": [
+    "cards"
+   ],
+   "path": "ir/2020qrels-pass.txt",
+   "fetch": {
+    "kind": "file",
+    "url": "https://trec.nist.gov/data/deep/2020qrels-pass.txt"
+   },
+   "files": {
+    "ir/2020qrels-pass.txt": "60d4c34561f9687f8f73e0a752ba80ab80159b3e9c1bedd0a351f747ed6f5684"
+   },
+   "bytes": 218617
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "model": "popularity",
+ "mode": "E2",
+ "queries": "bench_test",
+ "filter": "target",
+ "n_queries": 6266,
+ "n_entities": 112199,
+ "atol": 1e-05,
+ "rtol": 0.0001,
+ "mrr_all_candidates": 0.021795636820354396,
+ "hits10_all_candidates": 0.04037663581232046
+}

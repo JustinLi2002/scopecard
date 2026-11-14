@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BenchScope card library</title>
+<meta name="description" content="Scope cards for benchmark releases: what each can never evaluate.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">Card library</a><a href="how-to-read.html">How to read a card</a><a href="app/index.html">Audit your own benchmark</a><a href="schema/benchscope-card-0.3.schema.json">Card schema</a></nav>
+<h1>BenchScope card library</h1>
+<p class="lede">What each benchmark can never evaluate, measured against the universe it claims to cover. A card is computed from the public release and a public universe, without labels or models. The last column is how far the paper's own description lets a reader decide the eligibility rule (2026-10 pilot).</p>
+<div class="panel tablewrap"><table>
+<thead><tr><th>Benchmark</th><th>Task</th><th>Excluded share (W)</th><th>Closest simple rule</th><th>Rule decidable from the paper</th></tr></thead>
+<tbody>
+<tr><td><a href="cards/fb15k-237.html">FB15k-237</a></td><td>KG link prediction</td><td class="num">no card</td><td>—</td><td><span class="tag mid">partial</span></td></tr>
+<tr><td><a href="cards/wn18rr.html">WN18RR</a></td><td>KG link prediction</td><td class="num">63.4% of entities</td><td>both ends, T = 5 <span class="tag bad">not reproduced</span> <span class="muted">Jaccard 0.595</span></td><td><span class="tag mid">partial</span></td></tr>
+<tr><td><a href="cards/yago3-10.html">YAGO3-10</a></td><td>KG link prediction</td><td class="num">95.4% of entities</td><td>both ends, T = 10 <span class="tag mid">approximately reproduced</span> <span class="muted">Jaccard 0.967</span></td><td><span class="tag mid">partial</span></td></tr>
+<tr><td><a href="cards/ogbl-collab.html">ogbl-collab</a></td><td>graph link prediction</td><td class="num">no card</td><td>—</td><td><span class="tag bad">undecidable</span></td></tr>
+<tr><td><a href="cards/ogbl-citation2.html">ogbl-citation2</a></td><td>query level</td><td class="num">20.3% of queries</td><td>threshold, T = 6 <span class="tag good">reproduced</span> <span class="muted">Jaccard 1.000</span></td><td><span class="tag mid">partial</span></td></tr>
+<tr><td><a href="cards/gowalla.html">Gowalla</a></td><td>recommendation</td><td class="num">99.1% of unobserved user–item pairs</td><td>kcore, T = 10 <span class="tag mid">approximately reproduced</span> <span class="muted">Jaccard 0.9999</span></td><td><span class="tag mid">partial</span></td></tr>
+<tr><td><a href="cards/yelp2018.html">Yelp2018</a></td><td>recommendation</td><td class="num">no card</td><td>—</td><td><span class="tag mid">decidable, unverified</span></td></tr>
+<tr><td><a href="cards/amazon-book.html">Amazon-Book</a></td><td>recommendation</td><td class="num">99.97% of unobserved user–item pairs</td><td>kcore, T = 14 <span class="tag bad">not reproduced</span> <span class="muted">Jaccard 0.726</span></td><td><span class="tag mid">partial</span></td></tr>
+<tr><td><a href="cards/trec-dl-2019-passage.html">TREC DL 2019 passage</a></td><td>query level</td><td class="num">78.5% of queries</td><td>stated topic rule <span class="tag good">holds on released topics</span></td><td><span class="tag good">verified</span></td></tr>
+<tr><td><a href="cards/trec-dl-2020-passage.html">TREC DL 2020 passage</a></td><td>query level</td><td class="num">73.0% of queries</td><td>stated topic rule <span class="tag good">holds on released topics</span></td><td><span class="tag good">verified</span></td></tr>
+</tbody></table></div>
+<p class="lede">7 of 10 benchmarks have a card; each page without one says what is missing. To add a benchmark, run the auditor on its release and open a pull request with the card (see the card schema).</p>
+<footer>
+<p>Cards written by benchscope-audit 0.0.1 (schema benchscope-card/0.3). Every number on these pages is read from a card or from the 2026-10 pilot table.</p>
+<p>Biology benchmarks are added once the papers that audit them are published.</p>
+</footer>
+</main>
+</body>
+</html>

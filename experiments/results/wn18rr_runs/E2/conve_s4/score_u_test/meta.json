@@ -1,0 +1,13 @@
+{
+ "checkpoint": "/home/anon/benchscope4/runs/E2/conve_s4/checkpoint_best.pt",
+ "checkpoint_sha256": "090f1a804ff4d5fa7b17a438f9c188e644872f41c7062612589e9f11463ea9c9",
+ "mode": "E2",
+ "queries": "u_test",
+ "filter": "target",
+ "n_queries": 6268,
+ "n_entities": 112199,
+ "atol": 1e-05,
+ "rtol": 0.0001,
+ "mrr_all_candidates": 0.6201969644254859,
+ "hits10_all_candidates": 0.6561901723037652
+}

@@ -1,0 +1,596 @@
+{
+ "benchmark": {
+  "files_sha256": {
+   "test.txt": "0383bceaaa1096cf3c03ec021ed0048068e2355dbfc0239b292cefdac821cec5",
+   "train.txt": "038612e783c215ee5f3ca9fbfca27b8d0739be1028fe4ee7c174aecf0b83d5df",
+   "valid.txt": "453ce7202afa58094a04d2b1560ee2b02660f1c260b32ce6651c8ccedd1028ab"
+  },
+  "name": "WN18RR",
+  "splits": {
+   "test": 3134,
+   "train": 86835,
+   "valid": 3034
+  }
+ },
+ "comparison": {
+  "W": 0.633716,
+  "W_source": "filtered test queries on the universe",
+  "applicable": true,
+  "assumptions": [
+   "a fixed positive reference",
+   "excluded candidates weighted like the benchmark candidates",
+   "delta_O is the mean per-query difference over the same 6,266 test queries, each ranked against its kept candidates under the filter of exclusion.per_query",
+   "W = 0.6337 is the mean of the per-query excluded shares W_q (filtered test queries on the universe); c* is then exact for c, the W_q-weighted mean of the per-query changes (Corollary 1, which writes it as delta_O - delta_U + Cov(W_q, c_q) / W); the delta_U threshold also takes that covariance as zero"
+  ],
+  "c_star": 0.022408,
+  "delta_O": -0.0142,
+  "delta_U_break_even": 0.008208,
+  "metric": "auc",
+  "statement": "The second model leads by 0.0142 AUC on the benchmark. On the declared universe that ordering reverses exactly when the change between the two regions, c (the per-query changes delta_O,q - delta_U,q averaged with weights W_q), has the sign of delta_O and its magnitude exceeds c* = |delta_O| / mean(W_q) = 0.02241. This holds for a delta_O measured on the same 6,266 test queries, each ranked against its kept candidates under the filter above; for a difference from another query set or from the benchmark's own filter it carries no guarantee, and delta_O has to be recomputed on these queries. If the per-query shares do not co-vary with the per-query changes, the ordering reverses when the models' difference on the excluded part is in the opposite direction and larger than 0.008208."
+ },
+ "counted": "the 112,199 WordNet 3.0 synsets that carry at least one triple of its 11 relations",
+ "depth_profile": {
+  "by_depth": [
+   {
+    "depth_from": 1,
+    "depth_to": 1,
+    "excluded_share": 0.926456,
+    "units": 35122
+   },
+   {
+    "depth_from": 2,
+    "depth_to": 2,
+    "excluded_share": 0.779685,
+    "units": 25754
+   },
+   {
+    "depth_from": 3,
+    "depth_to": 4,
+    "excluded_share": 0.512512,
+    "units": 26415
+   },
+   {
+    "depth_from": 5,
+    "depth_to": 9,
+    "excluded_share": 0.234915,
+    "units": 17053
+   },
+   {
+    "depth_from": 10,
+    "depth_to": 19,
+    "excluded_share": 0.132879,
+    "units": 5870
+   },
+   {
+    "depth_from": 20,
+    "depth_to": 49,
+    "excluded_share": 0.080969,
+    "units": 1692
+   },
+   {
+    "depth_from": 50,
+    "depth_to": 99,
+    "excluded_share": 0.054187,
+    "units": 203
+   },
+   {
+    "depth_from": 100,
+    "depth_to": null,
+    "excluded_share": 0.033333,
+    "units": 90
+   }
+  ],
+  "excluded_depth_quantiles": {
+   "10": 1.0,
+   "25": 1.0,
+   "50": 2.0,
+   "75": 3.0,
+   "90": 4.0
+  },
+  "included_depth_quantiles": {
+   "10": 2.0,
+   "25": 3.0,
+   "50": 4.0,
+   "75": 7.0,
+   "90": 13.0
+  }
+ },
+ "derived_scope": {
+  "curve": [
+   {
+    "W": 0.633642,
+    "d": 1,
+    "included": 41105,
+    "units": 112199
+   },
+   {
+    "W": 0.500214,
+    "d": 2,
+    "included": 38522,
+    "units": 77077
+   },
+   {
+    "W": 0.359975,
+    "d": 3,
+    "included": 32848,
+    "units": 51323
+   },
+   {
+    "W": 0.278529,
+    "d": 4,
+    "included": 24271,
+    "units": 33641
+   },
+   {
+    "W": 0.198209,
+    "d": 5,
+    "included": 19971,
+    "units": 24908
+   },
+   {
+    "W": 0.178029,
+    "d": 6,
+    "included": 15264,
+    "units": 18570
+   },
+   {
+    "W": 0.130459,
+    "d": 7,
+    "included": 12604,
+    "units": 14495
+   },
+   {
+    "W": 0.136065,
+    "d": 8,
+    "included": 9994,
+    "units": 11568
+   },
+   {
+    "W": 0.106783,
+    "d": 9,
+    "included": 8415,
+    "units": 9421
+   },
+   {
+    "W": 0.118523,
+    "d": 10,
+    "included": 6924,
+    "units": 7855
+   },
+   {
+    "W": 0.09599,
+    "d": 11,
+    "included": 5839,
+    "units": 6459
+   },
+   {
+    "W": 0.103683,
+    "d": 12,
+    "included": 5014,
+    "units": 5594
+   },
+   {
+    "W": 0.086567,
+    "d": 13,
+    "included": 4284,
+    "units": 4690
+   },
+   {
+    "W": 0.095319,
+    "d": 14,
+    "included": 3711,
+    "units": 4102
+   },
+   {
+    "W": 0.081939,
+    "d": 15,
+    "included": 3238,
+    "units": 3527
+   },
+   {
+    "W": 0.085977,
+    "d": 16,
+    "included": 2881,
+    "units": 3152
+   },
+   {
+    "W": 0.077034,
+    "d": 17,
+    "included": 2552,
+    "units": 2765
+   },
+   {
+    "W": 0.08155,
+    "d": 18,
+    "included": 2275,
+    "units": 2477
+   },
+   {
+    "W": 0.075323,
+    "d": 19,
+    "included": 2001,
+    "units": 2164
+   },
+   {
+    "W": 0.076071,
+    "d": 20,
+    "included": 1834,
+    "units": 1985
+   },
+   {
+    "W": 0.067537,
+    "d": 21,
+    "included": 1643,
+    "units": 1762
+   },
+   {
+    "W": 0.072229,
+    "d": 22,
+    "included": 1490,
+    "units": 1606
+   },
+   {
+    "W": 0.064271,
+    "d": 23,
+    "included": 1354,
+    "units": 1447
+   },
+   {
+    "W": 0.065476,
+    "d": 24,
+    "included": 1256,
+    "units": 1344
+   },
+   {
+    "W": 0.063531,
+    "d": 25,
+    "included": 1135,
+    "units": 1212
+   },
+   {
+    "W": 0.067736,
+    "d": 26,
+    "included": 1046,
+    "units": 1122
+   },
+   {
+    "W": 0.065239,
+    "d": 27,
+    "included": 960,
+    "units": 1027
+   },
+   {
+    "W": 0.065969,
+    "d": 28,
+    "included": 892,
+    "units": 955
+   },
+   {
+    "W": 0.059158,
+    "d": 29,
+    "included": 827,
+    "units": 879
+   },
+   {
+    "W": 0.062424,
+    "d": 30,
+    "included": 766,
+    "units": 817
+   },
+   {
+    "W": 0.064343,
+    "d": 31,
+    "included": 698,
+    "units": 746
+   },
+   {
+    "W": 0.066761,
+    "d": 32,
+    "included": 657,
+    "units": 704
+   },
+   {
+    "W": 0.058552,
+    "d": 33,
+    "included": 611,
+    "units": 649
+   },
+   {
+    "W": 0.060317,
+    "d": 34,
+    "included": 592,
+    "units": 630
+   },
+   {
+    "W": 0.055276,
+    "d": 35,
+    "included": 564,
+    "units": 597
+   },
+   {
+    "W": 0.05614,
+    "d": 36,
+    "included": 538,
+    "units": 570
+   },
+   {
+    "W": 0.050657,
+    "d": 37,
+    "included": 506,
+    "units": 533
+   },
+   {
+    "W": 0.053465,
+    "d": 38,
+    "included": 478,
+    "units": 505
+   },
+   {
+    "W": 0.052192,
+    "d": 39,
+    "included": 454,
+    "units": 479
+   },
+   {
+    "W": 0.053097,
+    "d": 40,
+    "included": 428,
+    "units": 452
+   }
+  ],
+  "d_min": 3,
+  "level": "units"
+ },
+ "exclusion": {
+  "W": 0.633642,
+  "W_all_synsets": 0.650643,
+  "by_strata": {
+   "pos": {
+    "a": {
+     "W": 0.927717,
+     "included": 1178,
+     "units": 16297
+    },
+    "n": {
+     "W": 0.608452,
+     "included": 32152,
+     "units": 82115
+    },
+    "r": {
+     "W": 0.898148,
+     "included": 11,
+     "units": 108
+    },
+    "v": {
+     "W": 0.432415,
+     "included": 7764,
+     "units": 13679
+    }
+   }
+  },
+  "excluded": 71094,
+  "included": 41105,
+  "per_query": {
+   "W_bar": 0.633716,
+   "W_q": {
+    "max": 0.636149,
+    "median": 0.63365,
+    "min": 0.632842
+   },
+   "protocol": "filtered ranking over the universe: a query's candidates are the universe's units minus its known answers (the universe's triples of its relation and the release's)",
+   "queries": 6266,
+   "queries_without_candidates": 0,
+   "queries_without_excluded": 0,
+   "queries_without_kept": 0,
+   "test_triples": 3134,
+   "test_triples_used": 3133
+  },
+  "units": 112199
+ },
+ "hygiene": {
+  "reverse_leakage": {
+   "by_relation": {
+    "_also_see": {
+     "leaking": 34,
+     "test": 56
+    },
+    "_derivationally_related_form": {
+     "leaking": 1011,
+     "test": 1074
+    },
+    "_has_part": {
+     "leaking": 0,
+     "test": 172
+    },
+    "_hypernym": {
+     "leaking": 0,
+     "test": 1251
+    },
+    "_instance_hypernym": {
+     "leaking": 0,
+     "test": 122
+    },
+    "_member_meronym": {
+     "leaking": 0,
+     "test": 253
+    },
+    "_member_of_domain_region": {
+     "leaking": 0,
+     "test": 26
+    },
+    "_member_of_domain_usage": {
+     "leaking": 0,
+     "test": 24
+    },
+    "_similar_to": {
+     "leaking": 3,
+     "test": 3
+    },
+    "_synset_domain_topic_of": {
+     "leaking": 0,
+     "test": 114
+    },
+    "_verb_group": {
+     "leaking": 38,
+     "test": 39
+    }
+   },
+   "leaking": 1086,
+   "share": 0.346522,
+   "test_triples": 3134
+  },
+  "unseen_test_units": {
+   "test_triples": 3134,
+   "test_triples_affected": 210,
+   "unseen_units": 209
+  }
+ },
+ "inputs": {},
+ "mapping": {
+  "ambiguous_ids": 0,
+  "ambiguous_triples": 0,
+  "mapped_ids": 40943,
+  "matched_triples": 92998,
+  "merged_examples": {
+   "00001740": [
+    "a00001740",
+    "n00001740",
+    "v00001740"
+   ],
+   "00003553": [
+    "a00003553",
+    "n00003553"
+   ],
+   "00025728": [
+    "a00025728",
+    "r00025728"
+   ],
+   "00047745": [
+    "n00047745",
+    "v00047745"
+   ],
+   "00055539": [
+    "a00055539",
+    "v00055539"
+   ]
+  },
+  "merged_ids": 161,
+  "release_ids": 40943,
+  "release_triples": 93003,
+  "route": "triples",
+  "unmapped_examples": [],
+  "unmapped_ids": 0,
+  "unmatched_examples": [
+   [
+    "05926358",
+    "_derivationally_related_form",
+    "01872745"
+   ],
+   [
+    "04639371",
+    "_derivationally_related_form",
+    "01299888"
+   ],
+   [
+    "04781349",
+    "_derivationally_related_form",
+    "00170156"
+   ],
+   [
+    "04840981",
+    "_derivationally_related_form",
+    "00226618"
+   ],
+   [
+    "05623181",
+    "_derivationally_related_form",
+    "00306314"
+   ]
+  ],
+  "unmatched_triples": 5
+ },
+ "notes": "Universe = WordNet 3.0 synsets carrying >= 1 triple of the benchmark relations (W); W_all_synsets also counts synsets with none. Depth = number of universe triples on the synset.",
+ "rule_check": null,
+ "rule_diagnosis": {
+  "best": {
+   "T": 5,
+   "family": "both_ends",
+   "jaccard": 0.594861,
+   "overlap": 29473,
+   "release": 41105,
+   "selected": 37914,
+   "verdict": "not reproduced"
+  },
+  "families": [
+   {
+    "T": 5,
+    "family": "both_ends",
+    "jaccard": 0.594861,
+    "overlap": 29473,
+    "release": 41105,
+    "selected": 37914,
+    "verdict": "not reproduced"
+   },
+   {
+    "T": 5,
+    "family": "threshold",
+    "jaccard": 0.592471,
+    "overlap": 29495,
+    "release": 41105,
+    "selected": 38173,
+    "verdict": "not reproduced"
+   },
+   {
+    "T": 4,
+    "family": "kcore",
+    "jaccard": 0.54607,
+    "overlap": 37236,
+    "release": 41105,
+    "selected": 64320,
+    "verdict": "not reproduced"
+   },
+   {
+    "T": 16,
+    "family": "seeds_neighbours",
+    "jaccard": 0.418493,
+    "overlap": 36462,
+    "release": 41105,
+    "selected": 82484,
+    "verdict": "not reproduced"
+   }
+  ],
+  "stated": {
+   "T": 15,
+   "family": "both_ends",
+   "jaccard": 0.148942,
+   "overlap": 6151,
+   "selected": 6344,
+   "verdict": "not reproduced"
+  },
+  "thresholds_searched": [
+   1,
+   40
+  ],
+  "unmapped_release_units": 0
+ },
+ "schema": "benchscope-card/0.3",
+ "scope_statement": "Comparisons on WN18RR license claims about the entities it can evaluate, which leave out 63.4% of the 112,199 WordNet 3.0 synsets that carry at least one triple of its 11 relations. The closest simple rule (both_ends, T = 5) is not reproduced (Jaccard 0.595). Caution: Left out of the per-query shares and the break-even: 1 of the 3,134 test triples (no matching triple in the universe); they use the other 3,133. A model difference measured on all test triples is on a different query set, for which the break-even carries no guarantee; recompute the difference on the 3,133 triples the shares use.",
+ "support": {
+  "basis": "Link prediction ranks each test query against the release entity set, so a universe entity absent from the release is never a candidate.",
+  "candidates": "every entity of the release, in filtered head and tail ranking",
+  "structural": true
+ },
+ "task": "kg_link_prediction",
+ "tool_version": "0.0.1",
+ "universe": {
+  "fingerprint": "sha256:0e77d7b548e8f9dfa3db8792cbe0cb6d373395cda3e9e7bf51383f5049806f10",
+  "name": "WordNet 3.0",
+  "relations": 11,
+  "units": 117659,
+  "units_with_relations": 112199,
+  "version": "pos_offset, 11 relations"
+ },
+ "warnings": [
+  "Left out of the per-query shares and the break-even: 1 of the 3,134 test triples (no matching triple in the universe); they use the other 3,133. A model difference measured on all test triples is on a different query set, for which the break-even carries no guarantee; recompute the difference on the 3,133 triples the shares use."
+ ]
+}

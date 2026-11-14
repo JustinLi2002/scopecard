@@ -1,0 +1,50 @@
+{
+ "card": "amazon-book.json",
+ "command": [
+  "benchscope-audit",
+  "recsys-ratings",
+  "--release",
+  "amazon-book/",
+  "--ratings",
+  "ratings_Books.csv",
+  "--name",
+  "Amazon-Book",
+  "--universe-name",
+  "Amazon 2014 Books ratings",
+  "--positives",
+  "release",
+  "--out",
+  "card.json"
+ ],
+ "inputs": [
+  {
+   "display": "amazon-book/",
+   "id": "release",
+   "local": "recsys/lightgcn/amazon-book",
+   "source": "https://github.com/kuandeng/LightGCN/tree/b067ec05f16a24e0e1efe63cd82385f0c469af20/Data/amazon-book"
+  },
+  {
+   "display": "ratings_Books.csv",
+   "id": "raw",
+   "local": "recsys/raw_amazon2014/ratings_Books.csv",
+   "source": "https://mcauleylab.ucsd.edu/public_datasets/data/amazon/categoryFiles/ratings_Books.csv"
+  }
+ ],
+ "name": "Amazon-Book",
+ "pilot": {
+  "W_pilot": "0.999742 (unobserved user-item pairs)",
+  "decidability": "partial",
+  "domain": "recommendation",
+  "evaluation_protocol": "full ranking over all items not in the user's training set; Recall@20, NDCG@20",
+  "negative_source": "implicit: all items the user has not interacted with in train",
+  "notes": "different release and threshold from [P2]'s Amazon 2023 five-cores; no [P2] number re-used",
+  "rule_found_in_code_or_release": "every release interaction is a 2014 Books rating (all 2984108), ratings 1-5 and years 1996-2014 all present, and the release is a 10-core internally; but the raw 10-core has 158650 users and 128939 items, of which the release keeps 52643 and 91599 (all inside the raw 10-core); rating thresholds, time windows and the reviews-with-text subset do not reproduce it",
+  "rule_stated_in_paper": "'we use the 10-core setting to ensure that each user and item have at least ten interactions'",
+  "sources_checked": "NGCF Sec. 4.1.1 (cites He & McAuley 2016); LightGCN Sec. 4; kuandeng/LightGCN Data/amazon-book; Amazon 2014 ratings_Books.csv and reviews_Books_5.json.gz (mcauleylab.ucsd.edu)",
+  "verification": "release checked against the raw 10-core (Jaccard users 0.3318, items 0.7104, pairs 0.6347; release inside the core); the extra reduction is not identified"
+ },
+ "pilot_row": "Amazon-Book (NGCF / LightGCN 10-core)",
+ "slug": "amazon-book",
+ "task": "recommendation",
+ "why_no_card": null
+}

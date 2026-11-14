@@ -1,0 +1,345 @@
+{
+ "benchmark": {
+  "files_sha256": {
+   "item_list.txt": "6b186f92890cc3f0c15a6dae5d6285f125a302bb8c5ea0cd9a16cf9c16347139",
+   "test.txt": "099a2a73924e4b754dc6efd730d764f492321b53c38eb93298850c83acf57be3",
+   "train.txt": "7244696fdeb23911319cf7b689f2e15a3c4c92549c873a5677b44e3f13cc3e62",
+   "user_list.txt": "5344c4d0deef610e1f148f23ad216a0db03b36f88834cd39a06786a672c5f5a1"
+  },
+  "interactions": 1027370,
+  "name": "Gowalla"
+ },
+ "comparison": null,
+ "counted": "the 137,177,550,814 unobserved user-item pairs among the 107,092 users and 1,280,969 locations of SNAP Gowalla check-ins",
+ "depth_profile": {
+  "by_depth": [
+   {
+    "depth_from": 1,
+    "depth_to": 1,
+    "excluded_share": 1.0,
+    "units": 641962
+   },
+   {
+    "depth_from": 2,
+    "depth_to": 2,
+    "excluded_share": 1.0,
+    "units": 275393
+   },
+   {
+    "depth_from": 3,
+    "depth_to": 4,
+    "excluded_share": 1.0,
+    "units": 213116
+   },
+   {
+    "depth_from": 5,
+    "depth_to": 9,
+    "excluded_share": 1.0,
+    "units": 131436
+   },
+   {
+    "depth_from": 10,
+    "depth_to": 19,
+    "excluded_share": 0.574954,
+    "units": 60257
+   },
+   {
+    "depth_from": 20,
+    "depth_to": 49,
+    "excluded_share": 0.385293,
+    "units": 41885
+   },
+   {
+    "depth_from": 50,
+    "depth_to": 99,
+    "excluded_share": 0.227375,
+    "units": 14707
+   },
+   {
+    "depth_from": 100,
+    "depth_to": null,
+    "excluded_share": 0.127673,
+    "units": 9305
+   }
+  ],
+  "excluded_depth_quantiles": {
+   "10": 1.0,
+   "25": 1.0,
+   "50": 2.0,
+   "75": 3.0,
+   "90": 6.0
+  },
+  "included_depth_quantiles": {
+   "10": 12.0,
+   "25": 16.0,
+   "50": 25.0,
+   "75": 54.0,
+   "90": 109.0
+  }
+ },
+ "derived_scope": {
+  "curve": [
+   {
+    "W": 0.991088,
+    "d": 1,
+    "included": 70839,
+    "units": 1388061
+   },
+   {
+    "W": 0.980779,
+    "d": 2,
+    "included": 70839,
+    "units": 746099
+   },
+   {
+    "W": 0.964889,
+    "d": 3,
+    "included": 70839,
+    "units": 470706
+   },
+   {
+    "W": 0.943202,
+    "d": 4,
+    "included": 70839,
+    "units": 334425
+   },
+   {
+    "W": 0.915611,
+    "d": 5,
+    "included": 70839,
+    "units": 257590
+   },
+   {
+    "W": 0.882463,
+    "d": 6,
+    "included": 70839,
+    "units": 210314
+   },
+   {
+    "W": 0.844081,
+    "d": 7,
+    "included": 70839,
+    "units": 178992
+   },
+   {
+    "W": 0.79945,
+    "d": 8,
+    "included": 70839,
+    "units": 156426
+   },
+   {
+    "W": 0.747279,
+    "d": 9,
+    "included": 70839,
+    "units": 139164
+   },
+   {
+    "W": 0.690144,
+    "d": 10,
+    "included": 70839,
+    "units": 126154
+   },
+   {
+    "W": 0.643757,
+    "d": 11,
+    "included": 68872,
+    "units": 115624
+   },
+   {
+    "W": 0.60701,
+    "d": 12,
+    "included": 65898,
+    "units": 106826
+   },
+   {
+    "W": 0.576903,
+    "d": 13,
+    "included": 62641,
+    "units": 99306
+   },
+   {
+    "W": 0.551632,
+    "d": 14,
+    "included": 59551,
+    "units": 92920
+   },
+   {
+    "W": 0.529911,
+    "d": 15,
+    "included": 56614,
+    "units": 87298
+   },
+   {
+    "W": 0.510082,
+    "d": 16,
+    "included": 53917,
+    "units": 82180
+   },
+   {
+    "W": 0.492199,
+    "d": 17,
+    "included": 51429,
+    "units": 77600
+   },
+   {
+    "W": 0.473493,
+    "d": 18,
+    "included": 49163,
+    "units": 73317
+   },
+   {
+    "W": 0.456477,
+    "d": 19,
+    "included": 47107,
+    "units": 69467
+   },
+   {
+    "W": 0.439657,
+    "d": 20,
+    "included": 45227,
+    "units": 65897
+   }
+  ],
+  "d_min": 17,
+  "level": "pairs"
+ },
+ "exclusion": {
+  "W": 0.948965,
+  "W_pairs": 0.991088,
+  "W_pairs_release_convention": 0.991088,
+  "by_part": {
+   "0": {
+    "W": 0.721193,
+    "included": 29858,
+    "units": 107092
+   },
+   "1": {
+    "W": 0.968008,
+    "included": 40981,
+    "units": 1280969
+   }
+  },
+  "candidate_pairs": 137177550814,
+  "excluded": 1317222,
+  "included": 70839,
+  "observed_pairs": 3981334,
+  "observed_pairs_release": 1027370,
+  "observed_pairs_retained": 1027370,
+  "part0_retained": 29858,
+  "part0_units": 107092,
+  "part1_retained": 40981,
+  "part1_units": 1280969,
+  "per_query": {
+   "W_bar": 0.968032,
+   "W_q": {
+    "max": 0.968757,
+    "median": 0.968022,
+    "min": 0.967987
+   },
+   "excluded_queries_share": 0.721193,
+   "protocol": "all-item ranking over the universe: a test user's candidates are the universe's items minus every item the user is known to have interacted with (universe and release)",
+   "queries": 29858,
+   "queries_without_candidates": 0,
+   "queries_without_excluded": 0,
+   "queries_without_kept": 0
+  },
+  "positives_convention": "universe",
+  "release_convention_note": "Pilot-table convention: release positives inside the retained units, universe positives in the denominator. The two counts come from different candidate sets, so this is not a share and is kept only for comparison with the 2026-10 pilot table; W_pairs is the share.",
+  "units": 1388061
+ },
+ "hygiene": null,
+ "inputs": {
+  "loc-gowalla_totalCheckins.txt.gz": {
+   "expected": "5 whitespace-separated fields: user, time, latitude, longitude, location",
+   "lines": 6442892,
+   "skipped": 0
+  }
+ },
+ "mapping": {
+  "ambiguous_ids": 0,
+  "ambiguous_triples": 0,
+  "mapped_ids": 70839,
+  "matched_triples": 0,
+  "merged_examples": {},
+  "merged_ids": 0,
+  "release_ids": 70839,
+  "release_triples": 0,
+  "route": "direct",
+  "unmapped_examples": [],
+  "unmapped_ids": 0,
+  "unmatched_examples": [],
+  "unmatched_triples": 0
+ },
+ "notes": "Universe = distinct (user, location) pairs in the raw check-ins; candidates = unobserved pairs.",
+ "rule_check": null,
+ "rule_diagnosis": {
+  "best": {
+   "T": 10,
+   "family": "kcore",
+   "jaccard": 0.999901,
+   "overlap": 70839,
+   "release": 70839,
+   "selected": 70846,
+   "verdict": "approximately reproduced"
+  },
+  "families": [
+   {
+    "T": 10,
+    "family": "kcore",
+    "jaccard": 0.999901,
+    "overlap": 70839,
+    "release": 70839,
+    "selected": 70846,
+    "verdict": "approximately reproduced"
+   },
+   {
+    "T": 12,
+    "family": "both_ends",
+    "jaccard": 0.609828,
+    "overlap": 65898,
+    "release": 70839,
+    "selected": 103119,
+    "verdict": "not reproduced"
+   },
+   {
+    "T": 12,
+    "family": "threshold",
+    "jaccard": 0.589602,
+    "overlap": 65898,
+    "release": 70839,
+    "selected": 106826,
+    "verdict": "not reproduced"
+   }
+  ],
+  "stated": {
+   "T": 10,
+   "family": "kcore",
+   "jaccard": 0.999901,
+   "overlap": 70839,
+   "selected": 70846,
+   "verdict": "approximately reproduced"
+  },
+  "thresholds_searched": [
+   1,
+   20
+  ],
+  "unmapped_release_units": 0
+ },
+ "schema": "benchscope-card/0.3",
+ "scope_statement": "Comparisons on Gowalla license claims about the user-item pairs it can evaluate, which leave out 99.1% of the 137,177,550,814 unobserved user-item pairs among the 107,092 users and 1,280,969 locations of SNAP Gowalla check-ins. The closest simple rule (kcore, T = 10) is approximately reproduced (Jaccard 0.9999).",
+ "support": {
+  "basis": "NGCF and LightGCN rank all release items for each test user, so users and items absent from the release are never evaluated.",
+  "candidates": "every item of the release, for each test user of the release (all-item ranking)",
+  "structural": true
+ },
+ "task": "recommendation",
+ "tool_version": "0.0.1",
+ "universe": {
+  "fingerprint": "sha256:87c5b8d253be6f28cbb9be2b67f2e75e6e39415ee7d3529393afc0b7bac80709",
+  "name": "SNAP Gowalla check-ins",
+  "pairs": 3981334,
+  "units": 1388061,
+  "version": "loc-gowalla_totalCheckins.txt.gz"
+ },
+ "warnings": []
+}

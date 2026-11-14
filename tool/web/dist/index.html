@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BenchScope audit</title>
+<meta name="description" content="Measure what a benchmark can never evaluate against a declared universe. Runs in your browser; your files are never uploaded.">
+<style>
+:root {
+  --bg: #f7f7f5; --panel: #ffffff; --ink: #1d1f22; --muted: #5d636b; --line: #dfe1e4;
+  --accent: #2f5d8a; --accent-ink: #ffffff; --accent-soft: #e7eef6; --warn: #8a5a00; --warn-soft: #fbf1dc;
+  --bad: #9b2c2c; --bad-soft: #fbe9e9; --good: #2d6a3e; --code: #f0f1f3;
+  --radius: 10px; --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15171a; --panel: #1d2024; --ink: #e8e9eb; --muted: #a2a8b0; --line: #33373d;
+    --accent: #7fb0e0; --accent-ink: #0f1a24; --accent-soft: #1f2b37; --warn: #e3b25a; --warn-soft: #2e2617;
+    --bad: #f08a8a; --bad-soft: #351d1d; --good: #7cc48f; --code: #262a2f;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #15171a; --panel: #1d2024; --ink: #e8e9eb; --muted: #a2a8b0; --line: #33373d;
+  --accent: #7fb0e0; --accent-ink: #0f1a24; --accent-soft: #1f2b37; --warn: #e3b25a; --warn-soft: #2e2617;
+  --bad: #f08a8a; --bad-soft: #351d1d; --good: #7cc48f; --code: #262a2f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 var(--sans); }
+main { max-width: 920px; margin: 0 auto; padding: 32px 16px 64px; }
+h1 { font-size: 1.9rem; line-height: 1.2; margin: 0 0 6px; letter-spacing: -0.01em; }
+.lede { color: var(--muted); margin: 0 0 20px; max-width: 46em; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; margin: 16px 0; }
+.privacy { display: flex; gap: 12px; align-items: flex-start; }
+.privacy strong { display: block; }
+.privacy p { margin: 2px 0 0; color: var(--muted); font-size: 0.95rem; }
+.status { display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; color: var(--muted); }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--warn); flex: none; }
+.status.ready .dot { background: var(--good); }
+.status.failed .dot { background: var(--bad); }
+fieldset { border: 0; padding: 0; margin: 0; }
+legend { font-weight: 600; margin-bottom: 8px; }
+.tabs { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 8px; }
+.tabs label { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; cursor: pointer; background: var(--panel); }
+.tabs label small { display: block; color: var(--muted); font-size: 0.82rem; }
+.tabs input { position: absolute; opacity: 0; pointer-events: none; }
+.tabs input:checked + label { border-color: var(--accent); background: var(--accent-soft); }
+.tabs input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: 2px; }
+form.task { display: none; }
+form.task.active { display: block; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px 18px; }
+.field label { display: block; font-weight: 600; font-size: 0.93rem; margin-bottom: 4px; }
+.field .hint { color: var(--muted); font-size: 0.84rem; margin-top: 3px; }
+input[type=text], input[type=number], select { width: 100%; padding: 8px 10px; border: 1px solid var(--line); border-radius: 7px;
+  background: var(--bg); color: var(--ink); font: inherit; }
+input[type=file] { width: 100%; font-size: 0.9rem; color: var(--muted); }
+input:focus-visible, select:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.note { background: var(--warn-soft); color: var(--ink); border-radius: 8px; padding: 10px 12px; font-size: 0.9rem; margin-top: 14px; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 18px; }
+button { font: inherit; border-radius: 8px; padding: 9px 16px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); cursor: pointer; }
+button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+button:disabled { opacity: 0.55; cursor: not-allowed; }
+.error { background: var(--bad-soft); color: var(--bad); border-radius: 8px; padding: 10px 12px; white-space: pre-wrap; font-family: var(--mono); font-size: 0.85rem; }
+#result[hidden], .error[hidden] { display: none; }
+.statement { font-size: 1.12rem; border-left: 4px solid var(--accent); padding: 4px 0 4px 14px; margin: 0 0 14px; }
+.card h1 { font-size: 1.35rem; margin: 0 0 10px; }
+.card h2 { font-size: 1.08rem; margin: 22px 0 6px; padding-top: 10px; border-top: 1px solid var(--line); }
+.card blockquote { display: none; }
+.card table { border-collapse: collapse; width: 100%; font-size: 0.92rem; margin: 6px 0; }
+.card th, .card td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.card .tablewrap { overflow-x: auto; }
+.card ul { padding-left: 1.2em; }
+code, .cmd { font-family: var(--mono); font-size: 0.86rem; background: var(--code); border-radius: 5px; padding: 1px 5px; }
+.card code, .statement code, .warnings code { overflow-wrap: anywhere; }
+.cmd { display: block; padding: 10px 12px; overflow-x: auto; white-space: pre; margin-top: 6px; }
+nav.top { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.92rem; margin: 0 0 14px; }
+nav.top[hidden] { display: none; }
+nav.top a, .lede a { color: var(--accent); }
+.warnings { background: var(--warn-soft); border-left: 4px solid var(--warn); border-radius: 8px; padding: 10px 14px; margin: 0 0 14px; }
+.warnings[hidden] { display: none; }
+.warnings strong { color: var(--warn); }
+.warnings ul { margin: 6px 0 0; padding-left: 1.2em; }
+.example-note { color: var(--muted); font-size: 0.92rem; margin: 0 0 10px; }
+.example-note[hidden] { display: none; }
+details.terms { margin-top: 10px; font-size: 0.93rem; }
+details.terms summary { cursor: pointer; font-weight: 600; }
+details.terms dl { margin: 8px 0 0; }
+details.terms dt { font-weight: 600; margin-top: 6px; }
+details.terms dd { margin: 0 0 0 1em; color: var(--muted); }
+.error details { margin-top: 8px; font-size: 0.8rem; }
+#cancel[hidden], .field[hidden] { display: none; }
+.stale { background: var(--warn-soft); border-left: 4px solid var(--warn); border-radius: 8px; padding: 10px 14px; margin: 0 0 14px; font-weight: 600; }
+.stale[hidden] { display: none; }
+#result.is-stale .summary, #result.is-stale details.more { opacity: 0.55; }
+.summary { display: grid; gap: 12px; }
+.summary section { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
+.summary h3 { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin: 0 0 6px; }
+.summary .headline { font-size: 1.08rem; margin: 0 0 8px; }
+.summary ul { margin: 0; padding-left: 1.2em; }
+.summary li { margin: 3px 0; }
+.bar { display: flex; height: 12px; border-radius: 6px; overflow: hidden; background: var(--line); margin: 4px 0 4px; }
+.bar span { display: block; height: 100%; }
+.bar .in { background: var(--accent); }
+.bar .out { background: var(--warn); }
+.bar-legend { font-size: 0.86rem; color: var(--muted); }
+.tag { display: inline-block; font-size: 0.75rem; border-radius: 4px; padding: 0 6px; margin-left: 6px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+.tag.verified { color: var(--good); border-color: var(--good); }
+.tag.declared, .tag.approx { color: var(--warn); border-color: var(--warn); }
+details.more { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 10px; }
+details.more > summary { cursor: pointer; font-weight: 600; }
+button.copy { margin-top: 6px; padding: 4px 10px; font-size: 0.85rem; }
+footer { color: var(--muted); font-size: 0.85rem; margin-top: 28px; }
+footer p { margin: 4px 0; }
+</style>
+</head>
+<body>
+<main>
+  <nav class="top" id="site-nav" hidden><a href="../index.html">Card library</a><a href="../how-to-read.html">How to read a card</a><a href="../schema/benchscope-card-0.3.schema.json">Card schema</a></nav>
+  <h1>BenchScope audit</h1>
+  <p class="lede">Compare a benchmark release with the universe it claims to cover. The scope card reports what the release can never evaluate (W), or only what it covers when its sampling rule is not shown, whether a simple rule reproduces it, and how large a difference on the excluded part would have to be to reverse an AUC comparison. No labels, models or GPU are needed.</p>
+  <div class="actions" style="margin-top:0">
+    <button id="example" type="button">Show an example card (WN18RR)</button>
+  </div>
+  <details class="terms">
+    <summary>What the card's terms mean</summary>
+    <dl>
+      <dt>W</dt><dd>The share of the universe that the benchmark can never evaluate, counted in the units the card names (entities, user–item pairs, topics). When the release does not show how its pairs were drawn, the card reports the share it does not cover instead.</dd>
+      <dt>W_pairs</dt><dd>The same share counted over candidate pairs (users × items, or pairs of units) rather than single units.</dd>
+      <dt>Jaccard</dt><dd>How well a simple construction rule reproduces the release: the overlap between the units the rule keeps and the units the release contains (1 = exactly; 0.95 or more = approximately).</dd>
+      <dt>d_min</dt><dd>The smallest depth threshold (facts, references or interactions per unit) at which the benchmark covers at least half of the restricted universe (W ≤ 0.5): the narrowest population it represents well.</dd>
+      <dt>c*</dt><dd>For a difference Δ<sub>O</sub> between two models on the benchmark, in AUC: how large the change between the benchmark and the excluded part (c = Δ<sub>O</sub> − Δ<sub>U</sub>) must be, with the sign of Δ<sub>O</sub>, for the ordering to reverse on the universe. It needs no labels; c itself does.</dd>
+    </dl>
+    <p id="terms-more" hidden><a href="../how-to-read.html">More in “How to read a card”</a>.</p>
+  </details>
+
+  <div class="panel privacy">
+    <div>
+      <strong>Your files stay on this computer.</strong>
+      <p>The page downloads the Python runtime (Pyodide 0.27.7 with NumPy, from cdn.jsdelivr.net) and its own files: the package and, for WordNet audits, a 2.4 MB WordNet table. The benchmark files you choose are read inside the browser and are never sent anywhere.</p>
+      <p class="status" id="status" role="status" aria-live="polite"><span class="dot"></span><span id="status-text">Loading Python…</span></p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <fieldset>
+      <legend>What are you auditing?</legend>
+      <div class="tabs" role="radiogroup">
+        <input type="radio" name="task" id="t-wn" value="kg-wordnet" checked><label for="t-wn">KG vs WordNet 3.0<small>WN18, WN18RR; universe built in</small></label>
+        <input type="radio" name="task" id="t-kg" value="kg-triples"><label for="t-kg">KG vs a triple file<small>release ids = universe ids</small></label>
+        <input type="radio" name="task" id="t-rs" value="recsys"><label for="t-rs">Recommendation<small>LightGCN format vs raw interactions</small></label>
+        <input type="radio" name="task" id="t-q" value="query-qrels"><label for="t-q">Query level<small>TREC-style qrels</small></label>
+        <input type="radio" name="task" id="t-pc" value="pair-classification"><label for="t-pc">Pair classification<small>protein–protein, drug–target</small></label>
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="panel">
+    <form class="task active" data-task="kg-wordnet">
+      <div class="grid">
+        <div class="field"><label for="wn-release">Release files</label><input id="wn-release" type="file" multiple accept=".txt,.tsv">
+          <div class="hint">train, valid and test triples (tab-separated head, relation, tail).</div></div>
+        <div class="field"><label for="wn-name">Benchmark name</label><input id="wn-name" type="text" value="WN18RR"></div>
+        <div class="field"><label for="wn-relations">Relation set</label><select id="wn-relations"><option value="wn18rr">WN18RR (11 relations)</option><option value="wn18">WN18 (18 relations)</option></select></div>
+        <div class="field"><label for="wn-identity">Synset identity</label><select id="wn-identity"><option value="pos_offset">POS + offset (correct)</option><option value="bare_offset">bare offset (the benchmark's own keying)</option></select></div>
+        <div class="field"><label for="wn-delta">Model difference on the benchmark (optional)</label><input id="wn-delta" type="number" step="any" placeholder="e.g. -0.0142">
+          <div class="hint">first model minus second, on the benchmark's own candidates.</div></div>
+        <div class="field"><label for="wn-metric">Metric of that difference</label><select id="wn-metric"><option value="auc">AUC (per query or pooled)</option><option value="mrr">MRR</option><option value="hits">Hits@k</option></select><div class="hint">Break-even thresholds exist only for AUC; MRR and Hits@k are not linear in the candidate mix.</div></div>
+      </div>
+    </form>
+
+    <form class="task" data-task="kg-triples">
+      <div class="grid">
+        <div class="field"><label for="kg-release">Release files</label><input id="kg-release" type="file" multiple accept=".txt,.tsv">
+          <div class="hint">train, valid and test triples.</div></div>
+        <div class="field"><label for="kg-universe">Universe triples</label><input id="kg-universe" type="file">
+          <div class="hint">head, relation, tail TSV (.gz allowed) or a YAGO 3 Turtle theme.</div></div>
+        <div class="field"><label for="kg-format">Universe format</label><select id="kg-format"><option value="tsv">TSV</option><option value="yago-ttl">YAGO 3 Turtle (.ttl)</option></select></div>
+        <div class="field"><label for="kg-name">Benchmark name</label><input id="kg-name" type="text" value="KG benchmark"></div>
+        <div class="field"><label for="kg-family">Stated rule (optional)</label><select id="kg-family"><option value="">none</option><option value="threshold">threshold</option><option value="both_ends">both ends</option><option value="seeds_neighbours">seeds + neighbours</option><option value="kcore">k-core</option></select></div>
+        <div class="field"><label for="kg-T">Stated threshold T</label><input id="kg-T" type="number" step="1" min="1" placeholder="e.g. 10"></div>
+        <div class="field"><label for="kg-delta">Model difference on the benchmark (optional)</label><input id="kg-delta" type="number" step="any"></div>
+        <div class="field"><label for="kg-metric">Metric of that difference</label><select id="kg-metric"><option value="auc">AUC (per query or pooled)</option><option value="mrr">MRR</option><option value="hits">Hits@k</option></select><div class="hint">Break-even thresholds exist only for AUC; MRR and Hits@k are not linear in the candidate mix.</div></div>
+      </div>
+      <p class="note">Large universes such as YAGO 3 (440 MB) need the command line; the browser runs out of memory.</p>
+    </form>
+
+    <form class="task" data-task="recsys">
+      <div class="grid">
+        <div class="field"><label for="rs-release">Release files</label><input id="rs-release" type="file" multiple accept=".txt">
+          <div class="hint">train.txt, test.txt, user_list.txt, item_list.txt (LightGCN / NGCF format).</div></div>
+        <div class="field"><label for="rs-raw">Raw interactions</label><input id="rs-raw" type="file"></div>
+        <div class="field"><label for="rs-kind">Raw format</label><select id="rs-kind"><option value="recsys-checkins">SNAP check-ins (e.g. Gowalla)</option><option value="recsys-ratings">Amazon 2014 ratings CSV</option></select></div>
+        <div class="field"><label for="rs-name">Benchmark name</label><input id="rs-name" type="text" value="Gowalla"></div>
+        <div class="field"><label for="rs-positives">Observed pairs inside the release</label><select id="rs-positives"><option value="universe">count from the raw data</option><option value="release">count from the release</option></select></div>
+        <div class="field"><label for="rs-k">Stated k-core</label><input id="rs-k" type="number" step="1" min="1" value="10"></div>
+      </div>
+      <p class="note">Raw files with tens of millions of interactions (Amazon Books) need the command line.</p>
+    </form>
+
+    <form class="task" data-task="query-qrels">
+      <div class="grid">
+        <div class="field"><label for="q-topics">Test topics</label><input id="q-topics" type="file">
+          <div class="hint">one topic per line, id in the first tab-separated field (.tsv or .tsv.gz).</div></div>
+        <div class="field"><label for="q-qrels">Qrels</label><input id="q-qrels" type="file"><div class="hint">topic, iteration, document, grade.</div></div>
+        <div class="field"><label for="q-corpus">Corpus size</label><input id="q-corpus" type="number" step="1" min="1" placeholder="8841823 for MS MARCO passage"></div>
+        <div class="field"><label for="q-name">Benchmark name</label><input id="q-name" type="text" value="TREC benchmark"></div>
+        <div class="field"><label for="q-grade">Lowest relevant grade</label><input id="q-grade" type="number" step="1" value="1"></div>
+        <div class="field"><label for="q-minrel">Stated rule: minimum relevant (optional)</label><input id="q-minrel" type="number" step="1"></div>
+        <div class="field"><label for="q-ratio">Stated rule: relevant/judged below (optional)</label><input id="q-ratio" type="number" step="any"></div>
+        <div class="field"><label for="q-source">Where the rule is stated (optional)</label><input id="q-source" type="text" placeholder="e.g. Craswell et al. 2020, TREC 2019 DL overview">
+          <div class="hint">recorded on the card next to the rule check.</div></div>
+      </div>
+    </form>
+
+    <form class="task" data-task="pair-classification">
+      <div class="grid">
+        <div class="field"><label for="pc-pairs">Release pair files</label><input id="pc-pairs" type="file" multiple>
+          <div class="hint">labelled pairs, or a file of negatives only (CSV or TSV, .gz allowed).</div></div>
+        <div class="field"><label for="pc-kind">Pair type</label><select id="pc-kind"><option value="symmetric">one unit set, unordered (protein–protein)</option><option value="bipartite">two unit sets (drug–target)</option></select></div>
+        <div class="field"><label for="pc-a">First unit column</label><input id="pc-a" type="text" placeholder="name, or 0-based index"></div>
+        <div class="field"><label for="pc-b">Second unit column</label><input id="pc-b" type="text"></div>
+        <div class="field"><label for="pc-label">Label column (optional)</label><input id="pc-label" type="text"><div class="hint">leave empty for a negatives-only file.</div></div>
+        <div class="field"><label for="pc-pos">Positive label</label><input id="pc-pos" type="text" value="1"></div>
+        <div class="field"><label for="pc-header">Header row</label><select id="pc-header"><option value="yes">the files have a header</option><option value="no">no header (columns by index)</option></select></div>
+        <div class="field"><label for="pc-units">Universe units</label><input id="pc-units" type="file"><div class="hint">one unit per line (the first side for two unit sets).</div></div>
+        <div class="field"><label for="pc-units-b">Universe units, second side</label><input id="pc-units-b" type="file"><div class="hint">only for two unit sets.</div></div>
+        <div class="field"><label for="pc-observed">Observed pairs (optional)</label><input id="pc-observed" type="file"><div class="hint">known interactions, two columns, no header; give each unit its depth.</div></div>
+        <div class="field"><label for="pc-uname">Universe name</label><input id="pc-uname" type="text" placeholder="e.g. human proteome (UniProt)"></div>
+        <div class="field"><label for="pc-name">Benchmark name</label><input id="pc-name" type="text" value="pair benchmark"></div>
+        <div class="field"><label for="pc-rule">How the pairs were drawn</label><select id="pc-rule"><option value="unknown">not stated (report coverage)</option><option value="all-pairs">every pair of the release units is evaluated</option></select>
+          <div class="hint">Unless every pair among the release units is evaluated, units or pairs missing from the release are not shown to be excluded.</div></div>
+        <div class="field"><label for="pc-delta">Model difference on the benchmark (optional)</label><input id="pc-delta" type="number" step="any"></div>
+        <div class="field"><label for="pc-metric">Metric of that difference</label><select id="pc-metric"><option value="auc">AUC (per query or pooled)</option><option value="mrr">MRR</option><option value="hits">Hits@k</option></select><div class="hint">Break-even thresholds exist only for AUC; MRR and Hits@k are not linear in the candidate mix.</div></div>
+      </div>
+    </form>
+
+    <div class="actions">
+      <button class="primary" id="run" disabled>Run audit</button>
+      <button id="cancel" type="button" hidden>Cancel</button>
+      <span class="status" id="run-status" aria-live="polite"></span>
+    </div>
+    <div class="error" id="error" role="alert" hidden></div>
+  </div>
+
+  <section class="panel" id="result" hidden aria-labelledby="result-title">
+    <h2 id="result-title" style="margin-top:0">Scope card</h2>
+    <p class="example-note" id="example-note" hidden>This is an example: the WN18RR card written by the command line from the public WN18RR release and WordNet 3.0, not a card of your files.</p>
+    <div class="stale" id="stale" role="status" hidden>Settings or files changed after this card was made, so it may not match them. Run the audit again; until then the downloads give the earlier card.</div>
+    <div class="summary" id="summary"></div>
+    <div class="actions">
+      <button id="dl-json">Download card.json</button>
+      <button id="dl-md">Download card.md</button>
+    </div>
+    <details class="more" id="more-card">
+      <summary>Full card: scope statement, mapping, exclusion, rules, depth, hygiene</summary>
+      <p class="statement" id="statement"></p>
+      <div class="card" id="card"></div>
+    </details>
+    <details class="more">
+      <summary>Source and reproduction</summary>
+      <div class="field"><label>Universe fingerprint</label><code class="cmd" id="fingerprint"></code>
+        <button type="button" class="copy" data-copy="fingerprint">Copy</button></div>
+      <div class="field"><label>Written by</label><span id="written-by"></span></div>
+      <div class="field"><label>Command-line equivalent</label><code class="cmd" id="cmd"></code>
+        <button type="button" class="copy" data-copy="cmd">Copy</button></div>
+    </details>
+  </section>
+
+  <footer>
+    <p id="versions">benchscope-audit · Pyodide 0.27.7</p>
+    <p>The built-in WordNet 3.0 table is derived from Princeton WordNet 3.0 and carries its licence notice in the file header (WordNet 3.0 Copyright 2006 by Princeton University).</p>
+  </footer>
+</main>
+
+<script>
+"use strict";
+const $ = (id) => document.getElementById(id);
+let runCount = 0;
+let lastCard = null;
+
+function setStatus(text, state) {
+  $("status-text").textContent = text;
+  $("status").className = "status" + (state ? " " + state : "");
+}
+
+// ---- runtime: Pyodide + NumPy + the package source run in a Web Worker (worker.js), so the page stays
+// responsive during long audits; the worker calls the command line's own main(). Cancel terminates the
+// worker and starts a new one.
+let worker = null, ready = null, onStage = null;
+const pending = new Map();
+let nextId = 0;
+class InputProblem extends Error {}
+function startWorker() {
+  worker = new Worker("worker.js");
+  worker.onmessage = (ev) => {
+    const m = ev.data;
+    if (m.type === "status") { setStatus(m.text); return; }
+    if (m.type === "stage") { if (onStage) onStage(m.text); return; }
+    const p = pending.get(m.id);
+    pending.delete(m.id);
+    if (!p) return;
+    if (m.ok) p.resolve(m);
+    else p.reject(m.inputError ? new InputProblem(m.inputError) : Object.assign(new Error(m.error), { trace: m.trace }));
+  };
+  worker.onerror = (e) => {
+    setStatus("Python failed to load: " + (e.message || "worker error"), "failed");
+    for (const p of pending.values()) p.reject(new Error(e.message || "worker error"));
+    pending.clear();
+  };
+  $("run").disabled = true;
+  setStatus("Loading Python…");
+  ready = call({ kind: "ready" }).then((m) => {
+    $("versions").textContent = `benchscope-audit ${m.version} · Pyodide ${m.pyodide}`;
+    setStatus(`Ready: benchscope-audit ${m.version} on Pyodide ${m.pyodide}`, "ready");
+    $("run").disabled = false;
+    return m.version;
+  }).catch((e) => { setStatus("Python failed to load: " + e.message, "failed"); throw e; });
+  ready.catch(() => {});
+}
+function call(msg, transfer) {
+  return new Promise((resolve, reject) => {
+    const id = ++nextId;
+    pending.set(id, { resolve, reject });
+    worker.postMessage({ ...msg, id }, transfer || []);
+  });
+}
+startWorker();
+
+async function ensureWordnet() { return (await call({ kind: "wordnet" })).path; }
+
+// Run the command line in the worker. files: [{path, data (ArrayBuffer | Blob)}]. Returns {json, md, stdout}.
+async function runCommand(argv, files) {
+  await ready;
+  const fs = await Promise.all(files.map(async (f) => ({ path: f.path, data: f.data instanceof Blob ? await f.data.arrayBuffer() : f.data })));
+  const m = await call({ kind: "run", argv, files: fs }, fs.map((f) => f.data));
+  return { json: m.json, md: m.md, stdout: m.stdout };
+}
+window.BenchScope = { get ready() { return ready; }, runCommand, ensureWordnet };
+
+// ---- form -> command line
+const val = (id) => $(id).value.trim();
+function pickFiles(input, required, fuzzy) {
+  const files = Array.from($(input).files);
+  const out = {};
+  for (const name of required) {
+    const stem = name.replace(/\.txt$/, "");
+    let f = files.find((x) => x.name === name);
+    if (!f && fuzzy) f = files.find((x) => x.name.toLowerCase().includes(stem));
+    if (!f) throw new Error(`Missing ${name}: choose ${required.join(", ")} together.`);
+    out[name] = f;
+  }
+  return out;
+}
+function one(input, what) {
+  const f = $(input).files[0];
+  if (!f) throw new Error(`Choose the ${what} file.`);
+  return f;
+}
+
+async function buildRun(task, dir) {
+  const files = [], shown = [];
+  const add = (path, data) => files.push({ path, data });
+  let argv;
+  if (task === "kg-wordnet" || task === "kg-triples") {
+    const pre = task === "kg-wordnet" ? "wn" : "kg";
+    const rel = pickFiles(pre + "-release", ["train.txt", "valid.txt", "test.txt"], true);
+    for (const [n, f] of Object.entries(rel)) add(`${dir}/release/${n}`, f);
+    if (task === "kg-wordnet") {
+      const wn = await ensureWordnet();
+      argv = ["kg-wordnet", "--release", `${dir}/release`, "--wordnet", wn, "--relations", val("wn-relations"),
+              "--identity", val("wn-identity"), "--name", val("wn-name") || "benchmark"];
+      if (val("wn-delta")) argv.push("--delta-O", val("wn-delta"), "--metric", val("wn-metric"));
+      shown.push("--wordnet WordNet-3.0/dict");
+    } else {
+      const u = one("kg-universe", "universe");
+      add(`${dir}/universe/${u.name}`, u);
+      argv = ["kg-triples", "--release", `${dir}/release`, "--universe", `${dir}/universe/${u.name}`, "--format", val("kg-format"),
+              "--name", val("kg-name") || "benchmark"];
+      if (val("kg-family") || val("kg-T")) {
+        if (!(val("kg-family") && val("kg-T"))) throw new Error("A stated rule needs both a family and a threshold T.");
+        argv.push("--stated-family", val("kg-family"), "--stated-T", val("kg-T"));
+      }
+      if (val("kg-delta")) argv.push("--delta-O", val("kg-delta"), "--metric", val("kg-metric"));
+    }
+  } else if (task === "recsys") {
+    const rel = pickFiles("rs-release", ["train.txt", "test.txt", "user_list.txt", "item_list.txt"], false);
+    for (const [n, f] of Object.entries(rel)) add(`${dir}/release/${n}`, f);
+    const raw = one("rs-raw", "raw interactions");
+    add(`${dir}/raw/${raw.name}`, raw);
+    const cmd = val("rs-kind");
+    argv = [cmd, "--release", `${dir}/release`, cmd === "recsys-checkins" ? "--checkins" : "--ratings", `${dir}/raw/${raw.name}`,
+            "--name", val("rs-name") || "benchmark", "--positives", val("rs-positives"), "--k-core", val("rs-k") || "10"];
+  } else if (task === "pair-classification") {
+    const pairs = Array.from($("pc-pairs").files);
+    if (!pairs.length) throw new Error("Choose the release pair files.");
+    if (!val("pc-a") || !val("pc-b")) throw new Error("Name the two unit columns.");
+    const bip = val("pc-kind") === "bipartite";
+    argv = ["pair-classification", "--pairs"];
+    for (const f of pairs) { add(`${dir}/pairs/${f.name}`, f); argv.push(`${dir}/pairs/${f.name}`); }
+    argv.push("--a-col", val("pc-a"), "--b-col", val("pc-b"), "--positive-label", val("pc-pos") || "1",
+              "--name", val("pc-name") || "benchmark");
+    if (val("pc-label")) argv.push("--label-col", val("pc-label"));
+    if (val("pc-header") === "no") argv.push("--no-header");
+    if (bip) argv.push("--bipartite");
+    const units = $("pc-units").files[0], unitsB = $("pc-units-b").files[0], obs = $("pc-observed").files[0];
+    if (!units && !obs) throw new Error("Declare the universe: a unit list, observed pairs, or both.");
+    if (units) { add(`${dir}/units_a/${units.name}`, units); argv.push("--universe-units", `${dir}/units_a/${units.name}`); }
+    if (bip && unitsB) { add(`${dir}/units_b/${unitsB.name}`, unitsB); argv.push("--universe-units-b", `${dir}/units_b/${unitsB.name}`); }
+    if (obs) { add(`${dir}/observed/${obs.name}`, obs); argv.push("--universe-pairs", `${dir}/observed/${obs.name}`); }
+    if (val("pc-uname")) argv.push("--universe-name", val("pc-uname"));
+    argv.push("--candidate-rule", val("pc-rule"));
+    if (val("pc-delta")) argv.push("--delta-O", val("pc-delta"), "--metric", val("pc-metric"));
+  } else {
+    const t = one("q-topics", "topics"), q = one("q-qrels", "qrels");
+    if (!val("q-corpus")) throw new Error("Enter the corpus size.");
+    add(`${dir}/in/${t.name}`, t);
+    add(`${dir}/in/${q.name}`, q);
+    argv = ["query-qrels", "--topics", `${dir}/in/${t.name}`, "--qrels", `${dir}/in/${q.name}`, "--corpus-size", val("q-corpus"),
+            "--name", val("q-name") || "benchmark", "--relevant-grade", val("q-grade") || "1"];
+    if (val("q-minrel")) argv.push("--min-relevant", val("q-minrel"));
+    if (val("q-ratio")) argv.push("--max-ratio", val("q-ratio"));
+    if (val("q-source")) argv.push("--rule-source", val("q-source"));
+  }
+  argv.push("--out", `${dir}/out/card.json`, "--md", `${dir}/out/card.md`);
+  return { argv, files };
+}
+
+function commandLine(argv, dir) {
+  const parts = ["benchscope-audit"];
+  for (let i = 0; i < argv.length; i++) {
+    let a = argv[i];
+    if (a === "--wordnet") { parts.push(a, "WordNet-3.0/dict"); i++; continue; }
+    if (a === "--out") { parts.push(a, "card.json"); i++; continue; }
+    if (a === "--md") { parts.push(a, "card.md"); i++; continue; }
+    if (a.startsWith(dir + "/")) a = a.endsWith("/release") ? "release/" : a.split("/").pop();
+    parts.push(/[\s"]/.test(a) ? JSON.stringify(a) : a);
+  }
+  return parts.join(" ");
+}
+
+// ---- Markdown subset used by the scope card -> HTML
+function esc(s) { return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+function inline(s) { return esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/`([^`]+)`/g, "<code>$1</code>"); }
+function renderMarkdown(md) {
+  const lines = md.split("\n"), html = [];
+  let i = 0;
+  while (i < lines.length) {
+    const l = lines[i];
+    if (!l.trim()) { i++; continue; }
+    let m;
+    if ((m = l.match(/^(#{1,3}) (.*)$/))) { html.push(`<h${m[1].length}>${inline(m[2])}</h${m[1].length}>`); i++; continue; }
+    if (l.startsWith("> ")) { html.push(`<blockquote>${inline(l.slice(2))}</blockquote>`); i++; continue; }
+    if (l.startsWith("|")) {
+      const rows = [];
+      while (i < lines.length && lines[i].startsWith("|")) rows.push(lines[i++]);
+      const cells = (r) => r.slice(1, -1).split("|").map((c) => c.trim());
+      const head = cells(rows[0]), body = rows.slice(2).map(cells);
+      html.push(`<div class="tablewrap"><table><thead><tr>${head.map((c) => `<th>${inline(c)}</th>`).join("")}</tr></thead><tbody>` +
+                body.map((r) => `<tr>${r.map((c) => `<td>${inline(c)}</td>`).join("")}</tr>`).join("") + "</tbody></table></div>");
+      continue;
+    }
+    if (l.startsWith("- ")) {
+      const items = [];
+      while (i < lines.length && lines[i].startsWith("- ")) items.push(`<li>${inline(lines[i++].slice(2))}</li>`);
+      html.push(`<ul>${items.join("")}</ul>`);
+      continue;
+    }
+    const para = [];
+    while (i < lines.length && lines[i].trim() && !/^(#|> |\||- )/.test(lines[i])) para.push(lines[i++]);
+    html.push(`<p>${inline(para.join(" "))}</p>`);
+  }
+  return html.join("\n");
+}
+
+function download(name, text, type) {
+  const url = URL.createObjectURL(new Blob([text], { type }));
+  const a = Object.assign(document.createElement("a"), { href: url, download: name });
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+// ---- wiring
+function clearResult() {
+  $("result").hidden = true;
+  $("error").hidden = true;
+  $("error").textContent = "";
+  lastCard = null;
+}
+document.querySelectorAll('input[name="task"]').forEach((r) => r.addEventListener("change", () => {
+  document.querySelectorAll("form.task").forEach((f) => f.classList.toggle("active", f.dataset.task === r.value));
+  clearResult();
+  $("run-status").textContent = "";
+}));
+document.querySelectorAll("form.task").forEach((f) => f.addEventListener("submit", (e) => e.preventDefault()));
+
+// the benchmark name follows the relation set until the user types a name of their own
+$("wn-relations").addEventListener("change", () => {
+  const n = $("wn-name");
+  if (["WN18", "WN18RR", ""].includes(n.value.trim())) n.value = $("wn-relations").value === "wn18" ? "WN18" : "WN18RR";
+});
+
+// inside the card library (site/app/), link back to it
+fetch("../how-to-read.html", { method: "HEAD" }).then((r) => {
+  if (r.ok) { $("site-nav").hidden = false; $("terms-more").hidden = false; }
+}).catch(() => {});
+
+// a share as a percentage that never rounds to 0% or 100% unless it is exactly that (as card.pct)
+function pctText(x) {
+  for (let d = 1; d < 8; d++) {
+    const s = (100 * x).toFixed(d);
+    if (!((x < 1 && Number(s) >= 100) || (x > 0 && Number(s) <= 0))) return s + "%";
+  }
+  return (100 * x).toFixed(8) + "%";
+}
+const fmt = (n) => Number(n).toLocaleString("en-US");
+const tag = (kind, text) => `<span class="tag ${kind}">${text}</span>`;
+
+// the three points shown above the full card, all read from the card's JSON
+function summaryHtml(card) {
+  const ex = card.exclusion || {}, sp = card.support || {}, m = card.mapping || {}, h = card.hygiene || {};
+  const name = esc(card.benchmark && card.benchmark.name || "this benchmark");
+  const counted = esc(card.counted || (card.universe && card.universe.name) || "the universe");
+  const structural = !!sp.structural, decl = sp.declaration;
+  const w = ("W_pairs" in ex && structural) ? ex.W_pairs : ex.W;
+  // 1. coverage
+  let cov;
+  if (w === null || w === undefined) {
+    cov = `<p class="headline">The excluded share is undefined for ${name}.</p>`;
+  } else {
+    const head = structural ? `${name} can never evaluate <strong>${pctText(w)}</strong> of ${counted}.`
+                            : `${name} uses <strong>${pctText(1 - ex.W)}</strong> of ${counted}.`;
+    const verdict = !structural ? tag("approx", "coverage only")
+                  : (decl && !decl.consistent) ? tag("declared", "rests on your declaration")
+                  : decl ? tag("declared", "from your declaration, consistent with the file") : tag("verified", "from the files");
+    const legend = (ex.units !== undefined && !("W_pairs" in ex && structural))
+      ? `${fmt(ex.included)} included · ${fmt(ex.excluded)} ${structural ? "excluded" : "not in the release"}`
+      : (ex.units !== undefined ? `units: ${fmt(ex.included)} of ${fmt(ex.units)} in the release; the share above counts pairs` : "");
+    cov = `<p class="headline">${head}${verdict}</p>` +
+          `<div class="bar" role="img" aria-label="${pctText(1 - w)} included, ${pctText(w)} excluded">` +
+          `<span class="in" style="width:${(100 * (1 - w)).toFixed(3)}%"></span><span class="out" style="width:${(100 * w).toFixed(3)}%"></span></div>` +
+          (legend ? `<div class="bar-legend">${legend}</div>` : "");
+  }
+  // 2. problems
+  const probs = (card.warnings || []).map((x) => inline(x));
+  if (m.merged_ids) probs.push(`${fmt(m.merged_ids)} release ids stand for more than one universe unit.`);
+  if (m.unmapped_ids) probs.push(`${fmt(m.unmapped_ids)} of ${fmt(m.release_ids)} release ids are not in the universe.`);
+  if (m.unmatched_triples) probs.push(`${fmt(m.unmatched_triples)} of ${fmt(m.release_triples)} release triples have no match in the universe.`);
+  if (h.reverse_leakage && h.reverse_leakage.leaking)
+    probs.push(`${pctText(h.reverse_leakage.share)} of test triples (${fmt(h.reverse_leakage.leaking)}) have their reverse in training, so one edge answers them.`);
+  if (h.unseen_test_units && h.unseen_test_units.test_triples_affected)
+    probs.push(`${fmt(h.unseen_test_units.test_triples_affected)} test triples touch an entity never seen in training.`);
+  const q = h.pairs || {};
+  if (q.pairs_with_conflicting_labels) probs.push(`${fmt(q.pairs_with_conflicting_labels)} pair${q.pairs_with_conflicting_labels === 1 ? " has" : "s have"} conflicting labels.`);
+  if (q.negatives_observed_as_interactions) probs.push(`${fmt(q.negatives_observed_as_interactions)} negative${q.negatives_observed_as_interactions === 1 ? " is" : "s are"} known interactions in the universe.`);
+  const probHtml = probs.length ? `<ul>${probs.map((x) => `<li>${x}</li>`).join("")}</ul>` : "<p>None of the checks run found a problem.</p>";
+  // 3. conclusions
+  const concl = [];
+  if (structural) concl.push(`Rankings on ${name} describe the part it can evaluate; on the excluded part they say nothing without a measurement.` +
+                             (decl && !decl.consistent ? tag("declared", "rests on your declaration") : ""));
+  else concl.push(`The files show what the release covers, not what it could never evaluate: absent units or pairs may still have had a chance of being drawn.${tag("approx", "coverage only")}`);
+  const rd = card.rule_diagnosis, rc = card.rule_check;
+  if (rd && rd.best) concl.push(`The closest simple construction rule (${esc(rd.best.family)}, T = ${rd.best.T}) is ${esc(rd.best.verdict)}.`);
+  if (rc) concl.push(`The stated rule ${esc(rc.verdict)}.`);
+  const c = card.comparison;
+  if (c) concl.push(esc(c.statement) + (c.applicable && c.c_star !== null ? tag("approx", "assumes every query has excluded share W") : ""));
+  if (card.derived_scope && card.derived_scope.d_min !== null && card.derived_scope.d_min !== undefined)
+    concl.push(`d_min = ${card.derived_scope.d_min}: a coverage threshold, not a guarantee that rankings hold there.`);
+  return `<section><h3>Coverage</h3>${cov}</section>` +
+         `<section><h3>Problems found</h3>${probHtml}</section>` +
+         `<section><h3>What you can conclude</h3><ul>${concl.map((x) => `<li>${x}</li>`).join("")}</ul></section>`;
+}
+
+function cardFileBase(card) {
+  const slug = String(card.benchmark && card.benchmark.name || "benchmark").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  return slug + (card.comparison ? "-" + card.comparison.metric : "") + ".card";
+}
+
+function showCard(json, md, cmd, example) {
+  const card = JSON.parse(json);
+  $("summary").innerHTML = summaryHtml(card);
+  $("statement").textContent = card.scope_statement;
+  $("card").innerHTML = renderMarkdown(md);
+  $("example-note").hidden = !example;
+  $("cmd").textContent = cmd;
+  $("fingerprint").textContent = (card.universe && card.universe.fingerprint) || "—";
+  $("written-by").textContent = `benchscope-audit ${card.tool_version}, card schema ${card.schema}`;
+  const base = cardFileBase(card);
+  $("dl-json").textContent = `Download ${base}.json`;
+  $("dl-md").textContent = `Download ${base}.md`;
+  setStale(false);
+  $("result").hidden = false;
+}
+
+// any change to a form after a card is shown marks the card as stale until the next run
+function setStale(on) {
+  $("stale").hidden = !on;
+  $("result").classList.toggle("is-stale", on);
+}
+document.querySelectorAll("form.task").forEach((f) => {
+  for (const ev of ["input", "change"]) f.addEventListener(ev, () => { if (!$("result").hidden) setStale(true); });
+});
+document.querySelectorAll("button.copy").forEach((b) => b.addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText($(b.dataset.copy).textContent);
+    b.textContent = "Copied";
+  } catch (e) {
+    b.textContent = "Copy failed: select the text";
+  }
+  setTimeout(() => { b.textContent = "Copy"; }, 1500);
+}));
+// the second unit list matters only for two unit sets
+function syncPairKind() { $("pc-units-b").closest(".field").hidden = val("pc-kind") !== "bipartite"; }
+$("pc-kind").addEventListener("change", syncPairKind);
+syncPairKind();
+
+function showError(text, trace) {
+  $("error").textContent = text;
+  if (trace) {
+    const d = document.createElement("details");
+    d.innerHTML = "<summary>Technical details</summary>";
+    const pre = document.createElement("pre");
+    pre.textContent = trace;
+    d.appendChild(pre);
+    $("error").appendChild(d);
+  }
+  $("error").hidden = false;
+}
+
+$("example").addEventListener("click", async () => {
+  try {
+    const [json, md] = await Promise.all(["example_wn18rr_card.json", "example_wn18rr_card.md"].map(async (f) => {
+      const r = await fetch(f, { cache: "no-cache" });
+      if (!r.ok) throw new Error(`${f}: HTTP ${r.status}`);
+      return r.text();
+    }));
+    clearResult();
+    lastCard = { json, md };
+    const ec = JSON.parse(json).comparison;
+    showCard(json, md, "benchscope-audit kg-wordnet --release WN18RR/ --wordnet WordNet-3.0/dict --name WN18RR" +
+             (ec ? ` --delta-O ${ec.delta_O} --metric ${ec.metric}` : "") + " --out card.json --md card.md", true);
+    $("run-status").textContent = "";
+    $("result").scrollIntoView({ behavior: "smooth", block: "start" });
+  } catch (e) {
+    showError("The example card could not be loaded: " + e.message);
+  }
+});
+
+let running = false;
+$("cancel").addEventListener("click", () => {
+  if (!running) return;
+  worker.terminate();
+  for (const p of pending.values()) p.reject(Object.assign(new Error("cancelled"), { cancelled: true }));
+  pending.clear();
+  startWorker();
+});
+
+$("run").addEventListener("click", async () => {
+  const task = document.querySelector('input[name="task"]:checked').value;
+  const dir = `/work/run${++runCount}`;
+  clearResult();
+  running = true;
+  $("run").disabled = true;
+  $("cancel").hidden = false;
+  $("run-status").textContent = "Reading files…";
+  const t0 = performance.now();
+  const secs = () => ((performance.now() - t0) / 1000).toFixed(0);
+  let stage = "starting", tick = null;
+  try {
+    const { argv, files } = await buildRun(task, dir);
+    const mb = files.reduce((s, f) => s + (f.data && f.data.size ? f.data.size : 0), 0) / 1e6;
+    const hint = mb > 20 ? ` · ${mb.toFixed(0)} MB of input, about a minute and a half per 100 MB` : "";
+    onStage = (s) => { stage = s; };
+    const show = () => { $("run-status").textContent = `Running: ${stage}… ${secs()} s${hint}`; };
+    show();
+    tick = setInterval(show, 500);
+    const res = await runCommand(argv, files);
+    lastCard = res;
+    showCard(res.json, res.md, commandLine(argv, dir), false);
+    $("run-status").textContent = `Done in ${((performance.now() - t0) / 1000).toFixed(1)} s.`;
+    $("result").scrollIntoView({ behavior: "smooth", block: "start" });
+  } catch (e) {
+    $("run-status").textContent = e.cancelled ? "Cancelled; Python is reloading." : "";
+    if (e.cancelled) {
+      // nothing to show
+    } else if (e instanceof InputProblem) {
+      showError("Input problem: " + e.message);
+    } else {
+      const msg = String(e.message || e);
+      showError(e.trace ? "The audit failed: " + msg : msg, e.trace);
+    }
+  } finally {
+    clearInterval(tick);
+    onStage = null;
+    running = false;
+    $("cancel").hidden = true;
+    ready.then(() => { $("run").disabled = false; }).catch(() => {});
+  }
+});
+$("dl-json").addEventListener("click", () => lastCard && download(cardFileBase(JSON.parse(lastCard.json)) + ".json", lastCard.json, "application/json"));
+$("dl-md").addEventListener("click", () => lastCard && download(cardFileBase(JSON.parse(lastCard.json)) + ".md", lastCard.md, "text/markdown"));
+</script>
+</body>
+</html>

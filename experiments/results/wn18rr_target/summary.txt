@@ -1,0 +1,9 @@
+target triples (11 relations, synset level) 218367
+WN18RR triples mapped: 92998 | unmatched: 5 | ambiguous (mapped to every candidate): 0
+universe V (synsets with >= 1 target triple): 112199 | O: 41105 | U: 71094 | W_rule (entity share of U) = 0.633642
+u_valid: sampled 3034 of 3034 (pool 125326)
+u_test: sampled 3134 of 3134 (pool 125326)
+E2 training triples 206032 | synsets with no E2 training triple: 182 (O: 182 , U: 0 )
+roles {'bench_train': 86831, 'bench_valid': 3034, 'bench_test': 3133, 'u_valid': 3034, 'u_test': 3134, 'extra': 119201}
+u_test strata (head-tail region): {'U-U': 950, 'U-O': 1414, 'O-U': 770}
+benchmark test queries (2 per triple): 6266 | with >= 1 true answer in U (filtered in the target, absent in the benchmark): 2055 | such answers: tail 3065 head 28921

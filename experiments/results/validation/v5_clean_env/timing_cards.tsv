@@ -1,0 +1,8 @@
+step	seconds	status	note
+cards: check inputs	8.7	ok	60 files, 3848 MB, all hashes match
+cards: working copy of tool/	0.1	ok	tool/ copied without its built outputs (cards, entries, site, web/dist)
+cards: library cards from public sources	640.5	ok	cards: 7 files byte-identical; entries: 10 files byte-identical
+cards: example cards	5.4	ok	12 files byte-identical
+cards: browser page	3.4	ok	6 files identical; 2 compressed file(s) equal after decompression, their bytes depend on the zlib build: benchscope_audit.zip, wordnet30_wn18.tsv.gz
+cards: card library site	0.6	ok	27 files identical; 2 compressed file(s) equal after decompression, their bytes depend on the zlib build: app/benchscope_audit.zip, app/wordnet30_wn18.tsv.gz
+cards: full test suite	643.6	ok	59 passed in 642.93s (0:10:42)
