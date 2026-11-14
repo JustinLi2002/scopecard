@@ -6,7 +6,7 @@ type: software
 authors:
   - family-names: "Li"
     given-names: "Justin"
-    affiliation: "Tulane University"
+    affiliation: "Center for Biomedical Informatics & Genomics, Tulane University School of Medicine, Tulane University"
 version: "0.0.1"
 license:
   - MIT

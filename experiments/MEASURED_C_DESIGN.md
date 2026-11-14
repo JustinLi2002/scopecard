@@ -1,6 +1,6 @@
 # Measured c on WN18RR — experiment design
 
-**Status:** design fixed 2026-10-18; the author took the four decisions in Section 12 at their proposed defaults the same day. Benchmark chosen by the author on 2026-10-18 under a criterion in the project plan, which is not part of this copy. **The design was fixed before any model was trained.** The target population below is built and passes its acceptance checks.
+**Status:** design fixed 2026-10-18; Justin took the four decisions in Section 12 at their proposed defaults the same day. Benchmark chosen by Justin on 2026-10-18 under a criterion in the project plan, which is not part of this copy. **The design was fixed before any model was trained.** The target population below is built and passes its acceptance checks.
 
 **Terminology (2026-10-28):** this document used to call the design and its analyses "pre-registered". It is an internal, dated document, not an entry in a public registry, so the wording is now "prespecified". No design content changed.
 
@@ -77,7 +77,7 @@ These are reported for every model and pair but carry no identification claim.
 ## 5. Sensitivity analyses (prespecified)
 
 - **S1 Type-restricted candidates.** Keep only candidates whose POS was seen in the relation slot in E2 training.
-- **S2 Degree-matched U.** Within each query, reweight U candidates so that their E2 training-degree distribution matches O's. Bins: 1, 2, 3, 4–5, 6–10, 11+. This separates "excluded" from "rare". If the O–U difference vanishes under S2, it is stated as a rarity effect, not a property of the eligibility rule (compare the within-protein analysis in [P3]). *[Wording clarified 2026-10-21, after the results: Section 14, item 2.]*
+- **S2 Degree-matched U.** Within each query, reweight U candidates so that their E2 training-degree distribution matches O's. Bins: 1, 2, 3, 4–5, 6–10, 11+. This separates "excluded" from "rare". If the O–U difference vanishes under S2, it is stated as a rarity effect, not a property of the eligibility rule ([P3]'s within-protein lesson). *[Wording clarified 2026-10-21, after the results: Section 14, item 2.]*
 - **S3 Benchmark identity.** Key synsets by bare offset as WN18RR does, merging the 161 ids.
 - **S4 Trained O only.** Drop the 182 O synsets without an E2 training triple from the candidates.
 
@@ -105,7 +105,7 @@ These are reported for every model and pair but carry no identification claim.
 - **Resolved:** a pair is resolved in a region when the 95% interval of its Δ excludes zero.
 - **Reversal:** Δ_O and Δ_target are both resolved, with opposite signs.
 - **Newly resolved:** Δ_O unresolved and Δ_target resolved (the BioT5 pattern in [P3]).
-- **Reporting:** every pair, every seed and the seed mean. The paired statistic Δ_U − Δ_O comes from the same bootstrap replicate. *[Multiple comparisons, clarified 2026-10-21: Section 14, item 3.]*
+- **Reporting:** every pair, every seed and the seed mean. The paired statistic Δ_U − Δ_O comes from the same bootstrap replicate (the [P3] outline-review lesson). *[Multiple comparisons, clarified 2026-10-21: Section 14, item 3.]*
 - **Magnitude:** per model, AUC(U) − AUC(O) with an interval, plus the same for MRR(C) − MRR(O).
 
 ## 8. Uncertainty
@@ -118,8 +118,8 @@ These are reported for every model and pair but carry no identification claim.
 ## 9. Outputs and provenance
 
 - **Per model × seed × query:** n_O, n_U, O_above, O_ties, U_above, U_ties, the positive's score, query_id and triple_id. These counts give AUC, rank and Hits exactly, in every region and under S1–S4 (S1/S2 also need per-candidate POS and degree, so those analyses compute their counts at scoring time).
-- **Weights:** saved for every run.
-- **Statistics:** go into a keyed `records.tsv` (design / estimand / subject / seed / quantity). Numbers in the text are tagged with their record keys and checked against the records by a script.
+- **Weights:** saved for every run ([P3] lesson).
+- **Statistics:** go into a keyed `records.tsv` (design / estimand / subject / seed / quantity), as in [P3]. Text numbers are tagged and checked by a `check_manuscript.py`-style script.
 
 ## 10. Compute and environment
 
@@ -127,9 +127,9 @@ These are reported for every model and pair but carry no identification claim.
 - **E2:** 112k entities and 206k triples, so roughly 6× E1's cost per epoch.
 - **Runs:** 5 T1 models × 5 seeds × 2 experiments = 50 runs, plus T0 (deterministic) and NBFNet if feasible.
 - **Hardware:** the T1 runs are expected to fit the laptop RTX 4070 (to be measured by a timing-only smoke test before the runs); NBFNet goes to HPC.
-- **Environment:** a new WSL env for this paper (LibKGE at a pinned commit, torch 2.4 cu124).
+- **Environment:** a new WSL env for this paper (LibKGE at a pinned commit, torch 2.4 cu124 as in [P3]).
 - **Scoring:** a custom scorer calls each model's score_sp / score_po over all target entities, so that the evaluation is the same code for every model and does not depend on LibKGE's evaluator.
-- **Bit-reproducibility:** cuDNN nondeterminism applies, and the 5 seeds show its size.
+- **Bit-reproducibility:** cuDNN nondeterminism applies as in [P3], and the 5 seeds show its size.
 
 ## 11. Threats and limits stated in advance
 
@@ -139,7 +139,7 @@ These are reported for every model and pair but carry no identification claim.
 - **Filtering:** in the target, 2,055 test queries lose true U answers from their candidate lists. A benchmark-trained model never faced these synsets at all.
 - **Scope:** one benchmark, one domain. The result is a measured c for WN18RR, not a prevalence estimate.
 
-## 12. Decisions (the author, 2026-10-18, all at the proposed defaults)
+## 12. Decisions (Justin, 2026-10-18, all at the proposed defaults)
 
 1. **Model selection in E2:** on `bench_valid` over O (benchmark practice). Selection over C is not run.
 2. **NBFNet:** included, conditional on the feasibility check in Section 6. *Scope reduced on 2026-10-19: see Section 13, item 1.*
@@ -150,7 +150,7 @@ These are reported for every model and pair but carry no identification claim.
 
 Each was decided before any result it could depend on existed.
 
-1. **NBFNet scope reduced (the author, 2026-10-19).**
+1. **NBFNet scope reduced (Justin, 2026-10-19).**
    - **Why:** the feasibility check (job 4268184; the run log is not part of this copy) passed: one E1 run takes about 9 h on an A100 with the rspmm kernel. But E2 has 2.4× the edges and training triples and 2.7× the nodes, which puts one E2 run at roughly 50–56 GPU-hours and five seeds at about 260.
    - **What is run instead:** NBFNet is trained in **E1 only** (5 seeds, official config). It is then used for a **deployment test**: each benchmark-trained model reads the E2 training graph at inference time and scores the `bench_test` queries against O and U candidates, filtered with every target triple. This is the "benchmark-trained model deployed on the E2 graph" comparison of Section 6. Its analysis is item 4.
    - **Consequences:**
@@ -186,7 +186,7 @@ Each was decided before any result it could depend on existed.
 ## 14. Corrections and clarifications added after the results (2026-10-21)
 
 **Status of these items:**
-- They follow the Codex review of 2026-10-19, whose report is not part of this copy. The author approved them on 2026-10-21.
+- They follow the Codex review of 2026-10-19, whose report is not part of this copy. Justin approved them on 2026-10-21.
 - They were written after every result had been seen, including S3. They are therefore not part of the prespecified design.
 - They change no analysis, estimand, decision rule or number. The original text above is kept, with a pointer to the relevant item here.
 

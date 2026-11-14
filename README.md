@@ -34,6 +34,10 @@ Every number reported in the paper comes from three sources, and `reproduce.py` 
 | `experiments/pilot_decidability.tsv` | **The pilot coding** of the ten benchmarks. |
 | `reproduce.py`, `inputs.json` | **One-command reproduction**, plus the public inputs with their SHA-256 hashes. |
 
+## Manuscript figure mapping
+
+The component filenames retain the original conference numbering. In the journal/preprint version, Table 1 uses `table1_benchmarks.tex`; Fig. 2 combines `figB1_benchmarks.pdf` and `fig2_audit.pdf`; Figs 3 and 4 use `fig3_wn18rr_models.pdf` and `fig4_conve_distmult.pdf`. The per-model table (`table2_models.tex`) is in Extended Data, and the Box 1 card corresponds to Extended Data Table 2. The `paper` tier regenerates these components and their records; it does not compile the full manuscript. The preprint source archive contains the manuscript and its schematic.
+
 ## Reproduce
 
 You need Python 3.9 or later. No GPU is needed. The `paper` tier also needs LaTeX with the `helvet`, `type1cm` and
