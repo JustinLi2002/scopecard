@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ogbl-collab: BenchScope card</title>
+<title>ogbl-collab: ScopeCard card</title>
 <meta name="description" content="Scope card for ogbl-collab.">
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
-<nav class="top"><a href="../index.html">Card library</a><a href="../how-to-read.html">How to read a card</a><a href="../app/index.html">Audit your own benchmark</a><a href="../schema/benchscope-card-0.3.schema.json">Card schema</a></nav>
+<nav class="top"><a href="../index.html">Card library</a><a href="../how-to-read.html">How to read a card</a><a href="../app/index.html">Audit your own benchmark</a><a href="../schema/scopecard-0.3.schema.json">Card schema</a></nav>
 <h1>ogbl-collab</h1>
 <p class="note"><strong>No card yet.</strong> The universe needs an external author graph (for example OpenAlex), which the tool does not supply yet. The pilot&#x27;s release-only checks have no tool pipeline yet.</p>
 <h2>From the 2026-10 pilot</h2><div class="panel"><dl class="facts"><dt>Task</dt><dd>graph link prediction</dd><dt>Domain</dt><dd>graph link prediction</dd><dt>Rule stated in the paper</dt><dd>&#x27;a subset of the collaboration network between authors indexed by MAG&#x27;; train &lt;= 2017, valid 2018, test 2019</dd><dt>What the release shows</dt><dd>every one of the 235868 authors has a training (&lt;= 2017) collaboration, and 0 valid/test positives touch an author without one; negatives are uniform over node pairs (lower-degree half share 0.502); 0.366 of test positives repeat a training pair</dd><dt>Rule decidable from the paper</dt><dd>undecidable. release only: the T = 1 restriction is a property of the release; whether it is the subset rule or a consequence of it cannot be told</dd><dt>Negatives</dt><dd>sampled: 100,000 random node pairs per split (Hits@50)</dd><dt>Evaluation</dt><dd>Hits@50 against 100,000 sampled negative pairs</dd><dt>Sources checked</dt><dd>Hu et al. 2020 NeurIPS (OGB, Sec. 5.2); ogb.stanford.edu linkprop page; collab.zip v1 (raw, split/time, mapping)</dd></dl></div>
 <footer>
-<p>Cards written by benchscope-audit 0.0.1 (schema benchscope-card/0.3). Every number on these pages is read from a card or from the 2026-10 pilot table.</p>
+<p>Cards written by scopecard 0.0.2 (schema scopecard/0.3). Every number on these pages is read from a card or from the 2026-10 pilot table.</p>
 <p>Biology benchmarks are added once the papers that audit them are published.</p>
 </footer>
 </main>

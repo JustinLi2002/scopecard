@@ -325,7 +325,7 @@
   ],
   "unmapped_release_units": 0
  },
- "schema": "benchscope-card/0.3",
+ "schema": "scopecard/0.3",
  "scope_statement": "Comparisons on Amazon-Book license claims about the user-item pairs it can evaluate, which leave out 99.97% of the 18,701,842,150,229 unobserved user-item pairs among the 8,026,324 users and 2,330,066 items of Amazon 2014 Books ratings. The closest simple rule (kcore, T = 14) is not reproduced (Jaccard 0.726).",
  "support": {
   "basis": "NGCF and LightGCN rank all release items for each test user, so users and items absent from the release are never evaluated.",
@@ -333,7 +333,7 @@
   "structural": true
  },
  "task": "recommendation",
- "tool_version": "0.0.1",
+ "tool_version": "0.0.2",
  "universe": {
   "fingerprint": "sha256:c19b8537a93fd6eac241da55a8db7086374968336aa32c3b60c8ea0da1d4ed9a",
   "name": "Amazon 2014 Books ratings",

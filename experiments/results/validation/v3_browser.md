@@ -1,7 +1,7 @@
 # V3: refusal and warning suite (browser page)
 
 Checked 2026-10-25 in the built-in browser on `tool/site/app/index.html` (benchscope-audit 0.0.1 on Pyodide 0.27.7,
-served by `python -m http.server`), after the fixes from the 2026-10-24 review and a rebuild of `web/dist` and
+served by `python -m http.server`), after that day's fixes and a rebuild of `web/dist` and
 `site/`. The page loaded the rebuilt package (zip sha256 5dab72099e8c2dbe...). The files are the V3 fixtures of the
 same id, given to the page's file inputs through a script (DataTransfer), then Run clicked. The page calls the same
 `main()` as the command line.
@@ -10,7 +10,7 @@ Rechecked 2026-10-27 on the rebuilt package with per-query shares (zip sha256 2e
 14 rows, same results. On that package the page's WN18RR card (with a model difference of -0.0142 AUC) is
 byte-identical to the command line's `tool/examples/wn18rr_card.json` and `.md` (11 s in the page).
 
-Rechecked 2026-10-27 again, after the second review's fixes (zip sha256 5a50e1628265826b...): all 14 rows above
+Rechecked 2026-10-27 again, after further fixes (zip sha256 5a50e1628265826b...): all 14 rows above
 unchanged, plus R20 and R21 below. The page's WN18RR card with a model difference, which now carries the
 left-out-test-triple warning, is byte-identical to the command line's (8.7 s). R21's wording was then made
 independent of number; on that final package (zip sha256 dd641bf277c19095...) R21 and the WN18RR card were
@@ -20,6 +20,17 @@ Not rechecked in the browser after 2026-10-28: the R20 warning and the break-eve
 ("approximate" became "carries no guarantee"), and `web/dist` and `site/` were rebuilt. The page runs the same
 package code, the change touches wording only, and the command-line V3 passes 27 of 27 with it; the rows below keep
 the wording observed on 2026-10-27.
+
+Rechecked 2026-11-23, after the tool was renamed from BenchScope to ScopeCard (version 0.0.2; only names changed),
+on the rebuilt `tool/site/app/index.html` (the page reports "scopecard 0.0.2 on Pyodide 0.27.7"; package zip sha256
+c723de59b09910ce...), the same way: the fixtures given to the form's file inputs through a script (DataTransfer),
+the fields set, Run clicked. All 16 rows behave as specified, with the messages in the table; R20 now shows the
+wording of 2026-10-28 ("... for which the break-even carries no guarantee; recompute the difference on the 2
+triples the shares use"). The page's cards are byte-identical, JSON and Markdown by SHA-256, to the command line's
+for the same command: WN18RR without and with a model difference of -0.0142 AUC (12 s each), TREC DL 2019 passage
+with its rule source, a pair-classification example (4 units, 3 listed pairs, every pair declared evaluated) and
+Gowalla (130 s, in a background tab while other jobs ran). The WN18RR, TREC DL 2019 and Gowalla JSON equal the
+library cards, and the WN18RR card with the model difference equals `tool/examples/wn18rr_card.json` and `.md`.
 
 16 of 16 rows behave as specified.
 
@@ -44,6 +55,6 @@ the wording observed on 2026-10-27.
 
 History:
 - 2026-10-24, before the empty-file fix: R5 gave a card from valid.txt and test.txt alone (5 of 6 rows passed).
-- 2026-10-25, first run after the review fixes: R19 showed "The audit failed: SystemExit" with a traceback, because
+- 2026-10-25, first run after the fixes: R19 showed "The audit failed: SystemExit" with a traceback, because
   the range check used argparse's `error()`, which exits; the page cannot. The check now raises an input error,
   as every other input check does.

@@ -6,7 +6,7 @@
 - **Universe:** ogbl-citation2 papers published in 2019 node_year.csv.gz, split time
 - **W is a share of:** the 108,591 ogbl-citation2 papers published in 2019
 - **Definitions:** Universe = papers of 2019, the source year; release = valid/test source papers. Depth = references inside the subset (train + valid + test edges). The rule search is the threshold family on that depth.
-- **Tool:** benchscope-audit 0.0.1 (schema benchscope-card/0.3)
+- **Tool:** scopecard 0.0.2 (schema scopecard/0.3)
 - **Universe fingerprint:** `sha256:3238cf865abe65c01fc46c32a4009261c2d662275373be93f5d0b177395d0134`
 - **Candidates:** the valid/test source papers, each ranked against its sampled negatives (excluded units cannot be evaluated). Only source papers are queried, so a paper of the source year that is not a source is never evaluated as a query.
 

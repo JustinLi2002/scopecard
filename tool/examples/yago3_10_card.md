@@ -6,7 +6,7 @@
 - **Universe:** YAGO 3.0.2 yagoFacts.ttl
 - **W is a share of:** the 2,635,315 YAGO 3.0.2 entities that occur in at least one triple of its 37 relation types
 - **Definitions:** Universe = entities carrying >= 1 universe triple of the release relation types. Depth = number of universe triples on the entity. Release entities absent from the universe count against every rule in the Jaccard.
-- **Tool:** benchscope-audit 0.0.1 (schema benchscope-card/0.3)
+- **Tool:** scopecard 0.0.2 (schema scopecard/0.3)
 - **Universe fingerprint:** `sha256:8708a2b249492f1eef68d5d165768804efc3861b8c0178b5da78afcd9a648c2c`
 - **Candidates:** every entity of the release, in filtered head and tail ranking (excluded units cannot be evaluated). Link prediction ranks each test query against the release entity set, so a universe entity absent from the release is never a candidate.
 

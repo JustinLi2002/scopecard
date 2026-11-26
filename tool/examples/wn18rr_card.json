@@ -573,7 +573,7 @@
   ],
   "unmapped_release_units": 0
  },
- "schema": "benchscope-card/0.3",
+ "schema": "scopecard/0.3",
  "scope_statement": "Comparisons on WN18RR license claims about the entities it can evaluate, which leave out 63.4% of the 112,199 WordNet 3.0 synsets that carry at least one triple of its 11 relations. The closest simple rule (both_ends, T = 5) is not reproduced (Jaccard 0.595). Caution: Left out of the per-query shares and the break-even: 1 of the 3,134 test triples (no matching triple in the universe); they use the other 3,133. A model difference measured on all test triples is on a different query set, for which the break-even carries no guarantee; recompute the difference on the 3,133 triples the shares use.",
  "support": {
   "basis": "Link prediction ranks each test query against the release entity set, so a universe entity absent from the release is never a candidate.",
@@ -581,7 +581,7 @@
   "structural": true
  },
  "task": "kg_link_prediction",
- "tool_version": "0.0.1",
+ "tool_version": "0.0.2",
  "universe": {
   "fingerprint": "sha256:0e77d7b548e8f9dfa3db8792cbe0cb6d373395cda3e9e7bf51383f5049806f10",
   "name": "WordNet 3.0",

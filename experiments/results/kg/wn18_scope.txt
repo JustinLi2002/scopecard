@@ -1,0 +1,23 @@
+WordNet 3.0 synsets 117659 {'n': 82115, 'v': 13767, 'a': 18156, 'r': 3621}
+offsets shared by synsets of different POS: 282 (synsets involved: 567 )
+WN18 triples 151442 unique 151442 entities 40943 not a WordNet 3.0 offset 0
+WN18 triples reproduced from WordNet 3.0 (bare-offset keys): 151437 of 151442
+  not reproduced: 5 [('_derivationally_related_form', 5)]
+triples of the rebuilt graph induced on the WN18 entity set: 151495 | in release 151437 | induced but absent from release 58
+  => WN18 is (up to 58 triples) the induced subgraph on its entity set: the entity set is the rule
+WN18 entities on a shared offset: 232 | of these, carrying triples of two different synsets (merged): 161
+  example: ['00001740', '00003553', '00025728'] [['a', 'n', 'v'], ['a', 'n'], ['a', 'r']] named in definitions file as POS ['v', 'n', 'r']
+stated rule check: WN18 entities with < 15 triples in the rebuilt 18-relation graph: 34393 of 40943 | min degree 2
+WN18 entities with < 15 triples in the release itself: 38117
+reading "single pass", T=15: 6377 entities, overlap 6184, Jaccard 0.150
+reading "iterated (15-core)", T=15: 0 entities, overlap 0, Jaccard 0.000
+reading "seeds + neighbours", T=15: 82607 entities, overlap 36427, Jaccard 0.418
+best single-pass threshold over T=1..40: T=5, Jaccard 0.597
+best seeds+neighbours threshold over T=1..40: T=16, Jaccard 0.418
+WN18RR triples 93003 relations 11 entities 40943 outside WN18 entities 0
+WN18RR triples reproduced from WordNet 3.0: 92998 of 93003
+W_entity, universe = all WordNet 3.0 offsets: 0.6512 (76431 of 117374 excluded)
+W_entity, universe = offsets with >= 1 triple of WN18RR's 11 relations: 0.6344 (71032 of 111975 excluded)
+excluded share by POS (definitions-file tag; offsets merged across POS counted once): {'n': 0.6092, 'v': 0.4397, 'a': 0.9391, 'r': 0.9914}
+rebuilt WN18RR-relation triples 218367 | with both ends retained 93041 | touching an excluded entity 125326
+WN18RR test triples with an entity absent from train 210 of 3134

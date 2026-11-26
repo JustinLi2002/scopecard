@@ -1,0 +1,17 @@
+archive: 7055 detail repositories; selected 280 (7 filter, 73 clean, 80 of 786 lineage, 120 random); named but absent: 13
+cais/mmlu all/test: 3.5 MB
+20/280 repositories: 17 complete, 406 MB so far
+40/280 repositories: 37 complete, 907 MB so far
+60/280 repositories: 56 complete, 1332 MB so far
+80/280 repositories: 75 complete, 1755 MB so far
+100/280 repositories: 95 complete, 2230 MB so far
+120/280 repositories: 115 complete, 2717 MB so far
+140/280 repositories: 135 complete, 3189 MB so far
+160/280 repositories: 154 complete, 3654 MB so far
+180/280 repositories: 172 complete, 4061 MB so far
+200/280 repositories: 192 complete, 4507 MB so far
+220/280 repositories: 211 complete, 4929 MB so far
+240/280 repositories: 230 complete, 5389 MB so far
+260/280 repositories: 250 complete, 5861 MB so far
+280/280 repositories: 268 complete, 6259 MB so far
+done: 268 complete, 12 not: details_meta-llama__Llama-2-7b-chat-hf [no complete run]; details_meta-llama__Llama-2-13b-chat-hf [no complete run]; details_tiiuae__falcon-40b-instruct [no complete run]; details_internlm__internlm-20b [no complete run]; details_meta-llama__Llama-2-70b-chat-hf [no complete run]; details_lvkaokao__llama2-7b-hf-chat-lora-v2 [no complete run]; details_CausalLM__14B-DPO-alpha [no complete run]; details_FabbriSimo01__GPT_Large_Quantized [no complete run]; details_TheBloke__WizardLM-33B-V1.0-Uncensored-GPTQ [no complete run]; details_ajibawa-2023__scarlett-7b [no complete run]; details_qblocks__zephyr_7b_norobots [no complete run]; details_w601sxs__b1ade-1b [no complete run]

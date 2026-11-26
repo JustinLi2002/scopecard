@@ -1,0 +1,14 @@
+PASS  SWE-bench test split: 2294 instances (2,294 expected), 12 repositories
+PASS  Lite: 300 instances, all in the test split: True; repositories 12
+PASS  Verified: 500 instances, all in the test split: True
+PASS  OpenAI annotations: 1699 instances, all in the test split: True
+PASS  Verified inside the annotated set: 500 of 500
+INFO  Lite instances that are annotated: 231; Lite and Verified share 93 instances
+PASS  SWE-bench systems with a resolved list on the full split: 24 (24 expected); resolved ids outside the split: 0
+INFO  SWE-bench/experiments commit 40f164d5b8f1d249bf95a6df8b74b577fd8e519d
+PASS  Lite inside the recomputed eligible set (loose reading) 100.0% (95% needed for the three-region analyses)
+PASS  BigCodeBench: 1140 tasks, Hard 148, Hard inside the task list: True
+PASS  BigCodeBench complete: 153 models, task columns equal the task list: True; cell values ['0', '1'] (mapping fixed: "1" passed, "0" not); dropped for other values: 0
+PASS  BigCodeBench complete: table mean against the published full-set score, 152 of 153 matched models within 0.5 points (0 models not matched by name)
+PASS  BigCodeBench instruct: 126 models, task columns equal the task list: True; cell values ['0', '1'] (mapping fixed: "1" passed, "0" not); dropped for other values: 0
+PASS  BigCodeBench instruct: table mean against the published full-set score, 126 of 126 matched models within 0.5 points (0 models not matched by name)

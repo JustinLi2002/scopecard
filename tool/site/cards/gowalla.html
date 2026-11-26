@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gowalla: BenchScope card</title>
+<title>Gowalla: ScopeCard card</title>
 <meta name="description" content="Scope card for Gowalla.">
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
-<nav class="top"><a href="../index.html">Card library</a><a href="../how-to-read.html">How to read a card</a><a href="../app/index.html">Audit your own benchmark</a><a href="../schema/benchscope-card-0.3.schema.json">Card schema</a></nav>
+<nav class="top"><a href="../index.html">Card library</a><a href="../how-to-read.html">How to read a card</a><a href="../app/index.html">Audit your own benchmark</a><a href="../schema/scopecard-0.3.schema.json">Card schema</a></nav>
 <h1>Gowalla</h1>
 <p class="statement">Comparisons on Gowalla license claims about the user-item pairs it can evaluate, which leave out 99.1% of the 137,177,550,814 unobserved user-item pairs among the 107,092 users and 1,280,969 locations of SNAP Gowalla check-ins. The closest simple rule (kcore, T = 10) is approximately reproduced (Jaccard 0.9999).</p>
 <h2>From the 2026-10 pilot</h2><div class="panel"><dl class="facts"><dt>Task</dt><dd>recommendation</dd><dt>Domain</dt><dd>recommendation</dd><dt>Rule stated in the paper</dt><dd>&#x27;we use the 10-core setting, i.e., retaining users and items with at least ten interactions&#x27;</dd><dt>What the release shows</dt><dd>iterated 10-core on distinct (user, location) check-in pairs reproduces the users exactly (29858) and items to within 7 (40988 vs 40981; pairs 1027464 vs 1027370); one released user has 9 interactions</dd><dt>Rule decidable from the paper</dt><dd>partial. Jaccard users 1.0000, items 0.9998, pairs 0.9999 against the raw 10-core; every release interaction is a raw pair; not exact: 7 core items absent and one released user below the threshold, cause not established (agrees with the independent audit in RECOMMENDATION_AUDIT.md)</dd><dt>Negatives</dt><dd>implicit: all items the user has not interacted with in train</dd><dt>Evaluation</dt><dd>full ranking over all items not in the user&#x27;s training set; Recall@20, NDCG@20</dd><dt>Sources checked</dt><dd>Wang et al. 2019 SIGIR (NGCF, Sec. 4.1.1); He et al. 2020 SIGIR (LightGCN, Sec. 4); kuandeng/LightGCN Data/gowalla (train, test, user_list, item_list); SNAP loc-gowalla_totalCheckins</dd><dt>Notes</dt><dd>[P2] reported Amazon 2023 five-cores only; this is a different source and threshold</dd></dl></div>
 <h2>Scope card</h2><div class="panel card"><h1>Scope card: Gowalla</h1>
 <blockquote>Comparisons on Gowalla license claims about the user-item pairs it can evaluate, which leave out 99.1% of the 137,177,550,814 unobserved user-item pairs among the 107,092 users and 1,280,969 locations of SNAP Gowalla check-ins. The closest simple rule (kcore, T = 10) is approximately reproduced (Jaccard 0.9999).</blockquote>
-<ul><li><strong>Task:</strong> recommendation</li><li><strong>Universe:</strong> SNAP Gowalla check-ins loc-gowalla_totalCheckins.txt.gz</li><li><strong>W is a share of:</strong> the 137,177,550,814 unobserved user-item pairs among the 107,092 users and 1,280,969 locations of SNAP Gowalla check-ins</li><li><strong>Definitions:</strong> Universe = distinct (user, location) pairs in the raw check-ins; candidates = unobserved pairs.</li><li><strong>Tool:</strong> benchscope-audit 0.0.1 (schema benchscope-card/0.3)</li><li><strong>Universe fingerprint:</strong> <code>sha256:87c5b8d253be6f28cbb9be2b67f2e75e6e39415ee7d3529393afc0b7bac80709</code></li><li><strong>Candidates:</strong> every item of the release, for each test user of the release (all-item ranking) (excluded units cannot be evaluated). NGCF and LightGCN rank all release items for each test user, so users and items absent from the release are never evaluated.</li></ul>
+<ul><li><strong>Task:</strong> recommendation</li><li><strong>Universe:</strong> SNAP Gowalla check-ins loc-gowalla_totalCheckins.txt.gz</li><li><strong>W is a share of:</strong> the 137,177,550,814 unobserved user-item pairs among the 107,092 users and 1,280,969 locations of SNAP Gowalla check-ins</li><li><strong>Definitions:</strong> Universe = distinct (user, location) pairs in the raw check-ins; candidates = unobserved pairs.</li><li><strong>Tool:</strong> scopecard 0.0.2 (schema scopecard/0.3)</li><li><strong>Universe fingerprint:</strong> <code>sha256:87c5b8d253be6f28cbb9be2b67f2e75e6e39415ee7d3529393afc0b7bac80709</code></li><li><strong>Candidates:</strong> every item of the release, for each test user of the release (all-item ranking) (excluded units cannot be evaluated). NGCF and LightGCN rank all release items for each test user, so users and items absent from the release are never evaluated.</li></ul>
 <h2>Mapping</h2>
 <p>70839 of 70839 release ids mapped; 0 unmapped; 0 ids stand for more than one universe unit.</p>
 <h2>Exclusion</h2>
@@ -29,11 +29,11 @@
 <ul><li><strong>loc-gowalla_totalCheckins.txt.gz:</strong> 6,442,892 lines read.</li></ul></div>
 <h2>Reproduce this card</h2><div class="panel">
 <div class="tablewrap"><table><thead><tr><th>Input</th><th>Public source</th></tr></thead><tbody><tr><td><code>gowalla/</code></td><td><a href="https://github.com/kuandeng/LightGCN/tree/b067ec05f16a24e0e1efe63cd82385f0c469af20/Data/gowalla">https://github.com/kuandeng/LightGCN/tree/b067ec05f16a24e0e1efe63cd82385f0c469af20/Data/gowalla</a></td></tr><tr><td><code>loc-gowalla_totalCheckins.txt.gz</code></td><td><a href="https://snap.stanford.edu/data/loc-gowalla_totalCheckins.txt.gz">https://snap.stanford.edu/data/loc-gowalla_totalCheckins.txt.gz</a></td></tr></tbody></table></div>
-<p>With the benchscope-audit package installed:</p>
-<pre>benchscope-audit recsys-checkins --release gowalla/ --checkins loc-gowalla_totalCheckins.txt.gz --name Gowalla --positives release --out card.json</pre>
+<p>With the scopecard package installed:</p>
+<pre>scopecard recsys-checkins --release gowalla/ --checkins loc-gowalla_totalCheckins.txt.gz --name Gowalla --positives release --out card.json</pre>
 <p>The card records the SHA-256 of every release file it read, so a reader can check that the same files were audited. <a href="gowalla.json">Download this card (JSON)</a>.</p></div>
 <footer>
-<p>Cards written by benchscope-audit 0.0.1 (schema benchscope-card/0.3). Every number on these pages is read from a card or from the 2026-10 pilot table.</p>
+<p>Cards written by scopecard 0.0.2 (schema scopecard/0.3). Every number on these pages is read from a card or from the 2026-10 pilot table.</p>
 <p>Biology benchmarks are added once the papers that audit them are published.</p>
 </footer>
 </main>

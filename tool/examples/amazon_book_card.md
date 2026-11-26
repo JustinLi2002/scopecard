@@ -6,7 +6,7 @@
 - **Universe:** Amazon 2014 Books ratings ratings_Books.csv
 - **W is a share of:** the 18,701,842,150,229 unobserved user-item pairs among the 8,026,324 users and 2,330,066 items of Amazon 2014 Books ratings
 - **Definitions:** Universe = distinct (user, item) pairs in the raw ratings; candidates = unobserved pairs.
-- **Tool:** benchscope-audit 0.0.1 (schema benchscope-card/0.3)
+- **Tool:** scopecard 0.0.2 (schema scopecard/0.3)
 - **Universe fingerprint:** `sha256:c19b8537a93fd6eac241da55a8db7086374968336aa32c3b60c8ea0da1d4ed9a`
 - **Candidates:** every item of the release, for each test user of the release (all-item ranking) (excluded units cannot be evaluated). NGCF and LightGCN rank all release items for each test user, so users and items absent from the release are never evaluated.
 

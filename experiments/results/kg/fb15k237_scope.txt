@@ -1,0 +1,21 @@
+train: Microsoft release 272115 triples; ConvE copy identical as a triple set: True
+valid: Microsoft release 17535 triples; ConvE copy identical as a triple set: True
+test: Microsoft release 20466 triples; ConvE copy identical as a triple set: True
+FB15k triples 592213 FB15k-237 triples 310116 | FB15k-237 triples not in FB15k: 0
+relation frequency on FB15k train: 401st relation has 100 triples; ties at that count: 3; 237 relations all within rank 401: True; max rank of a kept relation 401
+relation frequency on FB15k all splits: 401st relation has 122 triples; ties at that count: 4; 237 relations all within rank 401: False; max rank of a kept relation 410
+top-401 relation pairs with >= 97% overlap (intersection / smaller set): 303 | of these also >= 97% of the larger set: 211
+dropped relations (top 401 minus 237): 164 | with a >= 97% partner that was kept: 164 | with any >= 97% partner: 164
+pairs of KEPT relations >= 97% of the smaller set (should be 0 under that reading): 28 | >= 97% of the larger set too: 3
+dropped relations explained under the larger-set reading: 164 of 164
+dropped relations with no >= 97% partner: 0 []
+FB15k train on the 237 relations: 276670; FB15k-237 train: 272115; release subset of FB15k train: True
+FB15k valid on the 237 relations: 28644; FB15k-237 valid: 17535; release subset of FB15k valid: True
+FB15k test on the 237 relations: 33672; FB15k-237 test: 20466; release subset of FB15k test: True
+FB15k-237 valid triples whose entity pair is linked in train: same direction 0, either direction 0
+FB15k-237 test triples whose entity pair is linked in train: same direction 0, either direction 0
+FB15k valid/test triples on the 237 relations that the pair rule would remove (vs FB15k-237 train): {'valid': '10648 of 28644 (0.372)', 'test': '12634 of 33672 (0.375)'}
+entities: FB15k 14951 FB15k-237 14541 lost from FB15k 410 | FB15k-237 valid/test entities absent from its train: 36
+lost entities with 0 triples on the 237 relations: 339 | lost entities that still carry such triples: 71 | largest: [(2867, '/m/08mbj32'), (953, '/m/02vxfw_'), (763, '/m/09l65')]
+FB15k train triples on the 237 relations missing from FB15k-237 train: 4555 | of these touching a removed entity: 4555
+FB15k-237 entity degree: min 1 median 26 | entities with degree < 10: 2734

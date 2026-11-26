@@ -84,7 +84,7 @@
   "violations": 0
  },
  "rule_diagnosis": null,
- "schema": "benchscope-card/0.3",
+ "schema": "scopecard/0.3",
  "scope_statement": "Comparisons on TREC DL 2019 passage license claims about the queries it can evaluate, which leave out 78.5% of the 200 TREC DL 2019 passage test topics. Within each evaluated query, 99.9934% to 99.9985% of the 8,841,823 documents are unjudged and count as non-relevant. The stated rule (>= 3 relevant (grade >= 2) and relevant/judged < 0.6) is consistent with every released unit; excluded units cannot be checked (no published judgments).",
  "support": {
   "basis": "Only topics with judgments are scored, so a released test topic without judgments is never evaluated; inside a topic, unjudged documents count as non-relevant.",
@@ -92,7 +92,7 @@
   "structural": true
  },
  "task": "query_level",
- "tool_version": "0.0.1",
+ "tool_version": "0.0.2",
  "universe": {
   "fingerprint": "sha256:2be40e59dab214f971e1ce8e911e7af197a8dd75c0c74098048591f21ca28e6c",
   "name": "TREC DL 2019 passage test topics",

@@ -1,0 +1,14 @@
+YAGO3-10 triples 1089040 relations 37 entities 123182
+YAGO 3.0.2 yagoFacts entity-entity facts 5628166 relations 37
+  on the 37 YAGO3-10 relations 5628166
+YAGO3-10 triples found in YAGO 3.0.2: 1054372 of 1089040 {'train': 1044687, 'valid': 4858, 'test': 4827}
+  not found, by relation: [('isAffiliatedTo', 9771), ('playsFor', 8319), ('isConnectedTo', 5575), ('actedIn', 2707), ('isLocatedIn', 1784), ('hasWonPrize', 917)]
+YAGO3-10 entities present in YAGO 3.0.2 (37 relations): 121138 of 123182
+YAGO 3.0.2 facts induced on the YAGO3-10 entity set: 1054372 | in release 1054372 | induced but not in release 0
+>= 10 facts on the 37 relations: seeds 125433 | seeds+neighbours: entities 2338580 (Jaccard 0.052), triples 5091643 (release covered 1054372/1089040) | seeds only: entities 123189 (Jaccard 0.967), triples 1089132 (release covered 1054361)
+>= 10 distinct relation types (37 relations): seeds 546 | seeds+neighbours: entities 562439 (Jaccard 0.065), triples 634071 (release covered 59188/1089040) | seeds only: entities 499 (Jaccard 0.004), triples 2352 (release covered 2352)
+>= 10 facts on all yagoFacts relations: seeds 125433 | seeds+neighbours: entities 2338580 (Jaccard 0.052), triples 5091643 (release covered 1054372/1089040) | seeds only: entities 123189 (Jaccard 0.967), triples 1089132 (release covered 1054361)
+release entities that are seeds (>= 10 facts on the 37 relations): 121136 | non-seeds: 2046 | non-seeds with no seed neighbour in the release: 3
+YAGO 3.0.2 degree (37 relations) of release entities: min 0 | < 10: 2046
+W_entity, universe = YAGO 3.0.2 entities with >= 1 fact on the 37 relations: 0.9540 (2514177 of 2635315 excluded)
+YAGO 3.0.2 facts on the 37 relations touching an excluded entity: 4573794 of 5628166

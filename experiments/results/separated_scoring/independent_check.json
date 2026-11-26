@@ -1,0 +1,8 @@
+{
+  "primary_events_checked": 800,
+  "bootstrap_replicates_checked": 20,
+  "max_mean_difference": 6.245004513516506e-17,
+  "max_event_difference": 8.326672684688674e-17,
+  "primary_excess": 0.012245842357208749,
+  "method": "Explicitly rebuild each panel; independent code; no analysis-module imports"
+}

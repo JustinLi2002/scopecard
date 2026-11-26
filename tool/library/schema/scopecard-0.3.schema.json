@@ -1,0 +1,411 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "scopecard-0.3.schema.json",
+ "title": "ScopeCard scope card, schema scopecard/0.3",
+ "description": "One card per (benchmark release, declared universe), written by scopecard. scopecard.card.validate_card checks the same requirements and, in addition, that the numbers are internally consistent (included + excluded = units, W = excluded / units, each rule verdict matches its Jaccard). Changes from 0.2: counted (what W is a share of, with its size; the scope statement uses it), warnings (problems the reader must see: few release ids in the universe, skipped input lines, a likely misread file; repeated after the scope statement) and inputs (lines read and skipped per input file). Earlier: 0.2 added the support block, the universe fingerprint, nullable W_pairs and a comparison that states its metric.",
+ "type": "object",
+ "required": [
+  "schema",
+  "tool_version",
+  "task",
+  "benchmark",
+  "universe",
+  "mapping",
+  "exclusion",
+  "depth_profile",
+  "rule_diagnosis",
+  "rule_check",
+  "derived_scope",
+  "comparison",
+  "hygiene",
+  "support",
+  "scope_statement",
+  "counted",
+  "warnings",
+  "inputs",
+  "notes"
+ ],
+ "properties": {
+  "schema": {
+   "const": "scopecard/0.3"
+  },
+  "tool_version": {
+   "type": "string",
+   "description": "scopecard version that wrote the card"
+  },
+  "task": {
+   "enum": [
+    "kg_link_prediction",
+    "recommendation",
+    "pair_classification",
+    "query_level"
+   ]
+  },
+  "benchmark": {
+   "type": "object",
+   "required": [
+    "name",
+    "files_sha256"
+   ],
+   "properties": {
+    "name": {
+     "type": "string",
+     "minLength": 1
+    },
+    "files_sha256": {
+     "type": "object",
+     "minProperties": 1,
+     "additionalProperties": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+     },
+     "description": "release file name -> SHA-256 of the file audited"
+    }
+   }
+  },
+  "universe": {
+   "type": "object",
+   "required": [
+    "name",
+    "units"
+   ],
+   "properties": {
+    "name": {
+     "type": "string"
+    },
+    "version": {
+     "type": "string"
+    },
+    "units": {
+     "type": "integer",
+     "minimum": 1
+    },
+    "fingerprint": {
+     "type": "string",
+     "pattern": "^sha256:[0-9a-f]{64}$",
+     "description": "SHA-256 of the universe's unit ids and typed relations, independent of unit order and of the input files"
+    }
+   }
+  },
+  "mapping": {
+   "type": "object",
+   "required": [
+    "route",
+    "release_ids",
+    "mapped_ids",
+    "unmapped_ids"
+   ],
+   "properties": {
+    "route": {
+     "enum": [
+      "direct",
+      "triples"
+     ]
+    },
+    "release_ids": {
+     "type": "integer"
+    },
+    "mapped_ids": {
+     "type": "integer"
+    },
+    "unmapped_ids": {
+     "type": "integer"
+    },
+    "merged_ids": {
+     "type": "integer",
+     "description": "release ids that stand for more than one universe unit"
+    }
+   }
+  },
+  "exclusion": {
+   "type": "object",
+   "description": "W = excluded share of universe units; W_pairs = excluded share of unobserved (part 0, part 1) pairs for bipartite universes; per_query = the excluded share W_q of each test query's candidates under the benchmark's protocol on the universe, and their mean W_bar (link prediction, recommendation); within_query = the per-query layer of query-level benchmarks with judgments",
+   "anyOf": [
+    {
+     "required": [
+      "W"
+     ]
+    },
+    {
+     "required": [
+      "W_pairs"
+     ]
+    }
+   ],
+   "properties": {
+    "W": {
+     "type": "number",
+     "minimum": 0,
+     "maximum": 1
+    },
+    "W_pairs": {
+     "type": [
+      "number",
+      "null"
+     ],
+     "minimum": 0,
+     "maximum": 1,
+     "description": "null when the universe has no unobserved pair; always counted with the universe's own positives (the 2026-10 pilot table's release-positives value, when asked for, is W_pairs_release_convention)"
+    },
+    "per_query": {
+     "type": "object",
+     "description": "Added 2026-10-27 (optional): queries, W_bar (mean of W_q, used for c*), W_q (min, median, max), queries_without_excluded, protocol",
+     "properties": {
+      "queries": {
+       "type": "integer"
+      },
+      "W_bar": {
+       "type": [
+        "number",
+        "null"
+       ],
+       "minimum": 0,
+       "maximum": 1
+      }
+     }
+    },
+    "units": {
+     "type": "integer"
+    },
+    "included": {
+     "type": "integer"
+    },
+    "excluded": {
+     "type": "integer"
+    }
+   }
+  },
+  "depth_profile": {
+   "type": [
+    "object",
+    "null"
+   ]
+  },
+  "rule_diagnosis": {
+   "type": [
+    "object",
+    "null"
+   ],
+   "properties": {
+    "best": {
+     "$ref": "#/$defs/rule"
+    },
+    "families": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "$ref": "#/$defs/rule"
+     }
+    },
+    "stated": {
+     "$ref": "#/$defs/rule"
+    },
+    "thresholds_searched": {
+     "type": "array",
+     "items": {
+      "type": "integer"
+     },
+     "minItems": 2,
+     "maxItems": 2
+    },
+    "unmapped_release_units": {
+     "type": "integer"
+    }
+   }
+  },
+  "rule_check": {
+   "type": [
+    "object",
+    "null"
+   ],
+   "description": "a stated rule checked on released units only (query level)"
+  },
+  "derived_scope": {
+   "type": [
+    "object",
+    "null"
+   ],
+   "properties": {
+    "d_min": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    },
+    "curve": {
+     "type": "array"
+    }
+   }
+  },
+  "comparison": {
+   "type": [
+    "object",
+    "null"
+   ],
+   "description": "A stated benchmark difference. Break-even values exist only for AUC-type metrics (linear in the candidate mix) and only when the excluded share is established.",
+   "properties": {
+    "metric": {
+     "enum": [
+      "auc",
+      "mrr",
+      "hits"
+     ]
+    },
+    "delta_O": {
+     "type": "number"
+    },
+    "applicable": {
+     "type": "boolean"
+    },
+    "c_star": {
+     "type": [
+      "number",
+      "null"
+     ],
+     "minimum": 0,
+     "description": "threshold on the between-region change c = delta_O - delta_U (plus Cov(W_q, c_q) / W when W is the mean per-query share), with the sign of delta_O"
+    },
+    "delta_U_break_even": {
+     "type": [
+      "number",
+      "null"
+     ],
+     "minimum": 0,
+     "description": "threshold on the excluded part's opposite-direction difference, (1 - W)|delta_O| / W"
+    }
+   }
+  },
+  "hygiene": {
+   "type": [
+    "object",
+    "null"
+   ]
+  },
+  "scope_statement": {
+   "type": "string",
+   "minLength": 1
+  },
+  "notes": {
+   "type": "string"
+  },
+  "support": {
+   "type": "object",
+   "required": [
+    "candidates",
+    "structural"
+   ],
+   "description": "How the benchmark chooses its evaluation candidates. structural = true: candidates are enumerated over the release's units, so a unit absent from the release is never evaluated and W is an excluded share. structural = false: W is coverage only.",
+   "properties": {
+    "candidates": {
+     "type": "string"
+    },
+    "structural": {
+     "type": "boolean"
+    },
+    "basis": {
+     "type": "string"
+    },
+    "declaration": {
+     "type": "object",
+     "description": "only with a user-declared candidate rule (pair classification, every pair evaluated): the pairs the file lists among the release units, the pairs the declaration implies, and whether the file supports it",
+     "properties": {
+      "pairs_listed": {
+       "type": "integer"
+      },
+      "pairs_expected": {
+       "type": "integer"
+      },
+      "consistent": {
+       "type": "boolean"
+      }
+     }
+    }
+   }
+  },
+  "counted": {
+   "type": "string",
+   "minLength": 1,
+   "description": "what W is a share of, with its size, e.g. 'the 112,199 WordNet 3.0 synsets that carry at least one triple of its 11 relations'"
+  },
+  "warnings": {
+   "type": "array",
+   "items": {
+    "type": "string",
+    "minLength": 1
+   },
+   "description": "problems the reader must see before using the card; empty when there are none"
+  },
+  "inputs": {
+   "type": "object",
+   "description": "lines read and skipped per input file that is read leniently (raw universes, qrels, pair tables)",
+   "additionalProperties": {
+    "type": "object",
+    "required": [
+     "lines",
+     "skipped",
+     "expected"
+    ],
+    "properties": {
+     "lines": {
+      "type": "integer",
+      "minimum": 0
+     },
+     "skipped": {
+      "type": "integer",
+      "minimum": 0
+     },
+     "expected": {
+      "type": "string"
+     },
+     "first_skipped": {
+      "type": "object",
+      "properties": {
+       "line": {
+        "type": "integer"
+       },
+       "text": {
+        "type": "string"
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "$defs": {
+  "rule": {
+   "type": "object",
+   "required": [
+    "family",
+    "T",
+    "jaccard",
+    "verdict"
+   ],
+   "properties": {
+    "family": {
+     "enum": [
+      "threshold",
+      "both_ends",
+      "seeds_neighbours",
+      "kcore"
+     ]
+    },
+    "T": {
+     "type": "integer"
+    },
+    "jaccard": {
+     "type": "number",
+     "minimum": 0,
+     "maximum": 1
+    },
+    "verdict": {
+     "enum": [
+      "reproduced",
+      "approximately reproduced",
+      "not reproduced"
+     ]
+    }
+   }
+  }
+ }
+}

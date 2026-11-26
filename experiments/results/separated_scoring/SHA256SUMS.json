@@ -1,0 +1,18 @@
+{
+  "experiments\\results\\separated_scoring\\bootstrap.npz": "3074121bcdea319954d692a694edca5510215fba993c954102246513a42bd509",
+  "experiments\\results\\separated_scoring\\cross_prompt_effects.pdf": "6b351506e5418d0553830ea79d1cd799b70f5407d85d75dca0b9c189454a4c42",
+  "experiments\\results\\separated_scoring\\cross_prompt_effects.png": "cbd540912e695403acd40202e6c9583a6ab8139c8184011b7c9782b835bed98f",
+  "experiments\\results\\separated_scoring\\effects.tsv": "d2c131c6ad4fc65e7ddad5941502e6ac360322fc5a8ca0d67d18ae87ae929759",
+  "experiments\\results\\separated_scoring\\events.tsv": "fd931b54e849c92b266bc3e48b60570025a27c2e48a3f4d310e817d09dbd5334",
+  "experiments\\results\\separated_scoring\\independent_check.json": "780d84a416bb1b511a90257f5545ba4714a210d9de45373fd2d6f9dc0f765f22",
+  "experiments\\results\\separated_scoring\\panel_plan.json": "7af96d3adfc8137ffac7f4df21a0a30d18bd14003ffef1ef0a042f69f5341a60",
+  "experiments\\results\\separated_scoring\\per_model.tsv": "e9dd7ceeffb7af54305e368ff533ced9a8152ec3c0a7f0f2b4676550f37715fe",
+  "experiments\\results\\separated_scoring\\run_manifest.json": "af9eeb585f7bac75c1953015ea52a373ab5c8e3d920a543f035e51b0e12042a7",
+  "experiments\\results\\separated_scoring\\summary.json": "d7523a0a63ad0309a58112eaf75c01cd639794256c6f3c9e30189538acb95235",
+  "experiments\\results\\separated_scoring\\summary.md": "10b82f94d3be15eee59c1bd25df5e429fd511a427e9cec193ca3b69c5646ca8a",
+  "experiments\\results\\separated_scoring\\verification.json": "4bc60837447c6a0a5c12671b4524d2896e489daabd3e767eb78e6eaa083a6b0d",
+  "experiments\\SEPARATED_SCORING_DESIGN.md": "366a45ac1f292d076b38cc86949ab1e046dc85a1c3bf9ca21d817d711cefcab0",
+  "experiments\\SEPARATED_SCORING_FINDINGS.md": "da6b7ab7bd68861bd52f05eabe1f1fa6221f8d0d3f5d031404222e02b885a4c2",
+  "experiments\\scripts\\separated_scoring.py": "13d28cadd1a39c87675d95176e96a616a72584340feff15b7aa7235543ec5148",
+  "experiments\\scripts\\check_separated_scoring.py": "034de2686a245fa32a4c3e7a1d0300bc300fd0128fd42310efe8d45a1528c0b1"
+}

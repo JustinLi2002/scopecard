@@ -6,7 +6,7 @@
 - **Universe:** SNAP Gowalla check-ins loc-gowalla_totalCheckins.txt.gz
 - **W is a share of:** the 137,177,550,814 unobserved user-item pairs among the 107,092 users and 1,280,969 locations of SNAP Gowalla check-ins
 - **Definitions:** Universe = distinct (user, location) pairs in the raw check-ins; candidates = unobserved pairs.
-- **Tool:** benchscope-audit 0.0.1 (schema benchscope-card/0.3)
+- **Tool:** scopecard 0.0.2 (schema scopecard/0.3)
 - **Universe fingerprint:** `sha256:87c5b8d253be6f28cbb9be2b67f2e75e6e39415ee7d3529393afc0b7bac80709`
 - **Candidates:** every item of the release, for each test user of the release (all-item ranking) (excluded units cannot be evaluated). NGCF and LightGCN rank all release items for each test user, so users and items absent from the release are never evaluated.
 

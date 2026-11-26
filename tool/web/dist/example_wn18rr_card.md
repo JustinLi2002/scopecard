@@ -10,7 +10,7 @@
 - **Universe:** WordNet 3.0 pos_offset, 11 relations
 - **W is a share of:** the 112,199 WordNet 3.0 synsets that carry at least one triple of its 11 relations
 - **Definitions:** Universe = WordNet 3.0 synsets carrying >= 1 triple of the benchmark relations (W); W_all_synsets also counts synsets with none. Depth = number of universe triples on the synset.
-- **Tool:** benchscope-audit 0.0.1 (schema benchscope-card/0.3)
+- **Tool:** scopecard 0.0.2 (schema scopecard/0.3)
 - **Universe fingerprint:** `sha256:0e77d7b548e8f9dfa3db8792cbe0cb6d373395cda3e9e7bf51383f5049806f10`
 - **Candidates:** every entity of the release, in filtered head and tail ranking (excluded units cannot be evaluated). Link prediction ranks each test query against the release entity set, so a universe entity absent from the release is never a candidate.
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BenchScope audit</title>
+<title>ScopeCard audit</title>
 <meta name="description" content="Measure what a benchmark can never evaluate against a declared universe. Runs in your browser; your files are never uploaded.">
 <style>
 :root {
@@ -115,8 +115,8 @@ footer p { margin: 4px 0; }
 </head>
 <body>
 <main>
-  <nav class="top" id="site-nav" hidden><a href="../index.html">Card library</a><a href="../how-to-read.html">How to read a card</a><a href="../schema/benchscope-card-0.3.schema.json">Card schema</a></nav>
-  <h1>BenchScope audit</h1>
+  <nav class="top" id="site-nav" hidden><a href="../index.html">Card library</a><a href="../how-to-read.html">How to read a card</a><a href="../schema/scopecard-0.3.schema.json">Card schema</a></nav>
+  <h1>ScopeCard audit</h1>
   <p class="lede">Compare a benchmark release with the universe it claims to cover. The scope card reports what the release can never evaluate (W), or only what it covers when its sampling rule is not shown, whether a simple rule reproduces it, and how large a difference on the excluded part would have to be to reverse an AUC comparison. No labels, models or GPU are needed.</p>
   <div class="actions" style="margin-top:0">
     <button id="example" type="button">Show an example card (WN18RR)</button>
@@ -267,7 +267,7 @@ footer p { margin: 4px 0; }
   </section>
 
   <footer>
-    <p id="versions">benchscope-audit · Pyodide 0.27.7</p>
+    <p id="versions">scopecard · Pyodide 0.27.7</p>
     <p>The built-in WordNet 3.0 table is derived from Princeton WordNet 3.0 and carries its licence notice in the file header (WordNet 3.0 Copyright 2006 by Princeton University).</p>
   </footer>
 </main>
@@ -310,8 +310,8 @@ function startWorker() {
   $("run").disabled = true;
   setStatus("Loading Python…");
   ready = call({ kind: "ready" }).then((m) => {
-    $("versions").textContent = `benchscope-audit ${m.version} · Pyodide ${m.pyodide}`;
-    setStatus(`Ready: benchscope-audit ${m.version} on Pyodide ${m.pyodide}`, "ready");
+    $("versions").textContent = `scopecard ${m.version} · Pyodide ${m.pyodide}`;
+    setStatus(`Ready: scopecard ${m.version} on Pyodide ${m.pyodide}`, "ready");
     $("run").disabled = false;
     return m.version;
   }).catch((e) => { setStatus("Python failed to load: " + e.message, "failed"); throw e; });
@@ -335,7 +335,7 @@ async function runCommand(argv, files) {
   const m = await call({ kind: "run", argv, files: fs }, fs.map((f) => f.data));
   return { json: m.json, md: m.md, stdout: m.stdout };
 }
-window.BenchScope = { get ready() { return ready; }, runCommand, ensureWordnet };
+window.ScopeCard = { get ready() { return ready; }, runCommand, ensureWordnet };
 
 // ---- form -> command line
 const val = (id) => $(id).value.trim();
@@ -426,7 +426,7 @@ async function buildRun(task, dir) {
 }
 
 function commandLine(argv, dir) {
-  const parts = ["benchscope-audit"];
+  const parts = ["scopecard"];
   for (let i = 0; i < argv.length; i++) {
     let a = argv[i];
     if (a === "--wordnet") { parts.push(a, "WordNet-3.0/dict"); i++; continue; }
@@ -583,7 +583,7 @@ function showCard(json, md, cmd, example) {
   $("example-note").hidden = !example;
   $("cmd").textContent = cmd;
   $("fingerprint").textContent = (card.universe && card.universe.fingerprint) || "—";
-  $("written-by").textContent = `benchscope-audit ${card.tool_version}, card schema ${card.schema}`;
+  $("written-by").textContent = `scopecard ${card.tool_version}, card schema ${card.schema}`;
   const base = cardFileBase(card);
   $("dl-json").textContent = `Download ${base}.json`;
   $("dl-md").textContent = `Download ${base}.md`;
@@ -636,7 +636,7 @@ $("example").addEventListener("click", async () => {
     clearResult();
     lastCard = { json, md };
     const ec = JSON.parse(json).comparison;
-    showCard(json, md, "benchscope-audit kg-wordnet --release WN18RR/ --wordnet WordNet-3.0/dict --name WN18RR" +
+    showCard(json, md, "scopecard kg-wordnet --release WN18RR/ --wordnet WordNet-3.0/dict --name WN18RR" +
              (ec ? ` --delta-O ${ec.delta_O} --metric ${ec.metric}` : "") + " --out card.json --md card.md", true);
     $("run-status").textContent = "";
     $("result").scrollIntoView({ behavior: "smooth", block: "start" });

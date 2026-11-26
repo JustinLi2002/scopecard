@@ -10,9 +10,9 @@ of non-release units is added, at random. Two controls replace the rule by anoth
   edge_sample  a rule outside the four families: relations are drawn at random and both ends kept until the
                release is large enough. It favours well-connected units, but has no threshold.
 
-The answers are independent of the tool (added 2026-10-27, after the 2026-10-24 review). Releases, the recovery
+The answers are independent of the tool (added 2026-10-27). Releases, the recovery
 check and the end-to-end releases come from `reference_units`, a plain-Python version of the four families written
-from their definitions (sets, and a vertex-peeling k-core), which shares no code with benchscope_audit.rules. On
+from their definitions (sets, and a vertex-peeling k-core), which shares no code with scopecard.rules. On
 every graph it is also compared with the tool's rule_units over the whole search grid.
 
 Measured, per run:
@@ -39,9 +39,9 @@ import numpy as np
 
 P4 = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 sys.path.insert(0, os.path.join(P4, '..', 'tool', 'src'))
-from benchscope_audit import Universe, pair_exclusion, rule_units, search_rules, unit_exclusion  # noqa: E402
-from benchscope_audit.cli import main as cli_main  # noqa: E402
-from benchscope_audit.universes import from_pairs  # noqa: E402
+from scopecard import Universe, pair_exclusion, rule_units, search_rules, unit_exclusion  # noqa: E402
+from scopecard.cli import main as cli_main  # noqa: E402
+from scopecard.universes import from_pairs  # noqa: E402
 
 FAMILIES = ('threshold', 'both_ends', 'seeds_neighbours', 'kcore')
 CONTROLS = ('random', 'edge_sample')

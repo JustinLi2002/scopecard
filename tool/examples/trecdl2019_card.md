@@ -6,7 +6,7 @@
 - **Universe:** TREC DL 2019 passage test topics msmarco-test2019-queries.tsv.gz
 - **W is a share of:** the 200 TREC DL 2019 passage test topics
 - **Definitions:** Universe = the released test topics; release = topics with judgments. Within an evaluated topic, unjudged documents are scored as non-relevant by trec_eval (implicit negatives).
-- **Tool:** benchscope-audit 0.0.1 (schema benchscope-card/0.3)
+- **Tool:** scopecard 0.0.2 (schema scopecard/0.3)
 - **Universe fingerprint:** `sha256:2be40e59dab214f971e1ce8e911e7af197a8dd75c0c74098048591f21ca28e6c`
 - **Candidates:** the judged topics; within a topic, every corpus document (excluded units cannot be evaluated). Only topics with judgments are scored, so a released test topic without judgments is never evaluated; inside a topic, unjudged documents count as non-relevant.
 

@@ -1,0 +1,206 @@
+PASS  SWE-bench test split: 2294 instances (2,294 expected), 12 repositories
+PASS  Lite: 300 instances, all in the test split: True; repositories 12
+PASS  Verified: 500 instances, all in the test split: True
+PASS  OpenAI annotations: 1699 instances, all in the test split: True
+PASS  Verified inside the annotated set: 500 of 500
+PASS  SWE-bench systems with a resolved list on the full split: 24 (24 expected); resolved ids outside the split: 0
+# Released-subset study: results
+
+Design: `experiments/SUBSET_C_DESIGN.md` (fixed 2026-11-14). SWE-bench/experiments at commit `40f164d5b8`. 2000 bootstrap replicates and 2000 random subsets per analysis. Scores are proportions (0 to 1).
+
+## Rule diagnosis
+
+### Case A: SWE-bench Lite
+- One stated filter cannot be recomputed: an instance with a bare `#n` is excluded only if an HTTP request for that issue returned 200 when Lite was built. Two readings bracket it: every `#n` excludes (strict), or no bare `#n` excludes (loose).
+- Instances passing the re-implemented filters: strict 497, loose 581, of 2294.
+- Lite instances inside the recomputed eligible set: strict 300 of 300 (100.0%), loose 300 of 300 (100.0%).
+- Instances each filter excludes (in total / alone / among the 300 Lite instances): words_le_40 181 / 53 / 0; hyperlink 1005 / 333 / 0; issue_ref_certain 56 / 6 / 0; issue_ref_hash_number 342 / 84 / 0; commit_hash 71 / 13 / 0; image 144 / 3 / 0; adds_or_removes_file 45 / 2 / 0; more_than_1_file 559 / 43 / 0; hunks_not_1_to_3 689 / 83 / 0; test_error_message 450 / 110 / 0.
+- W of the filters alone: strict 0.7833, loose 0.7467; W of the release: 0.8692.
+
+PASS  Lite inside the recomputed eligible set (loose reading) 100.0% (95% needed for the three-region analyses)
+### Case B: SWE-bench Verified
+- Recomputed filter (either criterion 2 or above, or another major issue) agrees with the published `filter_out` on 1699 of 1699 annotated instances; 1160 are filtered out (68.3%) and 539 pass.
+- Verified instances that pass the filter: 500 of 500; 500 of the 539 passing instances were selected (92.8%).
+- Passing instances labelled 1-4 hours or >4 hours: 45, of which 45 are in Verified; passing instances not selected: 39, of which 0 carry those labels.
+
+PASS  BigCodeBench: 1140 tasks, Hard 148, Hard inside the task list: True
+PASS  BigCodeBench complete: 153 models, task columns equal the task list: True; cell values ['0', '1'] (mapping fixed: "1" passed, "0" not); dropped for other values: 0
+PASS  BigCodeBench complete: table mean against the published full-set score, 152 of 153 matched models within 0.5 points (0 models not matched by name)
+PASS  BigCodeBench instruct: 126 models, task columns equal the task list: True; cell values ['0', '1'] (mapping fixed: "1" passed, "0" not); dropped for other values: 0
+PASS  BigCodeBench instruct: table mean against the published full-set score, 126 of 126 matched models within 0.5 points (0 models not matched by name)
+### Case C: BigCodeBench-Hard
+- Hard tasks that satisfy each computable filter: more than two libraries 148 of 148; solution longer than the mean in characters 132, in whitespace tokens 122; solve_rate_complete_20240618 below 50%: 148; solve_rate_instruct_20240618 below 50%: 141; solve_rate_complete below 50%: 142; solve_rate_instruct below 50%: 138.
+- Computable part of the stated rule (libraries, length in characters, solve_rate_complete_20240618): 257 tasks; 132 of the 148 Hard tasks are among them; Jaccard with the release 0.484.
+- Computable part of the stated rule (libraries, length in characters, solve_rate_instruct_20240618): 257 tasks; 125 of the 148 Hard tasks are among them; Jaccard with the release 0.446.
+- Computable part of the stated rule (libraries, length in whitespace tokens, solve_rate_complete_20240618): 249 tasks; 122 of the 148 Hard tasks are among them; Jaccard with the release 0.444.
+- Computable part of the stated rule (libraries, length in whitespace tokens, solve_rate_instruct_20240618): 252 tasks; 116 of the 148 Hard tasks are among them; Jaccard with the release 0.408.
+- The Stack Overflow match (`q_idx`, `score`) is published for the 148 Hard tasks only, so the 626-task pool cannot be listed and the stated rule cannot be recomputed in full.
+
+## Case A: SWE-bench Lite (scope rule)
+
+### A, release against parent: Lite against the rest of the test split
+- 24 systems, 2294 instances; kept 300, excluded 1994; W = 0.8692; 1/W = 1.150.
+- Level: score on the excluded part minus score on the kept part, mean over systems -0.0911 (range -0.1906 to -0.0018); interval excludes zero for 17 of 24 systems (17 lower on the excluded part, 0 higher).
+- Ranking: Kendall tau_b between kept-part and parent scores 0.9690; 4 of 274 pairs not tied on the kept part have opposite signs; top on kept part: 20251219_sonar-foundation-agent_claude-opus-4-5; top on parent: 20251219_sonar-foundation-agent_claude-opus-4-5.
+- Unadjusted 95% intervals, 276 pairs: resolved on kept part 242, on parent 264; reversals 0; newly resolved 25; lost 3; attenuated 169; amplified 0.
+- Simultaneous 95% intervals, 276 pairs: resolved on kept part 216, on parent 253; reversals 0; newly resolved 37; lost 0; attenuated 90; amplified 0.
+- rho over the 242 pairs resolved on the kept part: median 0.329 (quartiles 0.221 to 0.412; 5th to 95th percentile -0.002 to 0.608); share above 1: 0.004; share above 1/W: 0.000. |c| median 0.0758 (5th to 95th percentile 0.0078 to 0.1592).
+- Random subsets of the same size (uniform, central 95%): tau_b 0.969 against a reference of 0.9251 to 0.9891 (percentile 70.5); opposite-sign pairs 4 against a reference of 1 to 9 (percentile 47.1); mean |c| 0.07323 against a reference of 0.01261 to 0.03001 (percentile 100.0).
+- Random subsets of the same size (by repository, central 95%): tau_b 0.969 against a reference of 0.9236 to 0.9872 (percentile 73.0); opposite-sign pairs 4 against a reference of 1 to 10 (percentile 44.1); mean |c| 0.07323 against a reference of 0.01253 to 0.03067 (percentile 100.0).
+- Sensitivity, stratified bootstrap (unadjusted): resolved on kept part 242, on parent 264; reversals 0; newly resolved 25; lost 3; attenuated 170; amplified 0.
+- Sensitivity, cluster bootstrap (unadjusted): resolved on kept part 241, on parent 257; reversals 0; newly resolved 20; lost 4; attenuated 167; amplified 1.
+
+### A, negative control: Lite against eligible instances that were not sampled (strict reading)
+- 24 systems, 497 instances; kept 300, excluded 197; W = 0.3964; 1/W = 2.523.
+- Level: score on the excluded part minus score on the kept part, mean over systems -0.0090 (range -0.0788 to +0.0657); interval excludes zero for 1 of 24 systems (1 lower on the excluded part, 0 higher).
+- Ranking: Kendall tau_b between kept-part and parent scores 0.9673; 4 of 274 pairs not tied on the kept part have opposite signs; top on kept part: 20251219_sonar-foundation-agent_claude-opus-4-5; top on parent: 20251219_sonar-foundation-agent_claude-opus-4-5.
+- Unadjusted 95% intervals, 276 pairs: resolved on kept part 244, on parent 252; reversals 0; newly resolved 11; lost 3; attenuated 6; amplified 16.
+- Simultaneous 95% intervals, 276 pairs: resolved on kept part 217, on parent 230; reversals 0; newly resolved 13; lost 0; attenuated 0; amplified 0.
+- rho over the 244 pairs resolved on the kept part: median -0.027 (quartiles -0.172 to 0.113; 5th to 95th percentile -0.539 to 0.530); share above 1: 0.012; share above 1/W: 0.000. |c| median 0.0372 (5th to 95th percentile 0.0047 to 0.1005).
+- Random subsets of the same size (uniform, central 95%): tau_b 0.9673 against a reference of 0.9474 to 0.9964 (percentile 26.3); opposite-sign pairs 4 against a reference of 0 to 7 (percentile 81.9); mean |c| 0.04071 against a reference of 0.0215 to 0.04858 (percentile 87.9).
+- Random subsets of the same size (by repository, central 95%): tau_b 0.9673 against a reference of 0.9435 to 0.991 (percentile 40.2); opposite-sign pairs 4 against a reference of 1 to 7 (percentile 69.1); mean |c| 0.04071 against a reference of 0.022 to 0.04965 (percentile 85.8).
+- Sensitivity, stratified bootstrap (unadjusted): resolved on kept part 244, on parent 251; reversals 0; newly resolved 11; lost 4; attenuated 7; amplified 17.
+- Sensitivity, cluster bootstrap (unadjusted): resolved on kept part 241, on parent 243; reversals 0; newly resolved 8; lost 6; attenuated 18; amplified 41.
+
+### A, the filters alone, strict reading: eligible instances against the rest
+- 24 systems, 2294 instances; kept 497, excluded 1797; W = 0.7833; 1/W = 1.277.
+- Level: score on the excluded part minus score on the kept part, mean over systems -0.0966 (range -0.1943 to -0.0003); interval excludes zero for 18 of 24 systems (18 lower on the excluded part, 0 higher).
+- Ranking: Kendall tau_b between kept-part and parent scores 0.9619; 5 of 276 pairs not tied on the kept part have opposite signs; top on kept part: 20251219_sonar-foundation-agent_claude-opus-4-5; top on parent: 20251219_sonar-foundation-agent_claude-opus-4-5.
+- Unadjusted 95% intervals, 276 pairs: resolved on kept part 252, on parent 265; reversals 0; newly resolved 13; lost 0; attenuated 198; amplified 0.
+- Simultaneous 95% intervals, 276 pairs: resolved on kept part 229, on parent 253; reversals 0; newly resolved 25; lost 1; attenuated 130; amplified 0.
+- rho over the 252 pairs resolved on the kept part: median 0.363 (quartiles 0.284 to 0.415; 5th to 95th percentile 0.043 to 0.558); share above 1: 0.000; share above 1/W: 0.000. |c| median 0.0857 (5th to 95th percentile 0.0062 to 0.1854).
+- Random subsets of the same size (uniform, central 95%): tau_b 0.9619 against a reference of 0.9435 to 0.9945 (percentile 26.9); opposite-sign pairs 5 against a reference of 0 to 7 (percentile 86.3); mean |c| 0.08333 against a reference of 0.0104 to 0.02476 (percentile 100.0).
+- Random subsets of the same size (by repository, central 95%): tau_b 0.9619 against a reference of 0.9401 to 0.9927 (percentile 32.2); opposite-sign pairs 5 against a reference of 1 to 8 (percentile 82.3); mean |c| 0.08333 against a reference of 0.01089 to 0.02541 (percentile 100.0).
+- Sensitivity, stratified bootstrap (unadjusted): resolved on kept part 251, on parent 265; reversals 0; newly resolved 14; lost 0; attenuated 199; amplified 0.
+- Sensitivity, cluster bootstrap (unadjusted): resolved on kept part 243, on parent 256; reversals 0; newly resolved 14; lost 1; attenuated 201; amplified 0.
+
+### A, the filters alone, loose reading: eligible instances against the rest
+- 24 systems, 2294 instances; kept 581, excluded 1713; W = 0.7467; 1/W = 1.339.
+- Level: score on the excluded part minus score on the kept part, mean over systems -0.0975 (range -0.1981 to -0.0022); interval excludes zero for 18 of 24 systems (18 lower on the excluded part, 0 higher).
+- Ranking: Kendall tau_b between kept-part and parent scores 0.9673; 4 of 275 pairs not tied on the kept part have opposite signs; top on kept part: 20251219_sonar-foundation-agent_claude-opus-4-5; top on parent: 20251219_sonar-foundation-agent_claude-opus-4-5.
+- Unadjusted 95% intervals, 276 pairs: resolved on kept part 254, on parent 265; reversals 0; newly resolved 12; lost 1; attenuated 204; amplified 0.
+- Simultaneous 95% intervals, 276 pairs: resolved on kept part 232, on parent 253; reversals 0; newly resolved 21; lost 0; attenuated 136; amplified 0.
+- rho over the 254 pairs resolved on the kept part: median 0.373 (quartiles 0.288 to 0.435; 5th to 95th percentile 0.060 to 0.599); share above 1: 0.004; share above 1/W: 0.000. |c| median 0.0833 (5th to 95th percentile 0.0067 to 0.1859).
+- Random subsets of the same size (uniform, central 95%): tau_b 0.9673 against a reference of 0.9474 to 0.9964 (percentile 27.9); opposite-sign pairs 4 against a reference of 0 to 7 (percentile 80.8); mean |c| 0.08478 against a reference of 0.009955 to 0.02375 (percentile 100.0).
+- Random subsets of the same size (by repository, central 95%): tau_b 0.9673 against a reference of 0.9435 to 0.9945 (percentile 35.9); opposite-sign pairs 4 against a reference of 0 to 7 (percentile 74.5); mean |c| 0.08478 against a reference of 0.01046 to 0.02466 (percentile 100.0).
+- Sensitivity, stratified bootstrap (unadjusted): resolved on kept part 256, on parent 266; reversals 0; newly resolved 11; lost 1; attenuated 202; amplified 0.
+- Sensitivity, cluster bootstrap (unadjusted): resolved on kept part 249, on parent 256; reversals 0; newly resolved 11; lost 4; attenuated 208; amplified 0.
+
+### A, mechanism check on annotated instances: excluded part matched to Lite on difficulty labels
+- 24 systems; 231 kept and 1421 excluded instances with labels present on both sides (1-4 hours, 15 min - 1 hour, <15 min fix); labels dropped: >4 hours.
+- Raw excluded part: mean c over pairs +0.0621, median |c| 0.0607; among the 240 pairs resolved on the kept part, attenuated 132, amplified 0.
+- Matched excluded part: mean c over pairs +0.0312, median |c| 0.0359; among the 240 pairs resolved on the kept part, attenuated 52, amplified 1.
+- Share of the sum of squared c removed by matching: 0.646.
+- Level: mean over systems of excluded minus kept score, raw -0.0848, matched -0.0394.
+
+## Case B: SWE-bench Verified (validity filter, contrast)
+
+Test instances without annotations (outside this case): 595.
+
+### B, Verified against the other annotated instances
+- 24 systems, 1699 instances; kept 500, excluded 1199; W = 0.7057; 1/W = 1.417.
+- Level: score on the excluded part minus score on the kept part, mean over systems -0.1996 (range -0.4031 to -0.0023); interval excludes zero for 21 of 24 systems (21 lower on the excluded part, 0 higher).
+- Ranking: Kendall tau_b between kept-part and parent scores 0.9837; 2 of 276 pairs not tied on the kept part have opposite signs; top on kept part: 20251219_sonar-foundation-agent_claude-opus-4-5; top on parent: 20251219_sonar-foundation-agent_claude-opus-4-5.
+- Unadjusted 95% intervals, 276 pairs: resolved on kept part 255, on parent 266; reversals 0; newly resolved 11; lost 0; attenuated 237; amplified 0.
+- Simultaneous 95% intervals, 276 pairs: resolved on kept part 239, on parent 249; reversals 0; newly resolved 11; lost 1; attenuated 195; amplified 0.
+- rho over the 255 pairs resolved on the kept part: median 0.584 (quartiles 0.516 to 0.612; 5th to 95th percentile 0.312 to 0.726); share above 1: 0.000; share above 1/W: 0.000. |c| median 0.1536 (5th to 95th percentile 0.0251 to 0.3720).
+- Random subsets of the same size (uniform, central 95%): tau_b 0.9837 against a reference of 0.9562 to 0.9964 (percentile 73.7); opposite-sign pairs 2 against a reference of 0 to 6 (percentile 50.2); mean |c| 0.1597 against a reference of 0.0112 to 0.02613 (percentile 100.0).
+- Random subsets of the same size (by repository, central 95%): tau_b 0.9837 against a reference of 0.9564 to 0.9964 (percentile 75.8); opposite-sign pairs 2 against a reference of 0 to 6 (percentile 50.1); mean |c| 0.1597 against a reference of 0.01112 to 0.02805 (percentile 100.0).
+- Sensitivity, stratified bootstrap (unadjusted): resolved on kept part 254, on parent 264; reversals 0; newly resolved 10; lost 0; attenuated 238; amplified 0.
+- Sensitivity, cluster bootstrap (unadjusted): resolved on kept part 250, on parent 254; reversals 0; newly resolved 5; lost 1; attenuated 234; amplified 0.
+
+### B, Verified against the annotated instances that fail the filter
+- 24 systems, 1660 instances; kept 500, excluded 1160; W = 0.6988; 1/W = 1.431.
+- Level: score on the excluded part minus score on the kept part, mean over systems -0.2080 (range -0.4186 to -0.0023); interval excludes zero for 21 of 24 systems (21 lower on the excluded part, 0 higher).
+- Ranking: Kendall tau_b between kept-part and parent scores 0.9837; 2 of 276 pairs not tied on the kept part have opposite signs; top on kept part: 20251219_sonar-foundation-agent_claude-opus-4-5; top on parent: 20251219_sonar-foundation-agent_claude-opus-4-5.
+- Unadjusted 95% intervals, 276 pairs: resolved on kept part 255, on parent 265; reversals 0; newly resolved 11; lost 1; attenuated 237; amplified 0.
+- Simultaneous 95% intervals, 276 pairs: resolved on kept part 239, on parent 249; reversals 0; newly resolved 12; lost 2; attenuated 196; amplified 0.
+- rho over the 255 pairs resolved on the kept part: median 0.609 (quartiles 0.539 to 0.643; 5th to 95th percentile 0.330 to 0.733); share above 1: 0.000; share above 1/W: 0.000. |c| median 0.1589 (5th to 95th percentile 0.0274 to 0.3860).
+- Random subsets of the same size (uniform, central 95%): tau_b 0.9837 against a reference of 0.9546 to 0.9964 (percentile 73.7); opposite-sign pairs 2 against a reference of 0 to 6 (percentile 51.7); mean |c| 0.1658 against a reference of 0.01121 to 0.02603 (percentile 100.0).
+- Random subsets of the same size (by repository, central 95%): tau_b 0.9837 against a reference of 0.9564 to 0.9982 (percentile 72.4); opposite-sign pairs 2 against a reference of 0 to 6 (percentile 54.0); mean |c| 0.1658 against a reference of 0.01113 to 0.02955 (percentile 100.0).
+- Sensitivity, stratified bootstrap (unadjusted): resolved on kept part 255, on parent 264; reversals 0; newly resolved 10; lost 1; attenuated 235; amplified 0.
+- Sensitivity, cluster bootstrap (unadjusted): resolved on kept part 250, on parent 253; reversals 0; newly resolved 5; lost 2; attenuated 233; amplified 0.
+
+## Case C: BigCodeBench-Hard (difficulty rule)
+
+Complete, primary: 153 models; dated on or before 2024-07-24: 104; after: 49; undated or unmatched: 0.
+
+### C, Complete, primary: Hard against the other tasks, all models
+- 153 systems, 1140 instances; kept 148, excluded 992; W = 0.8702; 1/W = 1.149.
+- Level: score on the excluded part minus score on the kept part, mean over systems +0.3073 (range +0.0907 to +0.4243); interval excludes zero for 153 of 153 systems (0 lower on the excluded part, 153 higher).
+- Ranking: Kendall tau_b between kept-part and parent scores 0.8264; 935 of 11397 pairs not tied on the kept part have opposite signs; top on kept part: Gemini-Exp-1206; top on parent: Gemini-Exp-1206.
+- Unadjusted 95% intervals, 11628 pairs: resolved on kept part 6891, on parent 9896; reversals 8; newly resolved 3178; lost 173; attenuated 606; amplified 1565.
+- Simultaneous 95% intervals, 11628 pairs: resolved on kept part 2202, on parent 7638; reversals 0; newly resolved 5444; lost 8; attenuated 0; amplified 240.
+- rho over the 6891 pairs resolved on the kept part: median -0.025 (quartiles -0.480 to 0.286; 5th to 95th percentile -1.551 to 0.684); share above 1: 0.014; share above 1/W: 0.008. |c| median 0.0547 (5th to 95th percentile 0.0048 to 0.1976).
+- Random subsets of the same size (uniform, central 95%): tau_b 0.8264 against a reference of 0.8189 to 0.884 (percentile 5.0); opposite-sign pairs 935 against a reference of 615 to 975.1 (percentile 95.2); mean |c| 0.05959 against a reference of 0.03008 to 0.04231 (percentile 100.0).
+- Sensitivity, stratified bootstrap (unadjusted): resolved on kept part 6898, on parent 9903; reversals 10; newly resolved 3182; lost 177; attenuated 610; amplified 1572.
+  - Reversal (unadjusted): CodeGemma-2B minus DeepSeek-Coder-1.3B-Instruct: kept +0.0541 [+0.0068, +0.1049], excluded -0.0736, parent -0.0570 [-0.0842, -0.0298], c +0.1276, c* 0.0621.
+  - Reversal (unadjusted): Phi-3.1-Mini-128K-Instruct minus CodeLlama-70B-Instruct: kept +0.1081 [+0.0149, +0.2023], excluded -0.0554, parent -0.0342 [-0.0632, -0.0044], c +0.1636, c* 0.1242.
+  - Reversal (unadjusted): Granite-Code-20B-Base minus DeepSeek-Coder-1.3B-Instruct: kept +0.0878 [+0.0392, +0.1418], excluded -0.0585, parent -0.0395 [-0.0702, -0.0088], c +0.1463, c* 0.1009.
+  - Reversal (unadjusted): Granite-Code-20B-Base minus OpenCodeInterpreter-DS-1.3B: kept +0.0743 [+0.0220, +0.1293], excluded -0.0595, parent -0.0421 [-0.0719, -0.0123], c +0.1338, c* 0.0854.
+  - Reversal (unadjusted): Llama-3.1-Nemotron-70B-Instruct minus AutoCoder: kept +0.1014 [+0.0290, +0.1752], excluded -0.0635, parent -0.0421 [-0.0728, -0.0123], c +0.1649, c* 0.1165.
+  - Reversal (unadjusted): Phi-3.1-Mini-128K-Instruct minus ReflectionCoder-DS-33B: kept +0.0811 [+0.0061, +0.1586], excluded -0.0887, parent -0.0667 [-0.0930, -0.0377], c +0.1698, c* 0.0932.
+  - Reversal (unadjusted): Llama-3.1-Nemotron-70B-Instruct minus ReflectionCoder-DS-33B: kept +0.1014 [+0.0256, +0.1788], excluded -0.0685, parent -0.0465 [-0.0772, -0.0158], c +0.1699, c* 0.1165.
+  - Reversal (unadjusted): Phi-3.1-Mini-128K-Instruct minus CodeGeex4-All-9B: kept +0.1081 [+0.0336, +0.1841], excluded -0.0484, parent -0.0281 [-0.0553, -0.0018], c +0.1565, c* 0.1242.
+
+### C, Complete, primary: models dated after the Hard release only
+- 49 systems, 1140 instances; kept 148, excluded 992; W = 0.8702; 1/W = 1.149.
+- Level: score on the excluded part minus score on the kept part, mean over systems +0.2864 (range +0.0907 to +0.3998); interval excludes zero for 49 of 49 systems (0 lower on the excluded part, 49 higher).
+- Ranking: Kendall tau_b between kept-part and parent scores 0.8322; 94 of 1162 pairs not tied on the kept part have opposite signs; top on kept part: Gemini-Exp-1206; top on parent: Gemini-Exp-1206.
+- Unadjusted 95% intervals, 1176 pairs: resolved on kept part 755, on parent 975; reversals 0; newly resolved 246; lost 26; attenuated 97; amplified 208.
+- Simultaneous 95% intervals, 1176 pairs: resolved on kept part 410, on parent 794; reversals 0; newly resolved 385; lost 1; attenuated 0; amplified 106.
+- rho over the 755 pairs resolved on the kept part: median 0.060 (quartiles -0.462 to 0.393; 5th to 95th percentile -1.496 to 0.729); share above 1: 0.020; share above 1/W: 0.009. |c| median 0.0657 (5th to 95th percentile 0.0072 to 0.2261).
+- Random subsets of the same size (uniform, central 95%): tau_b 0.8322 against a reference of 0.7779 to 0.893 (percentile 32.9); opposite-sign pairs 94 against a reference of 56 to 122 (percentile 73.2); mean |c| 0.06912 against a reference of 0.0267 to 0.0445 (percentile 100.0).
+- Sensitivity, stratified bootstrap (unadjusted): resolved on kept part 756, on parent 976; reversals 0; newly resolved 244; lost 24; attenuated 93; amplified 208.
+
+### C, Complete, primary: models dated on or before the Hard release only
+- 104 systems, 1140 instances; kept 148, excluded 992; W = 0.8702; 1/W = 1.149.
+- Level: score on the excluded part minus score on the kept part, mean over systems +0.3172 (range +0.1701 to +0.4243); interval excludes zero for 104 of 104 systems (0 lower on the excluded part, 104 higher).
+- Ranking: Kendall tau_b between kept-part and parent scores 0.7941; 506 of 5219 pairs not tied on the kept part have opposite signs; top on kept part: GPT-4-Turbo-2024-04-09; top on parent: GPT-4o-2024-05-13.
+- Unadjusted 95% intervals, 5356 pairs: resolved on kept part 2680, on parent 4467; reversals 6; newly resolved 1855; lost 68; attenuated 119; amplified 648.
+- Simultaneous 95% intervals, 5356 pairs: resolved on kept part 615, on parent 3408; reversals 0; newly resolved 2795; lost 2; attenuated 0; amplified 13.
+- rho over the 2680 pairs resolved on the kept part: median -0.161 (quartiles -0.580 to 0.163; 5th to 95th percentile -1.371 to 0.644); share above 1: 0.015; share above 1/W: 0.009. |c| median 0.0489 (5th to 95th percentile 0.0042 to 0.1496).
+- Random subsets of the same size (uniform, central 95%): tau_b 0.7941 against a reference of 0.7989 to 0.8737 (percentile 1.7); opposite-sign pairs 506 against a reference of 307 to 499 (percentile 98.0); mean |c| 0.0529 against a reference of 0.02941 to 0.0421 (percentile 100.0).
+- Sensitivity, stratified bootstrap (unadjusted): resolved on kept part 2698, on parent 4472; reversals 8; newly resolved 1841; lost 67; attenuated 124; amplified 637.
+  - Reversal (unadjusted): CodeGemma-2B minus DeepSeek-Coder-1.3B-Instruct: kept +0.0541 [+0.0068, +0.1056], excluded -0.0736, parent -0.0570 [-0.0860, -0.0298], c +0.1276, c* 0.0621.
+  - Reversal (unadjusted): Phi-3.1-Mini-128K-Instruct minus CodeLlama-70B-Instruct: kept +0.1081 [+0.0190, +0.2000], excluded -0.0554, parent -0.0342 [-0.0640, -0.0053], c +0.1636, c* 0.1242.
+  - Reversal (unadjusted): Granite-Code-20B-Base minus DeepSeek-Coder-1.3B-Instruct: kept +0.0878 [+0.0395, +0.1440], excluded -0.0585, parent -0.0395 [-0.0719, -0.0105], c +0.1463, c* 0.1009.
+  - Reversal (unadjusted): Granite-Code-20B-Base minus OpenCodeInterpreter-DS-1.3B: kept +0.0743 [+0.0248, +0.1290], excluded -0.0595, parent -0.0421 [-0.0746, -0.0131], c +0.1338, c* 0.0854.
+  - Reversal (unadjusted): Phi-3.1-Mini-128K-Instruct minus ReflectionCoder-DS-33B: kept +0.0811 [+0.0062, +0.1567], excluded -0.0887, parent -0.0667 [-0.0956, -0.0395], c +0.1698, c* 0.0932.
+  - Reversal (unadjusted): Phi-3.1-Mini-128K-Instruct minus CodeGeex4-All-9B: kept +0.1081 [+0.0322, +0.1824], excluded -0.0484, parent -0.0281 [-0.0553, -0.0018], c +0.1565, c* 0.1242.
+
+Instruct, replication: 126 models; dated on or before 2024-07-24: 76; after: 50; undated or unmatched: 0.
+
+### C, Instruct, replication: Hard against the other tasks, all models
+- 126 systems, 1140 instances; kept 148, excluded 992; W = 0.8702; 1/W = 1.149.
+- Level: score on the excluded part minus score on the kept part, mean over systems +0.2473 (range +0.0806 to +0.3574); interval excludes zero for 126 of 126 systems (0 lower on the excluded part, 126 higher).
+- Ranking: Kendall tau_b between kept-part and parent scores 0.7922; 763 of 7711 pairs not tied on the kept part have opposite signs; top on kept part: Quasar-Alpha, GPT-4.1-Mini-2025-04-14; top on parent: GPT-4o-2024-05-13.
+- Unadjusted 95% intervals, 7875 pairs: resolved on kept part 4414, on parent 6383; reversals 2; newly resolved 2128; lost 159; attenuated 321; amplified 716.
+- Simultaneous 95% intervals, 7875 pairs: resolved on kept part 1159, on parent 4597; reversals 0; newly resolved 3439; lost 1; attenuated 0; amplified 123.
+- rho over the 4414 pairs resolved on the kept part: median 0.030 (quartiles -0.328 to 0.314; 5th to 95th percentile -1.310 to 0.732); share above 1: 0.017; share above 1/W: 0.009. |c| median 0.0415 (5th to 95th percentile 0.0037 to 0.1676).
+- Random subsets of the same size (uniform, central 95%): tau_b 0.7922 against a reference of 0.7612 to 0.8537 (percentile 15.9); opposite-sign pairs 763 against a reference of 522 to 866 (percentile 86.2); mean |c| 0.04658 against a reference of 0.02847 to 0.04135 (percentile 99.9).
+- Sensitivity, stratified bootstrap (unadjusted): resolved on kept part 4405, on parent 6376; reversals 5; newly resolved 2125; lost 154; attenuated 313; amplified 717.
+  - Reversal (unadjusted): DeepSeek-R1-Distill-Llama-70B minus CodeLlama-70B-Instruct: kept +0.0878 [+0.0178, +0.1587], excluded -0.0756, parent -0.0544 [-0.0860, -0.0246], c +0.1634, c* 0.1009.
+  - Reversal (unadjusted): Phi-3.5-Mini-Instruct minus AutoCoder-S-6.7B: kept +0.0811 [+0.0138, +0.1477], excluded -0.0504, parent -0.0333 [-0.0614, -0.0061], c +0.1315, c* 0.0932.
+
+### C, Instruct, replication: models dated after the Hard release only
+- 50 systems, 1140 instances; kept 148, excluded 992; W = 0.8702; 1/W = 1.149.
+- Level: score on the excluded part minus score on the kept part, mean over systems +0.2262 (range +0.0806 to +0.3055); interval excludes zero for 50 of 50 systems (0 lower on the excluded part, 50 higher).
+- Ranking: Kendall tau_b between kept-part and parent scores 0.8049; 110 of 1195 pairs not tied on the kept part have opposite signs; top on kept part: Quasar-Alpha, GPT-4.1-Mini-2025-04-14; top on parent: DeepSeek-V3.
+- Unadjusted 95% intervals, 1225 pairs: resolved on kept part 689, on parent 968; reversals 0; newly resolved 302; lost 23; attenuated 53; amplified 202.
+- Simultaneous 95% intervals, 1225 pairs: resolved on kept part 384, on parent 768; reversals 0; newly resolved 384; lost 0; attenuated 0; amplified 50.
+- rho over the 689 pairs resolved on the kept part: median -0.060 (quartiles -0.528 to 0.291; 5th to 95th percentile -1.431 to 0.700); share above 1: 0.016; share above 1/W: 0.004. |c| median 0.0581 (5th to 95th percentile 0.0064 to 0.1824).
+- Random subsets of the same size (uniform, central 95%): tau_b 0.8049 against a reference of 0.7295 to 0.8722 (percentile 38.7); opposite-sign pairs 110 against a reference of 70 to 157 (percentile 62.0); mean |c| 0.05571 against a reference of 0.02545 to 0.04273 (percentile 100.0).
+- Sensitivity, stratified bootstrap (unadjusted): resolved on kept part 691, on parent 968; reversals 0; newly resolved 301; lost 24; attenuated 54; amplified 207.
+
+### C, Instruct, replication: models dated on or before the Hard release only
+- 76 systems, 1140 instances; kept 148, excluded 992; W = 0.8702; 1/W = 1.149.
+- Level: score on the excluded part minus score on the kept part, mean over systems +0.2611 (range +0.1694 to +0.3574); interval excludes zero for 76 of 76 systems (0 lower on the excluded part, 76 higher).
+- Ranking: Kendall tau_b between kept-part and parent scores 0.7516; 325 of 2769 pairs not tied on the kept part have opposite signs; top on kept part: GPT-4-Turbo-2024-04-09; top on parent: GPT-4o-2024-05-13.
+- Unadjusted 95% intervals, 2850 pairs: resolved on kept part 1248, on parent 2227; reversals 0; newly resolved 1021; lost 42; attenuated 45; amplified 91.
+- Simultaneous 95% intervals, 2850 pairs: resolved on kept part 186, on parent 1483; reversals 0; newly resolved 1297; lost 0; attenuated 0; amplified 0.
+- rho over the 1248 pairs resolved on the kept part: median -0.022 (quartiles -0.298 to 0.254; 5th to 95th percentile -0.880 to 0.663); share above 1: 0.010; share above 1/W: 0.006. |c| median 0.0319 (5th to 95th percentile 0.0028 to 0.0880).
+- Random subsets of the same size (uniform, central 95%): tau_b 0.7516 against a reference of 0.7221 to 0.8371 (percentile 12.3); opposite-sign pairs 325 against a reference of 209 to 366 (percentile 87.8); mean |c| 0.03566 against a reference of 0.02756 to 0.04023 (percentile 76.7).
+- Sensitivity, stratified bootstrap (unadjusted): resolved on kept part 1243, on parent 2230; reversals 1; newly resolved 1023; lost 36; attenuated 42; amplified 93.
+
+wrote 848 records

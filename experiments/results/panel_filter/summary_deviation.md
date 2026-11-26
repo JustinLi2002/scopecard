@@ -1,0 +1,50 @@
+# Panel dependence of a solve-rate difficulty filter: results
+
+Design: `experiments/PANEL_FILTER_DESIGN.md` (fixed 2026-11-15). Hard subset = the k tasks solved by fewest builders. 30 random builder sets per condition, 2000 label shuffles, 300 task-bootstrap replicates for the two bootstrapped analyses. Scores are proportions; effects are given in points (1 point = 0.01). In each draw the "self" and "reference" conditions share n - 1 removed models and differ in the last one (the model itself against one more unrelated model).
+
+Correction of 2026-11-16 (design, Section 13). The readings "ranking consequence" below are withdrawn: they rest on a bootstrap interval of the share of sign changes, and that bootstrap is biased. The shares stay as point estimates. Under the rule "solve rate below 50%" the same outcomes vote and score, so own participation (T_self) cannot be negative in any comparison; its interval says nothing about its sign, only about its size.
+
+Names that matched no family rule: none.
+
+## Deviation 1 (post hoc): the published rule, solve rate below 50%, as the main rule
+
+### Complete, model-line families, solve rate below 50%
+- 153 models in 19 families (sizes 23, 19, 17, 11, 10, 9, 8, 8, ...; 2 singletons); standard hard subset 616 tasks; mean standard score 0.1771.
+- Own participation, T_self: +0.215 [+0.156, +0.283] points (bootstrap 95% interval).
+- Family dependence beyond own participation, T_family: +0.264 [+0.155, +0.387] points over all models; +0.268 [+0.157, +0.392] over models whose family has at least two members.
+- Total, T_total: +0.479 [+0.336, +0.643] points.
+- Permutation test of family structure (2000 shuffles): observed mean of (own family left out minus standard) +0.339 points, mean under shuffled families +0.086; p = 0.0005.
+- Spearman over models between (s_fam - s_ref) and family size: -0.016 [-0.230, +0.160].
+- Cross-family pairs with a non-zero standard difference: 10710; share whose sign changes when both families are left out 0.69%, when the same number of unrelated models is left out 0.46%; excess +0.233 [+0.053, +0.515] percentage points. Spearman between the shift of the pair difference and the difference of family sizes: +0.072 [-0.076, +0.181].
+- **Reading fixed in the design:** own participation detectable but small; family dependence detectable but small; total detectable but small; ranking consequence detectable but small.
+- By family (members; total, own participation, family dependence, in points): qwen (23; +0.67, +0.28, +0.39); llama (19; +0.23, +0.26, -0.03); deepseek-coder (17; +0.51, +0.24, +0.28); codellama (11; +0.20, +0.17, +0.03); mistral (10; +0.01, +0.19, -0.19); granite (9; +0.16, +0.15, +0.01); gpt (8; +1.48, +0.25, +1.23); qwen-coder (8; +0.61, +0.20, +0.41); yi (8; +0.31, +0.18, +0.12); deepseek-v2plus (7; +0.61, +0.25, +0.36); claude (6; +0.88, +0.22, +0.66); gemini (6; +1.26, +0.22, +1.05); phi (6; +0.41, +0.18, +0.23); gemma (5; +0.18, +0.14, +0.04); starcoder2 (4; +0.17, +0.11, +0.05).
+
+### Instruct, model-line families, solve rate below 50%
+- 126 models in 19 families (sizes 23, 16, 14, 8, 8, 7, 7, 6, ...; 3 singletons); standard hard subset 703 tasks; mean standard score 0.1381.
+- Own participation, T_self: +0.242 [+0.167, +0.328] points (bootstrap 95% interval).
+- Family dependence beyond own participation, T_family: +0.088 [+0.006, +0.180] points over all models; +0.091 [+0.006, +0.184] over models whose family has at least two members.
+- Total, T_total: +0.330 [+0.210, +0.465] points.
+- Permutation test of family structure (2000 shuffles): observed mean of (own family left out minus standard) +0.212 points, mean under shuffled families +0.128; p = 0.0735.
+- Spearman over models between (s_fam - s_ref) and family size: -0.254 [-0.407, +0.117].
+- Cross-family pairs with a non-zero standard difference: 7189; share whose sign changes when both families are left out 1.04%, when the same number of unrelated models is left out 0.74%; excess +0.303 [-0.054, +0.840] percentage points. Spearman between the shift of the pair difference and the difference of family sizes: +0.137 [+0.013, +0.206].
+- **Reading fixed in the design:** own participation detectable but small; family dependence detectable but small; total detectable but small; ranking consequence not detected.
+- By family (members; total, own participation, family dependence, in points): qwen (23; +0.10, +0.26, -0.16); llama (16; +0.00, +0.21, -0.21); deepseek-coder (14; +0.75, +0.24, +0.51); gpt (8; +0.96, +0.31, +0.66); mistral (8; +0.15, +0.24, -0.09); codellama (7; +0.01, +0.16, -0.14); qwen-coder (7; +0.52, +0.26, +0.25); claude (6; +0.50, +0.28, +0.22); deepseek-v2plus (6; +0.57, +0.28, +0.29); gemini (6; +0.78, +0.31, +0.47); phi (6; +0.09, +0.21, -0.12); yi (5; +0.09, +0.20, -0.12); granite (4; +0.39, +0.23, +0.16); gemma (3; +0.44, +0.22, +0.23).
+
+### Complete, lexical families, solve rate below 50%
+- 153 models in 39 families (sizes 19, 16, 13, 9, 8, 8, 7, 6, ...; 15 singletons); standard hard subset 616 tasks; mean standard score 0.1771.
+- Own participation, T_self: +0.180 points.
+- Family dependence beyond own participation, T_family: +0.133 points over all models; +0.148 over models whose family has at least two members.
+- Total, T_total: +0.314 points.
+- Permutation test of family structure (2000 shuffles): observed mean of (own family left out minus standard) +0.223 points, mean under shuffled families +0.094; p = 0.0060.
+- Spearman over models between (s_fam - s_ref) and family size: +0.003.
+- Cross-family pairs with a non-zero standard difference: 11000; share whose sign changes when both families are left out 0.43%, when the same number of unrelated models is left out 0.35%; excess +0.078 percentage points. Spearman between the shift of the pair difference and the difference of family sizes: -0.113.
+
+### Complete, organisation families, solve rate below 50%
+- 153 models in 15 families (sizes 31, 30, 24, 11, 10, 9, 8, 8, ...; 2 singletons); standard hard subset 616 tasks; mean standard score 0.1771.
+- Own participation, T_self: +0.243 points.
+- Family dependence beyond own participation, T_family: +0.363 points over all models; +0.367 over models whose family has at least two members.
+- Total, T_total: +0.606 points.
+- Permutation test of family structure (2000 shuffles): observed mean of (own family left out minus standard) +0.474 points, mean under shuffled families +0.145; p = 0.0015.
+- Spearman over models between (s_fam - s_ref) and family size: +0.177.
+- Cross-family pairs with a non-zero standard difference: 10171; share whose sign changes when both families are left out 0.90%, when the same number of unrelated models is left out 0.65%; excess +0.254 percentage points. Spearman between the shift of the pair difference and the difference of family sizes: +0.026.
+

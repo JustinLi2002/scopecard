@@ -1,5 +1,5 @@
 {
- "schema": "benchscope-inputs/1",
+ "schema": "scopecard-inputs/1",
  "about": "Public input files read by reproduce.py, relative to experiments/pilot_data. Each file is checked against its SHA-256 before use; the hashes are those of the copies that produced the stored results.",
  "total_bytes": 3848110968,
  "inputs": [

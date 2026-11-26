@@ -6,8 +6,8 @@ import sys
 import pytest
 
 from conftest import PILOT
-from benchscope_audit.card import REQUIRED, TASKS, VERDICTS, validate_card
-from benchscope_audit.cli import main as cli_main
+from scopecard.card import REQUIRED, TASKS, VERDICTS, validate_card
+from scopecard.cli import main as cli_main
 
 LIB = os.path.join(os.path.dirname(__file__), '..', 'library')
 PILOT_TSV = os.path.join(PILOT, '..', 'pilot_decidability.tsv')

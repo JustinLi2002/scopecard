@@ -1,7 +1,7 @@
 {
  "card": "gowalla.json",
  "command": [
-  "benchscope-audit",
+  "scopecard",
   "recsys-checkins",
   "--release",
   "gowalla/",

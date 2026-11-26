@@ -1,18 +1,18 @@
 cff-version: 1.2.0
-message: "If you use BenchScope, please cite it as below."
-title: "BenchScope"
-abstract: "BenchScope asks which part of a declared target population a benchmark can evaluate, and what comparisons on the benchmark therefore license."
+message: "If you use ScopeCard, please cite it as below."
+title: "ScopeCard"
+abstract: "ScopeCard asks which part of a declared target population a benchmark can evaluate, and what comparisons on the benchmark therefore license."
 type: software
 authors:
   - family-names: "Li"
     given-names: "Justin"
     affiliation: "Center for Biomedical Informatics & Genomics, Tulane University School of Medicine, Tulane University"
-version: "0.0.1"
+version: "0.1.0"
 license:
   - MIT
   - CC-BY-4.0
-repository-code: "https://github.com/JustinLi2002/benchscope"
-url: "https://justinli2002.github.io/benchscope/"
+repository-code: "https://github.com/JustinLi2002/scopecard"
+url: "https://justinli2002.github.io/scopecard/"
 keywords:
   - benchmark
   - evaluation

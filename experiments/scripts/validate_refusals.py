@@ -6,7 +6,7 @@ results/validation/v3_fixtures/<scenario>/, so the browser page can be run on th
 same main(); its rows are added by the browser check and recorded separately).
 
 Behaviours checked:
-  refused   exit code 2, one line 'benchscope-audit: input error: ...' naming the problem, no traceback, no card
+  refused   exit code 2, one line 'scopecard: input error: ...' naming the problem, no traceback, no card
   warned    a card is written, the problem is listed under warnings and repeated after the scope statement
   withheld  a card is written, but the comparison gives no break-even (c* is null) and says why
   coverage  the card reports coverage only (support.structural false)
@@ -23,8 +23,8 @@ import sys
 
 P4 = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 sys.path.insert(0, os.path.join(P4, '..', 'tool', 'src'))
-from benchscope_audit.card import validate_card  # noqa: E402
-from benchscope_audit.cli import main as cli_main  # noqa: E402
+from scopecard.card import validate_card  # noqa: E402
+from scopecard.cli import main as cli_main  # noqa: E402
 
 UNI = ''.join(f'e{i}\tr\te{j}\n' for i in range(12) for j in (i + 1, i + 3) if j < 12)       # a small triple universe
 REL = 'e0\tr\te1\ne1\tr\te2\ne2\tr\te3\ne3\tr\te4\n'                                         # a release inside it
@@ -122,7 +122,7 @@ SCENARIOS = [
      'no crash; the comparison says nothing excluded can reverse it',
      lambda c, e, k: c == 0 and k['comparison']['applicable'] and k['comparison']['c_star'] is None
      and 'nothing' in k['comparison']['statement']),
-    # added after the 2026-10-24 review
+    # added 2026-10-25 to 2026-10-27
     ('R16', 'Two unit sets that share ids (bipartite, all pairs listed)',
      {'a.txt': '0\n1\n', 'b.txt': '0\n1\n', 'pairs.csv': 'x,y\n0,0\n0,1\n1,0\n1,1\n'},
      ['pair-classification', '--pairs', '{d}/pairs.csv', '--a-col', 'x', '--b-col', 'y', '--universe-units', '{d}/a.txt',
@@ -144,7 +144,7 @@ SCENARIOS = [
     ('R19', 'Model difference that is not a finite difference in [-1, 1]', kg(REL), KG + ['--delta-O', 'nan', '--metric', 'auc'],
      'refused as an input error (also in the page, which cannot exit)',
      lambda c, e, k: c == 2 and 'input error: --delta-O must be a finite difference' in e and k is None),
-    # added after the 2026-10-27 review
+    # added 2026-10-27
     ('R20', 'Model difference while some test triples fall outside the universe',
      kg('e0\tr\te1\ne1\tr\te2\n') | {'release/test.txt': 'e0\tr\te1\ne1\tr\te2\ne0\tr\tzz\n'},
      KG + ['--delta-O', '-0.02', '--metric', 'auc'],
@@ -196,7 +196,7 @@ def main(out):
         observed = (f'exit {code}; ' + (err.strip().splitlines()[-1][:160] if code else
                                          f"warnings {len(card['warnings'])}; structural {card['support']['structural']}; "
                                          f"c* {(card.get('comparison') or {}).get('c_star')}"))
-        rows.append((sid, name, ' '.join(['benchscope-audit'] + [a.replace('{d}/', '') for a in argv]), expected, observed,
+        rows.append((sid, name, ' '.join(['scopecard'] + [a.replace('{d}/', '') for a in argv]), expected, observed,
                      'pass' if ok else 'FAIL'))
         print(f"{sid:<4} {'pass' if ok else 'FAIL'}  {name}", flush=True)
     with open(os.path.join(out, 'v3_refusals.tsv'), 'w', encoding='utf-8', newline='\n') as f:

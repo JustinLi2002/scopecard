@@ -1,0 +1,269 @@
+system	set	tag	family	population_A
+cerebras__Cerebras-GPT-6.7B	clean		cerebras	1
+cerebras__Cerebras-GPT-13B	clean		cerebras	1
+CohereForAI__c4ai-command-r-v01	clean		command-r	1
+CohereForAI__c4ai-command-r-plus	clean		command-r	1
+deepseek-ai__deepseek-llm-7b-chat	clean		deepseek	1
+deepseek-ai__deepseek-llm-67b-base	clean		deepseek	1
+deepseek-ai__deepseek-llm-67b-chat	clean		deepseek	1
+tiiuae__falcon-7b	clean		falcon	1
+tiiuae__falcon-7b-instruct	clean		falcon	1
+tiiuae__falcon-40b	clean		falcon	1
+tiiuae__falcon-rw-1b	clean		falcon	1
+google__gemma-7b	filter		gemma	1
+google__gemma-2b	clean	sibling	gemma	1
+google__gemma-2b-it	clean	sibling	gemma	1
+MaziyarPanahi__gemma-7b-alpaca-52k-v0.1	lineage	gemma-7b	gemma	0
+vicgalle__OpenHermes-Gemma-7B	lineage	gemma-7b	gemma	0
+azarafrooz__gemma-nlaf-v1	random		gemma	0
+gemmathon__gemma-2b-ko-v0	random		gemma	0
+meta-llama__Llama-2-7b-hf	filter		llama	1
+meta-llama__Llama-2-13b-hf	filter		llama	1
+huggyllama__llama-7b	clean		llama	1
+huggyllama__llama-13b	clean		llama	1
+huggyllama__llama-30b	clean		llama	1
+huggyllama__llama-65b	clean		llama	1
+meta-llama__Meta-Llama-3-8B	clean		llama	1
+meta-llama__Meta-Llama-3-8B-Instruct	clean		llama	1
+meta-llama__Meta-Llama-3-70B	clean		llama	1
+meta-llama__Meta-Llama-3-70B-Instruct	clean		llama	1
+meta-llama__Llama-2-70b-hf	clean	sibling	llama	1
+BFauber__lora_llama2-13b_10e5_r128_a64	lineage	llama2-13b	llama	0
+BFauber__lora_llama2-13b_10e5_r32_a16	lineage	llama2-13b	llama	0
+BFauber__lora_llama2-13b_10e5_r32_a256	lineage	llama2-13b	llama	0
+CHIH-HUNG__llama-2-13b-FINETUNE2_TEST_2.2w	lineage	llama2-13b	llama	0
+CHIH-HUNG__llama-2-13b-FINETUNE3_3.3w-r16-q_k_v_o_gate_up_down	lineage	llama2-13b	llama	0
+CHIH-HUNG__llama-2-13b-FINETUNE3_3.3w-r4-gate_up_down	lineage	llama2-13b	llama	0
+CHIH-HUNG__llama-2-13b-FINETUNE3_3.3w-r8-q_k_v_o	lineage	llama2-13b	llama	0
+CHIH-HUNG__llama-2-13b-Fintune_1_17w-gate_up_down_proj	lineage	llama2-13b	llama	0
+CHIH-HUNG__llama-2-13b-huangyt_Fintune_1_17w	lineage	llama2-13b	llama	0
+CoolWP__llama-2-13b-guanaco-fp16	lineage	llama2-13b	llama	0
+JCX-kcuf__Llama-2-7b-hf-llama2-chat-80k	lineage	llama2-7b	llama	0
+Juniplayground__Mist_LLaMA-2-7B-1024_V3	lineage	llama2-7b	llama	0
+KoboldAI__LLaMA2-13B-Psyfighter2	lineage	llama2-13b	llama	0
+Korabbit__Llama-2-7b-chat-hf-afr-100step-flan	lineage	llama2-7b	llama	0
+Korabbit__Llama-2-7b-chat-hf-afr-200step-v2	lineage	llama2-7b	llama	0
+Mikael110__llama-2-7b-guanaco-fp16	lineage	llama2-7b	llama	0
+NekoPunchBBB__Llama-2-13b-hf_Open-Platypus	lineage	llama2-13b	llama	0
+TheBloke__Llama-2-13B-fp16	lineage	llama2-13b	llama	0
+davzoku__cria-llama2-7b-v1.3	lineage	llama2-7b	llama	0
+dhmeltzer__Llama-2-13b-hf-ds_eli5_1024_r_64_alpha_16_merged	lineage	llama2-13b	llama	0
+elyza__ELYZA-japanese-Llama-2-13b	lineage	llama2-13b	llama	0
+elyza__ELYZA-japanese-Llama-2-13b-fast	lineage	llama2-13b	llama	0
+elyza__ELYZA-japanese-Llama-2-13b-instruct	lineage	llama2-13b	llama	0
+elyza__ELYZA-japanese-Llama-2-7b-instruct	lineage	llama2-7b	llama	0
+hpcai-tech__Colossal-LLaMA-2-7b-base	lineage	llama2-7b	llama	0
+hyunseoki__ko-en-llama2-13b	lineage	llama2-13b	llama	0
+hyunseoki__ko-ref-llama2-7b	lineage	llama2-7b	llama	0
+julianweng__Llama-2-7b-chat-orcah	lineage	llama2-7b	llama	0
+wang7776__Llama-2-7b-chat-hf-10-sparsity	lineage	llama2-7b	llama	0
+wei123602__Llama-2-13b-FINETUNE4_TEST	lineage	llama2-13b	llama	0
+wei123602__llama2-13b-FINETUNE3_TEST2	lineage	llama2-13b	llama	0
+yeontaek__llama-2-13B-ensemble-v4	lineage	llama2-13b	llama	0
+OdiaGenAI__odia_llama2_7B_base	random		llama	0
+georgesung__llama2_7b_chat_uncensored	random		llama	0
+yeen214__test_llama2_7b	random		llama	0
+mistralai__Mistral-7B-v0.1	filter		mistral	1
+mistralai__Mixtral-8x7B-v0.1	clean	sibling	mistral	1
+mistralai__Mixtral-8x7B-Instruct-v0.1	clean	sibling	mistral	1
+Changgil__K2S3-Mistral-7b-v1.42	lineage	mistral-7b	mistral	0
+Changgil__K2S3-Mistral-7b-v1.47	lineage	mistral-7b	mistral	0
+Corianas__Neural-Mistral-7B	lineage	mistral-7b	mistral	0
+EmbeddedLLM__Mistral-7B-Merge-14-v0.2	lineage	mistral-7b	mistral	0
+KnutJaegersberg__Walter-Mistral-7B	lineage	mistral-7b	mistral	0
+MaziyarPanahi__Mistral-7B-Alpaca-52k-v0.1	lineage	mistral-7b	mistral	0
+NeuralNovel__Mistral-7B-Instruct-v0.2-Neural-Story	lineage	mistral-7b	mistral	0
+NickyNicky__Mistral-7B-OpenOrca-oasst_top1_2023-08-25-v3	lineage	mistral-7b	mistral	0
+SC44__Mistral-7B-private-spef	lineage	mistral-7b	mistral	0
+SC56__Mistral-7B-sumz-dpo-5h	lineage	mistral-7b	mistral	0
+SC99__Mistral-7B-privatemix-base-ia	lineage	mistral-7b	mistral	0
+SC99__Mistral-7B-summ-ia3-tuned-8h	lineage	mistral-7b	mistral	0
+SCE__Mistral-7B-summ-ia3-tuned	lineage	mistral-7b	mistral	0
+Severian__ANIMA-Phi-Neptune-Mistral-7B-v4	lineage	mistral-7b	mistral	0
+Weyaxi__SlimOpenOrca-Mistral-7B	lineage	mistral-7b	mistral	0
+XuanXuanXuanXuan__Mistral-7B-Instruct-v0.2-gpt-4-80k	lineage	mistral-7b	mistral	0
+Yhyu13__LMCocktail-Mistral-7B-v1	lineage	mistral-7b	mistral	0
+YouKnowMee__Mistral-7b-instruct-v0.2-summ-dpo-ed3	lineage	mistral-7b	mistral	0
+allknowingroger__JaskierMistral-7B-slerp	lineage	mistral-7b	mistral	0
+alvarobartt__mistral-7b-orpo-alignment-handbook	lineage	mistral-7b	mistral	0
+argilla__CapybaraHermes-2.5-Mistral-7B	lineage	mistral-7b	mistral	0
+azarafrooz__Mistral-7B-Instruct-v2-sp-v0.1	lineage	mistral-7b	mistral	0
+azarafrooz__mistral-7b-selfplay-v0	lineage	mistral-7b	mistral	0
+cognitivecomputations__dolphin-2.8-mistral-7b-v02	lineage	mistral-7b	mistral	0
+delayedkarma__NeuralHermes-2.5-Mistral-7B	lineage	mistral-7b	mistral	0
+ehartford__dolphin-2.0-mistral-7b	lineage	mistral-7b	mistral	0
+flammenai__flammen20-mistral-7B	lineage	mistral-7b	mistral	0
+flammenai__flammen23X-mistral-7B	lineage	mistral-7b	mistral	0
+genaicore3434__Mistral-7b-instruct-v0.2-summ-sft-lp-e1	lineage	mistral-7b	mistral	0
+hamxea__Mistral-7B-v0.1-activity-fine-tuned-v5	lineage	mistral-7b	mistral	0
+jilp00__OpenHermes-Symbolic-Mistral-7B	lineage	mistral-7b	mistral	0
+jisukim8873__mistral-7B-alpaca-case-1-2	lineage	mistral-7b	mistral	0
+jisukim8873__mistral-7B-alpaca-case-2-2	lineage	mistral-7b	mistral	0
+kittn__mistral-7B-v0.1-hf	lineage	mistral-7b	mistral	0
+liuda1__Mistral-7B-golden	lineage	mistral-7b	mistral	0
+luqmanxyz__Maya_Hermes-2.5-Mistral-7B	lineage	mistral-7b	mistral	0
+nbeerbower__flammen13X-mistral-7B	lineage	mistral-7b	mistral	0
+silvercoder45__Mistral-7b-instruct-v0.2-summ-sft-dpo-e3	lineage	mistral-7b	mistral	0
+simonveitner__Math-OpenHermes-2.5-Mistral-7B	lineage	mistral-7b	mistral	0
+simonveitner__MathHermes-2.5-Mistral-7B	lineage	mistral-7b	mistral	0
+sonthenguyen__NeuralHermes-2.5-Mistral-7B	lineage	mistral-7b	mistral	0
+uukuguy__speechless-code-mistral-7b-v1.0	lineage	mistral-7b	mistral	0
+uukuguy__speechless-instruct-mistral-7b-v0.2	lineage	mistral-7b	mistral	0
+wang7776__Mistral-7B-Instruct-v0.2-sparsity-30-v0.1	lineage	mistral-7b	mistral	0
+yam-peleg__Hebrew-Mistral-7B	lineage	mistral-7b	mistral	0
+LeroyDyer__Mixtral_AI_CyberTron	random		mistral	0
+LeroyDyer__Mixtral_AI_CyberTron_Ultra	random		mistral	0
+LeroyDyer__Mixtral_AI_Cyber_3.0	random		mistral	0
+Locutusque__TinyMistral-248M-v2.5-Instruct	random		mistral	0
+OpenBuddy__openbuddy-mixtral-8x7b-v15.4	random		mistral	0
+aloobun__Cypher-Laser-Mixtral-2x1.8B-v0.1	random		mistral	0
+genaicore3434__MistralLite-summ-sft-e1	random		mistral	0
+mosaicml__mpt-7b	clean		mpt	1
+mosaicml__mpt-7b-instruct	clean		mpt	1
+mosaicml__mpt-30b	clean		mpt	1
+mosaicml__mpt-30b-instruct	clean		mpt	1
+openlm-research__open_llama_3b	clean		openllama	1
+openlm-research__open_llama_7b	clean		openllama	1
+openlm-research__open_llama_13b	clean		openllama	1
+facebook__opt-6.7b	clean		opt	1
+facebook__opt-13b	clean		opt	1
+0-hero__Matter-0.2-7B	random		own:0-hero__Matter-0.2-7B	0
+0ai__0ai-7B-v5	random		own:0ai__0ai-7B-v5	0
+8xqmff94__pooled_gqa_mix_chatml_sft	random		own:8xqmff94__pooled_gqa_mix_chatml_sft	0
+922CA__Silicon-Monika-7b	random		own:922CA__Silicon-Monika-7b	0
+AetherResearch__Cerebrum-1.0-8x7b	random		own:AetherResearch__Cerebrum-1.0-8x7b	0
+AlanRobotics__nanit_v3.2	random		own:AlanRobotics__nanit_v3.2	0
+BEE-spoke-data__zephyr-220m-dpo-full	random		own:BEE-spoke-data__zephyr-220m-dpo-full	0
+BreadAi__gpt-Youtube	random		own:BreadAi__gpt-Youtube	0
+Charlie911__vicuna-7b-v1.5-lora-temporal-sharegpt	random		own:Charlie911__vicuna-7b-v1.5-lora-temporal-sharegpt	0
+Cran-May__Test2_SLIDE	random		own:Cran-May__Test2_SLIDE	0
+CultriX__MonaCeption-7B-SLERP-DPO	random		own:CultriX__MonaCeption-7B-SLERP-DPO	0
+DreadPoor__Cognate-7B-slerp	random		own:DreadPoor__Cognate-7B-slerp	0
+DreadPoor__Sphinx-7B-Model_Stock	random		own:DreadPoor__Sphinx-7B-Model_Stock	0
+EleutherAI__gpt-j-6b	clean		own:EleutherAI__gpt-j-6b	1
+EleutherAI__gpt-neo-2.7B	clean		own:EleutherAI__gpt-neo-2.7B	1
+EleutherAI__polyglot-ko-12.8b	random		own:EleutherAI__polyglot-ko-12.8b	0
+Felladrin__Minueza-32M-Base	random		own:Felladrin__Minueza-32M-Base	0
+FlagAlpha__Llama3-Chinese-8B-Instruct	random		own:FlagAlpha__Llama3-Chinese-8B-Instruct	0
+IDEA-CCNL__Ziya-LLaMA-13B-Pretrain-v1	random		own:IDEA-CCNL__Ziya-LLaMA-13B-Pretrain-v1	0
+Jingyu6__MergeTest-7B-slerp	random		own:Jingyu6__MergeTest-7B-slerp	0
+JoSw-14__LoKuS-13B	random		own:JoSw-14__LoKuS-13B	0
+Josephgflowers__Cinder-Phi-2-STEM-2.94B-Test	random		own:Josephgflowers__Cinder-Phi-2-STEM-2.94B-Test	0
+KeyonZeng__lion-zephyr-7b	random		own:KeyonZeng__lion-zephyr-7b	0
+KoboldAI__fairseq-dense-355M	random		own:KoboldAI__fairseq-dense-355M	0
+Kukedlc__NeoCortex-7B-slerp	random		own:Kukedlc__NeoCortex-7B-slerp	0
+Kukedlc__NeuralMarioMonarch-7B-slerp	random		own:Kukedlc__NeuralMarioMonarch-7B-slerp	0
+LeoLM__leo-hessianai-13b	random		own:LeoLM__leo-hessianai-13b	0
+MSL7__INEX16-7b	random		own:MSL7__INEX16-7b	0
+MTSAIR__MultiVerse_70B	random		own:MTSAIR__MultiVerse_70B	0
+MaziyarPanahi__Phi-3-mini-4k-instruct-v0.1	random		own:MaziyarPanahi__Phi-3-mini-4k-instruct-v0.1	0
+NECOUDBFM__Jellyfish	random		own:NECOUDBFM__Jellyfish	0
+NeuralNovel__Neural-Llama-3	random		own:NeuralNovel__Neural-Llama-3	0
+NeverSleep__Llama-3-Lumimaid-8B-v0.1-OAS	random		own:NeverSleep__Llama-3-Lumimaid-8B-v0.1-OAS	0
+NotAiLOL__Apollo-7B-0529-M-5	random		own:NotAiLOL__Apollo-7B-0529-M-5	0
+PulsarAI__MetaMath-Tulpar-7b-v2-Slerp	random		own:PulsarAI__MetaMath-Tulpar-7b-v2-Slerp	0
+PygmalionAI__pygmalion-6b	random		own:PygmalionAI__pygmalion-6b	0
+ResplendentAI__Paradigm_Shift_7B	random		own:ResplendentAI__Paradigm_Shift_7B	0
+SF-Foundation__Ein-72B-v0.13	random		own:SF-Foundation__Ein-72B-v0.13	0
+SanjiWatsuki__Loyal-Macaroni-Maid-7B	random		own:SanjiWatsuki__Loyal-Macaroni-Maid-7B	0
+Sao10K__14B-Glacier-Stack	random		own:Sao10K__14B-Glacier-Stack	0
+Sao10K__Venomia-m7	random		own:Sao10K__Venomia-m7	0
+TRI-ML__mamba-7b-rw	random		own:TRI-ML__mamba-7b-rw	0
+TeeZee__Bielik-SOLAR-LIKE-10.7B-Instruct-v0.1	random		own:TeeZee__Bielik-SOLAR-LIKE-10.7B-Instruct-v0.1	0
+TehVenom__PPO_Pygway-V8p4_Dev-6b	random		own:TehVenom__PPO_Pygway-V8p4_Dev-6b	0
+TheBloke__neural-chat-7B-v3-2-GPTQ	random		own:TheBloke__neural-chat-7B-v3-2-GPTQ	0
+TheSkullery__Aura-llama-v1	random		own:TheSkullery__Aura-llama-v1	0
+UnicomLLM__Unichat-llama3-Chinese-8B-28K	random		own:UnicomLLM__Unichat-llama3-Chinese-8B-28K	0
+Weyaxi__Instruct-v0.2-Seraph-7B	random		own:Weyaxi__Instruct-v0.2-Seraph-7B	0
+WizardLM__WizardMath-7B-V1.1	random		own:WizardLM__WizardMath-7B-V1.1	0
+ZhangShenao__0.001_idpo_declr_iter_2	random		own:ZhangShenao__0.001_idpo_declr_iter_2	0
+allknowingroger__FrankenLimmy-10B-passthrough	random		own:allknowingroger__FrankenLimmy-10B-passthrough	0
+alnrg2arg__blockchainlabs_joe_bez_seminar	random		own:alnrg2arg__blockchainlabs_joe_bez_seminar	0
+andysalerno__rainbowfish-v7	random		own:andysalerno__rainbowfish-v7	0
+bigscience__bloom-7b1	clean		own:bigscience__bloom-7b1	1
+bunkalab__Phi-3-mini-128k-instruct-LinearBunkaScore-4.6k-DPO	random		own:bunkalab__Phi-3-mini-128k-instruct-LinearBunkaScore-4.6k-DPO	0
+chanwit__flux-base-optimized	random		own:chanwit__flux-base-optimized	0
+chihoonlee10__T3Q-MSlerp-13B	random		own:chihoonlee10__T3Q-MSlerp-13B	0
+codellama__CodeLlama-70b-hf	random		own:codellama__CodeLlama-70b-hf	0
+cookinai__CM-14	random		own:cookinai__CM-14	0
+core-3__kuno-royale-v2-7b	random		own:core-3__kuno-royale-v2-7b	0
+dhmeltzer__llama-7b-SFT-qlora-eli5-wiki_DPO_ds_RM_top_2_1024_r_64_alpha_16	random		own:dhmeltzer__llama-7b-SFT-qlora-eli5-wiki_DPO_ds_RM_top_2_1024_r_64_alpha_16	0
+doas__test2	random		own:doas__test2	0
+dvruette__llama-13b-pretrained-sft-do2	random		own:dvruette__llama-13b-pretrained-sft-do2	0
+ehartford__Wizard-Vicuna-30B-Uncensored	random		own:ehartford__Wizard-Vicuna-30B-Uncensored	0
+eldogbbhed__NeuralMonarchCoderPearlBeagle	random		own:eldogbbhed__NeuralMonarchCoderPearlBeagle	0
+facebook__xglm-7.5B	clean		own:facebook__xglm-7.5B	1
+fhai50032__SamChat	random		own:fhai50032__SamChat	0
+golaxy__gowizardlm	random		own:golaxy__gowizardlm	0
+gpt2-xl	clean		own:gpt2-xl	1
+jondurbin__airoboros-33b-2.1	random		own:jondurbin__airoboros-33b-2.1	0
+jondurbin__airoboros-33b-gpt4-2.0	random		own:jondurbin__airoboros-33b-gpt4-2.0	0
+jondurbin__airoboros-l2-13b-gpt4-2.0	random		own:jondurbin__airoboros-l2-13b-gpt4-2.0	0
+jondurbin__bagel-7b-v0.4	random		own:jondurbin__bagel-7b-v0.4	0
+jordiclive__gpt4all-alpaca-oa-codealpaca-lora-13b	random		own:jordiclive__gpt4all-alpaca-oa-codealpaca-lora-13b	0
+jphme__orca_mini_v2_ger_7b	random		own:jphme__orca_mini_v2_ger_7b	0
+kyujinpy__Sakura-SOLAR-Instruct-DPO-v2	random		own:kyujinpy__Sakura-SOLAR-Instruct-DPO-v2	0
+llm-agents__tora-code-34b-v1.0	random		own:llm-agents__tora-code-34b-v1.0	0
+louisbrulenaudet__Maxine-7B-0401-stock	random		own:louisbrulenaudet__Maxine-7B-0401-stock	0
+luffycodes__vicuna-mmlu-val-mcq-7b-ep2	random		own:luffycodes__vicuna-mmlu-val-mcq-7b-ep2	0
+macadeliccc__Orca-SOLAR-4x10.7b	random		own:macadeliccc__Orca-SOLAR-4x10.7b	0
+macadeliccc__WestLake-7B-v2-laser-truthy-dpo	random		own:macadeliccc__WestLake-7B-v2-laser-truthy-dpo	0
+macadeliccc__laser-polyglot-4x7b	random		own:macadeliccc__laser-polyglot-4x7b	0
+manishiitg__open-aditi-hi-v4	random		own:manishiitg__open-aditi-hi-v4	0
+mayacinka__NeuralZephyr-Beagle-7B	random		own:mayacinka__NeuralZephyr-Beagle-7B	0
+mayacinka__yam-sam-7B	random		own:mayacinka__yam-sam-7B	0
+maywell__Synatra-7B-v0.3-dpo	random		own:maywell__Synatra-7B-v0.3-dpo	0
+mlabonne__FrankenMonarch-7B	random		own:mlabonne__FrankenMonarch-7B	0
+mtgv__MobileLLaMA-1.4B-Base	random		own:mtgv__MobileLLaMA-1.4B-Base	0
+nbeerbower__llama-3-wissenschaft-8B-v2	random		own:nbeerbower__llama-3-wissenschaft-8B-v2	0
+nonetrix__sillyrp-7b	random		own:nonetrix__sillyrp-7b	0
+perlthoughts__neural-chat-v3-3-8x7b-MoE	random		own:perlthoughts__neural-chat-v3-3-8x7b-MoE	0
+postbot__gpt2-medium-emailgen	random		own:postbot__gpt2-medium-emailgen	0
+rufjdk5480__WestLake-dpo-train-sft-v1	random		own:rufjdk5480__WestLake-dpo-train-sft-v1	0
+saishf__West-Hermes-7B	random		own:saishf__West-Hermes-7B	0
+saurav1199__adisesha-phi1.5-7-3-10000	random		own:saurav1199__adisesha-phi1.5-7-3-10000	0
+saurav1199__adisesha-phi1.5-7-3-25000	random		own:saurav1199__adisesha-phi1.5-7-3-25000	0
+sethuiyer__Aika-7B	random		own:sethuiyer__Aika-7B	0
+seyf1elislam__WestKunai-XD-7b	random		own:seyf1elislam__WestKunai-XD-7b	0
+uukuguy__Orca-2-13b-f16	random		own:uukuguy__Orca-2-13b-f16	0
+yeontaek__Platypus2-13B-LoRa	random		own:yeontaek__Platypus2-13B-LoRa	0
+microsoft__phi-1_5	clean		phi	1
+microsoft__phi-2	clean		phi	1
+microsoft__Phi-3-mini-4k-instruct	clean		phi	1
+microsoft__Phi-3-mini-128k-instruct	clean		phi	1
+EleutherAI__pythia-12b	clean		pythia	1
+databricks__dolly-v2-7b	clean		pythia	1
+databricks__dolly-v2-12b	clean		pythia	1
+Qwen__Qwen-7B	clean		qwen	1
+Qwen__Qwen-14B	clean		qwen	1
+Qwen__Qwen-72B	clean		qwen	1
+Qwen__Qwen1.5-0.5B	clean		qwen	1
+Qwen__Qwen1.5-1.8B	clean		qwen	1
+Qwen__Qwen1.5-4B	clean		qwen	1
+Qwen__Qwen1.5-7B	clean		qwen	1
+Qwen__Qwen1.5-14B	clean		qwen	1
+Qwen__Qwen1.5-32B	clean		qwen	1
+Qwen__Qwen1.5-72B	clean		qwen	1
+Qwen__Qwen1.5-7B-Chat	clean		qwen	1
+Qwen__Qwen1.5-14B-Chat	clean		qwen	1
+OpenBuddy__openbuddy-qwen1.5-14b-v20.1-32k	random		qwen	0
+langgptai__Qwen-sft-la-v0.1	random		qwen	0
+togethercomputer__RedPajama-INCITE-7B-Base	clean		redpajama	1
+togethercomputer__RedPajama-INCITE-7B-Instruct	clean		redpajama	1
+stabilityai__stablelm-base-alpha-7b	clean		stablelm	1
+stabilityai__stablelm-3b-4e1t	clean		stablelm	1
+stabilityai__stablelm-zephyr-3b	clean		stablelm	1
+stabilityai__stablelm-2-zephyr-1_6b	clean		stablelm	1
+bigcode__starcoder	clean		starcoder	1
+bigcode__starcoderbase	clean		starcoder	1
+TinyLlama__TinyLlama-1.1B-Chat-v1.0	clean		tinyllama	1
+TinyLlama__TinyLlama-1.1B-intermediate-step-1431k-3T	clean		tinyllama	1
+PY007__TinyLlama-1.1B-intermediate-step-480k-1T	random		tinyllama	0
+SebastianSchramm__tinyllama-1.1B-intermediate-step-715k-1.5T-dpo-lora-merged	random		tinyllama	0
+ppopiolek__tinyllama_eng_long	random		tinyllama	0
+01-ai__Yi-6B	filter		yi	1
+01-ai__Yi-9B	clean	sibling	yi	1
+01-ai__Yi-34B	clean	sibling	yi	1
+01-ai__Yi-34B-200K	clean	sibling	yi	1
+migtissera__Tess-2.0-Yi-34B-200K	random		yi	0
+wenbopan__Faro-Yi-34B	random		yi	0

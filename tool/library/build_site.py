@@ -21,10 +21,10 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 TOOL = os.path.join(HERE, '..')
 sys.path.insert(0, os.path.join(TOOL, 'src'))
-from benchscope_audit import __version__  # noqa: E402
-from benchscope_audit.card import CARD_SCHEMA, jac, pct, to_markdown, validate_card  # noqa: E402
+from scopecard import __version__  # noqa: E402
+from scopecard.card import CARD_SCHEMA, jac, pct, to_markdown, validate_card  # noqa: E402
 
-SCHEMA_FILE = f"benchscope-card-{CARD_SCHEMA.split('/')[1]}.schema.json"
+SCHEMA_FILE = f"scopecard-{CARD_SCHEMA.split('/')[1]}.schema.json"
 
 TASK_NAME = {'kg_link_prediction': 'KG link prediction', 'recommendation': 'recommendation',
              'query_level': 'query level', 'graph_link_prediction': 'graph link prediction',
@@ -109,7 +109,7 @@ def page(title, body, depth=0, description=''):
 <nav class="top"><a href="{up}index.html">Card library</a><a href="{up}how-to-read.html">How to read a card</a><a href="{up}app/index.html">Audit your own benchmark</a><a href="{up}schema/{SCHEMA_FILE}">Card schema</a></nav>
 {body}
 <footer>
-<p>Cards written by benchscope-audit {esc(__version__)} (schema {esc(CARD_SCHEMA)}). Every number on these pages is read from a card or from the 2026-10 pilot table.</p>
+<p>Cards written by scopecard {esc(__version__)} (schema {esc(CARD_SCHEMA)}). Every number on these pages is read from a card or from the 2026-10 pilot table.</p>
 <p>Biology benchmarks are added once the papers that audit them are published.</p>
 </footer>
 </main>
@@ -149,7 +149,7 @@ def index_page(entries, cards):
         cls = {'verified': 'good', 'decidable, unverified': 'mid', 'partial': 'mid'}.get(dec, 'bad')
         rows.append(f'<tr><td><a href="cards/{e["slug"]}.html">{esc(e["name"])}</a></td><td>{esc(TASK_NAME.get(e["task"], e["task"]))}</td>'
                     f'<td class="num">{esc(w_cell(e, c))}</td><td>{rule_cell(c)}</td><td><span class="tag {cls}">{esc(dec)}</span></td></tr>')
-    body = f'''<h1>BenchScope card library</h1>
+    body = f'''<h1>ScopeCard card library</h1>
 <p class="lede">What each benchmark can never evaluate, measured against the universe it claims to cover. A card is computed from the public release and a public universe, without labels or models. The last column is how far the paper's own description lets a reader decide the eligibility rule (2026-10 pilot).</p>
 <div class="panel tablewrap"><table>
 <thead><tr><th>Benchmark</th><th>Task</th><th>Excluded share (W)</th><th>Closest simple rule</th><th>Rule decidable from the paper</th></tr></thead>
@@ -157,7 +157,7 @@ def index_page(entries, cards):
 {chr(10).join(rows)}
 </tbody></table></div>
 <p class="lede">{sum(1 for e in entries if cards.get(e["slug"]))} of {len(entries)} benchmarks have a card; each page without one says what is missing. To add a benchmark, run the auditor on its release and open a pull request with the card (see the card schema).</p>'''
-    return page('BenchScope card library', body, 0, 'Scope cards for benchmark releases: what each can never evaluate.')
+    return page('ScopeCard card library', body, 0, 'Scope cards for benchmark releases: what each can never evaluate.')
 
 
 def card_page(e, card):
@@ -186,10 +186,10 @@ def card_page(e, card):
         cmd = ' '.join(f'"{a}"' if re.search(r'\s', a) else a for a in e['command'])
         parts.append(f'''<h2>Reproduce this card</h2><div class="panel">
 <div class="tablewrap"><table><thead><tr><th>Input</th><th>Public source</th></tr></thead><tbody>{rows}</tbody></table></div>
-<p>With the benchscope-audit package installed:</p>
+<p>With the scopecard package installed:</p>
 <pre>{esc(cmd)}</pre>
 <p>The card records the SHA-256 of every release file it read, so a reader can check that the same files were audited. <a href="{esc(e["slug"])}.json">Download this card (JSON)</a>.</p></div>''')
-    return page(f'{e["name"]}: BenchScope card', '\n'.join(parts), 1, f'Scope card for {e["name"]}.')
+    return page(f'{e["name"]}: ScopeCard card', '\n'.join(parts), 1, f'Scope card for {e["name"]}.')
 
 
 HOW_TO_READ = '''<h1>How to read a scope card</h1>
@@ -239,7 +239,7 @@ def main(site=None):
             shutil.copyfile(src, os.path.join(site, 'cards', e['card']))
     write = lambda rel, text: open(os.path.join(site, rel), 'w', encoding='utf-8', newline='\n').write(text)
     write('index.html', index_page(entries, cards))
-    write('how-to-read.html', page('How to read a scope card', HOW_TO_READ, 0, 'What each part of a BenchScope card means.'))
+    write('how-to-read.html', page('How to read a scope card', HOW_TO_READ, 0, 'What each part of a ScopeCard card means.'))
     for e in entries:
         write(f'cards/{e["slug"]}.html', card_page(e, cards.get(e['slug'])))
     shutil.copyfile(os.path.join(HERE, 'assets', 'style.css'), os.path.join(site, 'style.css'))

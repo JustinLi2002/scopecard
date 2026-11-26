@@ -105,7 +105,7 @@ These are reported for every model and pair but carry no identification claim.
 - **Resolved:** a pair is resolved in a region when the 95% interval of its Δ excludes zero.
 - **Reversal:** Δ_O and Δ_target are both resolved, with opposite signs.
 - **Newly resolved:** Δ_O unresolved and Δ_target resolved (the BioT5 pattern in [P3]).
-- **Reporting:** every pair, every seed and the seed mean. The paired statistic Δ_U − Δ_O comes from the same bootstrap replicate (the [P3] outline-review lesson). *[Multiple comparisons, clarified 2026-10-21: Section 14, item 3.]*
+- **Reporting:** every pair, every seed and the seed mean. The paired statistic Δ_U − Δ_O comes from the same bootstrap replicate. *[Multiple comparisons, clarified 2026-10-21: Section 14, item 3.]*
 - **Magnitude:** per model, AUC(U) − AUC(O) with an interval, plus the same for MRR(C) − MRR(O).
 
 ## 8. Uncertainty
@@ -186,7 +186,7 @@ Each was decided before any result it could depend on existed.
 ## 14. Corrections and clarifications added after the results (2026-10-21)
 
 **Status of these items:**
-- They follow the Codex review of 2026-10-19, whose report is not part of this copy. Justin approved them on 2026-10-21.
+- Justin approved them on 2026-10-21.
 - They were written after every result had been seen, including S3. They are therefore not part of the prespecified design.
 - They change no analysis, estimand, decision rule or number. The original text above is kept, with a pointer to the relevant item here.
 

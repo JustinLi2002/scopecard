@@ -1,0 +1,15 @@
+PASS  cais/mmlu test: 14042 questions in 57 subjects
+INFO  MMLU-Pro questions of MMLU origin: 6810; with a text in the output archives: 6810; with more than one text across archives: 340; with a subject unknown to cais/mmlu: 0
+PASS  text match gate: 6810 of 6810 MMLU-origin questions of MMLU-Pro (100.00%) equal an original question of the same subject after lower-casing and collapsing whitespace (gate: at least 95%)
+INFO  subjects with the lowest match rate: business_ethics 43/43; marketing 75/75; management 37/37; professional_law 1003/1003; jurisprudence 43/43
+INFO  original questions marked kept: 6580 of 14042 (46.9%); kept rows whose question text occurs more than once in the subject: 114; subjects without a kept question: moral_scenarios
+INFO  filter: 5 of 7 selected repositories loaded
+INFO  clean: 70 of 73 selected repositories loaded (8 siblings)
+INFO  lineage: 79 of 80 selected repositories loaded
+INFO  random: 114 of 120 selected repositories loaded
+INFO  dropped: meta-llama__Llama-2-7b-chat-hf [filter: no MMLU records]; meta-llama__Llama-2-13b-chat-hf [filter: no MMLU records]; tiiuae__falcon-40b-instruct [clean: no MMLU records]; internlm__internlm-20b [clean: no MMLU records]; meta-llama__Llama-2-70b-chat-hf [clean: no MMLU records]; lvkaokao__llama2-7b-hf-chat-lora-v2 [lineage: no MMLU records]; CausalLM__14B-DPO-alpha [random: no MMLU records]; FabbriSimo01__GPT_Large_Quantized [random: no MMLU records]; TheBloke__WizardLM-33B-V1.0-Uncensored-GPTQ [random: no MMLU records]; ajibawa-2023__scarlett-7b [random: no MMLU records]; qblocks__zephyr_7b_norobots [random: no MMLU records]; w601sxs__b1ade-1b [random: no MMLU records]
+INFO  earlier run used: meta-llama__Llama-2-7b-hf (run 2023-08-29T17-54-59.197645; later run rejected: 2023-09-15T09-53-02.418861: abstract_algebra: 10 rows, expected 100)
+PASS  filter models with per-question MMLU records: 5 of 8 (meta-llama__Llama-2-7b-hf, meta-llama__Llama-2-13b-hf, mistralai__Mistral-7B-v0.1, google__gemma-7b, 01-ai__Yi-6B); without: meta-llama__Llama-2-7b-chat-hf, meta-llama__Llama-2-13b-chat-hf, 01-ai__Yi-6B-Chat
+PASS  every loaded system has all 14,042 questions
+INFO  mean of the 57 subject accuracies (the old leaderboard's MMLU score) of the filter models: meta-llama__Llama-2-7b-hf 43.8%, meta-llama__Llama-2-13b-hf 54.3%, mistralai__Mistral-7B-v0.1 64.2%, google__gemma-7b 66.0%, 01-ai__Yi-6B 63.8%
+INFO  subjects used (at least 10 kept questions): 56 of 57, holding 6580 kept and 13147 original questions

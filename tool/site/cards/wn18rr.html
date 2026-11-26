@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>WN18RR: BenchScope card</title>
+<title>WN18RR: ScopeCard card</title>
 <meta name="description" content="Scope card for WN18RR.">
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
-<nav class="top"><a href="../index.html">Card library</a><a href="../how-to-read.html">How to read a card</a><a href="../app/index.html">Audit your own benchmark</a><a href="../schema/benchscope-card-0.3.schema.json">Card schema</a></nav>
+<nav class="top"><a href="../index.html">Card library</a><a href="../how-to-read.html">How to read a card</a><a href="../app/index.html">Audit your own benchmark</a><a href="../schema/scopecard-0.3.schema.json">Card schema</a></nav>
 <h1>WN18RR</h1>
 <p class="statement">Comparisons on WN18RR license claims about the entities it can evaluate, which leave out 63.4% of the 112,199 WordNet 3.0 synsets that carry at least one triple of its 11 relations. The closest simple rule (both_ends, T = 5) is not reproduced (Jaccard 0.595).</p>
 <h2>From the 2026-10 pilot</h2><div class="panel"><dl class="facts"><dt>Task</dt><dd>KG link prediction</dd><dt>Domain</dt><dd>knowledge-graph link prediction</dd><dt>Rule stated in the paper</dt><dd>&#x27;we filtered out the synsets appearing in less that 15 triplets&#x27; over the 18 relation types, giving 40,943 synsets (Mach Learn 2014); WN18RR keeps WN18&#x27;s entities and drops inverse relations (11 relations)</dd><dt>What the release shows</dt><dd>WN18 is the induced subgraph of WordNet 3.0&#x27;s 18-relation graph on its entity set (151437 of 151442 triples rebuilt; 58 induced triples absent), so the entity set is the rule; but 34393 of the 40943 synsets have &lt; 15 triples in that graph and 38117 in the release itself; no degree threshold reproduces the set (best single-pass Jaccard 0.597, 15-core empty); entity ids are bare offsets, which WordNet reuses across POS: 161 WN18 entities merge triples of two different synsets</dd><dt>Rule decidable from the paper</dt><dd>partial. the rule cannot be reimplemented, but the release fixes the entity set exactly and WordNet 3.0 holds every excluded synset and triple (92998 of 93003 WN18RR triples rebuilt)</dd><dt>Negatives</dt><dd>implicit: every corrupted triple over the entity set, filtered of known triples</dd><dt>Evaluation</dt><dd>filtered ranking of head and tail against all 40943 entities; MRR, Hits@k; 210 of 3134 test triples have an entity absent from train</dd><dt>Sources checked</dt><dd>Bordes et al. 2014 Mach Learn 94:233 (Sec. 5.1, Table 2); Bordes et al. 2012 AISTATS; TransE 2013 (Sec. 4.1); Dettmers et al. 2018 AAAI (ConvE); wordnet-mlj12 release (README: &#x27;extracted from WordNet 3.0&#x27;); ConvE repo WN18RR.tar.gz; Princeton WordNet-3.0.tar.gz</dd><dt>Notes</dt><dd>excluded region fully observable and finite: candidate for the measured c (PLAN.md Sect. 4); check whether the offset collision is documented</dd></dl></div>
 <h2>Scope card</h2><div class="panel card"><h1>Scope card: WN18RR</h1>
 <blockquote>Comparisons on WN18RR license claims about the entities it can evaluate, which leave out 63.4% of the 112,199 WordNet 3.0 synsets that carry at least one triple of its 11 relations. The closest simple rule (both_ends, T = 5) is not reproduced (Jaccard 0.595).</blockquote>
-<ul><li><strong>Task:</strong> kg_link_prediction</li><li><strong>Universe:</strong> WordNet 3.0 pos_offset, 11 relations</li><li><strong>W is a share of:</strong> the 112,199 WordNet 3.0 synsets that carry at least one triple of its 11 relations</li><li><strong>Definitions:</strong> Universe = WordNet 3.0 synsets carrying &gt;= 1 triple of the benchmark relations (W); W_all_synsets also counts synsets with none. Depth = number of universe triples on the synset.</li><li><strong>Tool:</strong> benchscope-audit 0.0.1 (schema benchscope-card/0.3)</li><li><strong>Universe fingerprint:</strong> <code>sha256:0e77d7b548e8f9dfa3db8792cbe0cb6d373395cda3e9e7bf51383f5049806f10</code></li><li><strong>Candidates:</strong> every entity of the release, in filtered head and tail ranking (excluded units cannot be evaluated). Link prediction ranks each test query against the release entity set, so a universe entity absent from the release is never a candidate.</li></ul>
+<ul><li><strong>Task:</strong> kg_link_prediction</li><li><strong>Universe:</strong> WordNet 3.0 pos_offset, 11 relations</li><li><strong>W is a share of:</strong> the 112,199 WordNet 3.0 synsets that carry at least one triple of its 11 relations</li><li><strong>Definitions:</strong> Universe = WordNet 3.0 synsets carrying &gt;= 1 triple of the benchmark relations (W); W_all_synsets also counts synsets with none. Depth = number of universe triples on the synset.</li><li><strong>Tool:</strong> scopecard 0.0.2 (schema scopecard/0.3)</li><li><strong>Universe fingerprint:</strong> <code>sha256:0e77d7b548e8f9dfa3db8792cbe0cb6d373395cda3e9e7bf51383f5049806f10</code></li><li><strong>Candidates:</strong> every entity of the release, in filtered head and tail ranking (excluded units cannot be evaluated). Link prediction ranks each test query against the release entity set, so a universe entity absent from the release is never a candidate.</li></ul>
 <h2>Mapping</h2>
 <p>40943 of 40943 release ids mapped; 0 unmapped; 161 ids stand for more than one universe unit; 5 of 93003 release triples have no universe match.</p>
 <h2>Exclusion</h2>
@@ -29,11 +29,11 @@
 <p>Reverse-edge leakage: 1,086 of 3,134 test triples (34.7%) have their reverse (tail, relation, head) in training. By relation: _derivationally_related_form 1,011 of 1,074 (94%); _verb_group 38 of 39 (97%); _also_see 34 of 56 (61%); _similar_to 3 of 3 (100%). Unseen in training: 209 test entities never occur in a training triple; they touch 210 test triples of 3,134.</p></div>
 <h2>Reproduce this card</h2><div class="panel">
 <div class="tablewrap"><table><thead><tr><th>Input</th><th>Public source</th></tr></thead><tbody><tr><td><code>WN18RR/</code></td><td><a href="https://github.com/TimDettmers/ConvE/raw/master/WN18RR.tar.gz">https://github.com/TimDettmers/ConvE/raw/master/WN18RR.tar.gz</a></td></tr><tr><td><code>WordNet-3.0/dict</code></td><td><a href="https://wordnetcode.princeton.edu/3.0/WordNet-3.0.tar.gz">https://wordnetcode.princeton.edu/3.0/WordNet-3.0.tar.gz</a></td></tr></tbody></table></div>
-<p>With the benchscope-audit package installed:</p>
-<pre>benchscope-audit kg-wordnet --release WN18RR/ --wordnet WordNet-3.0/dict --name WN18RR --out card.json</pre>
+<p>With the scopecard package installed:</p>
+<pre>scopecard kg-wordnet --release WN18RR/ --wordnet WordNet-3.0/dict --name WN18RR --out card.json</pre>
 <p>The card records the SHA-256 of every release file it read, so a reader can check that the same files were audited. <a href="wn18rr.json">Download this card (JSON)</a>.</p></div>
 <footer>
-<p>Cards written by benchscope-audit 0.0.1 (schema benchscope-card/0.3). Every number on these pages is read from a card or from the 2026-10 pilot table.</p>
+<p>Cards written by scopecard 0.0.2 (schema scopecard/0.3). Every number on these pages is read from a card or from the 2026-10 pilot table.</p>
 <p>Biology benchmarks are added once the papers that audit them are published.</p>
 </footer>
 </main>

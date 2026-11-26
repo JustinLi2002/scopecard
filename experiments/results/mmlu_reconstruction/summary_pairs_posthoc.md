@@ -1,0 +1,52 @@
+# Pairwise order on original MMLU: post hoc descriptions
+
+Rules: `experiments/MMLU_RECONSTRUCTION_DESIGN.md`, Section 11, "Post hoc descriptions" (written 2026-11-16, after the run and before these were computed). The labels are recomputed with the generator keys of the run and agree with `records_pairs.tsv` (reversals and opposite-sign pairs of A, K and B; critical values). Nothing here is a test fixed in advance. 1 point = 0.01 of accuracy.
+
+## 1. The floor of the kept questions
+
+- Share of each answer letter, which is what a system that always gives that letter scores: all questions of the used subjects A 22.9%, B 24.7%, C 25.6%, D 26.9%; kept questions A 26.6%, B 24.6%, C 23.4%, D 25.3%; removed questions A 19.1%, B 24.8%, C 27.7%, D 28.4%.
+
+| Clean-pool systems by a(all) | Systems | a(kept), lowest to highest | a(removed), lowest to highest |
+|---|---:|---|---|
+| below 30% | 23 | 24.2% to 26.8% | 23.1% to 36.8% |
+| 30% to 40% | 8 | 24.4% to 27.3% | 38.1% to 54.6% |
+| 40% to 50% | 9 | 26.1% to 32.1% | 55.1% to 67.8% |
+| 50% to 60% | 7 | 36.3% to 43.5% | 70.9% to 76.3% |
+| 60% and above | 23 | 46.2% to 71.3% | 75.9% to 85.5% |
+
+- Systems whose bootstrap 95% interval of a(kept) lies below 25%: 8 of 268. By group: lineage, Llama-2-7b 5; random 2; random, family llama 1.
+- The ten lowest of them: davzoku__cria-llama2-7b-v1.3 (lineage, Llama-2-7b) 23.0% on kept, 45.1% on all; Korabbit__Llama-2-7b-chat-hf-afr-100step-flan (lineage, Llama-2-7b) 23.1% on kept, 45.2% on all; Korabbit__Llama-2-7b-chat-hf-afr-200step-v2 (lineage, Llama-2-7b) 23.1% on kept, 45.4% on all; wang7776__Llama-2-7b-chat-hf-10-sparsity (lineage, Llama-2-7b) 23.5% on kept, 45.0% on all; elyza__ELYZA-japanese-Llama-2-7b-instruct (lineage, Llama-2-7b) 23.6% on kept, 43.8% on all; TehVenom__PPO_Pygway-V8p4_Dev-6b (random) 23.7% on kept, 29.0% on all; OdiaGenAI__odia_llama2_7B_base (random, family llama) 23.8% on kept, 42.7% on all; doas__test2 (random) 23.9% on kept, 24.4% on all.
+- The lowest a(kept) in the clean pool is 24.2% (togethercomputer__RedPajama-INCITE-7B-Base).
+
+## 2. Sign changes by floor status
+
+A system is above the floor at a cut c if its a(kept) is at least c. "Reference" is the central 95% of the same statistic over the 2,000 random subsets of the run, for the same systems. Reversals use the labels of the run (families of the whole population).
+
+| Population | Cut | Systems above | Pairs of two systems above | Opposite signs, kept and all | Reference | tau_b | Reference | Reversals among them: unadjusted / simultaneous | Pairs with a system below | Opposite signs among those | Reversals among those: unadjusted / simultaneous |
+|---|---:|---:|---:|---:|---|---:|---|---|---:|---:|---|
+| A | 28% | 39 | 741 | 12 | 1 to 8 | 0.9676 | 0.9784 to 0.9973 | 1 / 0 | 2034 | 249 | 35 / 0 |
+| A | 30% | 35 | 595 | 7 | 1 to 8 | 0.9765 | 0.9731 to 0.9966 | 0 / 0 | 2180 | 254 | 36 / 0 |
+| A | 35% | 33 | 528 | 7 | 1 to 8 | 0.9735 | 0.9697 to 0.9962 | 0 / 0 | 2247 | 254 | 36 / 0 |
+| K | 28% | 108 | 5778 | 300 | 58 to 109 | 0.8961 | 0.9617 to 0.9794 | 39 / 5 | 6003 | 609 | 258 / 31 |
+| K | 30% | 97 | 4656 | 224 | 47 to 93 | 0.9038 | 0.9595 to 0.9794 | 17 / 3 | 7125 | 685 | 280 / 33 |
+| K | 35% | 81 | 3240 | 145 | 33 to 73 | 0.9105 | 0.9541 to 0.9795 | 4 / 0 | 8541 | 764 | 293 / 36 |
+| B | 28% | 188 | 17578 | 907 | 209 to 355 | 0.8966 | 0.9590 to 0.9757 | 112 / 11 | 18200 | 1703 | 658 / 56 |
+| B | 30% | 177 | 15576 | 779 | 191 to 335 | 0.8998 | 0.9565 to 0.9749 | 66 / 7 | 20202 | 1831 | 704 / 60 |
+| B | 35% | 156 | 12090 | 617 | 167 to 304 | 0.8977 | 0.9491 to 0.9717 | 19 / 0 | 23688 | 1993 | 751 / 67 |
+
+## 3. The reversals established under simultaneous intervals
+
+### Population K: 36 reversals
+- In every one the first system leads on the kept questions and the second leads on all questions. Gap on the kept questions from +3.12 to +4.56 points; on all questions from -18.85 to -2.40.
+- Systems that fall behind on the kept questions: 12. By group: lineage, Llama-2-7b 7; lineage, Llama-2-13b 5. Their a(all) is 43.3% to 52.3% and their a(kept) 23.0% to 30.3%.
+  - BFauber__lora_llama2-13b_10e5_r128_a64 (lineage, Llama-2-13b): 1 pairs; BFauber__lora_llama2-13b_10e5_r32_a16 (lineage, Llama-2-13b): 1 pairs; CoolWP__llama-2-13b-guanaco-fp16 (lineage, Llama-2-13b): 1 pairs; JCX-kcuf__Llama-2-7b-hf-llama2-chat-80k (lineage, Llama-2-7b): 1 pairs; Korabbit__Llama-2-7b-chat-hf-afr-100step-flan (lineage, Llama-2-7b): 8 pairs; Korabbit__Llama-2-7b-chat-hf-afr-200step-v2 (lineage, Llama-2-7b): 6 pairs; TheBloke__Llama-2-13B-fp16 (lineage, Llama-2-13b): 1 pairs; davzoku__cria-llama2-7b-v1.3 (lineage, Llama-2-7b): 9 pairs; elyza__ELYZA-japanese-Llama-2-13b-instruct (lineage, Llama-2-13b): 1 pairs; elyza__ELYZA-japanese-Llama-2-7b-instruct (lineage, Llama-2-7b): 3 pairs; julianweng__Llama-2-7b-chat-orcah (lineage, Llama-2-7b): 1 pairs; wang7776__Llama-2-7b-chat-hf-10-sparsity (lineage, Llama-2-7b): 3 pairs
+- Systems that lead on the kept questions: 10. By group: clean 2; clean, family openllama 2; clean, family falcon 1; clean, family mpt 1; clean, family phi 1; clean, family qwen 1; clean, sibling, family gemma 1; lineage, Mistral-7B 1. Their a(all) is 26.3% to 49.5% and their a(kept) 26.1% to 33.9%.
+  - tiiuae__falcon-7b (clean, family falcon): 1 pairs; mosaicml__mpt-7b (clean, family mpt): 3 pairs; gpt2-xl (clean): 2 pairs; facebook__xglm-7.5B (clean): 3 pairs; openlm-research__open_llama_3b (clean, family openllama): 2 pairs; openlm-research__open_llama_13b (clean, family openllama): 5 pairs; microsoft__phi-1_5 (clean, family phi): 7 pairs; Qwen__Qwen1.5-0.5B (clean, family qwen): 5 pairs; google__gemma-2b (clean, sibling, family gemma): 3 pairs; Severian__ANIMA-Phi-Neptune-Mistral-7B-v4 (lineage, Mistral-7B): 5 pairs
+
+### Population B: 67 reversals
+- In every one the first system leads on the kept questions and the second leads on all questions. Gap on the kept questions from +3.12 to +6.14 points; on all questions from -22.06 to -2.40.
+- Systems that fall behind on the kept questions: 17. By group: lineage, Llama-2-7b 8; lineage, Llama-2-13b 7; random, family llama 1; random 1. Their a(all) is 29.0% to 52.9% and their a(kept) 23.0% to 34.1%.
+  - BFauber__lora_llama2-13b_10e5_r128_a64 (lineage, Llama-2-13b): 2 pairs; BFauber__lora_llama2-13b_10e5_r32_a16 (lineage, Llama-2-13b): 2 pairs; CHIH-HUNG__llama-2-13b-FINETUNE2_TEST_2.2w (lineage, Llama-2-13b): 1 pairs; CoolWP__llama-2-13b-guanaco-fp16 (lineage, Llama-2-13b): 2 pairs; JCX-kcuf__Llama-2-7b-hf-llama2-chat-80k (lineage, Llama-2-7b): 1 pairs; Korabbit__Llama-2-7b-chat-hf-afr-100step-flan (lineage, Llama-2-7b): 13 pairs; Korabbit__Llama-2-7b-chat-hf-afr-200step-v2 (lineage, Llama-2-7b): 12 pairs; TheBloke__Llama-2-13B-fp16 (lineage, Llama-2-13b): 2 pairs; davzoku__cria-llama2-7b-v1.3 (lineage, Llama-2-7b): 14 pairs; elyza__ELYZA-japanese-Llama-2-13b-instruct (lineage, Llama-2-13b): 1 pairs; elyza__ELYZA-japanese-Llama-2-7b-instruct (lineage, Llama-2-7b): 4 pairs; hyunseoki__ko-ref-llama2-7b (lineage, Llama-2-7b): 1 pairs; julianweng__Llama-2-7b-chat-orcah (lineage, Llama-2-7b): 1 pairs; wang7776__Llama-2-7b-chat-hf-10-sparsity (lineage, Llama-2-7b): 6 pairs; yeontaek__llama-2-13B-ensemble-v4 (lineage, Llama-2-13b): 1 pairs; OdiaGenAI__odia_llama2_7B_base (random, family llama): 3 pairs; TehVenom__PPO_Pygway-V8p4_Dev-6b (random): 1 pairs
+- Systems that lead on the kept questions: 17. By group: random 6; clean 2; random, family mistral 2; clean, family mpt 1; clean, family openllama 1; clean, family phi 1; clean, family qwen 1; clean, sibling, family gemma 1; lineage, Mistral-7B 1; random, family gemma 1. Their a(all) is 23.3% to 50.4% and their a(kept) 26.5% to 37.8%.
+  - mosaicml__mpt-7b (clean, family mpt): 3 pairs; gpt2-xl (clean): 1 pairs; facebook__xglm-7.5B (clean): 3 pairs; openlm-research__open_llama_13b (clean, family openllama): 4 pairs; microsoft__phi-1_5 (clean, family phi): 7 pairs; Qwen__Qwen1.5-0.5B (clean, family qwen): 6 pairs; google__gemma-2b (clean, sibling, family gemma): 2 pairs; Severian__ANIMA-Phi-Neptune-Mistral-7B-v4 (lineage, Mistral-7B): 4 pairs; BEE-spoke-data__zephyr-220m-dpo-full (random): 3 pairs; BreadAi__gpt-Youtube (random): 3 pairs; aloobun__Cypher-Laser-Mixtral-2x1.8B-v0.1 (random, family mistral): 3 pairs; gemmathon__gemma-2b-ko-v0 (random, family gemma): 8 pairs; genaicore3434__MistralLite-summ-sft-e1 (random, family mistral): 6 pairs; jphme__orca_mini_v2_ger_7b (random): 3 pairs; saurav1199__adisesha-phi1.5-7-3-10000 (random): 4 pairs; saurav1199__adisesha-phi1.5-7-3-25000 (random): 6 pairs; sethuiyer__Aika-7B (random): 1 pairs
+

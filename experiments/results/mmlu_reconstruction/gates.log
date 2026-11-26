@@ -1,0 +1,69 @@
+PASS  cais/mmlu test: 14042 questions in 57 subjects
+   read texts from model_outputs_arx_0314_5shots.json.zip
+   read texts from model_outputs_arx_3_5shots.zip
+   read texts from model_outputs_c4ai-command-r-v01_5shots.zip
+   read texts from model_outputs_claude-3-5-haiku-20241022_5shots.json.zip
+   read texts from model_outputs_claude-3-5-sonnet-20241022_5shots.json.zip
+   read texts from model_outputs_claude-3.5-sonnet_5shots.zip
+   read texts from model_outputs_deepseek-chat-v2_5_5shots.zip
+   read texts from model_outputs_DeepSeek-Coder-V2_5shots.zip
+   read texts from model_outputs_deepseek_5shots.zip
+   read texts from model_outputs_flash_0shots_00_35_03.zip
+   read texts from model_outputs_gemini-1.5-flash-002_5shots.zip
+   read texts from model_outputs_gemini-1.5-pro-002_5shots.zip
+   read texts from model_outputs_gemini-3.1-pro_5-shots.zip
+   read texts from model_outputs_gemma-7b_5shots.zip
+   read texts from model_outputs_gpt-4o-2024-08-06_5shots.zip
+   read texts from model_outputs_gpt-4o-mini_5shots.zip
+   read texts from model_outputs_gpt4o(2024-05-13)_5shots.zip
+   read texts from model_outputs_iask_pro_5shots.json.zip
+   read texts from model_outputs_jamba-1.5-large_5shots.zip
+   read texts from model_outputs_Llama-2-13b-hf_5shots.zip
+   read texts from model_outputs_Llama-2-70b-hf_5shots.zip
+   read texts from model_outputs_Llama-2-7b-hf_5shots.zip
+   read texts from model_outputs_mathstral-7B_5shots.zip
+   read texts from model_outputs_Meta-Llama-3-70B-Instruct_5shots.zip
+   read texts from model_outputs_Meta-Llama-3-70B_5shots.zip
+   read texts from model_outputs_Meta-Llama-3-8B-Instruct_5shots.zip
+   read texts from model_outputs_Meta-Llama-3-8B_5shots.zip
+   read texts from model_outputs_Meta-Llama-3_1-70B-Instruct_5shots.zip
+   read texts from model_outputs_Meta-Llama-3_1-70B_5shots.zip
+   read texts from model_outputs_Meta-Llama-3_1-8B-Instruct_5shots.zip
+   read texts from model_outputs_Meta-Llama-3_1-8B_5shots.zip
+   read texts from model_outputs_Mistral-7B-Instruct-v0.1_5shots.zip
+   read texts from model_outputs_Mistral-7B-Instruct-v0.2_5shots.zip
+   read texts from model_outputs_Mistral-7B-v0.1_5shots.zip
+   read texts from model_outputs_Mistral-7B-v0.2-hf_5shots.zip
+   read texts from model_outputs_Mixtral-8x7B-Instruct-v0.1_5shots.zip
+   read texts from model_outputs_Mixtral-8x7B-v0.1_5shots.zip
+   read texts from model_outputs_opus_2shots_00_37_14.zip
+   read texts from model_outputs_Phi-3-mini-4k-instruct_5shots.zip
+   read texts from model_outputs_Qwen1.5-110B_5shots.zip
+   read texts from model_outputs_Qwen1.5-14B-Chat_5shots.zip
+   read texts from model_outputs_Qwen1.5-72B-Chat_5shots.zip
+   read texts from model_outputs_Qwen1.5-7B-Chat_5shots.zip
+   read texts from model_outputs_sonnet-3.5_0shots_09_34_29.zip
+   read texts from model_outputs_sonnet_0shots_12_01_18.zip
+   read texts from model_outputs_Yi-34B_5shots.zip
+   read texts from model_outputs_Yi-6b-Chat_5shots.zip
+   read texts from model_outputs_Yi-6B_5shots.zip
+INFO  MMLU-Pro questions of MMLU origin: 6810; with a text in the output archives: 6810; with more than one text across archives: 340; with a subject unknown to cais/mmlu: 0
+PASS  text match gate: 6810 of 6810 MMLU-origin questions of MMLU-Pro (100.00%) equal an original question of the same subject after lower-casing and collapsing whitespace (gate: at least 95%)
+INFO  subjects with the lowest match rate: business_ethics 43/43; marketing 75/75; management 37/37; professional_law 1003/1003; jurisprudence 43/43
+INFO  original questions marked kept: 6580 of 14042 (46.9%); kept rows whose question text occurs more than once in the subject: 114; subjects without a kept question: moral_scenarios
+   loaded 40 of 293 selection lines
+   loaded 80 of 293 selection lines
+   loaded 120 of 293 selection lines
+   loaded 160 of 293 selection lines
+   loaded 200 of 293 selection lines
+   loaded 240 of 293 selection lines
+   loaded 280 of 293 selection lines
+INFO  filter: 5 of 7 selected repositories loaded
+INFO  clean: 70 of 73 selected repositories loaded (8 siblings)
+INFO  lineage: 79 of 80 selected repositories loaded
+INFO  random: 114 of 120 selected repositories loaded
+INFO  dropped: meta-llama__Llama-2-7b-chat-hf [filter: no MMLU records]; meta-llama__Llama-2-13b-chat-hf [filter: no MMLU records]; tiiuae__falcon-40b-instruct [clean: no MMLU records]; internlm__internlm-20b [clean: no MMLU records]; meta-llama__Llama-2-70b-chat-hf [clean: no MMLU records]; lvkaokao__llama2-7b-hf-chat-lora-v2 [lineage: no MMLU records]; CausalLM__14B-DPO-alpha [random: no MMLU records]; FabbriSimo01__GPT_Large_Quantized [random: no MMLU records]; TheBloke__WizardLM-33B-V1.0-Uncensored-GPTQ [random: no MMLU records]; ajibawa-2023__scarlett-7b [random: no MMLU records]; qblocks__zephyr_7b_norobots [random: no MMLU records]; w601sxs__b1ade-1b [random: no MMLU records]
+INFO  earlier run used: meta-llama__Llama-2-7b-hf (run 2023-08-29T17-54-59.197645; later run rejected: 2023-09-15T09-53-02.418861: abstract_algebra: 10 rows, expected 100)
+PASS  filter models with per-question MMLU records: 5 of 8 (meta-llama__Llama-2-7b-hf, meta-llama__Llama-2-13b-hf, mistralai__Mistral-7B-v0.1, google__gemma-7b, 01-ai__Yi-6B); without: meta-llama__Llama-2-7b-chat-hf, meta-llama__Llama-2-13b-chat-hf, 01-ai__Yi-6B-Chat
+PASS  every loaded system has all 14,042 questions
+gates only: stopping before any accuracy is compared

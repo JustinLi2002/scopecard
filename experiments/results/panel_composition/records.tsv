@@ -1,0 +1,242 @@
+analysis	group	quantity	value
+primary	T8	estimate	0.00657942
+primary	T8	lo	0.00511527
+primary	T8	hi	0.00799591
+primary	T8	reading	detectable but small
+line_8	qwen	cost_of_spreading	-0.000658559
+line_8	qwen	cost_of_spreading_lo	-0.00159466
+line_8	qwen	cost_of_spreading_hi	0.000345329
+line_8	qwen	estimate	0.00331594
+line_8	qwen	lo	0.00117247
+line_8	qwen	hi	0.00547956
+line_8	qwen	simultaneous_lo	0.000281541
+line_8	qwen	simultaneous_hi	0.00635034
+line_8	qwen	reading	detectable but small
+line_8	qwen	panel_replicate_se	0.000291287
+line_8	qwen	replicates	100
+line_8	llama	cost_of_spreading	-0.000895329
+line_8	llama	cost_of_spreading_lo	-0.00217193
+line_8	llama	cost_of_spreading_hi	0.000434202
+line_8	llama	estimate	0.00396615
+line_8	llama	lo	0.00143314
+line_8	llama	hi	0.00647749
+line_8	llama	simultaneous_lo	0.000373198
+line_8	llama	simultaneous_hi	0.00755911
+line_8	llama	reading	detectable but small
+line_8	llama	panel_replicate_se	0.000359789
+line_8	llama	replicates	100
+line_8	deepseek-coder	cost_of_spreading	-0.00133111
+line_8	deepseek-coder	cost_of_spreading_lo	-0.00269905
+line_8	deepseek-coder	cost_of_spreading_hi	-9.52479e-05
+line_8	deepseek-coder	estimate	0.00997443
+line_8	deepseek-coder	lo	0.00662022
+line_8	deepseek-coder	hi	0.0134804
+line_8	deepseek-coder	simultaneous_lo	0.00518475
+line_8	deepseek-coder	simultaneous_hi	0.0147641
+line_8	deepseek-coder	reading	detectable but small
+line_8	deepseek-coder	panel_replicate_se	0.000344418
+line_8	deepseek-coder	replicates	100
+line_8	gpt	cost_of_spreading	0.000785722
+line_8	gpt	cost_of_spreading_lo	-0.0023697
+line_8	gpt	cost_of_spreading_hi	0.00399509
+line_8	gpt	estimate	0.00814629
+line_8	gpt	lo	0.00315317
+line_8	gpt	hi	0.0133587
+line_8	gpt	simultaneous_lo	0.000660572
+line_8	gpt	simultaneous_hi	0.015632
+line_8	gpt	reading	detectable but small
+line_8	gpt	panel_replicate_se	0.000457763
+line_8	gpt	replicates	100
+line_8	mistral	cost_of_spreading	-0.00259451
+line_8	mistral	cost_of_spreading_lo	-0.00460884
+line_8	mistral	cost_of_spreading_hi	-0.00073475
+line_8	mistral	estimate	0.00403049
+line_8	mistral	lo	-0.000331714
+line_8	mistral	hi	0.00791951
+line_8	mistral	simultaneous_lo	-0.00183049
+line_8	mistral	simultaneous_hi	0.00989147
+line_8	mistral	reading	not detected
+line_8	mistral	panel_replicate_se	0.000400718
+line_8	mistral	replicates	100
+line_8	codellama	cost_of_spreading	-0.000498575
+line_8	codellama	cost_of_spreading_lo	-0.00209623
+line_8	codellama	cost_of_spreading_hi	0.0011428
+line_8	codellama	estimate	0.00829192
+line_8	codellama	lo	0.00383927
+line_8	codellama	hi	0.0131929
+line_8	codellama	simultaneous_lo	0.0016197
+line_8	codellama	simultaneous_hi	0.0149641
+line_8	codellama	reading	detectable but small
+line_8	codellama	panel_replicate_se	0.00052671
+line_8	codellama	replicates	100
+line_8	qwen-coder	cost_of_spreading	-0.0017245
+line_8	qwen-coder	cost_of_spreading_lo	-0.00384511
+line_8	qwen-coder	cost_of_spreading_hi	0.000455938
+line_8	qwen-coder	estimate	0.00833075
+line_8	qwen-coder	lo	0.00388912
+line_8	qwen-coder	hi	0.0127585
+line_8	qwen-coder	simultaneous_lo	0.00211549
+line_8	qwen-coder	simultaneous_hi	0.014546
+line_8	qwen-coder	reading	detectable but small
+line_8	qwen-coder	panel_replicate_se	0.000391993
+line_8	qwen-coder	replicates	100
+line_16	qwen	cost_of_spreading	-0.001238
+line_16	qwen	cost_of_spreading_lo	-0.00221556
+line_16	qwen	cost_of_spreading_hi	-0.000235605
+line_16	qwen	estimate	0.00404572
+line_16	qwen	lo	0.00128168
+line_16	qwen	hi	0.0070607
+line_16	qwen	simultaneous_lo	-2.92649e-05
+line_16	qwen	simultaneous_hi	0.0081207
+line_16	qwen	reading	not detected
+line_16	qwen	panel_replicate_se	0.000264207
+line_16	qwen	replicates	100
+kept_8_conc	qwen	panel_ability	0.45924
+kept_8_conc	qwen	kept	552.31
+kept_8_conc	qwen	jaccard	0.866283
+kept_8_conc	qwen	difficulty	0.133139
+kept_8_conc	qwen	discrimination	0.165091
+kept_8_conc	qwen	score_sd	0.0467931
+kept_8_conc	qwen	constant_tasks	221.5
+kept_8_spread	qwen	panel_ability	0.460569
+kept_8_spread	qwen	kept	554.19
+kept_8_spread	qwen	jaccard	0.866283
+kept_8_spread	qwen	difficulty	0.134919
+kept_8_spread	qwen	discrimination	0.170182
+kept_8_spread	qwen	score_sd	0.0484848
+kept_8_spread	qwen	constant_tasks	222.18
+kept_8_conc	llama	panel_ability	0.462792
+kept_8_conc	llama	kept	549.05
+kept_8_conc	llama	jaccard	0.860341
+kept_8_conc	llama	difficulty	0.1338
+kept_8_conc	llama	discrimination	0.166889
+kept_8_conc	llama	score_sd	0.0470572
+kept_8_conc	llama	constant_tasks	220.83
+kept_8_spread	llama	panel_ability	0.463236
+kept_8_spread	llama	kept	551.95
+kept_8_spread	llama	jaccard	0.860341
+kept_8_spread	llama	difficulty	0.133941
+kept_8_spread	llama	discrimination	0.168858
+kept_8_spread	llama	score_sd	0.0479116
+kept_8_spread	llama	constant_tasks	221.69
+kept_8_conc	deepseek-coder	panel_ability	0.462288
+kept_8_conc	deepseek-coder	kept	559.1
+kept_8_conc	deepseek-coder	jaccard	0.858099
+kept_8_conc	deepseek-coder	difficulty	0.140435
+kept_8_conc	deepseek-coder	discrimination	0.182177
+kept_8_conc	deepseek-coder	score_sd	0.0527167
+kept_8_conc	deepseek-coder	constant_tasks	222.53
+kept_8_spread	deepseek-coder	panel_ability	0.462332
+kept_8_spread	deepseek-coder	kept	555.93
+kept_8_spread	deepseek-coder	jaccard	0.858099
+kept_8_spread	deepseek-coder	difficulty	0.136065
+kept_8_spread	deepseek-coder	discrimination	0.175851
+kept_8_spread	deepseek-coder	score_sd	0.0504043
+kept_8_spread	deepseek-coder	constant_tasks	222.63
+kept_8_conc	gpt	panel_ability	0.523553
+kept_8_conc	gpt	kept	470.11
+kept_8_conc	gpt	jaccard	0.846311
+kept_8_conc	gpt	difficulty	0.102332
+kept_8_conc	gpt	discrimination	0.116921
+kept_8_conc	gpt	score_sd	0.030468
+kept_8_conc	gpt	constant_tasks	207.7
+kept_8_spread	gpt	panel_ability	0.521102
+kept_8_spread	gpt	kept	474.1
+kept_8_spread	gpt	jaccard	0.846311
+kept_8_spread	gpt	difficulty	0.0989223
+kept_8_spread	gpt	discrimination	0.115633
+kept_8_spread	gpt	score_sd	0.0296066
+kept_8_spread	gpt	constant_tasks	211.88
+kept_8_conc	mistral	panel_ability	0.459715
+kept_8_conc	mistral	kept	555.38
+kept_8_conc	mistral	jaccard	0.860668
+kept_8_conc	mistral	difficulty	0.136674
+kept_8_conc	mistral	discrimination	0.17237
+kept_8_conc	mistral	score_sd	0.0497293
+kept_8_conc	mistral	constant_tasks	222.23
+kept_8_spread	mistral	panel_ability	0.460305
+kept_8_spread	mistral	kept	560.53
+kept_8_spread	mistral	jaccard	0.860668
+kept_8_spread	mistral	difficulty	0.138345
+kept_8_spread	mistral	discrimination	0.176199
+kept_8_spread	mistral	score_sd	0.0508903
+kept_8_spread	mistral	constant_tasks	222.64
+kept_8_conc	codellama	panel_ability	0.455428
+kept_8_conc	codellama	kept	568.43
+kept_8_conc	codellama	jaccard	0.856324
+kept_8_conc	codellama	difficulty	0.145032
+kept_8_conc	codellama	discrimination	0.191601
+kept_8_conc	codellama	score_sd	0.0550688
+kept_8_conc	codellama	constant_tasks	224.61
+kept_8_spread	codellama	panel_ability	0.456538
+kept_8_spread	codellama	kept	562.1
+kept_8_spread	codellama	jaccard	0.856324
+kept_8_spread	codellama	difficulty	0.139214
+kept_8_spread	codellama	discrimination	0.179142
+kept_8_spread	codellama	score_sd	0.0515777
+kept_8_spread	codellama	constant_tasks	223.31
+kept_8_conc	qwen-coder	panel_ability	0.456743
+kept_8_conc	qwen-coder	kept	561.83
+kept_8_conc	qwen-coder	jaccard	0.863633
+kept_8_conc	qwen-coder	difficulty	0.13657
+kept_8_conc	qwen-coder	discrimination	0.175857
+kept_8_conc	qwen-coder	score_sd	0.0506078
+kept_8_conc	qwen-coder	constant_tasks	224.74
+kept_8_spread	qwen-coder	panel_ability	0.457682
+kept_8_spread	qwen-coder	kept	557.94
+kept_8_spread	qwen-coder	jaccard	0.863633
+kept_8_spread	qwen-coder	difficulty	0.136881
+kept_8_spread	qwen-coder	discrimination	0.171742
+kept_8_spread	qwen-coder	score_sd	0.0490085
+kept_8_spread	qwen-coder	constant_tasks	221.75
+kept_16_conc	qwen	panel_ability	0.464121
+kept_16_conc	qwen	kept	561.69
+kept_16_conc	qwen	jaccard	0.886806
+kept_16_conc	qwen	difficulty	0.131188
+kept_16_conc	qwen	discrimination	0.163732
+kept_16_conc	qwen	score_sd	0.046566
+kept_16_conc	qwen	constant_tasks	224.37
+kept_16_spread	qwen	panel_ability	0.46632
+kept_16_spread	qwen	kept	567.02
+kept_16_spread	qwen	jaccard	0.886806
+kept_16_spread	qwen	difficulty	0.135026
+kept_16_spread	qwen	discrimination	0.171773
+kept_16_spread	qwen	score_sd	0.049594
+kept_16_spread	qwen	constant_tasks	225.59
+sensitivity/Instruct votes, Complete scores	8_qwen	estimate	0.00281646
+sensitivity/Instruct votes, Complete scores	8_llama	estimate	0.0041875
+sensitivity/Instruct votes, Complete scores	8_deepseek-coder	estimate	0.00992165
+sensitivity/Instruct votes, Complete scores	8_gpt	estimate	5.60237e-05
+sensitivity/Instruct votes, Complete scores	8_mistral	estimate	0.000116596
+sensitivity/Instruct votes, Complete scores	8_codellama	estimate	0.00262915
+sensitivity/Instruct votes, Complete scores	8_qwen-coder	estimate	0.0106699
+sensitivity/Instruct votes, Complete scores	16_qwen	estimate	0.00454298
+sensitivity/Instruct votes, Complete scores	T8	estimate	0.00434247
+sensitivity/three controls	8_qwen	estimate	0.00307837
+sensitivity/three controls	8_llama	estimate	0.00361004
+sensitivity/three controls	8_deepseek-coder	estimate	0.0102105
+sensitivity/three controls	8_gpt	estimate	0.00820254
+sensitivity/three controls	8_mistral	estimate	0.00431351
+sensitivity/three controls	8_codellama	estimate	0.00897111
+sensitivity/three controls	8_qwen-coder	estimate	0.0082797
+sensitivity/three controls	16_qwen	estimate	0.00392205
+sensitivity/three controls	T8	estimate	0.00666655
+sensitivity/ten controls	8_qwen	estimate	0.00315278
+sensitivity/ten controls	8_llama	estimate	0.00362001
+sensitivity/ten controls	8_deepseek-coder	estimate	0.0101277
+sensitivity/ten controls	8_gpt	estimate	0.00753204
+sensitivity/ten controls	8_mistral	estimate	0.00425698
+sensitivity/ten controls	8_codellama	estimate	0.00803699
+sensitivity/ten controls	8_qwen-coder	estimate	0.00878081
+sensitivity/ten controls	16_qwen	estimate	0.00370846
+sensitivity/ten controls	T8	estimate	0.00650104
+sensitivity/no 25% floor for panel members	8_qwen	estimate	0.00240256
+sensitivity/no 25% floor for panel members	8_llama	estimate	0.00334427
+sensitivity/no 25% floor for panel members	8_deepseek-coder	estimate	0.0091328
+sensitivity/no 25% floor for panel members	8_gpt	estimate	0.00676467
+sensitivity/no 25% floor for panel members	8_mistral	estimate	0.0045317
+sensitivity/no 25% floor for panel members	8_codellama	estimate	0.00710622
+sensitivity/no 25% floor for panel members	8_qwen-coder	estimate	0.00747023
+sensitivity/no 25% floor for panel members	16_qwen	estimate	0.00314571
+sensitivity/no 25% floor for panel members	T8	estimate	0.00582178
+sensitivity/no 25% floor for panel members	16_llama	estimate_extra_line	0.00275489

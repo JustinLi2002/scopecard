@@ -26,7 +26,7 @@ paths left out). `--tier quick` and `--tier all` were run one after the other, a
 Peak memory was not logged by the script. TOOL_DESIGN.md Section 10 records about 2.5 GB for YAGO3-10 and
 Amazon-Book (measured when each audit was added).
 
-Earlier runs in the same kind of environment: on 2026-10-21, before the io.py, per-query and review fixes, 2.0 s
+Earlier runs in the same kind of environment: on 2026-10-21, before the io.py, per-query and later fixes, 2.0 s
 (quick), 6 min 20 s (paper) and 21 min 49 s (cards); earlier on 2026-10-28, before the wording changes, every step
 passed except the paper tier's figure step, which failed on an unconditional PyMuPDF import and passed after the
 fix (quick 1.6 s, paper 5 min 13 s, cards 23 min 21 s).

@@ -1,0 +1,114 @@
+# MMLU reconstruction study: results
+
+Design: `experiments/MMLU_RECONSTRUCTION_DESIGN.md` (fixed 2026-11-15; deviations in its Section 8). Per-question results on original MMLU (four options, five-shot) from the archive `open-llm-leaderboard-old`: 268 systems, of which 5 of the eight filter models, 70 of the clean pool (8 siblings), 79 of the lineage pool and 114 of the random pool. An original question is *kept* if MMLU-Pro holds a question with the same text and subject: 6580 of 14042. a(all) and a(kept) are a system's accuracy over all and over the kept original questions, standardised to the kept questions' subject mix (56 subjects). The penalty of a filter model is how much lower it scores on the kept questions than clean-pool systems with the same a(all). 1 point = 0.01.
+
+Corrections of 2026-11-16 (design, Section 12; wording only, no estimate changed). The reference tail share is the share of subsets of the placebo pool, of the size of the filter set, whose mean is at least the observed value. It says where that value lies among those subsets. It is not a calibrated p-value: the filter models are not exchangeable with the pool systems. The readings below are the labels that the rule fixed in the design gives. In the leave-one-out of secondary analysis 4 the same outcomes vote and score, so the penalty of voting cannot be negative in any comparison; only its size is a result.
+
+## Primary analysis
+
+### Clean pool as controls, siblings included
+- Filter models: a(all) from 41.0% to 62.7%; controls per filter model: 7, 5, 5, 7, 5; placebo pool: 25 systems.
+- **Penalty P = +1.68 points** (question bootstrap 95% interval +1.39 to +1.97); placebo penalties of the pool: mean +0.16, SD 1.16, range -2.38 to +1.78; **reference tail share: 0 of 53130 subsets of the pool (0.00000; exact)**.
+- By filter model: meta-llama__Llama-2-7b-hf +2.02 [+1.33, +2.71]; meta-llama__Llama-2-13b-hf +5.36 [+4.69, +5.98]; mistralai__Mistral-7B-v0.1 +1.04 [+0.44, +1.59]; google__gemma-7b +1.06 [+0.49, +1.68]; 01-ai__Yi-6B -1.06 [-1.67, -0.46].
+- Siblings in the pool (placebo penalties): google__gemma-2b -0.24.
+- Pool systems with a placebo penalty at least as large as P: 2 of 25; filter models whose penalty exceeds every placebo penalty: 2 of 5.
+
+**Reading fixed in the design: confirmed.**
+
+## Sensitivity analyses (fixed)
+
+### 1. Siblings removed from the clean pool
+- Filter models: a(all) from 41.0% to 62.7%; controls per filter model: 6, 5, 5, 7, 5; placebo pool: 24 systems.
+- **Penalty P = +1.65 points** (question bootstrap 95% interval +1.36 to +1.94); placebo penalties of the pool: mean +0.08, SD 1.21, range -2.38 to +1.78; **reference tail share: 0 of 42504 subsets of the pool (0.00000; exact)**.
+- By filter model: meta-llama__Llama-2-7b-hf +1.86 [+1.19, +2.57]; meta-llama__Llama-2-13b-hf +5.36 [+4.69, +5.98]; mistralai__Mistral-7B-v0.1 +1.04 [+0.44, +1.59]; google__gemma-7b +1.06 [+0.49, +1.68]; 01-ai__Yi-6B -1.06 [-1.67, -0.46].
+- Pool systems with a placebo penalty at least as large as P: 3 of 24; filter models whose penalty exceeds every placebo penalty: 2 of 5.
+
+### 2. Random pool in place of the clean pool
+- Filter models: a(all) from 41.0% to 62.7%; controls per filter model: 6, 9, 45, 33, 45; placebo pool: 80 systems.
+- **Penalty P = +1.56 points** (question bootstrap 95% interval +1.26 to +1.87); placebo penalties of the pool: mean +0.06, SD 1.57, range -4.69 to +4.87; **reference tail share: 3340 of 200000 subsets of the pool (0.01670; random subsets)**.
+- By filter model: meta-llama__Llama-2-7b-hf -0.00 [-0.58, +0.62]; meta-llama__Llama-2-13b-hf +5.00 [+4.39, +5.53]; mistralai__Mistral-7B-v0.1 +2.06 [+1.59, +2.51]; google__gemma-7b +0.64 [+0.00, +1.32]; 01-ai__Yi-6B +0.10 [-0.59, +0.78].
+- Pool systems with a placebo penalty at least as large as P: 9 of 80; filter models whose penalty exceeds every placebo penalty: 1 of 5.
+
+### 3. No subject standardisation (all 57 subjects pooled)
+- Filter models: a(all) from 42.8% to 65.0%; controls per filter model: 7, 5, 5, 6, 6; placebo pool: 24 systems.
+- **Penalty P = +1.66 points** (question bootstrap 95% interval +1.34 to +1.99); placebo penalties of the pool: mean +0.18, SD 1.27, range -2.62 to +2.17; **reference tail share: 7 of 42504 subsets of the pool (0.00016; exact)**.
+- By filter model: meta-llama__Llama-2-7b-hf +2.08 [+1.33, +2.82]; meta-llama__Llama-2-13b-hf +5.45 [+4.75, +6.19]; mistralai__Mistral-7B-v0.1 +0.87 [+0.20, +1.50]; google__gemma-7b +0.48 [-0.14, +1.20]; 01-ai__Yi-6B -0.58 [-1.26, +0.13].
+- Siblings in the pool (placebo penalties): google__gemma-2b -0.58.
+- Pool systems with a placebo penalty at least as large as P: 4 of 24; filter models whose penalty exceeds every placebo penalty: 1 of 5.
+
+## Secondary analyses
+
+### 1. Fidelity of the public runs
+- c = number of the 5 available filter models that are right on a question. Under the published rule (removed if more than four of eight are right) a question with c = 5 was removed whatever the missing models did, and a question with c ≤ 1 was kept by the filter. The matched clean panel is an addition to the design: microsoft__phi-1_5, Qwen__Qwen1.5-4B, huggyllama__llama-65b, meta-llama__Meta-Llama-3-8B, Qwen__Qwen1.5-7B.
+
+| Number right | Questions (filter models) | Share kept | Questions (matched clean panel) | Share kept |
+|---:|---:|---:|---:|---:|
+| 0 | 1751 | 77.0% | 1883 | 76.2% |
+| 1 | 2141 | 68.5% | 1859 | 70.5% |
+| 2 | 1902 | 68.1% | 2099 | 59.6% |
+| 3 | 2089 | 59.7% | 1978 | 56.0% |
+| 4 | 2656 | 34.3% | 2794 | 34.9% |
+| 5 | 3503 | 8.9% | 3429 | 14.7% |
+
+- How well the number right separates not-kept from kept questions (area under the curve; 0.5 = no information): filter models 0.782, matched clean panel 0.753; difference +0.029 (question bootstrap 95% interval +0.023 to +0.035).
+- Share kept among questions that all 5 available filter models answer correctly: 8.9% (0% if the public runs equalled the filter's runs); among questions with c ≤ 1: 72.3%.
+
+### 2. Lineage
+- Penalties of the lineage-pool systems (fine-tunes and copies named after a filter model), each against clean-pool controls without siblings. Reference: the 24 placebo penalties of that pool (mean +0.08, SD 1.21, maximum +1.78). Only lineage systems inside the filter models' range of a(all), widened by 0.03, are counted. A line is a model line read from names. The one-sided Mann–Whitney test is an addition to the design. Fine-tunes of one base are not independent of each other, so its p-value has no independent-sample reading; it only describes how far the two sets of numbers are apart.
+
+| Line | Systems in range (outside) | Mean penalty | Median | Share above zero | Share above the pool maximum | Mann–Whitney p (descriptive) |
+|---|---:|---:|---:|---:|---:|---:|
+| gemma-7b | 2 (0) | -1.22 | -1.22 | 0% | 0% | nan |
+| llama2-13b | 21 (0) | +3.97 | +4.58 | 90% | 90% | 7.479e-07 |
+| llama2-7b | 10 (1) | +4.29 | +4.56 | 100% | 80% | 1.059e-05 |
+| mistral-7b | 45 (0) | -1.40 | -1.60 | 13% | 0% | 1 |
+| all lines | 78 (1) | +0.78 | -0.52 | 45% | 35% | 0.5828 |
+
+### 4. Leave-one-out on the panel of available filter models
+- Rule: a question is removed if more than half of the 5 models are right, so it is kept if at most 2 are. The panel's own kept set holds 5794 of 14042 questions (41.3%). For each member, it is replaced by the clean-pool system nearest in a(all); the reference replaces another member, not of its line, by the same system. Plain accuracy over all subjects.
+
+| Member | Replaced by | Score on the panel's kept set | Score when it does not vote | Reference (another member replaced) | Penalty of voting | 95% interval |
+|---|---|---:|---:|---:|---:|---:|
+| meta-llama__Llama-2-7b-hf | microsoft__phi-1_5 | 15.6% | 22.1% | 15.3% | +6.84 | +6.41 to +7.27 |
+| meta-llama__Llama-2-13b-hf | Qwen__Qwen1.5-4B | 15.9% | 24.4% | 17.5% | +6.90 | +6.50 to +7.34 |
+| mistralai__Mistral-7B-v0.1 | huggyllama__llama-65b | 20.0% | 27.7% | 18.5% | +9.17 | +8.71 to +9.62 |
+| google__gemma-7b | meta-llama__Meta-Llama-3-8B | 26.0% | 33.3% | 23.8% | +9.48 | +9.03 to +9.97 |
+| 01-ai__Yi-6B | huggyllama__llama-65b | 25.1% | 33.1% | 24.1% | +8.92 | +8.46 to +9.40 |
+
+- **Mean penalty of voting: +8.26 points** (95% interval +7.95 to +8.60); the plain change against the original panel is +7.60 points. The same quantity for 21 clean-pool systems that never vote: mean -0.37, SD 0.31 (it should be zero).
+
+## Systems in the ability range (standardised accuracies, in %)
+
+| System | Set | a(all) | a(kept) | a(kept) minus a(all) | Penalty against the clean pool |
+|---|---|---:|---:|---:|---:|
+| stabilityai__stablelm-2-zephyr-1_6b | clean | 39.4 | 26.0 | -13.4 | +1.07 |
+| google__gemma-2b | clean (sibling) | 39.7 | 26.5 | -13.1 | -0.24 |
+| openlm-research__open_llama_13b | clean | 40.6 | 26.9 | -13.8 | -0.49 |
+| microsoft__phi-1_5 | clean | 40.8 | 27.5 | -13.3 | -0.94 |
+| meta-llama__Llama-2-7b-hf | filter | 41.0 | 24.9 | -16.1 | +2.02 |
+| stabilityai__stablelm-3b-4e1t | clean | 42.8 | 26.1 | -16.8 | +1.78 |
+| stabilityai__stablelm-zephyr-3b | clean | 43.2 | 28.4 | -14.7 | -0.58 |
+| Qwen__Qwen1.5-1.8B | clean | 43.7 | 30.1 | -13.6 | -2.38 |
+| huggyllama__llama-13b | clean | 44.6 | 27.1 | -17.5 | +1.74 |
+| mosaicml__mpt-30b | clean | 45.7 | 28.7 | -17.0 | +0.99 |
+| mosaicml__mpt-30b-instruct | clean | 46.6 | 29.9 | -16.7 | +0.83 |
+| deepseek-ai__deepseek-llm-7b-chat | clean | 48.6 | 32.1 | -16.5 | -0.15 |
+| meta-llama__Llama-2-13b-hf | filter | 51.2 | 29.6 | -21.6 | +5.36 |
+| Qwen__Qwen1.5-4B | clean | 53.5 | 38.7 | -14.8 | -1.31 |
+| tiiuae__falcon-40b | clean | 53.6 | 36.3 | -17.3 | +1.66 |
+| microsoft__phi-2 | clean | 54.7 | 38.7 | -16.0 | +0.14 |
+| huggyllama__llama-30b | clean | 55.4 | 38.9 | -16.5 | +0.67 |
+| Qwen__Qwen-7B | clean | 56.0 | 39.8 | -16.3 | +0.57 |
+| Qwen__Qwen1.5-7B-Chat | clean | 58.0 | 43.4 | -14.6 | -1.01 |
+| Qwen__Qwen1.5-7B | clean | 58.4 | 43.5 | -14.9 | -0.62 |
+| mistralai__Mistral-7B-v0.1 | filter | 60.3 | 45.4 | -14.9 | +1.04 |
+| huggyllama__llama-65b | clean | 60.5 | 46.2 | -14.4 | +0.92 |
+| 01-ai__Yi-6B | filter | 60.6 | 47.8 | -12.8 | -1.06 |
+| google__gemma-7b | filter | 62.7 | 49.9 | -12.8 | +1.06 |
+| meta-llama__Meta-Llama-3-8B | clean | 62.9 | 50.0 | -13.0 | +1.44 |
+| meta-llama__Meta-Llama-3-8B-Instruct | clean | 63.3 | 50.8 | -12.5 | +1.08 |
+| Qwen__Qwen-14B | clean | 63.9 | 51.6 | -12.3 | +1.40 |
+| CohereForAI__c4ai-command-r-v01 | clean | 64.6 | 55.2 | -9.4 | -1.79 |
+| Qwen__Qwen1.5-14B-Chat | clean | 65.1 | 54.9 | -10.2 | -0.77 |
+| microsoft__Phi-3-mini-128k-instruct | clean | 65.6 | 55.0 | -10.6 | -0.14 |
+

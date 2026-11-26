@@ -8,16 +8,16 @@ import zipfile
 import numpy as np
 import pytest
 
-from benchscope_audit import (Universe, c_star, derived_scope, map_triples, pair_exclusion, rule_units,
+from scopecard import (Universe, c_star, derived_scope, map_triples, pair_exclusion, rule_units,
                               search_rules, unit_exclusion)
-from benchscope_audit.card import jac, pct, to_json, to_markdown, validate_card
-from benchscope_audit.cli import main as cli_main
-from benchscope_audit.io import InputError, read_kg_release, read_lightgcn_release, read_torch_numpy_dict
-from benchscope_audit.mapping import match_triples_exact
-from benchscope_audit.pipelines import audit_pair_classification, audit_query_qrels
-from benchscope_audit.rules import search_depth_threshold
-from benchscope_audit.scope import query_shares, user_shares
-from benchscope_audit.universes import from_pair_stream, from_pairs, from_triples, from_unit_pairs
+from scopecard.card import jac, pct, to_json, to_markdown, validate_card
+from scopecard.cli import main as cli_main
+from scopecard.io import InputError, read_kg_release, read_lightgcn_release, read_torch_numpy_dict
+from scopecard.mapping import match_triples_exact
+from scopecard.pipelines import audit_pair_classification, audit_query_qrels
+from scopecard.rules import search_depth_threshold
+from scopecard.scope import query_shares, user_shares
+from scopecard.universes import from_pair_stream, from_pairs, from_triples, from_unit_pairs
 
 
 def random_bipartite(seed=0, users=300, items=200, p=0.03):
@@ -76,7 +76,7 @@ def test_derived_scope_dmin():
 
 
 def test_c_star_gives_both_thresholds():
-    """Review counterexample: delta_O 0.1, W 0.8. The ordering reverses once delta_U < -0.025 (not -0.125):
+    """Counterexample: delta_O 0.1, W 0.8. The ordering reverses once delta_U < -0.025 (not -0.125):
     c* = 0.125 bounds the between-region change c = delta_O - delta_U, not the excluded-region difference."""
     r = c_star(0.1, 0.8, 'auc')
     assert r['c_star'] == pytest.approx(0.125) and r['delta_U_break_even'] == pytest.approx(0.025)
@@ -101,7 +101,7 @@ def test_c_star_refuses_what_it_cannot_support():
 
 
 def test_pair_coverage_is_not_exclusion(tmp_path):
-    """Review counterexample: universe a, b, c, d and a release of ab and cd. Every unit is used, yet 4 of the
+    """Counterexample: universe a, b, c, d and a release of ab and cd. Every unit is used, yet 4 of the
     6 pairs never appear; the release cannot tell whether they were impossible or just not drawn."""
     (tmp_path / 'u.txt').write_text('a\nb\nc\nd\n')
     (tmp_path / 'r.csv').write_text('x,y\na,b\nc,d\n')
@@ -134,7 +134,7 @@ def test_zero_candidates_and_release_convention():
     full = from_pairs([('u1', 'i1'), ('u1', 'i2'), ('u2', 'i1'), ('u2', 'i2')], name='complete 2x2')
     r = pair_exclusion(full, np.ones(full.n, bool))                # no unobserved pair: undefined, no ZeroDivisionError
     assert r['candidate_pairs'] == 0 and r['W_pairs'] != r['W_pairs'] and 'undefined' in r['note']
-    # Review counterexample: 3x3 universe, 5 observed pairs, release keeps 3 of them and all 6 units
+    # Counterexample: 3x3 universe, 5 observed pairs, release keeps 3 of them and all 6 units
     u3 = from_pairs([('u1', 'i1'), ('u2', 'i2'), ('u3', 'i3'), ('u1', 'i2'), ('u2', 'i3')], name='3x3')
     r = pair_exclusion(u3, np.ones(u3.n, bool), release_pairs=3)
     assert r['W_pairs'] == 0.0 and r['W_pairs_release_convention'] != r['W_pairs_release_convention']  # -0.5 is not reported
@@ -142,7 +142,7 @@ def test_zero_candidates_and_release_convention():
 
 
 def test_universe_fingerprint_tracks_content(tmp_path):
-    """Review counterexample: the same file name with different units must give different cards."""
+    """Counterexample: the same file name with different units must give different cards."""
     (tmp_path / 'r.csv').write_text('x,y\nP1,P2\n')
     cards = []
     for units in ('P1\nP2\nP3\n', 'P1\nP2\nZ9\n', 'P3\nP1\nP2\n'):
@@ -379,7 +379,7 @@ def test_cli_reports_input_errors_without_a_traceback(tmp_path, capsys):
     t, q = _qrels_files(tmp_path, judged=(21, 22, 23))
     rc = cli_main(['query-qrels', '--topics', t, '--qrels', q, '--corpus-size', '100', '--out', str(tmp_path / 'c.json')])
     err = capsys.readouterr().err
-    assert rc == 2 and 'benchscope-audit: input error: Only 0 of the 3 judged topics' in err and 'Traceback' not in err
+    assert rc == 2 and 'scopecard: input error: Only 0 of the 3 judged topics' in err and 'Traceback' not in err
     assert not (tmp_path / 'c.json').exists()
 
 
@@ -420,7 +420,7 @@ def test_empty_release_files_and_unit_lists_are_refused(tmp_path):
 
 
 def test_bipartite_sides_may_share_ids(tmp_path):
-    """Review counterexample (2026-10-24): with ids 0 and 1 on both sides, (0, 0) and (1, 1) are drug-target pairs,
+    """Counterexample (2026-10-24): with ids 0 and 1 on both sides, (0, 0) and (1, 1) are drug-target pairs,
     not self pairs; dropping them halved the coverage and contradicted a true all-pairs declaration."""
     cards = []
     for b_ids in ('0\n1\n', 'x\ny\n'):                            # the same release with the B side renamed
@@ -438,7 +438,7 @@ def test_bipartite_sides_may_share_ids(tmp_path):
 
 
 def test_release_convention_never_heads_the_card(tmp_path):
-    """Review counterexample (2026-10-24): 3 x 3 users and items with 4 observed pairs; the release keeps a 2 x 2
+    """Counterexample (2026-10-24): 3 x 3 users and items with 4 observed pairs; the release keeps a 2 x 2
     block holding 3 of them but lists 2. Of the 5 unobserved pairs, 1 is kept: 80% are excluded. The pilot
     table's release-positives value (60%) is kept only beside the share."""
     rel = tmp_path / 'rel'
@@ -460,7 +460,7 @@ def test_release_convention_never_heads_the_card(tmp_path):
 
 
 def test_impossible_inputs_are_refused(tmp_path, capsys):
-    """Review counterexamples (2026-10-24): a corpus smaller than one topic's judgments gave an unjudged share of
+    """Counterexamples (2026-10-24): a corpus smaller than one topic's judgments gave an unjudged share of
     -100%, and NaN, infinite or out-of-range differences got a break-even."""
     t, q = _qrels_files(tmp_path, judged=(1,))                   # topic 1 has 4 distinct judged documents
     with pytest.raises(InputError, match='smaller than the 4 distinct documents judged for one topic'):
@@ -497,7 +497,7 @@ def _enumerated_query_shares(uni, mask, test, known):
 
 
 def test_query_shares_follow_the_filtered_protocol():
-    """Review counterexample (2026-10-24): entities a-f, release {a, b, c}, so the entity share is 1/2. The test
+    """Counterexample (2026-10-24): entities a-f, release {a, b, c}, so the entity share is 1/2. The test
     tail query (a, r, ?) has b, d, e and f as known answers; its candidates a and c are all kept, so W_q = 0,
     while the head query (?, r, b) keeps b, c of the five candidates b-f: W_q = 3/5."""
     uni = from_triples([('a', 'r', 'b'), ('a', 'r', 'd'), ('a', 'r', 'e'), ('a', 'r', 'f'), ('b', 'r', 'c'),
@@ -558,7 +558,7 @@ def test_break_even_uses_the_mean_per_query_share(tmp_path):
 
 
 def test_queries_without_candidates_or_kept_units_are_counted():
-    """Review counterexamples (2026-10-27): a query whose every unit is a known answer has no candidate at all and
+    """Counterexamples (2026-10-27): a query whose every unit is a known answer has no candidate at all and
     was dropped silently; a query whose kept units are all known answers has W_q = 1, so the benchmark difference
     is undefined on it, and a break-even was still given."""
     uni = from_triples([('a', 'r', 'a'), ('a', 'r', 'b'), ('a', 'r', 'c'), ('b', 'r', 'c')], 'all known')
@@ -574,7 +574,7 @@ def test_queries_without_candidates_or_kept_units_are_counted():
 
 
 def test_break_even_warns_when_test_triples_are_skipped(tmp_path):
-    """Review counterexample (2026-10-27): YAGO3-10's shares use 4,827 of its 5,000 test triples, while a model
+    """Counterexample (2026-10-27): YAGO3-10's shares use 4,827 of its 5,000 test triples, while a model
     difference from a leaderboard covers all of them; the card must say that the break-even then carries no
     guarantee (wording changed from "approximate" on 2026-10-28: there is no bound on the mismatch)."""
     (tmp_path / 'u.tsv').write_text(''.join(f'e{i}\tr\te{j}\n' for i in range(12) for j in (i + 1, i + 3) if j < 12))

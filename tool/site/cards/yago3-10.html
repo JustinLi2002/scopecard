@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>YAGO3-10: BenchScope card</title>
+<title>YAGO3-10: ScopeCard card</title>
 <meta name="description" content="Scope card for YAGO3-10.">
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
-<nav class="top"><a href="../index.html">Card library</a><a href="../how-to-read.html">How to read a card</a><a href="../app/index.html">Audit your own benchmark</a><a href="../schema/benchscope-card-0.3.schema.json">Card schema</a></nav>
+<nav class="top"><a href="../index.html">Card library</a><a href="../how-to-read.html">How to read a card</a><a href="../app/index.html">Audit your own benchmark</a><a href="../schema/scopecard-0.3.schema.json">Card schema</a></nav>
 <h1>YAGO3-10</h1>
 <p class="statement">Comparisons on YAGO3-10 license claims about the entities it can evaluate, which leave out 95.4% of the 2,635,315 YAGO 3.0.2 entities that occur in at least one triple of its 37 relation types. The closest simple rule (both_ends, T = 10) is approximately reproduced (Jaccard 0.967).</p>
 <h2>From the 2026-10 pilot</h2><div class="panel"><dl class="facts"><dt>Task</dt><dd>KG link prediction</dd><dt>Domain</dt><dd>knowledge-graph link prediction</dd><dt>Rule stated in the paper</dt><dd>&#x27;a subset of YAGO3 which consists of entities which have a minimum of 10 relations each&#x27; (YAGO3 version not stated); Rossi et al. read it as &gt;= 10 different relations plus all facts of their neighbours</dd><dt>What the release shows</dt><dd>entities with &gt;= 10 yagoFacts facts, keeping only facts whose BOTH ends qualify (one pass): 123189 entities (Jaccard 0.967 with the release), 1089132 triples; the release equals the 3.0.2 facts induced on its entity set (0 induced facts missing); the &#x27;distinct relations&#x27; reading gives 546 seeds (Jaccard 0.004) and the &#x27;neighbours&#x27; reading 2338580 entities (Jaccard 0.052)</dd><dt>Rule decidable from the paper</dt><dd>partial. rule reimplemented on YAGO 3.0.2 (Jaccard 0.967); not exact: 1054372 of 1089040 release triples are 3.0.2 facts and 2046 release entities have &lt; 10 facts in 3.0.2, plausibly a version difference that the unstated version prevents checking</dd><dt>Negatives</dt><dd>implicit: every corrupted triple over the entity set, filtered of known triples</dd><dt>Evaluation</dt><dd>filtered ranking of head and tail against all 123182 entities; MRR, Hits@k</dd><dt>Sources checked</dt><dd>Dettmers et al. 2018 AAAI (ConvE, datasets section); Rossi et al. 2021 TKDD (Sec. 4.1); ConvE repo YAGO3-10.tar.gz; YAGO 3.0.2 yagoFacts.ttl (yago-knowledge.org/data/yago3/tmp)</dd><dt>Notes</dt><dd>inside the release 52437 entities have &lt; 10 triples: the threshold applies in the source KG, not in the benchmark graph</dd></dl></div>
 <h2>Scope card</h2><div class="panel card"><h1>Scope card: YAGO3-10</h1>
 <blockquote>Comparisons on YAGO3-10 license claims about the entities it can evaluate, which leave out 95.4% of the 2,635,315 YAGO 3.0.2 entities that occur in at least one triple of its 37 relation types. The closest simple rule (both_ends, T = 10) is approximately reproduced (Jaccard 0.967).</blockquote>
-<ul><li><strong>Task:</strong> kg_link_prediction</li><li><strong>Universe:</strong> YAGO 3.0.2 yagoFacts.ttl</li><li><strong>W is a share of:</strong> the 2,635,315 YAGO 3.0.2 entities that occur in at least one triple of its 37 relation types</li><li><strong>Definitions:</strong> Universe = entities carrying &gt;= 1 universe triple of the release relation types. Depth = number of universe triples on the entity. Release entities absent from the universe count against every rule in the Jaccard.</li><li><strong>Tool:</strong> benchscope-audit 0.0.1 (schema benchscope-card/0.3)</li><li><strong>Universe fingerprint:</strong> <code>sha256:8708a2b249492f1eef68d5d165768804efc3861b8c0178b5da78afcd9a648c2c</code></li><li><strong>Candidates:</strong> every entity of the release, in filtered head and tail ranking (excluded units cannot be evaluated). Link prediction ranks each test query against the release entity set, so a universe entity absent from the release is never a candidate.</li></ul>
+<ul><li><strong>Task:</strong> kg_link_prediction</li><li><strong>Universe:</strong> YAGO 3.0.2 yagoFacts.ttl</li><li><strong>W is a share of:</strong> the 2,635,315 YAGO 3.0.2 entities that occur in at least one triple of its 37 relation types</li><li><strong>Definitions:</strong> Universe = entities carrying &gt;= 1 universe triple of the release relation types. Depth = number of universe triples on the entity. Release entities absent from the universe count against every rule in the Jaccard.</li><li><strong>Tool:</strong> scopecard 0.0.2 (schema scopecard/0.3)</li><li><strong>Universe fingerprint:</strong> <code>sha256:8708a2b249492f1eef68d5d165768804efc3861b8c0178b5da78afcd9a648c2c</code></li><li><strong>Candidates:</strong> every entity of the release, in filtered head and tail ranking (excluded units cannot be evaluated). Link prediction ranks each test query against the release entity set, so a universe entity absent from the release is never a candidate.</li></ul>
 <h2>Mapping</h2>
 <p>121138 of 123182 release ids mapped; 2044 unmapped; 0 ids stand for more than one universe unit; 34668 of 1089040 release triples have no universe match.</p>
 <h2>Exclusion</h2>
@@ -29,11 +29,11 @@
 <p>Reverse-edge leakage: 148 of 5,000 test triples (3.0%) have their reverse (tail, relation, head) in training. By relation: isConnectedTo 99 of 150 (66%); isLocatedIn 27 of 411 (7%); isMarriedTo 17 of 17 (100%); hasChild 2 of 24 (8%); hasNeighbor 2 of 2 (100%); dealsWith 1 of 7 (14%). Unseen in training: 18 test entities never occur in a training triple; they touch 18 test triples of 5,000.</p></div>
 <h2>Reproduce this card</h2><div class="panel">
 <div class="tablewrap"><table><thead><tr><th>Input</th><th>Public source</th></tr></thead><tbody><tr><td><code>YAGO3-10/</code></td><td><a href="https://github.com/TimDettmers/ConvE/raw/master/YAGO3-10.tar.gz">https://github.com/TimDettmers/ConvE/raw/master/YAGO3-10.tar.gz</a></td></tr><tr><td><code>yagoFacts.ttl</code></td><td><a href="https://yago-knowledge.org/data/yago3/tmp/yagoFacts.ttl">https://yago-knowledge.org/data/yago3/tmp/yagoFacts.ttl</a></td></tr></tbody></table></div>
-<p>With the benchscope-audit package installed:</p>
-<pre>benchscope-audit kg-triples --release YAGO3-10/ --universe yagoFacts.ttl --format yago-ttl --name YAGO3-10 --stated-family both_ends --stated-T 10 --out card.json</pre>
+<p>With the scopecard package installed:</p>
+<pre>scopecard kg-triples --release YAGO3-10/ --universe yagoFacts.ttl --format yago-ttl --name YAGO3-10 --stated-family both_ends --stated-T 10 --out card.json</pre>
 <p>The card records the SHA-256 of every release file it read, so a reader can check that the same files were audited. <a href="yago3-10.json">Download this card (JSON)</a>.</p></div>
 <footer>
-<p>Cards written by benchscope-audit 0.0.1 (schema benchscope-card/0.3). Every number on these pages is read from a card or from the 2026-10 pilot table.</p>
+<p>Cards written by scopecard 0.0.2 (schema scopecard/0.3). Every number on these pages is read from a card or from the 2026-10 pilot table.</p>
 <p>Biology benchmarks are added once the papers that audit them are published.</p>
 </footer>
 </main>

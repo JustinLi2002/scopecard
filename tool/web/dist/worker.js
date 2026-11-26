@@ -1,4 +1,4 @@
-// Runs Pyodide and benchscope-audit off the page's main thread, so the page stays responsive during
+// Runs Pyodide and scopecard off the page's main thread, so the page stays responsive during
 // long audits. Messages: {id, kind: 'ready' | 'wordnet' | 'run', argv, files: [{path, data: ArrayBuffer}]}.
 // During a run, the audit's '[stage] ...' lines on stderr are forwarded as {type: 'stage', text}. A file that
 // does not have the expected format comes back as {ok: false, inputError}; any other failure as
@@ -13,11 +13,11 @@ const ready = (async () => {
   py.setStderr({ batched: (line) => { if (line.startsWith("[stage] ")) postMessage({ type: "stage", text: line.slice(8) }); } });
   postMessage({ type: "status", text: "Loading NumPy…" });
   await py.loadPackage("numpy");
-  postMessage({ type: "status", text: "Loading benchscope-audit…" });
-  const zip = await (await fetch("benchscope_audit.zip", { cache: "no-cache" })).arrayBuffer();
+  postMessage({ type: "status", text: "Loading scopecard…" });
+  const zip = await (await fetch("scopecard.zip", { cache: "no-cache" })).arrayBuffer();
   py.unpackArchive(zip, "zip", { extractDir: "/bsa" });
-  py.runPython("import sys; sys.path.insert(0, '/bsa'); import benchscope_audit");
-  return py.runPython("benchscope_audit.__version__");
+  py.runPython("import sys; sys.path.insert(0, '/bsa'); import scopecard");
+  return py.runPython("scopecard.__version__");
 })();
 
 let wordnetPath = null;
@@ -49,8 +49,8 @@ onmessage = async (ev) => {
     // page can show them as such.
     const result = py.runPython(`
 import io, contextlib
-from benchscope_audit.cli import main as _main
-from benchscope_audit.io import InputError as _InputError
+from scopecard.cli import main as _main
+from scopecard.io import InputError as _InputError
 _buf = io.StringIO()
 try:
     with contextlib.redirect_stdout(_buf):

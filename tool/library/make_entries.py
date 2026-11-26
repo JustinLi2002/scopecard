@@ -16,7 +16,7 @@ import time
 HERE = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(HERE, '..', 'src')
 sys.path.insert(0, SRC)
-from benchscope_audit.card import validate_card  # noqa: E402
+from scopecard.card import validate_card  # noqa: E402
 
 PILOT_FIELDS = ('domain', 'sources_checked', 'negative_source', 'rule_stated_in_paper', 'rule_found_in_code_or_release',
                 'decidability', 'verification', 'W_pilot', 'evaluation_protocol', 'notes')
@@ -45,7 +45,7 @@ def make_card(b, root, cards_dir):
             raise FileNotFoundError(f"{b['slug']}: input {i['id']} not found at {p} (download: {i['source']})")
     out = os.path.join(cards_dir, b['slug'] + '.json')
     cmd = [sys.executable, '-E', '-P', '-X', 'utf8', '-c', 'import sys; sys.path.insert(0, sys.argv[1]); '
-           'from benchscope_audit.cli import main; sys.exit(main(sys.argv[2:]))', SRC]
+           'from scopecard.cli import main; sys.exit(main(sys.argv[2:]))', SRC]
     cmd += resolve(b['args'], b['inputs'], root) + ['--out', out]
     t0 = time.time()
     subprocess.run(cmd, check=True)
@@ -82,7 +82,7 @@ def main():
         entry['command'] = None
         if has_card:
             disp = {i['id']: i['display'] for i in b['inputs']}
-            entry['command'] = ['benchscope-audit'] + [disp[x[1:-1]] if x.startswith('{') else x for x in b['args']] \
+            entry['command'] = ['scopecard'] + [disp[x[1:-1]] if x.startswith('{') else x for x in b['args']] \
                 + ['--out', 'card.json']
         entry['card'] = b['slug'] + '.json' if has_card else None
         entry['pilot'] = {k: pilot[b['pilot_row']][k] for k in PILOT_FIELDS}

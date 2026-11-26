@@ -1,0 +1,141 @@
+# Difficulty-matched reference for the order of Section 11: results
+
+Specification: `experiments/MMLU_RECONSTRUCTION_DESIGN.md`, Section 13 with Revision 1 (2026-11-16; exploratory; estimators and strata chosen from a matching check that used the scored halves' levels, then fixed before any order statistic on matched subsets was computed). 268 systems; 56 subjects with 13147 questions, 6580 kept. Scores standardised to the kept questions' subject mix, as in Section 11. A sign change: the gap of a pair has opposite signs on the subset and on all questions (or on the subset and its complement). References: R0, random subsets with the kept set's number of questions per subject (the 2000 subsets of Section 11); R1, also matched on 8 difficulty strata per subject; R2, the same strata crossed with the answer key. Central 95% of the reference, its median in brackets.
+
+## 0. Checks
+
+- Halves equal those of the matching check: **yes**.
+- R0 on all 2775 pairs of population A, with the 2000 subsets of Section 11: sign changes between subset and all questions 16 to 39, between subset and complement 51 to 95, tau_b 0.9717 to 0.9883; kept set 261, 367 and 0.8115. Agreement with `records_pairs.tsv` of Section 11 (every value to six digits): **yes**.
+- Every matched subset has, in every cell, the kept set's number of questions: **yes**.
+
+## 1. Setup
+
+- Half 1: 36 clean-pool systems; lines cerebras (2); command-r (2); llama (9); mpt (4); own:EleutherAI__gpt-j-6b (1); own:facebook__xglm-7.5B (1); own:gpt2-xl (1); phi (4); pythia (3); redpajama (2); stablelm (4); yi (3).
+- Half 2: 34 clean-pool systems; lines deepseek (3); falcon (4); gemma (2); mistral (2); openllama (3); opt (2); own:EleutherAI__gpt-neo-2.7B (1); own:bigscience__bloom-7b1 (1); qwen (12); starcoder (2); tinyllama (2).
+- Fold 1: difficulty from 10 systems of half 1 (command-r 2, mpt 2, phi 4, stablelm 2); scored: the 5 filter models, the 34 clean-pool systems of half 2 and the 79 lineage systems.
+- Fold 2: difficulty from 16 systems of half 2 (deepseek 3, falcon 1, openllama 1, qwen 11); scored: the 5 filter models, the 36 clean-pool systems of half 1 and the 79 lineage systems.
+
+| Fold | Reference | Cells | Cells all kept | Smallest cell | Kept minus matched difficulty, points | Expected overlap | Level gap, scored clean, points: all / below 40% / at least 40% | Key shares A/B/C/D, % | Distinct difficulty values | Questions whose stratum depends on the tie-break |
+|---|---|---:|---:|---:|---:|---:|---|---|---:|---:|
+| 1 | R1 | 448 | 16 | 12 | -0.33 | 0.690 | +1.09 / +0.14 / +1.93 | 22.6 / 24.3 / 25.0 / 28.1 | 11 | 72.8% |
+| 2 | R1 | 448 | 16 | 12 | -0.33 | 0.685 | +1.69 / +1.23 / +2.01 | 23.1 / 24.5 / 25.1 / 27.2 | 17 | 55.6% |
+| 1 | R2 | 1759 | 357 | 1 | -0.28 | 0.736 | +1.20 / +0.76 / +1.60 | 26.6 / 24.6 / 23.4 / 25.3 | 11 | 72.8% |
+| 2 | R2 | 1760 | 354 | 1 | -0.28 | 0.731 | +1.44 / +1.00 / +1.75 | 26.6 / 24.6 / 23.4 / 25.3 | 17 | 55.6% |
+
+Level gap: the expected score of the scored clean-pool systems on a matched subset minus their score on the kept questions; positive means the matched subsets are easier for them. This residual is unresolved matching bias; no direction of its effect on the counts is assumed.
+
+## 2. Primary result
+
+Sign changes between subset and all questions. Pairs scored in both folds count with the mean of their two indicators, so a count can end in .5.
+
+| Pair type | Pairs | Kept set | R0 | R1 | R2 | Position against R0 / R1 / R2 | Share of the excess over the R0 median reached by the R1 / R2 median | Reading fixed in the design |
+|---|---:|---:|---|---|---|---|---|---|
+| clean–clean, same half | 1191 | 113 | 6 to 19 (12) | 28 to 48 (37) | 46 to 63 (55) | above / above / above | 25% / 43% | a residual difference remains after matching on subject, estimated difficulty stratum and answer key (not attributed to the panel) |
+| filter–clean | 350 | 28 | 0 to 4 (1) | 0 to 5 (3) | 0 to 4 (2) | above / above / above | 7% / 4% | a residual difference remains after matching on subject, estimated difficulty stratum and answer key (not attributed to the panel) |
+| lineage–clean | 5530 | 375 | 8 to 25 (15) | 24 to 42 (33) | 58 to 73 (65) | above / above / above | 5% / 14% | a residual difference remains after matching on subject, estimated difficulty stratum and answer key (not attributed to the panel) |
+| lineage–lineage and lineage–filter | 3476 | 273 | 47 to 94 (67) | 90 to 119.5 (105) | 132 to 164.5 (147.8) | above / above / above | 18% / 39% | a residual difference remains after matching on subject, estimated difficulty stratum and answer key (not attributed to the panel) |
+| filter–filter (described only) | 10 | 0 | 0 to 1 (0) | 0 to 0.5 (0) | 0 to 0 (0) | inside / inside / inside | n/a / n/a | described only |
+| population A, all evaluated pairs | 1551 | 141 | 7 to 21 (14) | 30 to 51.5 (40) | 48 to 65 (57) | above / above / above | 20% / 34% | described only |
+| population K, all evaluated pairs | 10557 | 789 | 72 to 126 (96) | 158 to 199 (178.5) | 249 to 292 (269.5) | above / above / above | 12% / 25% | described only |
+
+Sign changes between subset and complement (for the kept set: kept and removed questions).
+
+| Pair type | Kept set | R0 | R1 | R2 | Position against R0 / R1 / R2 |
+|---|---:|---|---|---|---|
+| clean–clean, same half | 148 | 21 to 45 (32) | 44 to 72 (58) | 75 to 94 (84) | above / above / above |
+| filter–clean | 58 | 1 to 6 (4) | 1 to 7 (4) | 3 to 10 (6) | above / above / above |
+| lineage–clean | 731 | 28 to 65 (43) | 60 to 103 (79) | 134 to 181 (157) | above / above / above |
+| lineage–lineage and lineage–filter | 1399 | 148 to 251 (194) | 290 to 378 (334.5) | 452 to 549.5 (497.5) | above / above / above |
+| filter–filter (described only) | 3 | 0 to 1 (1) | 0 to 1.5 (1) | 0.5 to 1.5 (1) | above / above / above |
+| population A, all evaluated pairs | 209 | 25 to 50 (36) | 49 to 78 (63) | 81 to 102 (91.5) | above / above / above |
+| population K, all evaluated pairs | 2339 | 222 to 338 (274) | 421.5 to 532.5 (476.5) | 686 to 815 (746) | above / above / above |
+
+Kendall tau_b between the scores on the subset and on all questions, per fold over the systems scored there, mean of the two folds.
+
+| Population | Kept set | R0 | R1 | R2 | Position against R0 / R1 / R2 |
+|---|---:|---|---|---|---|
+| A | 0.8183 | 0.9728 to 0.9908 (0.9823) | 0.9331 to 0.9606 (0.9478) | 0.9151 to 0.9378 (0.9265) | below / below / below |
+| K | 0.8485 | 0.9686 to 0.9824 (0.9763) | 0.9545 to 0.9638 (0.9592) | 0.9346 to 0.9450 (0.9403) | below / below / below |
+
+## 3. Descriptions
+
+By floor status (a(kept) at or above the cut for both systems, or below it for at least one), sign changes between subset and all questions.
+
+| Pairs | Cut | Status | Pairs | Kept set | R0 | R1 | R2 | Position against R0 / R1 / R2 |
+|---|---|---|---:|---:|---|---|---|---|
+| clean–clean, same half | 0.28 | both above | 289 | 3 | 0 to 4 (2) | 1 to 5 (3) | 1 to 5 (2) | inside / inside / inside |
+| clean–clean, same half | 0.28 | at least one below | 902 | 110 | 5 to 17 (10) | 25 to 45 (35) | 44 to 60 (52) | above / above / above |
+| clean–clean, same half | 0.30 | both above | 241 | 3 | 0 to 4 (2) | 1 to 5 (3) | 1 to 5 (2) | inside / inside / inside |
+| clean–clean, same half | 0.30 | at least one below | 950 | 110 | 5 to 17 (10) | 25 to 45 (35) | 44 to 60 (52) | above / above / above |
+| clean–clean, same half | 0.35 | both above | 210 | 3 | 0 to 4 (2) | 1 to 5 (3) | 1 to 5 (2) | inside / inside / inside |
+| clean–clean, same half | 0.35 | at least one below | 981 | 110 | 5 to 17 (10) | 25 to 45 (35) | 44 to 60 (52) | above / above / above |
+| filter–clean | 0.28 | both above | 140 | 3 | 0 to 3 (1) | 0 to 3 (1) | 0 to 3 (1) | inside / inside / inside |
+| filter–clean | 0.28 | at least one below | 210 | 25 | 0 to 2 (0) | 0 to 3 (1) | 0 to 2 (1) | above / above / above |
+| filter–clean | 0.30 | both above | 96 | 0 | 0 to 3 (1) | 0 to 3 (1) | 0 to 3 (1) | inside / inside / inside |
+| filter–clean | 0.30 | at least one below | 254 | 28 | 0 to 2 (0) | 0 to 3 (1) | 0 to 2 (1) | above / above / above |
+| filter–clean | 0.35 | both above | 90 | 0 | 0 to 3 (1) | 0 to 3 (1) | 0 to 3 (1) | inside / inside / inside |
+| filter–clean | 0.35 | at least one below | 260 | 28 | 0 to 2 (0) | 0 to 3 (1) | 0 to 2 (1) | above / above / above |
+
+Lineage–clean pairs by line of the lineage system, sign changes between subset and all questions.
+
+| Line | Pairs | Kept set | R0 | R1 | R2 | Position against R0 / R1 / R2 |
+|---|---:|---:|---|---|---|---|
+| Llama-2-7b | 770 | 315 | 1 to 9 (4) | 6 to 18 (12) | 34 to 44 (39) | above / above / above |
+| Llama-2-13b | 1470 | 34 | 0 to 4 (1) | 3 to 6 (5) | 3 to 8 (5) | above / above / above |
+| Mistral-7B | 3150 | 25 | 4 to 18 (9) | 9 to 22 (16) | 16 to 25 (20) | above / above / inside |
+| gemma-7b | 140 | 1 | 0 to 1 (0) | 0 to 2 (0) | 1 to 2 (1) | inside / inside / inside |
+
+## 4. Sensitivity (reported, not read)
+
+Sign changes between subset and all questions for the four pair types that are read. Each row is one reference; the kept values are those of the primary split unless the row is a further split.
+
+| Variant | Reference | Subsets per fold | Level gap, scored clean at least 40%, folds 1 / 2 | clean–clean, same half | filter–clean | lineage–clean | lineage–lineage and lineage–filter |
+|---|---|---:|---|---|---|---|---|
+| R1 at 4 strata | R1 | 2000 | +2.45 / +2.61 | 113 against 25 to 43 (34): above | 28 against 0 to 5 (2): above | 375 against 23 to 40 (31): above | 273 against 87.5 to 117.5 (103): above |
+| R1 at 16 strata | R1 | 2000 | +1.72 / +1.77 | 113 against 28 to 48 (37): above | 28 against 0 to 5 (2): above | 375 against 27 to 45 (36): above | 273 against 96 to 126.5 (111): above |
+| R2 at 4 strata | R2 | 2000 | +2.20 / +2.48 | 113 against 43 to 58 (50): above | 28 against 0 to 4 (2): above | 375 against 53 to 70 (61): above | 273 against 122.5 to 154 (137.5): above |
+| all eligible estimators | R1 | 2000 | +3.92 / +3.83 | 113 against 33 to 49 (41): above | 28 against 0 to 3 (1): above | 375 against 31 to 48 (39): above | 273 against 94 to 121.5 (108): above |
+| all eligible estimators | R2 | 2000 | +2.49 / +2.14 | 113 against 52 to 65 (59): above | 28 against 0 to 3 (1): above | 375 against 57 to 71 (64): above | 273 against 128.5 to 157.5 (143): above |
+| whole half as estimators | R1 | 2000 | +1.70 / +3.23 | 113 against 30 to 47 (39): above | 28 against 0 to 4 (1): above | 375 against 31 to 47 (39): above | 273 against 98 to 128 (113.5): above |
+| whole half as estimators | R2 | 2000 | +0.96 / +1.76 | 113 against 54 to 69 (61): above | 28 against 0 to 4 (1): above | 375 against 59 to 73 (66): above | 273 against 129 to 161 (145): above |
+| equal weight per line | R1 | 2000 | +2.08 / +2.30 | 113 against 32 to 54 (43): above | 28 against 1 to 5 (2): above | 375 against 30 to 46 (37): above | 273 against 100 to 131.5 (115): above |
+| equal weight per line | R2 | 2000 | +1.71 / +2.05 | 113 against 50 to 65 (58): above | 28 against 1 to 4 (2): above | 375 against 58 to 75 (66): above | 273 against 133 to 165.5 (149): above |
+
+Ten further tie-break keys (500 subsets per fold each), against the primary key (2000 subsets per fold). Share of questions whose stratum depends on the tie-break, folds 1 and 2: R1 72.8%, 55.6% with the primary key.
+
+| Pair type | Reference | Kept set | Primary key | Lower bound over the ten keys | Upper bound over the ten keys | Median over the ten keys | Keys giving the primary's position |
+|---|---|---:|---|---|---|---|---:|
+| clean–clean, same half | R1 | 113 | 28 to 48 (37): above | 27 to 29 | 46 to 49 | 37 to 39 | 10 of 10 |
+| clean–clean, same half | R2 | 113 | 46 to 63 (55): above | 45 to 48 | 61.5 to 64 | 54 to 56 | 10 of 10 |
+| filter–clean | R1 | 28 | 0 to 5 (3): above | 0 to 1 | 5 to 6 | 2 to 3 | 10 of 10 |
+| filter–clean | R2 | 28 | 0 to 4 (2): above | 0 to 0 | 4 to 4 | 2 to 2 | 10 of 10 |
+| lineage–clean | R1 | 375 | 24 to 42 (33): above | 24 to 26 | 40.5 to 44 | 32 to 34 | 10 of 10 |
+| lineage–clean | R2 | 375 | 58 to 73 (65): above | 57 to 59 | 71.5 to 74.5 | 63 to 66 | 10 of 10 |
+| lineage–lineage and lineage–filter | R1 | 273 | 90 to 119.5 (105): above | 89.5 to 93.2 | 120 to 123.3 | 105 to 107.5 | 10 of 10 |
+| lineage–lineage and lineage–filter | R2 | 273 | 132 to 164.5 (147.8): above | 129 to 135.7 | 161.8 to 167.5 | 145 to 150 | 10 of 10 |
+
+Five further splits of the clean pool by line (5 accepted after 105 random assignments; 500 subsets per fold for R1 and R2, the 2000 subsets of R0). The kept values change with the split, since the pairs scored change.
+
+| Split | Systems in halves 1 / 2 | Estimators 1 / 2 | Pair type | Kept set | R0 | R1 | R2 | Position against R0 / R1 / R2 | Reading |
+|---|---|---|---|---:|---|---|---|---|---|
+| 1 | 37 / 33 | 10 / 16 | clean–clean, same half | 127 | 6 to 19 (12) | 28 to 50 (37) | 53 to 68 (60) | above / above / above | a residual difference remains after matching on subject, estimated difficulty stratum and answer key (not attributed to the panel) |
+| 1 | 37 / 33 | 10 / 16 | filter–clean | 28 | 0 to 4 (1) | 1 to 5 (2) | 0 to 4 (2) | above / above / above | a residual difference remains after matching on subject, estimated difficulty stratum and answer key (not attributed to the panel) |
+| 1 | 37 / 33 | 10 / 16 | lineage–clean | 375 | 8 to 25 (15) | 27 to 45 (35) | 57 to 71 (64) | above / above / above | a residual difference remains after matching on subject, estimated difficulty stratum and answer key (not attributed to the panel) |
+| 1 | 37 / 33 | 10 / 16 | lineage–lineage and lineage–filter | 273 | 47 to 94 (67) | 95.5 to 122.5 (109) | 134 to 166.5 (149.2) | above / above / above | a residual difference remains after matching on subject, estimated difficulty stratum and answer key (not attributed to the panel) |
+| 2 | 35 / 35 | 15 / 11 | clean–clean, same half | 117 | 8 to 26 (16) | 23 to 45 (33) | 43 to 57 (50) | above / above / above | a residual difference remains after matching on subject, estimated difficulty stratum and answer key (not attributed to the panel) |
+| 2 | 35 / 35 | 15 / 11 | filter–clean | 28 | 0 to 4 (1) | 0 to 4 (2) | 0 to 3 (1) | above / above / above | a residual difference remains after matching on subject, estimated difficulty stratum and answer key (not attributed to the panel) |
+| 2 | 35 / 35 | 15 / 11 | lineage–clean | 375 | 8 to 25 (15) | 24 to 40.5 (32) | 59 to 74 (66) | above / above / above | a residual difference remains after matching on subject, estimated difficulty stratum and answer key (not attributed to the panel) |
+| 2 | 35 / 35 | 15 / 11 | lineage–lineage and lineage–filter | 273 | 47 to 94 (67) | 93.2 to 126.5 (110.5) | 135.5 to 165.5 (148.8) | above / above / above | a residual difference remains after matching on subject, estimated difficulty stratum and answer key (not attributed to the panel) |
+| 3 | 37 / 33 | 12 / 14 | clean–clean, same half | 114 | 5 to 19 (11) | 26 to 46 (36) | 45 to 61 (54) | above / above / above | a residual difference remains after matching on subject, estimated difficulty stratum and answer key (not attributed to the panel) |
+| 3 | 37 / 33 | 12 / 14 | filter–clean | 28 | 0 to 4 (1) | 0 to 4 (1) | 0 to 3 (1) | above / above / above | a residual difference remains after matching on subject, estimated difficulty stratum and answer key (not attributed to the panel) |
+| 3 | 37 / 33 | 12 / 14 | lineage–clean | 375 | 8 to 25 (15) | 26 to 41 (34) | 58.5 to 74 (66) | above / above / above | a residual difference remains after matching on subject, estimated difficulty stratum and answer key (not attributed to the panel) |
+| 3 | 37 / 33 | 12 / 14 | lineage–lineage and lineage–filter | 273 | 47 to 94 (67) | 93.7 to 124.3 (109.2) | 134 to 165 (150.5) | above / above / above | a residual difference remains after matching on subject, estimated difficulty stratum and answer key (not attributed to the panel) |
+| 4 | 32 / 38 | 14 / 12 | clean–clean, same half | 113 | 6 to 23 (13) | 28 to 47 (38) | 44 to 58 (50) | above / above / above | a residual difference remains after matching on subject, estimated difficulty stratum and answer key (not attributed to the panel) |
+| 4 | 32 / 38 | 14 / 12 | filter–clean | 28 | 0 to 4 (1) | 1 to 5 (3) | 0 to 4 (2) | above / above / above | a residual difference remains after matching on subject, estimated difficulty stratum and answer key (not attributed to the panel) |
+| 4 | 32 / 38 | 14 / 12 | lineage–clean | 375 | 8 to 25 (15) | 25.5 to 44 (36) | 57 to 73 (65) | above / above / above | a residual difference remains after matching on subject, estimated difficulty stratum and answer key (not attributed to the panel) |
+| 4 | 32 / 38 | 14 / 12 | lineage–lineage and lineage–filter | 273 | 47 to 94 (67) | 95.5 to 125.8 (110.2) | 134.7 to 167.8 (151) | above / above / above | a residual difference remains after matching on subject, estimated difficulty stratum and answer key (not attributed to the panel) |
+| 5 | 34 / 36 | 12 / 14 | clean–clean, same half | 123 | 7 to 22 (14) | 29 to 49 (38) | 46 to 63 (54) | above / above / above | a residual difference remains after matching on subject, estimated difficulty stratum and answer key (not attributed to the panel) |
+| 5 | 34 / 36 | 12 / 14 | filter–clean | 28 | 0 to 4 (1) | 0 to 3 (1) | 0 to 3 (1) | above / above / above | a residual difference remains after matching on subject, estimated difficulty stratum and answer key (not attributed to the panel) |
+| 5 | 34 / 36 | 12 / 14 | lineage–clean | 375 | 8 to 25 (15) | 25 to 41.5 (34) | 60 to 75 (67) | above / above / above | a residual difference remains after matching on subject, estimated difficulty stratum and answer key (not attributed to the panel) |
+| 5 | 34 / 36 | 12 / 14 | lineage–lineage and lineage–filter | 273 | 47 to 94 (67) | 93.5 to 127.8 (110) | 135 to 169.3 (151.5) | above / above / above | a residual difference remains after matching on subject, estimated difficulty stratum and answer key (not attributed to the panel) |
+

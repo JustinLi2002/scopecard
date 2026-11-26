@@ -414,7 +414,7 @@
   ],
   "unmapped_release_units": 0
  },
- "schema": "benchscope-card/0.3",
+ "schema": "scopecard/0.3",
  "scope_statement": "Comparisons on ogbl-citation2 license claims about the queries it can evaluate, which leave out 20.3% of the 108,591 ogbl-citation2 papers published in 2019. The closest simple rule (threshold, T = 6) is reproduced (Jaccard 1.000).",
  "support": {
   "basis": "Only source papers are queried, so a paper of the source year that is not a source is never evaluated as a query.",
@@ -422,7 +422,7 @@
   "structural": true
  },
  "task": "query_level",
- "tool_version": "0.0.1",
+ "tool_version": "0.0.2",
  "universe": {
   "fingerprint": "sha256:3238cf865abe65c01fc46c32a4009261c2d662275373be93f5d0b177395d0134",
   "name": "ogbl-citation2 papers published in 2019",

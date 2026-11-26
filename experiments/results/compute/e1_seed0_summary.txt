@@ -1,0 +1,5 @@
+complex seed=0 rc=0/0 wall=1037s last_epoch=180 test_mrr_filtered_with_test=.
+distmult seed=0 rc=0/1 wall=11025s last_epoch=235 test_mrr_filtered_with_test=
+rescal seed=0 rc=0/1 wall=7292s last_epoch=400 test_mrr_filtered_with_test=
+conve seed=0 rc=0/0 wall=7873s last_epoch=300 test_mrr_filtered_with_test=.
+transe seed=0 rc=0/0 wall=8153s last_epoch=220 test_mrr_filtered_with_test=.

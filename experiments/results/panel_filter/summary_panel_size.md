@@ -1,0 +1,34 @@
+# Own-panel penalty by panel size: results
+
+Specification: `experiments/PANEL_FILTER_DESIGN.md`, Section 12 (fixed 2026-11-15; exploratory). Rule: tasks with a solve rate below 50% over the panel. 100 random panels per size; every member evaluated up to 16 per panel; 100 task-bootstrap replicates; 95% percentile intervals in brackets. 1 point = 0.01 of score.
+
+Corrections of 2026-11-16 (design, Section 13; no estimate changed). (1) The share of sign changes is given as a point estimate only and carries no reading: 7 of the 12 point estimates of its excess lie outside their own bootstrap intervals, so that bootstrap is biased. (2) Own participation is given twice: over every evaluated member, and over the members that have the same-line comparison, which are the ones the next two columns use; only on those does the total equal own participation plus the same-line part. (3) The same outcomes vote and score here, so own participation cannot be negative in any comparison; the intervals and the placebo say nothing about its sign, only about its size. (4) "Same-line" means the same model line read from names.
+
+## Complete: 153 models
+
+| Builders | Tasks kept (mean; minimum) | Mean score of all models on them | Own participation, all evaluated members, points | Own participation, members with the same-line comparison, points | With same-line builders too, same members, points | Same-line part, same members, points | Placebo, points | Sign changes: member pairs / baseline | Excess, percentage points (point estimate) | Reading on size: own / total |
+|---:|---|---:|---|---|---|---|---|---|---:|---|
+| 4 | 528; 401 | 15.9% | +8.08 [+7.51, +8.66] | +8.09 [+7.51, +8.67] | +8.18 [+7.61, +8.79] | +0.09 [+0.05, +0.14] | +0.03 [-0.05, +0.10] | 29.08% / 3.73% | +25.35 | material / material |
+| 8 | 573; 466 | 17.0% | +4.07 [+3.71, +4.37] | +4.07 [+3.71, +4.37] | +4.29 [+3.92, +4.60] | +0.22 [+0.17, +0.27] | -0.08 [-0.13, -0.04] | 12.99% / 1.88% | +11.11 | material / material |
+| 16 | 592; 484 | 17.3% | +2.15 [+1.92, +2.35] | +2.15 [+1.92, +2.35] | +2.31 [+2.06, +2.52] | +0.16 [+0.12, +0.21] | -0.02 [-0.05, -0.00] | 6.40% / 1.15% | +5.25 | material / material |
+| 32 | 604; 545 | 17.5% | +1.13 [+0.99, +1.27] | +1.13 [+0.99, +1.27] | +1.34 [+1.19, +1.51] | +0.21 [+0.17, +0.25] | -0.01 [-0.03, +0.01] | 3.00% / 0.61% | +2.39 | material / material |
+| 64 | 605; 557 | 17.3% | +0.58 [+0.49, +0.67] | +0.58 [+0.49, +0.67] | +0.80 [+0.69, +0.92] | +0.22 [+0.18, +0.27] | +0.01 [-0.00, +0.02] | 1.22% / 0.33% | +0.89 | small / small |
+| 96 | 610; 579 | 17.5% | +0.39 [+0.32, +0.45] | +0.39 [+0.32, +0.45] | +0.64 [+0.54, +0.77] | +0.25 [+0.18, +0.33] | +0.00 [-0.01, +0.01] | 0.67% / 0.24% | +0.43 | small / small |
+
+- Members evaluated, of which with a same-line builder in the panel, and members without the sibling comparison: p = 4: 396, 70, 6; p = 8: 800, 327, 0; p = 16: 1600, 1045, 0; p = 32: 1600, 1334, 0; p = 64: 1600, 1510, 0; p = 96: 1600, 1568, 0.
+- Own participation times the number of builders (constant if the penalty is proportional to 1/p): p = 4: 32.3; p = 8: 32.6; p = 16: 34.4; p = 32: 36.1; p = 64: 37.0; p = 96: 37.7.
+
+## Instruct (same tasks; 124 models in common with Complete): 126 models
+
+| Builders | Tasks kept (mean; minimum) | Mean score of all models on them | Own participation, all evaluated members, points | Own participation, members with the same-line comparison, points | With same-line builders too, same members, points | Same-line part, same members, points | Placebo, points | Sign changes: member pairs / baseline | Excess, percentage points (point estimate) | Reading on size: own / total |
+|---:|---|---:|---|---|---|---|---|---|---:|---|
+| 4 | 633; 543 | 12.5% | +6.16 [+5.57, +6.68] | +6.16 [+5.57, +6.68] | +6.26 [+5.70, +6.81] | +0.11 [+0.06, +0.16] | -0.13 [-0.20, -0.06] | 33.28% / 4.67% | +28.61 | material / material |
+| 8 | 663; 586 | 13.0% | +3.10 [+2.73, +3.42] | +3.10 [+2.73, +3.42] | +3.27 [+2.88, +3.61] | +0.16 [+0.11, +0.20] | -0.07 [-0.11, -0.03] | 16.92% / 2.67% | +14.25 | material / material |
+| 16 | 682; 616 | 13.3% | +1.62 [+1.41, +1.83] | +1.62 [+1.41, +1.83] | +1.71 [+1.48, +1.93] | +0.09 [+0.05, +0.12] | +0.01 [-0.02, +0.04] | 7.60% / 1.38% | +6.22 | material / material |
+| 32 | 690; 635 | 13.4% | +0.84 [+0.71, +0.97] | +0.84 [+0.71, +0.97] | +1.00 [+0.85, +1.17] | +0.16 [+0.12, +0.20] | +0.00 [-0.02, +0.02] | 3.52% / 0.79% | +2.72 | small / small |
+| 64 | 697; 664 | 13.6% | +0.41 [+0.33, +0.50] | +0.41 [+0.33, +0.50] | +0.56 [+0.44, +0.67] | +0.15 [+0.10, +0.21] | +0.00 [-0.01, +0.01] | 1.36% / 0.35% | +1.01 | small / small |
+| 96 | 700; 678 | 13.7% | +0.30 [+0.22, +0.38] | +0.30 [+0.22, +0.38] | +0.43 [+0.31, +0.55] | +0.13 [+0.07, +0.20] | -0.01 [-0.02, +0.00] | 0.62% / 0.22% | +0.40 | small / small |
+
+- Members evaluated, of which with a same-line builder in the panel, and members without the sibling comparison: p = 4: 400, 96, 6; p = 8: 800, 345, 0; p = 16: 1600, 1032, 0; p = 32: 1600, 1346, 0; p = 64: 1600, 1501, 0; p = 96: 1600, 1559, 0.
+- Own participation times the number of builders (constant if the penalty is proportional to 1/p): p = 4: 24.6; p = 8: 24.8; p = 16: 25.9; p = 32: 26.8; p = 64: 26.0; p = 96: 28.4.
+

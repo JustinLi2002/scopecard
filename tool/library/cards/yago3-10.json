@@ -615,7 +615,7 @@
   ],
   "unmapped_release_units": 2044
  },
- "schema": "benchscope-card/0.3",
+ "schema": "scopecard/0.3",
  "scope_statement": "Comparisons on YAGO3-10 license claims about the entities it can evaluate, which leave out 95.4% of the 2,635,315 YAGO 3.0.2 entities that occur in at least one triple of its 37 relation types. The closest simple rule (both_ends, T = 10) is approximately reproduced (Jaccard 0.967).",
  "support": {
   "basis": "Link prediction ranks each test query against the release entity set, so a universe entity absent from the release is never a candidate.",
@@ -623,7 +623,7 @@
   "structural": true
  },
  "task": "kg_link_prediction",
- "tool_version": "0.0.1",
+ "tool_version": "0.0.2",
  "universe": {
   "fingerprint": "sha256:8708a2b249492f1eef68d5d165768804efc3861b8c0178b5da78afcd9a648c2c",
   "name": "YAGO 3.0.2",

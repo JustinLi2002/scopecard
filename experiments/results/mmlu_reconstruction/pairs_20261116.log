@@ -1,0 +1,227 @@
+# Order of systems on all questions and on the kept questions of original MMLU: results
+
+Specification: `experiments/MMLU_RECONSTRUCTION_DESIGN.md`, Section 11 (written and approved 2026-11-15, before any of it was computed; exploratory). 268 systems; 56 subjects with 13147 original questions, of which 6580 kept and 6567 removed. Scores are standardised to the kept questions' subject mix. A pair's gap is the difference of the two scores, oriented so that it is not negative on the kept questions. 2000 bootstrap replicates over questions within subject; 95% percentile intervals in brackets; simultaneous intervals are estimate ± q × SD over all pairs of a population. 1 point = 0.01 of accuracy.
+
+Labels. Resolved: the interval of the gap excludes zero. Reversal: resolved on kept and on all questions, with opposite signs. Newly resolved: not resolved on kept, resolved on all. Lost: resolved on kept, not on all. Opposite parts: resolved on kept and on removed questions, with opposite signs; this is weaker than a reversal.
+
+Corrections of 2026-11-16 (design, Section 12; wording only, no estimate changed). In part 2, the reference tail share is the share of subsets of the placebo pool, of the size of the filter set, whose mean is at least the observed value. It says where that value lies among those subsets. It is not a calibrated p-value: the filter models are not exchangeable with the pool systems. The reading there is the label that the rule fixed in the design gives.
+
+Check: a(all) and a(kept) of 268 systems agree with `systems.tsv` of Section 9 within 5.0e-07. Bootstrap replicates in which a subject had no removed question: 0.
+
+## 1. Order (question 1) and the two parts (question 2)
+
+### Population A: the filter models and the clean pool
+- 75 systems, 2775 pairs, 2 tied on the kept questions.
+- Precision: the standard error of a gap is 0.56 points on all questions, 0.75 on the kept and 1.04 on the removed ones (medians). Simultaneous critical values: 4.26 for kept and all, 4.34 for kept and removed. A reversal can be established only if the gap changes by about 5.6 points between all and kept questions; opposite parts need about 7.8 points between removed and kept.
+- Point estimates: Kendall tau_b between the scores on kept and on all questions 0.8115; 261 of 2773 pairs have opposite signs on kept and on all questions; 367 have opposite signs on kept and on removed questions.
+- Unadjusted 95% intervals: resolved on kept 2279, on all 2621, on removed 2536; **reversals 36**; newly resolved 377; lost 35; **opposite parts 78**.
+- Simultaneous 95% intervals: resolved on kept 2008, on all 2467, on removed 2265; **reversals 0**; newly resolved 472; lost 13; **opposite parts 4**.
+- Random subsets of the same size (the same number of questions per subject as the kept set; central 95% of 2000 subsets): tau_b 0.8115 against a reference of 0.9717 to 0.9883 (outside; percentile 0.0); pairs with opposite signs on the subset and on all questions 261 against a reference of 16 to 39 (outside; percentile 100.0); pairs with opposite signs on the subset and on its complement 367 against a reference of 51 to 95 (outside; percentile 100.0).
+- **Outcome in the wording fixed in the design:** No reversal is established under simultaneous intervals; more pairs change sign than same-size random subsets give (261 against 16 to 39).
+- Reversals under unadjusted intervals (36; the 25 with the largest change of gap):
+  - stabilityai__stablelm-base-alpha-7b (clean) minus meta-llama__Llama-2-7b-hf (filter): kept +1.55 [+0.05, +3.07], all -14.98 [-16.12, -13.76], removed -31.64 [-33.87, -29.41]
+  - gpt2-xl (clean) minus meta-llama__Llama-2-7b-hf (filter): kept +1.63 [+0.14, +3.08], all -14.65 [-15.73, -13.49], removed -32.27 [-34.47, -30.10]
+  - mosaicml__mpt-7b (clean) minus meta-llama__Llama-2-7b-hf (filter): kept +1.84 [+0.53, +3.23], all -13.58 [-14.64, -12.40], removed -31.11 [-33.20, -29.06]
+  - facebook__xglm-7.5B (clean) minus meta-llama__Llama-2-7b-hf (filter): kept +1.96 [+0.38, +3.49], all -13.14 [-14.23, -11.93], removed -28.88 [-30.91, -26.70]
+  - stabilityai__stablelm-base-alpha-7b (clean) minus togethercomputer__RedPajama-INCITE-7B-Instruct (clean): kept +1.99 [+0.50, +3.52], all -10.00 [-11.14, -8.82], removed -21.59 [-23.81, -19.42]
+  - TinyLlama__TinyLlama-1.1B-Chat-v1.0 (clean) minus togethercomputer__RedPajama-INCITE-7B-Instruct (clean): kept +1.50 [+0.04, +2.97], all -10.47 [-11.53, -9.28], removed -24.00 [-26.24, -21.63]
+  - gpt2-xl (clean) minus togethercomputer__RedPajama-INCITE-7B-Instruct (clean): kept +2.07 [+0.60, +3.49], all -9.68 [-10.73, -8.51], removed -22.21 [-24.61, -19.88]
+  - openlm-research__open_llama_3b (clean) minus togethercomputer__RedPajama-INCITE-7B-Instruct (clean): kept +1.85 [+0.44, +3.25], all -9.34 [-10.43, -8.25], removed -20.09 [-22.23, -18.08]
+  - mosaicml__mpt-7b (clean) minus togethercomputer__RedPajama-INCITE-7B-Instruct (clean): kept +2.28 [+0.88, +3.78], all -8.60 [-9.69, -7.48], removed -21.05 [-23.32, -18.74]
+  - facebook__xglm-7.5B (clean) minus togethercomputer__RedPajama-INCITE-7B-Instruct (clean): kept +2.40 [+0.92, +3.87], all -8.17 [-9.25, -6.97], removed -18.83 [-20.97, -16.65]
+  - tiiuae__falcon-7b (clean) minus togethercomputer__RedPajama-INCITE-7B-Instruct (clean): kept +1.66 [+0.24, +3.06], all -8.90 [-10.01, -7.74], removed -21.87 [-24.09, -19.59]
+  - mosaicml__mpt-7b (clean) minus google__gemma-2b-it (clean): kept +1.55 [+0.20, +2.88], all -7.81 [-8.80, -6.74], removed -16.80 [-18.70, -14.83]
+  - facebook__xglm-7.5B (clean) minus google__gemma-2b-it (clean): kept +1.67 [+0.12, +3.35], all -7.37 [-8.49, -6.12], removed -14.58 [-16.78, -12.35]
+  - stabilityai__stablelm-base-alpha-7b (clean) minus bigcode__starcoderbase (clean): kept +1.73 [+0.25, +3.20], all -4.95 [-6.04, -3.79], removed -13.07 [-15.24, -10.83]
+  - gpt2-xl (clean) minus bigcode__starcoderbase (clean): kept +1.81 [+0.35, +3.24], all -4.63 [-5.71, -3.49], removed -13.70 [-16.02, -11.51]
+  - Qwen__Qwen1.5-0.5B (clean) minus meta-llama__Llama-2-7b-hf (filter): kept +2.48 [+1.15, +3.79], all -3.91 [-4.96, -2.86], removed -11.59 [-13.71, -9.65]
+  - openlm-research__open_llama_3b (clean) minus bigcode__starcoderbase (clean): kept +1.60 [+0.24, +2.95], all -4.29 [-5.35, -3.23], removed -11.57 [-13.63, -9.48]
+  - stabilityai__stablelm-base-alpha-7b (clean) minus openlm-research__open_llama_7b (clean): kept +2.08 [+0.71, +3.48], all -3.68 [-4.76, -2.60], removed -9.08 [-11.23, -7.03]
+  - TinyLlama__TinyLlama-1.1B-Chat-v1.0 (clean) minus openlm-research__open_llama_7b (clean): kept +1.60 [+0.33, +2.88], all -4.15 [-5.15, -3.11], removed -11.49 [-13.50, -9.58]
+  - mosaicml__mpt-7b (clean) minus bigcode__starcoderbase (clean): kept +2.02 [+0.62, +3.44], all -3.55 [-4.55, -2.46], removed -12.53 [-14.65, -10.37]
+  - gpt2-xl (clean) minus openlm-research__open_llama_7b (clean): kept +2.16 [+0.85, +3.53], all -3.35 [-4.37, -2.35], removed -9.71 [-11.81, -7.64]
+  - mosaicml__mpt-7b (clean) minus mosaicml__mpt-7b-instruct (clean): kept +1.34 [+0.02, +2.72], all -3.97 [-4.97, -2.97], removed -9.91 [-11.67, -8.12]
+  - facebook__xglm-7.5B (clean) minus bigcode__starcoderbase (clean): kept +2.14 [+0.69, +3.65], all -3.12 [-4.19, -1.93], removed -10.31 [-12.35, -8.32]
+  - deepseek-ai__deepseek-llm-7b-chat (clean) minus meta-llama__Llama-2-13b-hf (filter): kept +2.54 [+1.08, +3.98], all -2.54 [-3.50, -1.48], removed -9.93 [-11.72, -8.14]
+  - facebook__xglm-7.5B (clean) minus mosaicml__mpt-7b-instruct (clean): kept +1.46 [+0.08, +2.84], all -3.53 [-4.62, -2.42], removed -7.68 [-9.91, -5.51]
+- Opposite parts under simultaneous intervals (4):
+  - Qwen__Qwen1.5-4B (clean) minus meta-llama__Llama-2-13b-hf (filter): kept +9.12 [+7.57, +10.55], all +2.36 [+1.34, +3.38], removed -6.77 [-8.54, -5.03]
+  - microsoft__phi-2 (clean) minus meta-llama__Llama-2-13b-hf (filter): kept +9.10 [+7.67, +10.51], all +3.55 [+2.62, +4.56], removed -4.07 [-5.81, -2.36]
+  - tiiuae__falcon-40b (clean) minus meta-llama__Llama-2-13b-hf (filter): kept +6.67 [+5.28, +8.00], all +2.39 [+1.47, +3.35], removed -4.10 [-6.05, -2.23]
+  - CohereForAI__c4ai-command-r-v01 (clean) minus meta-llama__Meta-Llama-3-8B (clean): kept +5.27 [+3.95, +6.59], all +1.69 [+0.76, +2.60], removed -3.83 [-5.58, -2.14]
+
+### Population K: the systems of known provenance (A and the lineage pool)
+- 154 systems, 11781 pairs, 4 tied on the kept questions.
+- Precision: the standard error of a gap is 0.52 points on all questions, 0.73 on the kept and 0.99 on the removed ones (medians). Simultaneous critical values: 4.54 for kept and all, 4.57 for kept and removed. A reversal can be established only if the gap changes by about 5.7 points between all and kept questions; opposite parts need about 7.8 points between removed and kept.
+- Point estimates: Kendall tau_b between the scores on kept and on all questions 0.8455; 909 of 11777 pairs have opposite signs on kept and on all questions; 2497 have opposite signs on kept and on removed questions.
+- Unadjusted 95% intervals: resolved on kept 10677, on all 11127, on removed 10308; **reversals 297**; newly resolved 801; lost 351; **opposite parts 1378**.
+- Simultaneous 95% intervals: resolved on kept 9573, on all 10366, on removed 8342; **reversals 36**; newly resolved 1194; lost 401; **opposite parts 494**.
+- Reversals under simultaneous intervals (36; the 25 with the largest change of gap):
+  - gpt2-xl (clean) minus davzoku__cria-llama2-7b-v1.3 (lineage): kept +3.53 [+2.09, +4.93], all -18.81 [-19.86, -17.58], removed -43.15 [-45.45, -40.98]
+  - gpt2-xl (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-100step-flan (lineage): kept +3.43 [+2.01, +4.87], all -18.85 [-19.89, -17.64], removed -43.19 [-45.41, -40.99]
+  - openlm-research__open_llama_3b (clean) minus davzoku__cria-llama2-7b-v1.3 (lineage): kept +3.31 [+1.91, +4.69], all -18.47 [-19.50, -17.28], removed -41.02 [-43.18, -38.91]
+  - openlm-research__open_llama_3b (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-100step-flan (lineage): kept +3.22 [+1.81, +4.59], all -18.51 [-19.54, -17.31], removed -41.07 [-43.17, -38.91]
+  - mosaicml__mpt-7b (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-200step-v2 (lineage): kept +3.56 [+2.16, +5.06], all -17.97 [-19.00, -16.75], removed -42.42 [-44.40, -40.30]
+  - mosaicml__mpt-7b (clean) minus davzoku__cria-llama2-7b-v1.3 (lineage): kept +3.74 [+2.36, +5.19], all -17.73 [-18.76, -16.53], removed -41.99 [-43.94, -39.94]
+  - mosaicml__mpt-7b (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-100step-flan (lineage): kept +3.65 [+2.25, +5.10], all -17.77 [-18.81, -16.56], removed -42.03 [-43.99, -39.95]
+  - facebook__xglm-7.5B (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-200step-v2 (lineage): kept +3.68 [+2.18, +5.13], all -17.53 [-18.62, -16.27], removed -40.20 [-42.38, -37.94]
+  - facebook__xglm-7.5B (clean) minus davzoku__cria-llama2-7b-v1.3 (lineage): kept +3.86 [+2.34, +5.33], all -17.30 [-18.34, -16.04], removed -39.76 [-41.99, -37.53]
+  - tiiuae__falcon-7b (clean) minus davzoku__cria-llama2-7b-v1.3 (lineage): kept +3.12 [+1.87, +4.52], all -18.03 [-18.96, -16.89], removed -42.80 [-44.81, -40.87]
+  - facebook__xglm-7.5B (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-100step-flan (lineage): kept +3.77 [+2.29, +5.24], all -17.34 [-18.39, -16.07], removed -39.81 [-41.98, -37.49]
+  - Qwen__Qwen1.5-0.5B (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-200step-v2 (lineage): kept +4.19 [+2.91, +5.56], all -8.29 [-9.29, -7.24], removed -22.91 [-24.84, -20.94]
+  - Qwen__Qwen1.5-0.5B (clean) minus davzoku__cria-llama2-7b-v1.3 (lineage): kept +4.38 [+3.09, +5.71], all -8.06 [-9.05, -7.01], removed -22.47 [-24.38, -20.54]
+  - Qwen__Qwen1.5-0.5B (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-100step-flan (lineage): kept +4.29 [+2.98, +5.64], all -8.10 [-9.09, -7.06], removed -22.52 [-24.45, -20.58]
+  - Qwen__Qwen1.5-0.5B (clean) minus wang7776__Llama-2-7b-chat-hf-10-sparsity (lineage): kept +3.80 [+2.53, +5.16], all -7.93 [-8.93, -6.87], removed -21.50 [-23.44, -19.57]
+  - Qwen__Qwen1.5-0.5B (clean) minus elyza__ELYZA-japanese-Llama-2-7b-instruct (lineage): kept +3.69 [+2.36, +5.08], all -6.69 [-7.69, -5.64], removed -19.24 [-21.36, -17.20]
+  - google__gemma-2b (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-200step-v2 (lineage): kept +3.36 [+2.01, +4.77], all -5.72 [-6.70, -4.62], removed -16.33 [-18.60, -14.12]
+  - google__gemma-2b (clean) minus davzoku__cria-llama2-7b-v1.3 (lineage): kept +3.54 [+2.18, +4.95], all -5.49 [-6.49, -4.39], removed -15.89 [-18.22, -13.61]
+  - google__gemma-2b (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-100step-flan (lineage): kept +3.45 [+2.10, +4.87], all -5.53 [-6.55, -4.41], removed -15.94 [-18.19, -13.71]
+  - microsoft__phi-1_5 (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-200step-v2 (lineage): kept +4.38 [+3.06, +5.68], all -4.56 [-5.51, -3.48], removed -14.59 [-16.39, -12.70]
+  - microsoft__phi-1_5 (clean) minus davzoku__cria-llama2-7b-v1.3 (lineage): kept +4.56 [+3.27, +5.83], all -4.32 [-5.29, -3.23], removed -14.15 [-15.95, -12.24]
+  - microsoft__phi-1_5 (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-100step-flan (lineage): kept +4.47 [+3.19, +5.73], all -4.36 [-5.33, -3.28], removed -14.20 [-16.06, -12.31]
+  - openlm-research__open_llama_13b (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-200step-v2 (lineage): kept +3.71 [+2.32, +5.04], all -4.74 [-5.75, -3.65], removed -15.55 [-17.63, -13.51]
+  - openlm-research__open_llama_13b (clean) minus davzoku__cria-llama2-7b-v1.3 (lineage): kept +3.89 [+2.53, +5.21], all -4.51 [-5.49, -3.41], removed -15.12 [-17.11, -13.12]
+  - openlm-research__open_llama_13b (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-100step-flan (lineage): kept +3.80 [+2.41, +5.12], all -4.55 [-5.53, -3.46], removed -15.16 [-17.20, -13.10]
+- Reversals under unadjusted intervals (297; the 25 with the largest change of gap):
+  - tiiuae__falcon-7b-instruct (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-200step-v2 (lineage): kept +2.60 [+1.19, +4.05], all -20.53 [-21.58, -19.34], removed -47.55 [-49.58, -45.54]
+  - tiiuae__falcon-7b-instruct (clean) minus davzoku__cria-llama2-7b-v1.3 (lineage): kept +2.78 [+1.37, +4.26], all -20.30 [-21.35, -19.13], removed -47.12 [-49.16, -45.18]
+  - tiiuae__falcon-7b-instruct (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-100step-flan (lineage): kept +2.69 [+1.27, +4.17], all -20.34 [-21.40, -19.14], removed -47.16 [-49.18, -45.15]
+  - tiiuae__falcon-rw-1b (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-200step-v2 (lineage): kept +2.46 [+1.05, +3.83], all -20.28 [-21.31, -19.12], removed -44.81 [-46.99, -42.70]
+  - tiiuae__falcon-rw-1b (clean) minus davzoku__cria-llama2-7b-v1.3 (lineage): kept +2.64 [+1.25, +4.02], all -20.05 [-21.09, -18.89], removed -44.37 [-46.58, -42.28]
+  - facebook__opt-6.7b (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-200step-v2 (lineage): kept +1.79 [+0.47, +3.12], all -20.86 [-21.81, -19.72], removed -46.17 [-48.18, -44.13]
+  - tiiuae__falcon-rw-1b (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-100step-flan (lineage): kept +2.55 [+1.15, +3.95], all -20.09 [-21.11, -18.92], removed -44.42 [-46.61, -42.31]
+  - stabilityai__stablelm-base-alpha-7b (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-200step-v2 (lineage): kept +3.27 [+1.80, +4.82], all -19.37 [-20.47, -18.10], removed -42.96 [-45.34, -40.61]
+  - TinyLlama__TinyLlama-1.1B-Chat-v1.0 (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-200step-v2 (lineage): kept +2.78 [+1.42, +4.14], all -19.83 [-20.83, -18.66], removed -45.37 [-47.33, -43.34]
+  - facebook__opt-6.7b (clean) minus davzoku__cria-llama2-7b-v1.3 (lineage): kept +1.98 [+0.65, +3.29], all -20.63 [-21.56, -19.52], removed -45.74 [-47.73, -43.76]
+  - stabilityai__stablelm-base-alpha-7b (clean) minus davzoku__cria-llama2-7b-v1.3 (lineage): kept +3.45 [+1.95, +5.01], all -19.13 [-20.22, -17.89], removed -42.52 [-44.97, -40.19]
+  - TinyLlama__TinyLlama-1.1B-Chat-v1.0 (clean) minus davzoku__cria-llama2-7b-v1.3 (lineage): kept +2.96 [+1.61, +4.29], all -19.60 [-20.60, -18.44], removed -44.93 [-46.91, -42.89]
+  - facebook__opt-6.7b (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-100step-flan (lineage): kept +1.88 [+0.56, +3.20], all -20.67 [-21.60, -19.55], removed -45.78 [-47.76, -43.72]
+  - stabilityai__stablelm-base-alpha-7b (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-100step-flan (lineage): kept +3.36 [+1.87, +4.89], all -19.17 [-20.26, -17.93], removed -42.57 [-44.92, -40.25]
+  - TinyLlama__TinyLlama-1.1B-Chat-v1.0 (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-100step-flan (lineage): kept +2.87 [+1.50, +4.23], all -19.64 [-20.64, -18.50], removed -44.98 [-46.97, -42.87]
+  - facebook__opt-13b (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-200step-v2 (lineage): kept +2.22 [+0.82, +3.64], all -20.23 [-21.25, -19.01], removed -44.94 [-47.09, -42.83]
+  - facebook__opt-13b (clean) minus davzoku__cria-llama2-7b-v1.3 (lineage): kept +2.40 [+1.03, +3.83], all -20.00 [-21.04, -18.77], removed -44.50 [-46.73, -42.46]
+  - gpt2-xl (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-200step-v2 (lineage): kept +3.34 [+1.91, +4.77], all -19.04 [-20.08, -17.81], removed -43.58 [-45.82, -41.44]
+  - tiiuae__falcon-7b-instruct (clean) minus wang7776__Llama-2-7b-chat-hf-10-sparsity (lineage): kept +2.20 [+0.84, +3.72], all -20.17 [-21.21, -18.99], removed -46.14 [-48.17, -44.18]
+  - databricks__dolly-v2-7b (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-200step-v2 (lineage): kept +2.01 [+0.71, +3.27], all -20.36 [-21.26, -19.22], removed -46.60 [-48.59, -44.68]
+  - facebook__opt-13b (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-100step-flan (lineage): kept +2.31 [+0.93, +3.72], all -20.04 [-21.07, -18.82], removed -44.55 [-46.67, -42.52]
+  - gpt2-xl (clean) minus davzoku__cria-llama2-7b-v1.3 (lineage): kept +3.53 [+2.09, +4.93], all -18.81 [-19.86, -17.58], removed -43.15 [-45.45, -40.98]
+  - databricks__dolly-v2-7b (clean) minus davzoku__cria-llama2-7b-v1.3 (lineage): kept +2.19 [+0.90, +3.42], all -20.13 [-21.00, -18.99], removed -46.17 [-48.19, -44.29]
+  - gpt2-xl (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-100step-flan (lineage): kept +3.43 [+2.01, +4.87], all -18.85 [-19.89, -17.64], removed -43.19 [-45.41, -40.99]
+  - databricks__dolly-v2-7b (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-100step-flan (lineage): kept +2.10 [+0.81, +3.32], all -20.17 [-21.04, -19.02], removed -46.21 [-48.19, -44.36]
+- Opposite parts under simultaneous intervals (494; the 25 with the largest change of gap):
+  - gpt2-xl (clean) minus davzoku__cria-llama2-7b-v1.3 (lineage): kept +3.53 [+2.09, +4.93], all -18.81 [-19.86, -17.58], removed -43.15 [-45.45, -40.98]
+  - gpt2-xl (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-100step-flan (lineage): kept +3.43 [+2.01, +4.87], all -18.85 [-19.89, -17.64], removed -43.19 [-45.41, -40.99]
+  - mosaicml__mpt-7b (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-200step-v2 (lineage): kept +3.56 [+2.16, +5.06], all -17.97 [-19.00, -16.75], removed -42.42 [-44.40, -40.30]
+  - tiiuae__falcon-7b (clean) minus davzoku__cria-llama2-7b-v1.3 (lineage): kept +3.12 [+1.87, +4.52], all -18.03 [-18.96, -16.89], removed -42.80 [-44.81, -40.87]
+  - mosaicml__mpt-7b (clean) minus davzoku__cria-llama2-7b-v1.3 (lineage): kept +3.74 [+2.36, +5.19], all -17.73 [-18.76, -16.53], removed -41.99 [-43.94, -39.94]
+  - mosaicml__mpt-7b (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-100step-flan (lineage): kept +3.65 [+2.25, +5.10], all -17.77 [-18.81, -16.56], removed -42.03 [-43.99, -39.95]
+  - openlm-research__open_llama_3b (clean) minus davzoku__cria-llama2-7b-v1.3 (lineage): kept +3.31 [+1.91, +4.69], all -18.47 [-19.50, -17.28], removed -41.02 [-43.18, -38.91]
+  - facebook__xglm-7.5B (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-200step-v2 (lineage): kept +3.68 [+2.18, +5.13], all -17.53 [-18.62, -16.27], removed -40.20 [-42.38, -37.94]
+  - facebook__xglm-7.5B (clean) minus davzoku__cria-llama2-7b-v1.3 (lineage): kept +3.86 [+2.34, +5.33], all -17.30 [-18.34, -16.04], removed -39.76 [-41.99, -37.53]
+  - facebook__xglm-7.5B (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-100step-flan (lineage): kept +3.77 [+2.29, +5.24], all -17.34 [-18.39, -16.07], removed -39.81 [-41.98, -37.49]
+  - Qwen__Qwen1.5-0.5B (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-200step-v2 (lineage): kept +4.19 [+2.91, +5.56], all -8.29 [-9.29, -7.24], removed -22.91 [-24.84, -20.94]
+  - Qwen__Qwen1.5-0.5B (clean) minus davzoku__cria-llama2-7b-v1.3 (lineage): kept +4.38 [+3.09, +5.71], all -8.06 [-9.05, -7.01], removed -22.47 [-24.38, -20.54]
+  - Qwen__Qwen1.5-0.5B (clean) minus Korabbit__Llama-2-7b-chat-hf-afr-100step-flan (lineage): kept +4.29 [+2.98, +5.64], all -8.10 [-9.09, -7.06], removed -22.52 [-24.45, -20.58]
+  - argilla__CapybaraHermes-2.5-Mistral-7B (lineage) minus TheBloke__Llama-2-13B-fp16 (lineage): kept +18.98 [+17.58, +20.40], all +7.71 [+6.72, +8.79], removed -7.31 [-9.21, -5.53]
+  - argilla__CapybaraHermes-2.5-Mistral-7B (lineage) minus CoolWP__llama-2-13b-guanaco-fp16 (lineage): kept +19.06 [+17.72, +20.48], all +8.03 [+7.12, +9.08], removed -7.02 [-8.91, -5.27]
+  - argilla__CapybaraHermes-2.5-Mistral-7B (lineage) minus dhmeltzer__Llama-2-13b-hf-ds_eli5_1024_r_64_alpha_16_merged (lineage): kept +19.42 [+18.02, +20.85], all +8.42 [+7.44, +9.48], removed -5.93 [-7.79, -4.12]
+  - sonthenguyen__NeuralHermes-2.5-Mistral-7B (lineage) minus TheBloke__Llama-2-13B-fp16 (lineage): kept +18.69 [+17.31, +20.11], all +7.95 [+7.02, +9.03], removed -6.62 [-8.54, -4.81]
+  - Qwen__Qwen1.5-0.5B (clean) minus wang7776__Llama-2-7b-chat-hf-10-sparsity (lineage): kept +3.80 [+2.53, +5.16], all -7.93 [-8.93, -6.87], removed -21.50 [-23.44, -19.57]
+  - argilla__CapybaraHermes-2.5-Mistral-7B (lineage) minus BFauber__lora_llama2-13b_10e5_r32_a16 (lineage): kept +18.24 [+16.82, +19.66], all +7.56 [+6.62, +8.62], removed -6.99 [-8.82, -5.12]
+  - luqmanxyz__Maya_Hermes-2.5-Mistral-7B (lineage) minus TheBloke__Llama-2-13B-fp16 (lineage): kept +18.59 [+17.19, +19.99], all +7.86 [+6.94, +8.96], removed -6.57 [-8.50, -4.75]
+  - allknowingroger__JaskierMistral-7B-slerp (lineage) minus TheBloke__Llama-2-13B-fp16 (lineage): kept +19.74 [+18.27, +21.13], all +8.60 [+7.64, +9.60], removed -5.36 [-7.23, -3.49]
+  - sonthenguyen__NeuralHermes-2.5-Mistral-7B (lineage) minus CoolWP__llama-2-13b-guanaco-fp16 (lineage): kept +18.77 [+17.42, +20.14], all +8.27 [+7.39, +9.33], removed -6.33 [-8.22, -4.56]
+  - argilla__CapybaraHermes-2.5-Mistral-7B (lineage) minus BFauber__lora_llama2-13b_10e5_r128_a64 (lineage): kept +18.37 [+16.92, +19.86], all +7.67 [+6.71, +8.72], removed -6.71 [-8.63, -4.81]
+  - delayedkarma__NeuralHermes-2.5-Mistral-7B (lineage) minus TheBloke__Llama-2-13B-fp16 (lineage): kept +18.53 [+17.12, +20.00], all +7.85 [+6.93, +8.91], removed -6.54 [-8.41, -4.71]
+  - simonveitner__MathHermes-2.5-Mistral-7B (lineage) minus TheBloke__Llama-2-13B-fp16 (lineage): kept +18.69 [+17.27, +20.07], all +8.13 [+7.19, +9.21], removed -6.28 [-8.11, -4.45]
+
+### Population B: all systems (description only)
+- 268 systems, 35778 pairs, 13 tied on the kept questions.
+- Precision: the standard error of a gap is 0.53 points on all questions, 0.73 on the kept and 0.99 on the removed ones (medians). Simultaneous critical values: 4.72 for kept and all, 4.78 for kept and removed. A reversal can be established only if the gap changes by about 5.9 points between all and kept questions; opposite parts need about 8.3 points between removed and kept.
+- Point estimates: Kendall tau_b between the scores on kept and on all questions 0.8539; 2610 of 35765 pairs have opposite signs on kept and on all questions; 6986 have opposite signs on kept and on removed questions.
+- Unadjusted 95% intervals: resolved on kept 32242, on all 33644, on removed 30517; **reversals 770**; newly resolved 2414; lost 1012; **opposite parts 3284**.
+- Simultaneous 95% intervals: resolved on kept 28699, on all 31134, on removed 24188; **reversals 67**; newly resolved 3478; lost 1043; **opposite parts 874**.
+- Random subsets of the same size (the same number of questions per subject as the kept set; central 95% of 2000 subsets): tau_b 0.8539 against a reference of 0.9749 to 0.9837 (outside; percentile 0.0); pairs with opposite signs on the subset and on all questions 2610 against a reference of 287 to 443 (outside; percentile 100.0); pairs with opposite signs on the subset and on its complement 6986 against a reference of 844 to 1197 (outside; percentile 100.0).
+- **Outcome in the wording fixed in the design:** 67 reversals are established under simultaneous intervals; the number of pairs that change sign is above what same-size random subsets give (2610 against 287 to 443).
+
+### Sensitivity for population A: plain accuracy without standardisation (all 14042 questions of the 57 subjects against the 6580 kept ones)
+- 75 systems, 2775 pairs, 6 tied on the kept questions.
+- Precision: the standard error of a gap is 0.50 points on all questions, 0.75 on the kept and 0.66 on the removed ones (medians). Simultaneous critical values: 4.30 for kept and all, 4.32 for kept and removed. A reversal can be established only if the gap changes by about 5.4 points between all and kept questions; opposite parts need about 6.1 points between removed and kept.
+- Point estimates: Kendall tau_b between the scores on kept and on all questions 0.8099; 262 of 2769 pairs have opposite signs on kept and on all questions; 324 have opposite signs on kept and on removed questions.
+- Unadjusted 95% intervals: resolved on kept 2279, on all 2629, on removed 2615; **reversals 38**; newly resolved 387; lost 37; **opposite parts 61**.
+- Simultaneous 95% intervals: resolved on kept 2008, on all 2496, on removed 2445; **reversals 0**; newly resolved 497; lost 9; **opposite parts 1**.
+- Random subsets of the same size (drawn uniformly; central 95% of 2000 subsets): tau_b 0.8099 against a reference of 0.9701 to 0.9863 (outside; percentile 0.0); pairs with opposite signs on the subset and on all questions 262 against a reference of 18 to 41 (outside; percentile 100.0); pairs with opposite signs on the subset and on its complement 324 against a reference of 37 to 73 (outside; percentile 100.0).
+- **Outcome in the wording fixed in the design:** No reversal is established under simultaneous intervals; more pairs change sign than same-size random subsets give (262 against 18 to 41).
+
+## 2. Builders (question 3)
+
+Places lost by a system: the number of clean-pool systems ahead of it on the kept questions minus the number ahead of it on all questions (a tie counts one half). The excess N_m of a filter model is its places lost minus the mean places lost by its controls, the clean-pool systems with a(all) within 3 points (Section 4). Section 9 already measured the penalty in points; this part translates it into places.
+
+### Clean pool as opponents and controls, siblings included
+- Opponents: 70 clean-pool systems. Controls per filter model: 7, 5, 5, 7, 5; placebo pool: 25 systems.
+- **Excess places lost N = +5.31** (question bootstrap 95% interval +2.37 to +6.34); placebo values of the pool: mean -0.12, SD 2.75, range -5.00 to +9.17; **reference tail share: 0 of 53130 subsets of the pool (0.00000; exact)**. **Reading fixed in the design: confirmed.**
+
+| Filter model | Place on all questions | Place on kept questions | Places lost | Mean places lost by its controls | Excess N_m | 95% interval |
+|---|---:|---:|---:|---:|---:|---|
+| meta-llama__Llama-2-7b-hf | 38 of 71 | 63 of 71 | +25 | +1.71 | +23.29 | +9.71 to +28.93 |
+| meta-llama__Llama-2-13b-hf | 31 of 71 | 34 of 71 | +3 | +0.00 | +3.00 | +1.00 to +4.80 |
+| mistralai__Mistral-7B-v0.1 | 24 of 71 | 24 of 71 | +0 | +0.00 | +0.00 | -0.20 to +1.00 |
+| google__gemma-7b | 23 of 71 | 23 of 71 | +0 | -0.29 | +0.29 | -1.00 to +1.43 |
+| 01-ai__Yi-6B | 23 of 71 | 23 of 71 | +0 | +0.00 | +0.00 | -1.00 to +0.20 |
+
+- Pool systems with a placebo value at least as large as N: 1 of 25; filter models whose excess is above every placebo value: 1 of 5.
+
+### Sensitivity: siblings removed from the opponents and the controls
+- Opponents: 62 clean-pool systems. Controls per filter model: 6, 5, 5, 7, 5; placebo pool: 24 systems.
+- **Excess places lost N = +4.96** (question bootstrap 95% interval +2.22 to +6.03); placebo values of the pool: mean -0.14, SD 2.56, range -4.83 to +8.17; **reference tail share: 0 of 42504 subsets of the pool (0.00000; exact)**. **Reading fixed in the design: confirmed.**
+
+| Filter model | Place on all questions | Place on kept questions | Places lost | Mean places lost by its controls | Excess N_m | 95% interval |
+|---|---:|---:|---:|---:|---:|---|
+| meta-llama__Llama-2-7b-hf | 32 of 63 | 55 of 63 | +23 | +1.50 | +21.50 | +8.75 to +27.25 |
+| meta-llama__Llama-2-13b-hf | 25 of 63 | 28 of 63 | +3 | +0.00 | +3.00 | +1.00 to +4.80 |
+| mistralai__Mistral-7B-v0.1 | 18 of 63 | 18 of 63 | +0 | +0.00 | +0.00 | -0.20 to +1.00 |
+| google__gemma-7b | 17 of 63 | 17 of 63 | +0 | -0.29 | +0.29 | -1.00 to +1.29 |
+| 01-ai__Yi-6B | 17 of 63 | 17 of 63 | +0 | +0.00 | +0.00 | -1.00 to +0.20 |
+
+- Pool systems with a placebo value at least as large as N: 1 of 24; filter models whose excess is above every placebo value: 1 of 5.
+
+### By line: the lineage pool
+- Excess places lost of each lineage system, with opponents and controls from the clean pool without siblings. Reference: the 24 placebo values of that pool (mean -0.14, SD 2.56, maximum +8.17). Only lineage systems inside the filter models' range of a(all), widened by 0.03, are counted. A line is a model line read from names. Fine-tunes of one base are not independent of each other, so the Mann–Whitney p-value has no independent-sample reading; it only describes how far the two sets of numbers are apart.
+
+| Line | Systems in range (outside) | Mean excess | Median | Share above zero | Share above the pool maximum | Mann–Whitney p (descriptive) |
+|---|---:|---:|---:|---:|---:|---:|
+| Llama-2-13b | 21 (0) | +1.29 | +1.00 | 71% | 0% | 0.00355 |
+| Llama-2-7b | 10 (1) | +26.10 | +33.10 | 90% | 80% | 2.18e-05 |
+| Mistral-7B | 45 (0) | -0.54 | +0.00 | 2% | 0% | 0.8845 |
+| gemma-7b | 2 (0) | -0.50 | -0.50 | 0% | 0% | nan |
+| all lines | 78 (1) | +3.37 | +0.00 | 32% | 10% | 0.1475 |
+
+### Direction among cross pairs, population A (families of population A)
+- Gaps are the filter-line system minus the clean-pool system. "Falls behind": ahead on all questions, behind on the kept ones. "Moves ahead": the opposite. For opposite parts, "ahead on removed": ahead on the removed questions and behind on the kept ones.
+
+| Filter-line systems | Cross pairs | Opposite signs, all and kept: falls behind / moves ahead | Reversals, unadjusted: falls / moves ahead | Reversals, simultaneous: falls / moves ahead | Opposite parts, unadjusted: ahead on removed / ahead on kept | Opposite parts, simultaneous: ahead on removed / ahead on kept |
+|---|---:|---|---|---|---|---|
+| meta-llama__Llama-2-7b-hf (1) | 70 | 25 / 0 | 6 / 0 | 0 / 0 | 8 / 0 | 0 / 0 |
+| meta-llama__Llama-2-13b-hf (1) | 70 | 3 / 0 | 1 / 0 | 0 / 0 | 7 / 0 | 3 / 0 |
+| mistralai__Mistral-7B-v0.1 (1) | 70 | 0 / 0 | 0 / 0 | 0 / 0 | 2 / 0 | 0 / 0 |
+| google__gemma-7b (1) | 70 | 0 / 0 | 0 / 0 | 0 / 0 | 1 / 0 | 0 / 0 |
+| 01-ai__Yi-6B (1) | 70 | 0 / 0 | 0 / 0 | 0 / 0 | 0 / 1 | 0 / 0 |
+| all filter models (5) | 350 | 28 / 0 | 7 / 0 | 0 / 0 | 18 / 1 | 3 / 0 |
+
+- For comparison, the 2415 pairs of two clean-pool systems: 233 with opposite signs on all and kept questions; reversals 29 unadjusted and 0 simultaneous; opposite parts 57 unadjusted and 1 simultaneous.
+
+### Direction among cross pairs, population K, by line (families of population K)
+- Gaps are the filter-line system minus the clean-pool system. "Falls behind": ahead on all questions, behind on the kept ones. "Moves ahead": the opposite. For opposite parts, "ahead on removed": ahead on the removed questions and behind on the kept ones.
+
+| Filter-line systems | Cross pairs | Opposite signs, all and kept: falls behind / moves ahead | Reversals, unadjusted: falls / moves ahead | Reversals, simultaneous: falls / moves ahead | Opposite parts, unadjusted: ahead on removed / ahead on kept | Opposite parts, simultaneous: ahead on removed / ahead on kept |
+|---|---:|---|---|---|---|---|
+| Llama-2-13b (22) | 1540 | 34 / 3 | 13 / 0 | 0 / 0 | 114 / 1 | 38 / 0 |
+| Llama-2-7b (12) | 840 | 340 / 0 | 212 / 0 | 31 / 0 | 240 / 0 | 54 / 0 |
+| Mistral-7B (46) | 3220 | 1 / 24 | 0 / 0 | 0 / 0 | 7 / 70 | 0 / 4 |
+| Yi-6B (1) | 70 | 0 / 0 | 0 / 0 | 0 / 0 | 0 / 1 | 0 / 0 |
+| gemma-7b (3) | 210 | 0 / 1 | 0 / 1 | 0 / 0 | 1 / 1 | 0 / 0 |
+| all filter-line systems (84) | 5880 | 375 / 28 | 225 / 1 | 31 / 0 | 362 / 73 | 92 / 4 |
+
+- For comparison, the 2415 pairs of two clean-pool systems: 233 with opposite signs on all and kept questions; reversals 29 unadjusted and 0 simultaneous; opposite parts 57 unadjusted and 0 simultaneous.
+
+wrote 474 records

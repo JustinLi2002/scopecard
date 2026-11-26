@@ -1,7 +1,7 @@
 {
  "card": "amazon-book.json",
  "command": [
-  "benchscope-audit",
+  "scopecard",
   "recsys-ratings",
   "--release",
   "amazon-book/",

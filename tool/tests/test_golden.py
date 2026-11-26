@@ -10,12 +10,12 @@ import numpy as np
 import pytest
 
 from conftest import PILOT
-from benchscope_audit import map_triples, search_rules, unit_exclusion
-from benchscope_audit.io import read_kg_release
-from benchscope_audit.pipelines import (audit_kg_triples, audit_kg_wordnet, audit_ogbl_citation2, audit_query_qrels,
+from scopecard import map_triples, search_rules, unit_exclusion
+from scopecard.io import read_kg_release
+from scopecard.pipelines import (audit_kg_triples, audit_kg_wordnet, audit_ogbl_citation2, audit_query_qrels,
                                         audit_recsys_checkins, audit_recsys_ratings)
-from benchscope_audit.card import to_json
-from benchscope_audit.universes import (WN18_RELATIONS, WN18RR_RELATIONS, export_wordnet30_table, load_wordnet30,
+from scopecard.card import to_json
+from scopecard.universes import (WN18_RELATIONS, WN18RR_RELATIONS, export_wordnet30_table, load_wordnet30,
                                         load_wordnet30_table)
 
 WORDNET = os.path.join(PILOT, 'kg', 'wordnet30', 'WordNet-3.0', 'dict')

@@ -1,0 +1,6 @@
+# The filter studies (reproduce.py --tier filters and filters-upstream), as run in November 2026:
+# CPython 3.14.3 with these packages.
+numpy==2.5.1
+scipy==1.18.0
+pyarrow==26.0.1
+matplotlib==3.11.0

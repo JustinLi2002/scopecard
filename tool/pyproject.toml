@@ -3,9 +3,9 @@ requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "benchscope-audit"
-version = "0.0.1"
-description = "BenchScope: which part of a declared target population can a benchmark evaluate, and what do its comparisons license?"
+name = "scopecard"
+version = "0.0.2"
+description = "ScopeCard: which part of a declared target population can a benchmark evaluate, and what do its comparisons license?"
 readme = "README.md"
 requires-python = ">=3.9"
 license = "MIT"
@@ -21,15 +21,15 @@ classifiers = [
 dependencies = ["numpy>=1.22"]
 
 [project.urls]
-Homepage = "https://justinli2002.github.io/benchscope/"
-Source = "https://github.com/JustinLi2002/benchscope"
+Homepage = "https://justinli2002.github.io/scopecard/"
+Source = "https://github.com/JustinLi2002/scopecard"
 
 [project.optional-dependencies]
 test = ["pytest>=7"]
 repro = ["matplotlib>=3.5"]
 
 [project.scripts]
-benchscope-audit = "benchscope_audit.cli:main"
+scopecard = "scopecard.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

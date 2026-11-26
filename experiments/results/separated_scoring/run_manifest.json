@@ -1,0 +1,38 @@
+{
+  "time_started": "2026-11-16T00:05:45.588048-06:00",
+  "design_sha256": "366a45ac1f292d076b38cc86949ab1e046dc85a1c3bf9ca21d817d711cefcab0",
+  "script_sha256": "13d28cadd1a39c87675d95176e96a616a72584340feff15b7aa7235543ec5148",
+  "panel_plan_sha256": "7af96d3adfc8137ffac7f4df21a0a30d18bd14003ffef1ef0a042f69f5341a60",
+  "inputs": {
+    "huggingface/bigcodebench_v0.1.4.jsonl": {
+      "path": "huggingface/bigcodebench_v0.1.4.jsonl",
+      "bytes": "661796",
+      "sha256": "d8239764e0ab6ff5b8f001a1d741d718051e48e5e3916ed54c5bbb0944ba1e60",
+      "url": "https://datasets-server.huggingface.co/rows?dataset=bigcode%2Fbigcodebench&config=default&split=v0.1.4 (columns: task_id,libs,canonical_solution)",
+      "upstream_revision": "b74c0d0bf70d2c0bc459be537895cca163007f1a",
+      "retrieved": "2026-11-14",
+      "verified_sha256": "d8239764e0ab6ff5b8f001a1d741d718051e48e5e3916ed54c5bbb0944ba1e60"
+    },
+    "huggingface/bigcodebench_perf_complete.jsonl": {
+      "path": "huggingface/bigcodebench_perf_complete.jsonl",
+      "bytes": "4021473",
+      "sha256": "ed0cfc67c64a1ea9d90bff6c36b37058708dc37daf7df7d95dae75b7506d1f84",
+      "url": "https://datasets-server.huggingface.co/rows?dataset=bigcode%2Fbigcodebench-perf&config=default&split=complete (columns: all)",
+      "upstream_revision": "249b3054d25ae61746e8fbe014782ebe4526f844",
+      "retrieved": "2026-11-14",
+      "verified_sha256": "ed0cfc67c64a1ea9d90bff6c36b37058708dc37daf7df7d95dae75b7506d1f84"
+    },
+    "huggingface/bigcodebench_perf_instruct.jsonl": {
+      "path": "huggingface/bigcodebench_perf_instruct.jsonl",
+      "bytes": "3311890",
+      "sha256": "5fd8172f6561c72d9870dd633da8b5f916a1365ce0e224dce8c2d8099eee2de5",
+      "url": "https://datasets-server.huggingface.co/rows?dataset=bigcode%2Fbigcodebench-perf&config=default&split=instruct (columns: all)",
+      "upstream_revision": "249b3054d25ae61746e8fbe014782ebe4526f844",
+      "retrieved": "2026-11-14",
+      "verified_sha256": "5fd8172f6561c72d9870dd633da8b5f916a1365ce0e224dce8c2d8099eee2de5"
+    }
+  },
+  "bootstrap_replicates": 2000,
+  "primary": "complete_to_instruct/p=8/excess",
+  "status": "plan recorded before effect computation"
+}

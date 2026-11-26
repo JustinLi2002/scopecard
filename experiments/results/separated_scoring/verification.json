@@ -1,0 +1,20 @@
+{
+  "synthetic_member_events": 12,
+  "explicit_resampling_comparisons": 32,
+  "maximum_explicit_resampling_error": 5.551115123125783e-17,
+  "maximum_source_identity_error": 5.551115123125783e-17,
+  "source_nonnegative_complement_negative_constant_zero": true,
+  "real_explicit_resampling_checks": 720,
+  "input_models": 124,
+  "input_tasks": 1140,
+  "models_with_identical_response_vectors": [],
+  "within_model_disagreement_min_mean_max": [
+    0.08508771929824561,
+    0.20779569892473118,
+    0.27280701754385966
+  ],
+  "protected_files_checked": 24,
+  "protected_changes_during_run": [],
+  "protected_changes_from_prior_baseline": [],
+  "monitored_original_changes_during_run": []
+}

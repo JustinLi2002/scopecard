@@ -1,7 +1,7 @@
 {
  "card": "ogbl-citation2.json",
  "command": [
-  "benchscope-audit",
+  "scopecard",
   "ogbl-citation2",
   "--dataset",
   "citation-v2/",

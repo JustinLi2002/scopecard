@@ -1,11 +1,12 @@
-BenchScope
+ScopeCard
 Copyright (c) 2026 Justin Li
 
 Licences
 --------
 - Code: MIT (see LICENSE). This covers the package (src/), its tests, the
   browser page (web/), the card-library scripts (library/*.py), the
-  experiment scripts (experiments/scripts/) and reproduce.py.
+  experiment scripts (experiments/scripts/), reproduce.py and
+  replay_inputs.py.
 - Data written by this project: Creative Commons Attribution 4.0
   International (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/.
   This covers the scope cards (library/cards/, examples/), the card-library
@@ -62,3 +63,12 @@ Third-party material
   reproduce.py checks each copy against the SHA-256 hashes in inputs.json.
   The scope cards hold counts and identifiers computed from these sources,
   not the sources themselves.
+
+- The inputs of the filter studies (the per-task and per-question results
+  of the SWE-bench, BigCodeBench, MMLU-Pro and Open LLM Leaderboard runs,
+  and the SWE-bench, BigCodeBench, MMLU-Pro and MMLU tables) are not
+  redistributed either. replay_inputs.py downloads them from their
+  providers and checks each file against filter_inputs.json. The stored
+  outputs of these studies (experiments/results/) hold identifiers,
+  counts, scores and a per-question correctness matrix computed from the
+  sources, not the sources themselves.

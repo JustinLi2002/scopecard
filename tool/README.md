@@ -1,6 +1,6 @@
-# benchscope-audit
+# scopecard
 
-The audit package of **BenchScope**. Given a benchmark release and a declared target universe, it reports which part of the universe the benchmark can never evaluate, and what comparisons on the benchmark therefore license. It needs no labels, no models and no GPU.
+The audit package of **ScopeCard**. Given a benchmark release and a declared target universe, it reports which part of the universe the benchmark can never evaluate, and what comparisons on the benchmark therefore license. It needs no labels, no models and no GPU.
 
 The construction rule does not have to be known. The package compares the units that actually occur in the release with the universe. It then reports:
 
@@ -15,11 +15,11 @@ The construction rule does not have to be known. The package compares the units 
 - **Universe fingerprint:** a SHA-256 of the universe's units and relations, so two cards can be checked against the same target.
 - **Input checks:** the scope statement names what W counts, with its size ("63.4% of the 112,199 WordNet 3.0 synsets that carry at least one triple of its 11 relations"). The audit stops with a one-line message when a release file does not have its format (file and line named) or when fewer than 50% of the release ids occur in the universe (wrong files, audit type or universe). It warns when fewer than 95% do, when lines of a raw file were skipped (counted per file under `inputs`), and when a pair file has a label column that was not used. Warnings are listed on the card and repeated after the scope statement. On the command line an input error exits with code 2.
 
-The result is a **scope card** (JSON plus Markdown, schema `benchscope-card/0.3`). It constrains claims; it does not repair data. The size of the difference on the excluded part, c, needs labels there and is not computed.
+The result is a **scope card** (JSON plus Markdown, schema `scopecard/0.3`). It constrains claims; it does not repair data. The size of the difference on the excluded part, c, needs labels there and is not computed.
 
 ## Status
 
-Version 0.0.1, the version used in the paper (frozen 2026-10-28). Seven pipelines:
+Version 0.0.2 (2026-11-23), the version named in the paper: version 0.0.1 (frozen 2026-10-28), which computed the paper's results, renamed. Up to version 0.0.1 the tool was called BenchScope. The package, the command and the card schema's id are now `scopecard`; every number a card reports is unchanged. Seven pipelines:
 
 | Command | Task type | Benchmark | Universe |
 |---|---|---|---|
@@ -40,17 +40,17 @@ For query-level benchmarks the units are queries: topics for TREC, source papers
 ## Use
 
 ```bash
-pip install "git+https://github.com/JustinLi2002/benchscope@v0.0.1#subdirectory=tool"
+pip install "git+https://github.com/JustinLi2002/scopecard@v0.1.0#subdirectory=tool"
 # or, inside a clone of the repository: pip install -e tool
-benchscope-audit kg-wordnet --release WN18RR/ --wordnet WordNet-3.0/dict --name WN18RR --out card.json --md card.md
-benchscope-audit kg-triples --release YAGO3-10/ --universe yagoFacts.ttl --format yago-ttl --name YAGO3-10 \
+scopecard kg-wordnet --release WN18RR/ --wordnet WordNet-3.0/dict --name WN18RR --out card.json --md card.md
+scopecard kg-triples --release YAGO3-10/ --universe yagoFacts.ttl --format yago-ttl --name YAGO3-10 \
     --stated-family both_ends --stated-T 10 --out card.json
-benchscope-audit recsys-checkins --release gowalla/ --checkins loc-gowalla_totalCheckins.txt.gz --out card.json
-benchscope-audit recsys-ratings --release amazon-book/ --ratings ratings_Books.csv --out card.json
-benchscope-audit query-qrels --topics msmarco-test2019-queries.tsv.gz --qrels 2019qrels-pass.txt \
+scopecard recsys-checkins --release gowalla/ --checkins loc-gowalla_totalCheckins.txt.gz --out card.json
+scopecard recsys-ratings --release amazon-book/ --ratings ratings_Books.csv --out card.json
+scopecard query-qrels --topics msmarco-test2019-queries.tsv.gz --qrels 2019qrels-pass.txt \
     --corpus-size 8841823 --relevant-grade 2 --min-relevant 3 --max-ratio 0.6 --name "TREC DL 2019 passage" --out card.json
-benchscope-audit ogbl-citation2 --dataset citation-v2/ --out card.json
-benchscope-audit pair-classification --pairs negatives.csv --a-col 0 --b-col 1 --no-header \n    --universe-units proteins.txt --universe-pairs interactions.tsv --universe-name "human proteome" --out card.json
+scopecard ogbl-citation2 --dataset citation-v2/ --out card.json
+scopecard pair-classification --pairs negatives.csv --a-col 0 --b-col 1 --no-header \n    --universe-units proteins.txt --universe-pairs interactions.tsv --universe-name "human proteome" --out card.json
 ```
 
 Release units that are absent from the universe can be selected by no rule over it, so they count against every rule in the Jaccard (YAGO3-10 has 2,044 such entities).
@@ -62,7 +62,7 @@ Example cards: [WN18RR](examples/wn18rr_card.md), [YAGO3-10](examples/yago3_10_c
 `web/` holds a static page that runs the same package in the browser with [Pyodide](https://pyodide.org) 0.27.7. The files a user chooses are read inside the browser and never uploaded. The page downloads only the Python runtime (from cdn.jsdelivr.net) and its own files. Python runs in a Web Worker, so the page stays responsive during long audits.
 
 ```bash
-python web/build.py WordNet-3.0/dict      # writes web/dist/: index.html, worker.js, benchscope_audit.zip, wordnet30_wn18.tsv.gz, example card
+python web/build.py WordNet-3.0/dict      # writes web/dist/: index.html, worker.js, scopecard.zip, wordnet30_wn18.tsv.gz, example card
 python -m http.server 8931 --bind 127.0.0.1 --directory web/dist
 ```
 
@@ -71,7 +71,7 @@ python -m http.server 8931 --bind 127.0.0.1 --directory web/dist
 - **One code path.** The page calls the command line's own `main()` inside Pyodide, so a card made in the browser equals the CLI's card byte for byte. This was checked for WN18RR, TREC DL 2019, Gowalla and a pair-classification example.
 - **Built-in WordNet 3.0.** WordNet ships as a compact table (`export_wordnet30_table`, 2.4 MB) in place of the dict folder; the golden test `test_wordnet_table_equals_dict` shows both give the same universe and the same card. The table carries WordNet's licence notice, as the licence requires.
 - **Size limit.** YAGO 3, Amazon Books and ogbl-citation2 are too large for the browser; use the command line for them.
-- **Hosting.** Any static host serves `web/dist/` as is (the card library's copy, `site/app/`, is served at https://justinli2002.github.io/benchscope/app/). Both archives are built without timestamps, so a rebuild gives the same bytes.
+- **Hosting.** Any static host serves `web/dist/` as is (the card library's copy, `site/app/`, is served at https://justinli2002.github.io/scopecard/app/). Both archives are built without timestamps, so a rebuild gives the same bytes.
 
 ## Card library
 
@@ -92,7 +92,7 @@ python library/build_site.py                                                    
   - `app/`, the browser auditor from `web/dist`.
 
   Every number comes from a card or the pilot table, and a rebuild gives the same bytes.
-- **Contributing a card:** run the auditor on the release, add an entry to `benchmarks.json`, run the two scripts and the tests, and open a pull request. `schema/benchscope-card-0.3.schema.json` describes the card for other languages (the 0.2 schema is kept for cards written before 2026-10-21). Biology benchmarks are added once the papers that audit them are published.
+- **Contributing a card:** run the auditor on the release, add an entry to `benchmarks.json`, run the two scripts and the tests, and open a pull request. `schema/scopecard-0.3.schema.json` describes the card for other languages (the 0.2 schema, `schema/benchscope-card-0.2.schema.json`, is kept for cards written before 2026-10-21, when the tool was still called BenchScope). Biology benchmarks are added once the papers that audit them are published.
 
 ## Tests
 
@@ -119,5 +119,5 @@ python -m pytest -q tests
   - TREC DL 2019 / 2020 passage: topic W 0.785 / 0.730; the 2019 topic rule holds for every released topic;
   - ogbl-citation2: W 0.2025 of 2019 papers; "at least 6 in-subset references" reproduces the source papers exactly; negatives never later than the source and uniform over nodes (about 1 minute).
 
-  The golden tests read the source files from `../experiments/pilot_data` (override with `BENCHSCOPE_PILOT_DATA`) and are skipped when they are absent.
+  The golden tests read the source files from `../experiments/pilot_data` (override with `SCOPECARD_PILOT_DATA`) and are skipped when they are absent.
 - **`test_library.py`:** the registry is consistent; entries copy the pilot table exactly; every library card validates; the validator catches inconsistent cards; the schema file matches the validator; the site rebuilds byte-identically; the quick cards equal a fresh run.
